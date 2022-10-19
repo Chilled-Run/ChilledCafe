@@ -1,0 +1,12 @@
+# xcode noise
+build/*
+*.pbxuser
+*.mode1v3
+*.pbxproj binary merge=union
+
+# old skool
+.svn
+
+# osx noise
+.DS_Store
+profile
