@@ -28,12 +28,15 @@ ex) [Type] #이슈번호 커밋메세지 `git commit -m '[feat] #12 로그인 �
 |**feat**|각 기능별 개발 진행|
 |**hotfix**|긴급한 버그 수정|
 
+## Pull Request Message
+**[subject] #이슈번호 '작업사항'**  
+ex) [feat] #7 이상한 코드 수정하기
 
 ## :pushpin: Features
 
 
 ## :technologist: Authors
-- [@구본성(Terry)](https://github.com/terry-koo) | [@심규보(Gary)](https://github.com/Anti9uA) | [@유종건(Cookie)](https://github.com/mycookie1) |
+- [@구본성(Terry)](https://github.com/terry-koo) | [@심규보(Gary)](https://github.com/Anti9uA) | [@유종건(Cookie)](https://github.com/mycookie1)
 
 ## :triangular_flag_on_post: Demo
 
@@ -44,4 +47,4 @@ ex) [Type] #이슈번호 커밋메세지 `git commit -m '[feat] #12 로그인 �
 - UIKit
 
 ## :lock_with_ink_pen: License
-[MIT](https://choosealicense.com/licenses/Apache/)
+[Apache](https://choosealicense.com/licenses/Apache/)
