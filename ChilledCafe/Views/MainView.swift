@@ -7,6 +7,8 @@
 
 
 import SwiftUI
+import Firebase
+import FirebaseStorage
 
 struct MainView: View {
     let columns = [
@@ -14,13 +16,14 @@ struct MainView: View {
         GridItem(.flexible())
     ]
     let appName = "앱 이름"
+    @State var hotPlaces: [HotPlace] = []
     
     var body: some View {
         NavigationView{
             VStack{
                Text(appName)
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(constant.HotPlaceArray, id: \.self) { hotPlace in
+                    ForEach(hotPlaces, id: \.self) { hotPlace in
                         NavigationLink{
                             CategoryView()
                             
@@ -30,6 +33,10 @@ struct MainView: View {
                         }
                     }
                 }
+            }
+            .onAppear(){
+               hotPlaces = FirebaseStorageManager.getHotPlace() ?? []
+
             }
         }
     }

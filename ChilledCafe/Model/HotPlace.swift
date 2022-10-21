@@ -6,10 +6,19 @@
 //
 import Foundation
 
-struct HotPlace: Hashable{
+struct HotPlace: Codable, Hashable {
+    
     let city: String
     let spot: String
     let imageURL: String
+    
+    enum CodingKeys: String, CodingKey {
+            case city = "city"
+            case spot = "spot"
+            case imageURL = "imageURL"
+            
+           // case name, job, devices
+        }
 }
 
 
