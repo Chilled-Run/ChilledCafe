@@ -41,11 +41,9 @@ class FirebaseStorageManager {
             let temp = documents.compactMap {
                 doc -> HotPlace? in
                 let data = try! JSONSerialization.data(withJSONObject: doc.data(), options: [])
-                print("debuging",data)
                 do{
                     let decoder = JSONDecoder()
                     let hotPlaces = try decoder.decode(HotPlace.self, from: data)
-                    print("debuging",hotPlaces)
                     return hotPlaces
                    
                 }catch let error {
