@@ -26,7 +26,7 @@ class FirebaseStorageManager: ObservableObject {
           //  print("new value \(newVal)")
         }
     }
-    
+   
     init() {
         getHotPlace()
     }
@@ -75,6 +75,7 @@ class FirebaseStorageManager: ObservableObject {
         }
     }
     func getCafes(spot: String){
+        cafeClassification = [:]
         var ref : DatabaseReference!{
             Database.database().reference()
         }
