@@ -8,8 +8,16 @@ import SwiftUI
 import FirebaseStorage
 import Firebase
 
-class FirebaseStorageManager {
-   
+class FirebaseStorageManager: ObservableObject {
+    @Published var hotPlace: [HotPlace] = [] {
+        didSet(newVal) {
+            print("new value \(newVal)")
+        }
+    }
+    
+    init() {
+        getHotPlace()
+    }
     
     static func downloadImage(urlString: String, completion: @escaping (UIImage?) -> Void) {
         let storageReference = Storage.storage().reference(forURL: urlString)
@@ -24,7 +32,7 @@ class FirebaseStorageManager {
         }
     }
     
-    static func getHotPlace() -> [HotPlace]?{
+    func getHotPlace(){
         var ref : DatabaseReference!{
             Database.database().reference()
         }
@@ -38,22 +46,21 @@ class FirebaseStorageManager {
                 print("error")
                 return
             }
-            let temp = documents.compactMap {
+            self.hotPlace = documents.compactMap {
                 doc -> HotPlace? in
                 let data = try! JSONSerialization.data(withJSONObject: doc.data(), options: [])
-                do{
+                do {
                     let decoder = JSONDecoder()
                     let hotPlaces = try decoder.decode(HotPlace.self, from: data)
+//                    print(hotPlaces)
                     return hotPlaces
-                   
-                }catch let error {
+                    
+                } catch let error {
                     print("decoding 실패 \(error.localizedDescription)")
                     return nil
                 }
             }
+            print(self.hotPlace)
         }
-    
-        return nil
-
     }
 }
