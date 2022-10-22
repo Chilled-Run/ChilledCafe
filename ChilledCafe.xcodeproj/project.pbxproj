@@ -8,37 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003255728FFC9A0004DE5B6 /* ChilledCafeApp.swift */; };
-		2003255A28FFC9A0004DE5B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003255928FFC9A0004DE5B6 /* ContentView.swift */; };
 		2003255C28FFC9A0004DE5B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2003255B28FFC9A0004DE5B6 /* Assets.xcassets */; };
 		2003255F28FFC9A0004DE5B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2003255E28FFC9A0004DE5B6 /* Preview Assets.xcassets */; };
+		3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC70290311E500B26783 /* UIScreenExtension.swift */; };
+		3906DC732903121700B26783 /* MainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC722903121700B26783 /* MainCategoryView.swift */; };
+		3906DC76290312FE00B26783 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC75290312FE00B26783 /* Kingfisher */; };
 		9A2930DE290270EF0005D339 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930DD290270EF0005D339 /* FirebaseAnalytics */; };
 		9A2930E0290270EF0005D339 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930DF290270EF0005D339 /* FirebaseAuth */; };
 		9A2930E2290270EF0005D339 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930E1290270EF0005D339 /* FirebaseDatabase */; };
 		9A2930E4290270EF0005D339 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930E3290270EF0005D339 /* FirebaseFirestore */; };
 		9A2930E6290270EF0005D339 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930E5290270EF0005D339 /* FirebaseFunctions */; };
 		9A2930E8290270EF0005D339 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930E7290270EF0005D339 /* FirebaseStorage */; };
-		9A2930EA290271DB0005D339 /* FireBaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2930E9290271DB0005D339 /* FireBaseStorageManager.swift */; };
+		9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */; };
 		9A2930F12902977A0005D339 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A2930F02902977A0005D339 /* GoogleService-Info.plist */; };
-		9A9B2F11290119AB005AC001 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F10290119AB005AC001 /* MainView.swift */; };
 		9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F12290119B7005AC001 /* HotPlace.swift */; };
-		9A9B2F15290119E3005AC001 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F14290119E3005AC001 /* CategoryView.swift */; };
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
-		9A9B2F1929011A71005AC001 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1829011A71005AC001 /* MainCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2003255428FFC9A0004DE5B6 /* ChilledCafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChilledCafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2003255728FFC9A0004DE5B6 /* ChilledCafeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChilledCafeApp.swift; sourceTree = "<group>"; };
-		2003255928FFC9A0004DE5B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2003255B28FFC9A0004DE5B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2003255E28FFC9A0004DE5B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9A2930E9290271DB0005D339 /* FireBaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorageManager.swift; sourceTree = "<group>"; };
+		3906DC70290311E500B26783 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
+		3906DC722903121700B26783 /* MainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryView.swift; sourceTree = "<group>"; };
+		9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		9A2930F02902977A0005D339 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9A9B2F10290119AB005AC001 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
-		9A9B2F14290119E3005AC001 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
-		9A9B2F1829011A71005AC001 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +45,7 @@
 			files = (
 				9A2930E2290270EF0005D339 /* FirebaseDatabase in Frameworks */,
 				9A2930E4290270EF0005D339 /* FirebaseFirestore in Frameworks */,
+				3906DC76290312FE00B26783 /* Kingfisher in Frameworks */,
 				9A2930E6290270EF0005D339 /* FirebaseFunctions in Frameworks */,
 				9A2930DE290270EF0005D339 /* FirebaseAnalytics in Frameworks */,
 				9A2930E0290270EF0005D339 /* FirebaseAuth in Frameworks */,
@@ -78,13 +76,12 @@
 		2003255628FFC9A0004DE5B6 /* ChilledCafe */ = {
 			isa = PBXGroup;
 			children = (
+				3906DC6F290311C700B26783 /* Extension */,
 				9A2930EF290291F60005D339 /* FIrebase */,
-				9A9B2F0F2901199C005AC001 /* ViewModel */,
 				9A9B2F0E29011995005AC001 /* Data */,
 				9A9B2F0D2901198A005AC001 /* Model */,
 				9A9B2F0C29011985005AC001 /* Views */,
 				2003255728FFC9A0004DE5B6 /* ChilledCafeApp.swift */,
-				2003255928FFC9A0004DE5B6 /* ContentView.swift */,
 				2003255B28FFC9A0004DE5B6 /* Assets.xcassets */,
 				2003255D28FFC9A0004DE5B6 /* Preview Content */,
 			);
@@ -99,10 +96,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		3906DC6F290311C700B26783 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3906DC70290311E500B26783 /* UIScreenExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		9A2930EF290291F60005D339 /* FIrebase */ = {
 			isa = PBXGroup;
 			children = (
-				9A2930E9290271DB0005D339 /* FireBaseStorageManager.swift */,
+				9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */,
 			);
 			path = FIrebase;
 			sourceTree = "<group>";
@@ -110,9 +115,7 @@
 		9A9B2F0C29011985005AC001 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9A9B2F10290119AB005AC001 /* MainView.swift */,
-				9A9B2F14290119E3005AC001 /* CategoryView.swift */,
-				9A9B2F1829011A71005AC001 /* MainCardView.swift */,
+				3906DC722903121700B26783 /* MainCategoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -131,13 +134,6 @@
 				9A9B2F1629011A1C005AC001 /* temparyData.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		9A9B2F0F2901199C005AC001 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +159,7 @@
 				9A2930E3290270EF0005D339 /* FirebaseFirestore */,
 				9A2930E5290270EF0005D339 /* FirebaseFunctions */,
 				9A2930E7290270EF0005D339 /* FirebaseStorage */,
+				3906DC75290312FE00B26783 /* Kingfisher */,
 			);
 			productName = ChilledCafe;
 			productReference = 2003255428FFC9A0004DE5B6 /* ChilledCafe.app */;
@@ -194,6 +191,7 @@
 			mainGroup = 2003254B28FFC9A0004DE5B6;
 			packageReferences = (
 				9A2930DC290270EF0005D339 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3906DC74290312FE00B26783 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 2003255528FFC9A0004DE5B6 /* Products */;
 			projectDirPath = "";
@@ -222,14 +220,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A2930EA290271DB0005D339 /* FireBaseStorageManager.swift in Sources */,
-				2003255A28FFC9A0004DE5B6 /* ContentView.swift in Sources */,
+				3906DC732903121700B26783 /* MainCategoryView.swift in Sources */,
+				9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */,
+				3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */,
 				9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */,
 				9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */,
-				9A9B2F11290119AB005AC001 /* MainView.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
-				9A9B2F1929011A71005AC001 /* MainCardView.swift in Sources */,
-				9A9B2F15290119E3005AC001 /* CategoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +354,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
+				DEVELOPMENT_TEAM = PQ5FS4VVLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -386,6 +383,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
+				DEVELOPMENT_TEAM = PQ5FS4VVLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -430,6 +428,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3906DC74290312FE00B26783 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		9A2930DC290270EF0005D339 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -441,6 +447,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3906DC75290312FE00B26783 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3906DC74290312FE00B26783 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		9A2930DD290270EF0005D339 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9A2930DC290270EF0005D339 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
