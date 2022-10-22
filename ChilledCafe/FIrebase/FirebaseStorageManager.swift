@@ -9,11 +9,8 @@ import FirebaseStorage
 import Firebase
 
 class FirebaseStorageManager: ObservableObject {
-    @Published var hotPlace: [HotPlace] = [] {
-        didSet(newVal) {
-            print("new value \(newVal)")
-        }
-    }
+    @Published var hotPlace: [HotPlace] = []
+
     
     init() {
         getHotPlace()
@@ -60,7 +57,6 @@ class FirebaseStorageManager: ObservableObject {
                     return nil
                 }
             }
-            print(self.hotPlace)
         }
     }
 }
