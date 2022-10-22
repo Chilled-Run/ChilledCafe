@@ -15,6 +15,18 @@ class FirebaseStorageManager: ObservableObject {
         }
     }
     
+    @Published var cafes: [Cafe] = [] {
+        didSet(newVal) {
+     //       print("new value \(newVal)")
+        }
+    }
+    
+    @Published var cafeClassification: [String: [Cafe]] = [:] {
+        didSet(newVal) {
+          //  print("new value \(newVal)")
+        }
+    }
+    
     init() {
         getHotPlace()
     }
@@ -52,7 +64,6 @@ class FirebaseStorageManager: ObservableObject {
                 do {
                     let decoder = JSONDecoder()
                     let hotPlaces = try decoder.decode(HotPlace.self, from: data)
-//                    print(hotPlaces)
                     return hotPlaces
                     
                 } catch let error {
@@ -63,4 +74,48 @@ class FirebaseStorageManager: ObservableObject {
             print(self.hotPlace)
         }
     }
+    func getCafes(spot: String){
+        var ref : DatabaseReference!{
+            Database.database().reference()
+        }
+        let firestoreDB = Firestore.firestore()
+        
+        
+        firestoreDB.collection("Cafe").whereField("spot", isEqualTo: spot).addSnapshotListener
+        {
+            snapshot, error in
+            guard let documents = snapshot?.documents else{
+                print("error")
+                return
+            }
+            self.cafes = documents.compactMap {
+                doc
+                in
+                let data = try! JSONSerialization.data(withJSONObject: doc.data(), options: [])
+                do {
+                    let decoder = JSONDecoder()
+                    let cafe = try decoder.decode(Cafe.self, from: data)
+                    let tagedCafes = self.cafeClassification[cafe.tag]
+                    
+                    if let temp = tagedCafes{
+                        var tempCafes = temp
+                        tempCafes.append(cafe)
+                        self.cafeClassification.updateValue(tempCafes, forKey: cafe.tag)
+                    }
+                    else{
+                        self.cafeClassification[cafe.tag] = [cafe]
+                    }
+                    return cafe
+                    
+                }
+                catch let error {
+                    print("decoding 실패 \(error.localizedDescription)")
+                    return nil
+                }
+            }
+            print(self.cafeClassification)
+        }
+    }
+    
+    
 }
