@@ -29,6 +29,7 @@ struct MainCategoryView: View {
                     
                     HStack {
                         Text("오늘의 작은 여행은 어디인가요?")
+                            .font(.custom("AppleSDGothicNeo-ExtraBold", size: 20))
                         Spacer()
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
@@ -46,14 +47,16 @@ struct MainCategoryView: View {
                     .padding(EdgeInsets(top: 0, leading: 0,  bottom: UIScreen.getHeight(15), trailing: 0))
                     Spacer()
                 }
+                .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
             }
-            .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
+            .navigationBarHidden(true)
+            .accentColor(.purple)
         }
     }
-
+    
     @ViewBuilder
     func categoryCardView(imageURL: String = SAMPLE_URL, spot: String = "영일대", description: String = "바다 앞 카페를 찾는다면") -> some View {
-        NavigationLink(destination: EmptyView()) {
+        NavigationLink(destination: CafeListView(navigationTitle: spot)) {
             ZStack {
                 KFImage(URL(string: imageURL)!)
                     .resizable()
@@ -72,16 +75,14 @@ struct MainCategoryView: View {
                                 Spacer()
                             }
                         }
+                        .foregroundColor(.white)
                         .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: 0))
                     }
             }
         }
-        .navigationBarTitle(spot, displayMode: .inline)
-        .navigationBarHidden(true)
-
-
+        .navigationTitle("")
     }
-
+    
 }
 
 

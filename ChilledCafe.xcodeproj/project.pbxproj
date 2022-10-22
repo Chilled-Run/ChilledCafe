@@ -13,6 +13,8 @@
 		3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC70290311E500B26783 /* UIScreenExtension.swift */; };
 		3906DC732903121700B26783 /* MainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC722903121700B26783 /* MainCategoryView.swift */; };
 		3906DC76290312FE00B26783 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC75290312FE00B26783 /* Kingfisher */; };
+		3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC7B29040AED00B26783 /* CafeListView.swift */; };
+		3906DC812904484700B26783 /* ACarousel in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC802904484700B26783 /* ACarousel */; };
 		9A2930DE290270EF0005D339 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930DD290270EF0005D339 /* FirebaseAnalytics */; };
 		9A2930E0290270EF0005D339 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930DF290270EF0005D339 /* FirebaseAuth */; };
 		9A2930E2290270EF0005D339 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930E1290270EF0005D339 /* FirebaseDatabase */; };
@@ -32,6 +34,7 @@
 		2003255E28FFC9A0004DE5B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3906DC70290311E500B26783 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		3906DC722903121700B26783 /* MainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryView.swift; sourceTree = "<group>"; };
+		3906DC7B29040AED00B26783 /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
 		9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		9A2930F02902977A0005D339 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
@@ -43,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3906DC812904484700B26783 /* ACarousel in Frameworks */,
 				9A2930E2290270EF0005D339 /* FirebaseDatabase in Frameworks */,
 				9A2930E4290270EF0005D339 /* FirebaseFirestore in Frameworks */,
 				3906DC76290312FE00B26783 /* Kingfisher in Frameworks */,
@@ -116,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				3906DC722903121700B26783 /* MainCategoryView.swift */,
+				3906DC7B29040AED00B26783 /* CafeListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 				9A2930E5290270EF0005D339 /* FirebaseFunctions */,
 				9A2930E7290270EF0005D339 /* FirebaseStorage */,
 				3906DC75290312FE00B26783 /* Kingfisher */,
+				3906DC802904484700B26783 /* ACarousel */,
 			);
 			productName = ChilledCafe;
 			productReference = 2003255428FFC9A0004DE5B6 /* ChilledCafe.app */;
@@ -192,6 +198,7 @@
 			packageReferences = (
 				9A2930DC290270EF0005D339 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3906DC74290312FE00B26783 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				3906DC7F2904484600B26783 /* XCRemoteSwiftPackageReference "ACarousel" */,
 			);
 			productRefGroup = 2003255528FFC9A0004DE5B6 /* Products */;
 			projectDirPath = "";
@@ -221,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3906DC732903121700B26783 /* MainCategoryView.swift in Sources */,
+				3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */,
 				9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */,
 				3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */,
 				9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */,
@@ -357,6 +365,7 @@
 				DEVELOPMENT_TEAM = PQ5FS4VVLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChilledCafe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -386,6 +395,7 @@
 				DEVELOPMENT_TEAM = PQ5FS4VVLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChilledCafe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -436,6 +446,14 @@
 				kind = branch;
 			};
 		};
+		3906DC7F2904484600B26783 /* XCRemoteSwiftPackageReference "ACarousel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JWAutumn/ACarousel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 		9A2930DC290270EF0005D339 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -451,6 +469,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3906DC74290312FE00B26783 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		3906DC802904484700B26783 /* ACarousel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3906DC7F2904484600B26783 /* XCRemoteSwiftPackageReference "ACarousel" */;
+			productName = ACarousel;
 		};
 		9A2930DD290270EF0005D339 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
