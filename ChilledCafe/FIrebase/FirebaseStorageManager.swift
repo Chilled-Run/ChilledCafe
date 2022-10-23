@@ -10,19 +10,8 @@ import Firebase
 
 class FirebaseStorageManager: ObservableObject {
     @Published var hotPlace: [HotPlace] = []
-
-    
-    @Published var cafes: [Cafe] = [] {
-        didSet(newVal) {
-     //       print("new value \(newVal)")
-        }
-    }
-    
-    @Published var cafeClassification: [String: [Cafe]] = [:] {
-        didSet(newVal) {
-          //  print("new value \(newVal)")
-        }
-    }
+    @Published var cafes: [Cafe] = []
+    @Published var cafeClassification: [String: [Cafe]] = [:]
    
     init() {
         getHotPlace()
@@ -106,11 +95,10 @@ class FirebaseStorageManager: ObservableObject {
                     
                 }
                 catch let error {
-                    print("decoding 실패 \(error.localizedDescription)")
+                    print("decoding 실패")
                     return nil
                 }
             }
-            print(self.cafeClassification)
         }
     }
     
