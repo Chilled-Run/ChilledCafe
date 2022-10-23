@@ -41,6 +41,7 @@ struct CafeListView: View {
                         VStack {
                             HStack {
                                 Text("내 취향에 딱 맞는 카페")
+                                    .customHeadline()
                                     .foregroundColor(Color.white)
                                 Spacer()
                             }
@@ -64,6 +65,7 @@ struct CafeListView: View {
                         // MARK: - 내가 좋아한 카페
                         HStack {
                             Text("내가 좋아한 카페")
+                                .customTitle2()
                             Spacer()
                         }
                         .padding(EdgeInsets(top: UIScreen.getHeight(0), leading: UIScreen.getWidth(10), bottom: UIScreen.getHeight(20), trailing: 0))
@@ -84,6 +86,7 @@ struct CafeListView: View {
                             if key != "내 취향에 맞는 카페" && key != "내가 좋아한 카페" {
                                 HStack {
                                     Text(key)
+                                        .customTitle2()
                                     Spacer()
                                 }
                                 .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(10), bottom: 0, trailing: 0))
@@ -132,11 +135,13 @@ struct CafeListView: View {
                 Spacer()
                 HStack {
                     Text(name)
+                        .customLargeTitle()
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(5), trailing: 0))
                 HStack {
                     Text(shortIntroduction)
+                        .customHeadline()
                         .lineLimit(1)
                     Spacer()
                 }

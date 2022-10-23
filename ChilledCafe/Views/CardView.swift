@@ -27,12 +27,14 @@ struct CardView: View {
                             
                             HStack {
                                 Text(name)
+                                    .customTitle2()
                                     .lineLimit(1)
                                 Spacer()
                             }
-                            .padding(EdgeInsets(top: UIScreen.getHeight(164), leading: 0, bottom: UIScreen.getHeight(5), trailing: 0))
+                            .padding(EdgeInsets(top: UIScreen.getHeight(148), leading: 0, bottom: UIScreen.getHeight(5), trailing: 0))
                             HStack {
                                 Text(shortIntroduction)
+                                    .customSubhead3()
                                     .font(.system(size: 13))
                                     .lineSpacing(1)
                                     .multilineTextAlignment(.leading)

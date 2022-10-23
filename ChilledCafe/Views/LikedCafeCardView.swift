@@ -28,16 +28,19 @@ struct LikedCafeCardView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: UIScreen.getWidth(160), height: UIScreen.getHeight(120))
-                            .cornerRadius(4)
+                            .cornerRadius(4, corners: .topRight)
+                            .cornerRadius(4, corners: .topLeft)
                         
                         Group {
                             HStack {
                                 Text(name)
+                                    .customTitle1()
                                 Spacer()
                             }
                                 .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: 0, bottom: UIScreen.getHeight(5), trailing: 0))
                             HStack {
                                 Text(shortIntroduction)
+                                    .customSubhead1()
                                 Spacer()
                             }
                         }
