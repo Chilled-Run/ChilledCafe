@@ -7,16 +7,17 @@
 
 import SwiftUI
 import ACarousel
+import Kingfisher
 
 struct CafeListView: View {
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var firebaseStorageManager: FirebaseStorageManager
     @State var currentIndex: Int = 0
     var navigationTitle: String
-    let roles = ["형산강", "형산강", "형산강", "형산강", "형산강"]
     
     init(navigationTitle: String) {
         self.navigationTitle = navigationTitle
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.red]
+        
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
@@ -24,49 +25,125 @@ struct CafeListView: View {
     }
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack {
-                ZStack(alignment: .top) {
-                    ACarousel(roles, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) { name in
-                        Image(name)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(height: 0)
-                        
-                    }
-                    .frame(height: UIScreen.getHeight(515))
-                    VStack {
-                        Spacer()
-                        HStack {
-                            ForEach(Array(roles.enumerated()), id: \.offset) { index, element in
-                                if index == currentIndex {
-                                    Image("filledbox")
-                                } else {
-                                    Image("box")
-                                }
+        if firebaseStorageManager.cafeClassification.isEmpty {
+            Text("데이터 없음")
+                .onAppear(perform: {
+                    firebaseStorageManager.getCafes(spot: navigationTitle)
+                })
+        } else {
+            ScrollView(.vertical) {
+                VStack {
+                    ZStack(alignment: .top) {
+                        ACarousel(firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"] ?? [], id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {
+                            recommendCafeView(imageURL: $0.thumbnail, name: $0.name, shortIntroduction: $0.shortIntroduction)
+                        }
+                        .frame(height: UIScreen.getHeight(515))
+                        VStack {
+                            HStack {
+                                Text("내 취향에 딱 맞는 카페")
+                                    .foregroundColor(Color.white)
+                                Spacer()
                             }
+                            .padding(EdgeInsets(top: UIScreen.getHeight(116), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
+                            Spacer()
+                            HStack {
+                                ForEach(Array(firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"]!.enumerated()), id: \.offset) { index, element in
+                                    if index == currentIndex {
+                                        Image("filledbox")
+                                    } else {
+                                        Image("box")
+                                    }
+                                }
+                                Spacer()
+                            }
+                            .padding()
+                        }
+                    }
+
+                    VStack {
+                        // MARK: - 내가 좋아한 카페
+                        HStack {
+                            Text("내가 좋아한 카페")
                             Spacer()
                         }
-                        .padding()
+                        .padding(EdgeInsets(top: UIScreen.getHeight(0), leading: UIScreen.getWidth(10), bottom: UIScreen.getHeight(20), trailing: 0))
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack (spacing: 10) {
+                                RoundedRectangle(cornerRadius: 1)
+                                    .frame(width: UIScreen.getWidth(1))
+                                    .hidden()
+                                ForEach(firebaseStorageManager.cafeClassification["내가 좋아한 카페"]!, id: \.self) { cafe in
+                                    LikedCafeCardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
+                                }
+                            }
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
+                        
+                        // MARK: - 태그 별 카페
+                        ForEach(Array(firebaseStorageManager.cafeClassification.keys), id: \.self, content: { key in
+                            if key != "내 취향에 맞는 카페" && key != "내가 좋아한 카페" {
+                                HStack {
+                                    Text(key)
+                                    Spacer()
+                                }
+                                .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(10), bottom: 0, trailing: 0))
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 10) {
+                                        RoundedRectangle(cornerRadius: 1)
+                                            .frame(width: UIScreen.getWidth(1))
+                                            .hidden()
+                                        ForEach(firebaseStorageManager.cafeClassification["\(key)"]!, id: \.self) { cafe in
+                                            CardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
+                                        }
+                                    }
+                                }
+                                .padding(EdgeInsets(top: UIScreen.getHeight(10), leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
+                            }
+                        })
                     }
+                    .padding(EdgeInsets(top: UIScreen.getHeight(40), leading: 0, bottom: 0, trailing: 0))
                 }
-                
-                Spacer()
-                VStack {
-                    ForEach(1..<100) {
-                        Text("Item \($0)") //$표시 필수
-                            .font(.title)
-                    }
-                }
-                
+                .ignoresSafeArea()
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitle(navigationTitle, displayMode: .inline)
+                .navigationBarItems(leading: backButton)
+                .foregroundColor(.black)
             }
             .ignoresSafeArea()
-            .navigationBarBackButtonHidden(true)
-            .navigationBarTitle(navigationTitle, displayMode: .inline)
-            .navigationBarItems(leading: backButton)
-            .foregroundColor(.black)
+            .onAppear(perform: {
+                firebaseStorageManager.getCafes(spot: navigationTitle)
+            })
         }
-        .ignoresSafeArea()
+    }
+    
+    @ViewBuilder
+    func recommendCafeView(imageURL: String, name: String, shortIntroduction: String ) -> some View {
+        ZStack {
+            KFImage(URL(string: imageURL))
+                .resizable()
+                .scaledToFit()
+                .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(515))
+                .overlay(content: {
+                    Color.black
+                        .opacity(0.5)
+                })
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Text(name)
+                    Spacer()
+                }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(5), trailing: 0))
+                HStack {
+                    Text(shortIntroduction)
+                        .lineLimit(1)
+                    Spacer()
+                }
+            }
+            .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(40), trailing: 0))
+            .foregroundColor(.white)
+        }
         
     }
     
@@ -88,5 +165,6 @@ struct CafeListView: View {
 struct CafeListView_Previews: PreviewProvider {
     static var previews: some View {
         CafeListView(navigationTitle: "포항 형산강")
+            .environmentObject(FirebaseStorageManager())
     }
 }

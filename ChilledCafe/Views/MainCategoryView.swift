@@ -13,6 +13,7 @@ struct MainCategoryView: View {
     
     @EnvironmentObject var firebaseStorageManager: FirebaseStorageManager
 
+    
     var body: some View {
         if firebaseStorageManager.hotPlace.isEmpty {
             Text("데이터 없음")
@@ -50,7 +51,6 @@ struct MainCategoryView: View {
                 .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
             }
             .navigationBarHidden(true)
-            .accentColor(.purple)
         }
     }
     
