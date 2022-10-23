@@ -17,6 +17,11 @@
 		3906DC812904484700B26783 /* ACarousel in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC802904484700B26783 /* ACarousel */; };
 		39B7C51329058172000C8B07 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51229058172000C8B07 /* CardView.swift */; };
 		39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */; };
+		39B7C51B2905A9F7000C8B07 /* Optima.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 39B7C51A2905A9F7000C8B07 /* Optima.ttc */; };
+		39B7C51D2905AA23000C8B07 /* AppleSDGothicNeo.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 39B7C51C2905AA23000C8B07 /* AppleSDGothicNeo.ttc */; };
+		39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51F2905AB1A000C8B07 /* FontExtension.swift */; };
+		39B7C5222905AB41000C8B07 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C5212905AB41000C8B07 /* TextExtension.swift */; };
+		39B7C5242905AD98000C8B07 /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39B7C5232905AD98000C8B07 /* AppleSDGothicNeoEB.ttf */; };
 		9A2930DE290270EF0005D339 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930DD290270EF0005D339 /* FirebaseAnalytics */; };
 		9A2930E0290270EF0005D339 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930DF290270EF0005D339 /* FirebaseAuth */; };
 		9A2930E2290270EF0005D339 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930E1290270EF0005D339 /* FirebaseDatabase */; };
@@ -40,6 +45,11 @@
 		3906DC7B29040AED00B26783 /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
 		39B7C51229058172000C8B07 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCafeCardView.swift; sourceTree = "<group>"; };
+		39B7C51A2905A9F7000C8B07 /* Optima.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Optima.ttc; sourceTree = "<group>"; };
+		39B7C51C2905AA23000C8B07 /* AppleSDGothicNeo.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeo.ttc; sourceTree = "<group>"; };
+		39B7C51F2905AB1A000C8B07 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		39B7C5212905AB41000C8B07 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
+		39B7C5232905AD98000C8B07 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
 		9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		9A2930F02902977A0005D339 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A2930F2290438820005D339 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
@@ -69,6 +79,7 @@
 		2003254B28FFC9A0004DE5B6 = {
 			isa = PBXGroup;
 			children = (
+				39B7C5192905A9E7000C8B07 /* Fonts */,
 				9A2930F02902977A0005D339 /* GoogleService-Info.plist */,
 				2003255628FFC9A0004DE5B6 /* ChilledCafe */,
 				2003255528FFC9A0004DE5B6 /* Products */,
@@ -110,8 +121,20 @@
 			isa = PBXGroup;
 			children = (
 				3906DC70290311E500B26783 /* UIScreenExtension.swift */,
+				39B7C51F2905AB1A000C8B07 /* FontExtension.swift */,
+				39B7C5212905AB41000C8B07 /* TextExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		39B7C5192905A9E7000C8B07 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				39B7C51C2905AA23000C8B07 /* AppleSDGothicNeo.ttc */,
+				39B7C5232905AD98000C8B07 /* AppleSDGothicNeoEB.ttf */,
+				39B7C51A2905A9F7000C8B07 /* Optima.ttc */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		9A2930EF290291F60005D339 /* FIrebase */ = {
@@ -224,8 +247,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2003255F28FFC9A0004DE5B6 /* Preview Assets.xcassets in Resources */,
+				39B7C51B2905A9F7000C8B07 /* Optima.ttc in Resources */,
 				2003255C28FFC9A0004DE5B6 /* Assets.xcassets in Resources */,
 				9A2930F12902977A0005D339 /* GoogleService-Info.plist in Resources */,
+				39B7C5242905AD98000C8B07 /* AppleSDGothicNeoEB.ttf in Resources */,
+				39B7C51D2905AA23000C8B07 /* AppleSDGothicNeo.ttc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,11 +266,13 @@
 				39B7C51329058172000C8B07 /* CardView.swift in Sources */,
 				3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */,
 				39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */,
+				39B7C5222905AB41000C8B07 /* TextExtension.swift in Sources */,
 				9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */,
 				3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */,
 				9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */,
 				9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
+				39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */,
 				9A2930F3290438820005D339 /* Cafe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
