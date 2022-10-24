@@ -33,8 +33,9 @@ struct CafeListView: View {
         } else {
             ScrollView(.vertical) {
                 VStack {
-                    NavigationLink(destination: DetailView(cafe: firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"]![currentIndex])){
-                    ZStack(alignment: .top) {
+                    Group{
+                    NavigationLink(destination: CafeDetailView(cafe: firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"]![currentIndex])){
+                        ZStack(alignment: .top) {
                             ACarousel(firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"] ?? [], id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {
                                 recommendCafeView(imageURL: $0.thumbnail, name: $0.name, shortIntroduction: $0.shortIntroduction)
                             }
@@ -61,28 +62,31 @@ struct CafeListView: View {
                                 .padding()
                             }}
                     }
+                }
 
                     VStack {
                         // MARK: - 내가 좋아한 카페
-                        HStack {
-                            Text("내가 좋아한 카페")
-                                .customTitle2()
-                            Spacer()
-                        }
-                        .padding(EdgeInsets(top: UIScreen.getHeight(0), leading: UIScreen.getWidth(10), bottom: UIScreen.getHeight(20), trailing: 0))
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack (spacing: 10) {
-                                RoundedRectangle(cornerRadius: 1)
-                                    .frame(width: UIScreen.getWidth(1))
-                                    .hidden()
-                                ForEach(firebaseStorageManager.cafeClassification["내가 좋아한 카페"]!, id: \.self) { cafe in
-                                    NavigationLink(destination: DetailView(cafe: cafe)){
-                                        LikedCafeCardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
+                        Group{
+                            HStack {
+                                Text("내가 좋아한 카페")
+                                    .customTitle2()
+                                Spacer()
+                            }
+                            .padding(EdgeInsets(top: UIScreen.getHeight(0), leading: UIScreen.getWidth(10), bottom: UIScreen.getHeight(20), trailing: 0))
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack (spacing: 10) {
+                                    RoundedRectangle(cornerRadius: 1)
+                                        .frame(width: UIScreen.getWidth(1))
+                                        .hidden()
+                                    ForEach(firebaseStorageManager.cafeClassification["내가 좋아한 카페"]!, id: \.self) { cafe in
+                                        NavigationLink(destination: CafeDetailView(cafe: cafe)){
+                                            LikedCafeCardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
+                                        }
                                     }
                                 }
                             }
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
                         }
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
                         
                         // MARK: - 태그 별 카페
                         ForEach(Array(firebaseStorageManager.cafeClassification.keys), id: \.self, content: { key in
@@ -99,7 +103,7 @@ struct CafeListView: View {
                                             .frame(width: UIScreen.getWidth(1))
                                             .hidden()
                                         ForEach(firebaseStorageManager.cafeClassification["\(key)"]!, id: \.self) { cafe in
-                                            NavigationLink(destination: DetailView(cafe: cafe)){
+                                            NavigationLink(destination: CafeDetailView(cafe: cafe)){
                                                 CardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
                                             }
                                         }
