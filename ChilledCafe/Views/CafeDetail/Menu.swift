@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct Menu: View {
+    let cafe: Cafe
     var body: some View {
         VStack(alignment: .center) {
-            Image("menu")
+            KFImage(URL(string: cafe.menuImages[0]))
                 .resizable()
                 .scaledToFit()
                 .padding(.horizontal)
@@ -20,8 +22,8 @@ struct Menu: View {
     }
 }
 
-struct Menu_Previews: PreviewProvider {
-    static var previews: some View {
-        Menu()
-    }
-}
+//struct Menu_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Menu()
+//    }
+//}

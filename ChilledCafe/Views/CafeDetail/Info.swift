@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Info: View {
+    let cafe: Cafe
     var body: some View {
         VStack (alignment: .leading){
             Text("11:00에 영업 시작")
@@ -36,8 +37,8 @@ struct Info: View {
     }
 }
 
-struct Info_Previews: PreviewProvider {
-    static var previews: some View {
-        Info()
-    }
-}
+//struct Info_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Info()
+//    }
+//}
