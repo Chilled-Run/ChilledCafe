@@ -13,6 +13,9 @@ struct CafeListView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var firebaseStorageManager: FirebaseStorageManager
     @State var currentIndex: Int = 0
+    @State var detailViewIndex: Int = 0
+    @State var checkingCarousel : Bool = true
+    
     var navigationTitle: String
     
     init(navigationTitle: String) {
@@ -36,12 +39,19 @@ struct CafeListView: View {
                 ScrollView(.vertical) {
                     VStack {
                         Group{
-                            NavigationLink(destination: CafeDetailView(topEdge: topEdge, cafe: firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"]![currentIndex])){
+                            NavigationLink(destination: CafeDetailView(topEdge: topEdge, cafe: firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"]![checkingCarousel ? detailViewIndex : currentIndex])){
                                 ZStack(alignment: .top) {
-                                    ACarousel(firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"] ?? [], id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {
+                                    ACarousel(firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"] ?? [], id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: checkingCarousel ?  .inactive : .active(5)) {
                                         recommendCafeView(imageURL: $0.thumbnail, name: $0.name, shortIntroduction: $0.shortIntroduction)
                                     }
                                     .frame(height: UIScreen.getHeight(515))
+                                    .onAppear(){
+                                        checkingCarousel.toggle()
+                                    }
+                                    .onDisappear(){
+                                        checkingCarousel.toggle()
+                                        detailViewIndex = currentIndex
+                                    }
                                     VStack {
                                         HStack {
                                             Text("내 취향에 딱 맞는 카페")
@@ -124,9 +134,6 @@ struct CafeListView: View {
                     .foregroundColor(.black)
                 }
                 .ignoresSafeArea()
-                .onAppear(perform: {
-                    firebaseStorageManager.getCafes(spot: navigationTitle)
-                })
             }
         }
     }
