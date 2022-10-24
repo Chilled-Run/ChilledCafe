@@ -9,9 +9,9 @@ import SwiftUI
 import Kingfisher
 
 struct MainCategoryView: View {
+    @EnvironmentObject var firebaseStorageManager: FirebaseStorageManager
     static let SAMPLE_URL = "https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/HotPlace%2F%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%83%E1%85%A2.jpeg?alt=media&token=6de64b0d-71be-43cd-ac0b-d3a85d6ae2bb"
     
-    @EnvironmentObject var firebaseStorageManager: FirebaseStorageManager
 
     var body: some View {
         if firebaseStorageManager.hotPlace.isEmpty {
@@ -29,6 +29,7 @@ struct MainCategoryView: View {
                     
                     HStack {
                         Text("오늘의 작은 여행은 어디인가요?")
+                            .customSubhead4()
                         Spacer()
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
@@ -46,14 +47,15 @@ struct MainCategoryView: View {
                     .padding(EdgeInsets(top: 0, leading: 0,  bottom: UIScreen.getHeight(15), trailing: 0))
                     Spacer()
                 }
+                .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
             }
-            .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
+            .navigationBarHidden(true)
         }
     }
-
+    
     @ViewBuilder
     func categoryCardView(imageURL: String = SAMPLE_URL, spot: String = "영일대", description: String = "바다 앞 카페를 찾는다면") -> some View {
-        NavigationLink(destination: EmptyView()) {
+        NavigationLink(destination: CafeListView(navigationTitle: spot)) {
             ZStack {
                 KFImage(URL(string: imageURL)!)
                     .resizable()
@@ -63,25 +65,25 @@ struct MainCategoryView: View {
                             Spacer()
                             HStack {
                                 Text(spot)
+                                    .customTitle3()
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(5), trailing: 0))
                                 Spacer()
                             }
                             HStack {
                                 Text(description)
+                                    .customSubhead2()
                                     .lineLimit(1)
                                 Spacer()
                             }
                         }
+                        .foregroundColor(.white)
                         .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: 0))
                     }
             }
         }
-        .navigationBarTitle(spot, displayMode: .inline)
-        .navigationBarHidden(true)
-
-
+        .navigationTitle("")
     }
-
+    
 }
 
 
@@ -91,3 +93,5 @@ struct MainCategoryView: View {
 //        MainCategoryView()
 //    }
 //}
+
+
