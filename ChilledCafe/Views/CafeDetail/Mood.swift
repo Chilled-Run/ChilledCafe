@@ -28,7 +28,7 @@ struct Mood: View {
                         
                     }
                 }
-                .padding(.horizontal, 25)
+                .padding(.horizontal, 28)
                 .padding(.bottom, 150)
             }
 //        }
