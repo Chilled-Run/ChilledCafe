@@ -6,20 +6,22 @@
 //
 
 import SwiftUI
+import Kingfisher
 import Firebase
 
 struct Mood: View {
-    var images: [String] = ["cuphat", "donute", "roaster", "rooftop", "sand", "view", "inside"]
+    // var images: [String] = ["cuphat", "donute", "roaster", "rooftop", "sand", "view", "inside"]
     
     var columnGrid: [GridItem] = [GridItem(.flexible(), spacing: 1), GridItem(.flexible(), spacing: 1)]
     
+    let cafe: Cafe
     
     var body: some View {
 //        GeometryReader{ geo in
             ScrollView(.vertical, showsIndicators: false){
                 LazyVGrid(columns: columnGrid,  alignment: .center, spacing: 1) {
                     ForEach ((0...22), id: \..self) {
-                        Image(images[$0 % images.count])
+                        KFImage(URL(string: cafe.moodImages[$0 % cafe.moodImages.count]))
                             .resizable()
                             .scaledToFit()
                             .frame(width: UIScreen.main.bounds.width / 2.2 - 1)

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CafeDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
     // Max Height...
     let maxWidth = UIScreen.main.bounds.width
     let maxHeight = UIScreen.main.bounds.height
@@ -36,12 +35,12 @@ struct CafeDetailView: View {
         NavigationView{
             GeometryReader { proxy in
                 ScrollView(.vertical, showsIndicators: false) {
-                    
+
                     VStack(spacing: 15) {
-                        
+
                         // Top Nav View
                         GeometryReader { geo in
-                            Background(offset: $offset)
+                            Background(cafe: cafe, offset: $offset)
                                 .edgesIgnoringSafeArea(.all)
                                 .background(Color.white)
                             // Sticky effect
@@ -57,17 +56,19 @@ struct CafeDetailView: View {
                                                 .foregroundColor(.blue)
                                         }
                                         .padding(.leading, 20)
+                                        .padding(.top, 25)
                                         .opacity(topBarTitleOpacity())
-                                        
+
                                         Spacer()
-                                        
+
                                         // Cafe Title
-                                        Text("제주 서귀포 올레시장")
+                                        Text(cafe.name)
+                                            .padding(.top, 25)
                                             .foregroundColor(.blue)
                                             .opacity(topBarTitleOpacity())
-                                        
+
                                         Spacer()
-                                        
+
                                         // Heart Button
                                         Button(action: {
                                             self.presentationMode.wrappedValue.dismiss()
@@ -75,35 +76,37 @@ struct CafeDetailView: View {
                                             Image(systemName: "heart.fill")
                                                 .foregroundColor(.blue)
                                         }
+                                        .padding(.top, 25)
                                         .padding(.trailing, 20)
                                         .opacity(topBarTitleOpacity())
-                                        
-                                        
+
+
                                     }
                                     // .padding(.trailing)
+                                        .background(Color.white)
                                         .frame(height: 80)
                                         .padding(.top, topEdge)
-                                    
+
                                     ,alignment: .top
                                 )
-                            
+
                         }
                         .frame(height: maxHeight)
-                        
+
                         // Fixing at top..
                         .offset(y: -offset)
                         .zIndex(1)
-                        
+
                         //++++++++++++++++++++++++++++++++++++++++++++
-                        
+
                         LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
                             Section {
                                 Spacer()
                                 VStack {
                                     TabView(selection: $currentType) {
-                                        Mood().tag("Mood")
-                                        Menu().tag("Menu")
-                                        Info().tag("Info")
+                                        Mood(cafe: cafe).tag("Mood")
+                                        Menu(cafe: cafe).tag("Menu")
+                                        Info(cafe: cafe).tag("Info")
                                     }
                                 }
                                 .tabViewStyle(.page(indexDisplayMode: .never))
@@ -119,9 +122,9 @@ struct CafeDetailView: View {
 
                             }
                         }
-                        
-                        
-                        
+
+
+
 //                            LazyVStack(pinnedViews: [.sectionHeaders]) {
 //                                Section {
 //                                    if currentType == "Mood" {
@@ -148,11 +151,11 @@ struct CafeDetailView: View {
 //                                }
 //                            }
                             .padding(.bottom)
-                        
-                        
-                        
+
+
+
                         //++++++++++++++++++++++++++++++++++++++++++++
-                        
+
                     }
                     .modifier(OffsetModifier(offset: $offset))
                 }
@@ -161,7 +164,7 @@ struct CafeDetailView: View {
                 .overlay(content: {
                     Rectangle()
                         .fill(Color.clear)
-                        .frame(height: 50)
+                        .frame(height: 80)
                         .frame(maxHeight: .infinity, alignment: .top)
                         .opacity(headerOffsets.0 < 20 ? 1 : 0)
                 })
@@ -253,6 +256,16 @@ struct CafeDetailView: View {
         
         return progress
     }
+    
+    func getOpacity() -> CGFloat {
+        
+        // 70 = Some random amount of time to visible on scroll...
+        let progress = -offset / 750
+        
+        let opacity = 1 - progress
+        
+        return offset < 0 ? opacity : 1
+    }
 }
 
 
@@ -260,21 +273,22 @@ struct CafeDetailView: View {
 // MARK: Moving Background
 
 struct Background: View {
+    @State var cafe: Cafe
     @Binding var offset: CGFloat
     
     var body: some View {
         ZStack {
-            GifImage("coucou2")
+            Image("map")
                 .aspectRatio(contentMode: .fill)
             VStack(alignment: .leading){
                 Spacer()
-                Text("제주 서귀포 올레시장")
+                Text(cafe.name)
                     .fontWeight(.bold)
                     .font(.largeTitle)
-                    .foregroundColor(.white)
-                Text("좀 비싸지만 어딜가던 평타 그 이상")
+                    .foregroundColor(.black)
+                Text(cafe.shortIntroduction)
                     .font(.subheadline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .padding(.bottom, 50)
             }
             
