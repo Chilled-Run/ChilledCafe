@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import UIKit
+import Kingfisher
 
 struct CafeDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -281,7 +283,7 @@ struct Background: View {
     
     var body: some View {
         ZStack {
-            Image("map")
+            KFAnimatedImage(URL(string: cafe.gif))
                 .aspectRatio(contentMode: .fill)
             VStack(alignment: .leading){
                 Spacer()
@@ -296,6 +298,7 @@ struct Background: View {
             }
             
         }
+        .frame(width: UIScreen.main.bounds.width)
         .opacity(getOpacity())
     }
     
@@ -310,6 +313,7 @@ struct Background: View {
     }
 }
 
+
 // MARK: Go back with gesture
 
 extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
@@ -322,6 +326,7 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
         return viewControllers.count > 1
     }
 }
+
 
 //struct CafeDetailView_Previews: PreviewProvider {
 //    static var previews: some View {
