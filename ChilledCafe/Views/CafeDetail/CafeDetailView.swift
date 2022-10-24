@@ -83,7 +83,7 @@ struct CafeDetailView: View {
 
                                     }
                                     // .padding(.trailing)
-                                        .background(Color.white)
+                                        .background(Color.clear)
                                         .frame(height: 80)
                                         .padding(.top, topEdge)
 
@@ -169,8 +169,11 @@ struct CafeDetailView: View {
                         .opacity(headerOffsets.0 < 20 ? 1 : 0)
                 })
             }
+            .ignoresSafeArea(.all)
+            
             // setting coordinate space
         }
+        .ignoresSafeArea(.all)
         .navigationBarHidden(true)
     }
     

@@ -24,11 +24,11 @@ struct Mood: View {
                         KFImage(URL(string: cafe.moodImages[$0 % cafe.moodImages.count]))
                             .resizable()
                             .scaledToFit()
-                            .frame(width: UIScreen.main.bounds.width / 2.2 - 1)
+                            .frame(width: UIScreen.main.bounds.width / 2.4 - 1)
                         
                     }
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 25)
                 .padding(.bottom, 150)
             }
 //        }
