@@ -11,7 +11,11 @@ struct DetailView: View {
     let cafe: Cafe
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            .onAppear(){
+                print(cafe)
+            }
     }
+    
 }
 
 //struct DetailView_Previews: PreviewProvider {

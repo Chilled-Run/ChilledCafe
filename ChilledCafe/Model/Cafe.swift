@@ -17,7 +17,8 @@ struct Cafe: Codable, Hashable {
     let menuImages: [String]
     let cafeInfo: [String]
     let tag: String
-
+    let gif: String
+    
     enum CodingKeys: String, CodingKey {
         case city = "city"
         case spot = "spot"
@@ -28,6 +29,7 @@ struct Cafe: Codable, Hashable {
         case moodImages = "moodImages"
         case menuImages = "menuImages"
         case cafeInfo = "cafeInfo"
+        case gif = "gif"
         }
 }
 
