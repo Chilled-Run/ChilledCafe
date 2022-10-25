@@ -66,7 +66,7 @@ struct MainCategoryView: View {
                             HStack {
                                 Text(spot)
                                     .customTitle3()
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(5), trailing: 0))
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(1), trailing: 0))
                                 Spacer()
                             }
                             HStack {
