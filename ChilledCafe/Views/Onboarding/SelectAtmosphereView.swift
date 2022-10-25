@@ -48,11 +48,10 @@ struct SelectAtmosphereView: View {
                                             ZStack {
                                                 if checked[index] == true {
                                                     RoundedRectangle(cornerRadius: 4)
-                                                        .background(.black)
+                                                        .fill(Color(uiColor: .black))
                                                         .opacity(0.6)
                                                     Image(systemName: "checkmark")
                                                         .foregroundColor(.white)
-//                                                        .frame(width: UIScreen.getWidth(40), height: UIScreen.getHeight(40))
                                                         .font(.system(size: 36))
                                                 } else {
                                                     Text("BABO")
@@ -71,6 +70,8 @@ struct SelectAtmosphereView: View {
                     if checked.filter { $0 == true }.isEmpty == false {
                         NavigationLink(destination: MainCategoryView().environmentObject(FirebaseStorageManager()), label: {
                             Image("ReadyButton")
+                                .resizable()
+                                .frame(width: UIScreen.getWidth(140), height: UIScreen.getHeight(50))
                         })
                     }
                 }
