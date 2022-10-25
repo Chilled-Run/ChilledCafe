@@ -28,7 +28,7 @@ struct SelectAtmosphereView: View {
                     }
                     .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: 0, bottom: UIScreen.getHeight(10), trailing: 0))
                     HStack {
-                        Text("선호하는 분위기를 선택해주세요?")
+                        Text("선호하는 분위기를 선택해주세요")
                             .customSubhead4()
                         Spacer()
                     }
