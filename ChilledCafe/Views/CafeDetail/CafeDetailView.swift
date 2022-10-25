@@ -34,7 +34,7 @@ struct CafeDetailView: View {
     let cafe: Cafe
     
     var body: some View {
-        NavigationView{
+        VStack{
             GeometryReader { proxy in
                 ScrollView(.vertical, showsIndicators: false) {
 
