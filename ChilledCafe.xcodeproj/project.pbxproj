@@ -458,10 +458,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
+				DEVELOPMENT_TEAM = PQ5FS4VVLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BlueOrange;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -489,10 +490,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
+				DEVELOPMENT_TEAM = PQ5FS4VVLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BlueOrange;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
