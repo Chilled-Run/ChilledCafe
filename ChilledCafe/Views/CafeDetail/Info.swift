@@ -11,16 +11,18 @@ struct Info: View {
     let cafe: Cafe
     var body: some View {
         VStack (alignment: .leading){
-            Text("11:00에 영업 시작")
-                .customBody()
-                .padding(.top, 50)
-                .padding(.horizontal, 65)
-            Text("매일 11:00 - 22:00")
-                .customBody()
-                .padding(.horizontal, 65)
-            Text("21:30 라스트 오더")
-                .customBody()
-                .padding(.horizontal, 65)
+            HStack {
+                Text("11:00에 영업 시작")
+                    .customBody()
+                    .padding(.top, 80)
+                    .padding(.horizontal, 65)
+                Text("매일 11:00 - 22:00")
+                    .customBody()
+                    .padding(.horizontal, 65)
+                Text("21:30 라스트 오더")
+                    .customBody()
+                    .padding(.horizontal, 65)
+            }
             
             Text("경북 포항시 남구 형산강북로 135")
                 .customBody()

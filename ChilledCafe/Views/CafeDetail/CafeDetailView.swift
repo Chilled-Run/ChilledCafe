@@ -228,12 +228,7 @@ struct CafeDetailView: View {
     @ViewBuilder
     func SampleContents() -> some View {
         VStack(spacing: 15) {
-//            Spacer()
-//            TabView(selection: $currentType) {
-//                Mood().tag("Mood")
-//                Menu().tag("Menu")
-//                Info().tag("Info")
-//            }
+
             Spacer()
             ForEach(0 ..< 10) { num in
                 Text("참깨빵위에")
@@ -287,17 +282,24 @@ struct Background: View {
         ZStack {
             KFAnimatedImage(URL(string: cafe.gif))
                 .aspectRatio(contentMode: .fill)
+                .overlay(
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.7)]),
+                                             startPoint: UnitPoint(x: 0.5, y: 0.3), endPoint: .bottom))
+                        .clipped()
+                )
             VStack(alignment: .leading){
                 Spacer()
                 Text(cafe.name)
-                    .fontWeight(.bold)
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
+                    .customLargeTitle()
+                    .foregroundColor(.white)
+                    .padding(.bottom, 5)
                 Text(cafe.shortIntroduction)
-                    .font(.subheadline)
-                    .foregroundColor(.black)
+                    .customHeadline()
+                    .foregroundColor(.white)
                     .padding(.bottom, 50)
             }
+            .padding(.trailing, 150)
             
         }
         .frame(width: UIScreen.main.bounds.width)
