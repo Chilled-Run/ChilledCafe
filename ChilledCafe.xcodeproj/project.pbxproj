@@ -39,7 +39,6 @@
 		9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */; };
 		9A2930F12902977A0005D339 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A2930F02902977A0005D339 /* GoogleService-Info.plist */; };
 		9A2930F3290438820005D339 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2930F2290438820005D339 /* Cafe.swift */; };
-		9A8B134C2907D1F300DE5297 /* gitIgnore.gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9A8B134B2907D1F300DE5297 /* gitIgnore.gitignore */; };
 		9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F12290119B7005AC001 /* HotPlace.swift */; };
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
 /* End PBXBuildFile section */
@@ -70,7 +69,6 @@
 		9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		9A2930F02902977A0005D339 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A2930F2290438820005D339 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
-		9A8B134B2907D1F300DE5297 /* gitIgnore.gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gitIgnore.gitignore; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,7 +95,6 @@
 		2003254B28FFC9A0004DE5B6 = {
 			isa = PBXGroup;
 			children = (
-				9A8B134B2907D1F300DE5297 /* gitIgnore.gitignore */,
 				39B7C5192905A9E7000C8B07 /* Fonts */,
 				9A2930F02902977A0005D339 /* GoogleService-Info.plist */,
 				2003255628FFC9A0004DE5B6 /* ChilledCafe */,
@@ -297,7 +294,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A8B134C2907D1F300DE5297 /* gitIgnore.gitignore in Resources */,
 				2003255F28FFC9A0004DE5B6 /* Preview Assets.xcassets in Resources */,
 				39B7C51B2905A9F7000C8B07 /* Optima.ttc in Resources */,
 				2003255C28FFC9A0004DE5B6 /* Assets.xcassets in Resources */,
