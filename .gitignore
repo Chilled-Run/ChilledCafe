@@ -1,5 +1,15 @@
-# Created by https://www.toptal.com/developers/gitignore/api/xcode,swift
-# Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift
+
+# Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,firebase
+# Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift,firebase
+
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
 
 ### Swift ###
 # Xcode
@@ -98,5 +108,5 @@ iOSInjectionProject/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/xcode,swift
-.DS_Store
+# End of https://www.toptal.com/developers/gitignore/api/xcode,swift,firebase
+
