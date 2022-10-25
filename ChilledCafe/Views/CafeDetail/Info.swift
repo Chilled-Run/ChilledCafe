@@ -11,7 +11,6 @@ struct Info: View {
     let cafe: Cafe
     var body: some View {
         VStack (alignment: .leading){
-            HStack {
                 Text("11:00에 영업 시작")
                     .customBody()
                     .padding(.top, 80)
@@ -22,7 +21,6 @@ struct Info: View {
                 Text("21:30 라스트 오더")
                     .customBody()
                     .padding(.horizontal, 65)
-            }
             
             Text("경북 포항시 남구 형산강북로 135")
                 .customBody()
