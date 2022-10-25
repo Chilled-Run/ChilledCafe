@@ -15,6 +15,7 @@
 		3906DC76290312FE00B26783 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC75290312FE00B26783 /* Kingfisher */; };
 		3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC7B29040AED00B26783 /* CafeListView.swift */; };
 		3906DC812904484700B26783 /* ACarousel in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC802904484700B26783 /* ACarousel */; };
+		393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393A5BA1290739B600C4E31E /* SelectAtmosphereView.swift */; };
 		39B7C51329058172000C8B07 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51229058172000C8B07 /* CardView.swift */; };
 		39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */; };
 		39B7C51B2905A9F7000C8B07 /* Optima.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 39B7C51A2905A9F7000C8B07 /* Optima.ttc */; };
@@ -45,6 +46,7 @@
 		3906DC70290311E500B26783 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		3906DC722903121700B26783 /* MainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryView.swift; sourceTree = "<group>"; };
 		3906DC7B29040AED00B26783 /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
+		393A5BA1290739B600C4E31E /* SelectAtmosphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAtmosphereView.swift; sourceTree = "<group>"; };
 		39B7C51229058172000C8B07 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCafeCardView.swift; sourceTree = "<group>"; };
 		39B7C51A2905A9F7000C8B07 /* Optima.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Optima.ttc; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		39B7C52829070985000C8B07 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				393A5BA1290739B600C4E31E /* SelectAtmosphereView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		9A2930EF290291F60005D339 /* FIrebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +163,7 @@
 		9A9B2F0C29011985005AC001 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				39B7C52829070985000C8B07 /* Onboarding */,
 				3906DC722903121700B26783 /* MainCategoryView.swift */,
 				3906DC7B29040AED00B26783 /* CafeListView.swift */,
 				39B7C51229058172000C8B07 /* CardView.swift */,
@@ -278,6 +289,7 @@
 				3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */,
 				9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */,
 				9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */,
+				393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
 				39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */,
 				9A2930F3290438820005D339 /* Cafe.swift in Sources */,

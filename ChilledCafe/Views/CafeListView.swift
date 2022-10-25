@@ -19,9 +19,6 @@ struct CafeListView: View {
         self.navigationTitle = navigationTitle
         
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().isTranslucent = true
     }
     
     var body: some View {
