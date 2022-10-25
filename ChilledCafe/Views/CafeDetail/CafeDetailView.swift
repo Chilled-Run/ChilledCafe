@@ -75,7 +75,7 @@ struct CafeDetailView: View {
 
                                         // Heart Button
                                         Button(action: {
-                                            self.presentationMode.wrappedValue.dismiss()
+
                                         }) {
                                             Image(systemName: "heart.fill")
                                                 .foregroundColor(.black)
