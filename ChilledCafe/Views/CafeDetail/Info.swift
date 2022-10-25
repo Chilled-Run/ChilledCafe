@@ -8,24 +8,37 @@
 import SwiftUI
 
 struct Info: View {
-    let cafe: Cafe
     var body: some View {
         VStack (alignment: .leading){
-                Text("11:00에 영업 시작")
-                    .customBody()
-                    .padding(.top, 80)
-                    .padding(.horizontal, 65)
-                Text("매일 11:00 - 22:00")
-                    .customBody()
-                    .padding(.horizontal, 65)
-                Text("21:30 라스트 오더")
-                    .customBody()
-                    .padding(.horizontal, 65)
+            HStack{
+                Image(systemName: "clock.fill")
+                    .padding(.leading, 20)
+                    .foregroundColor(Color("MainColor"))
+                    .padding(.bottom, 37)
+                VStack(alignment: .leading) {
+                    Text("11:00에 영업 시작")
+                        .customBody()
+
+                    Text("매일 11:00 - 22:00")
+                        .customBody()
+                    Text("21:30 라스트 오더")
+                        .customBody()
+
+                }
+                .padding(.leading, 25)
+            }
+            .padding(.top, 80)
             
-            Text("경북 포항시 남구 형산강북로 135")
-                .customBody()
-                .padding(.top, 40)
-                .padding(.horizontal, 65)
+            HStack{
+                Image("locationIcon")
+                    .foregroundColor(.black)
+                    .padding(.leading, 20)
+                
+                Text("경북 포항시 남구 형산강북로 135")
+                    .customBody()
+                    .padding(.leading, 25)
+            }
+            .padding(.top, 40)
             
             Image("map")
                 .resizable()
@@ -40,8 +53,8 @@ struct Info: View {
     }
 }
 
-//struct Info_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Info()
-//    }
-//}
+struct Info_Previews: PreviewProvider {
+    static var previews: some View {
+        Info()
+    }
+}

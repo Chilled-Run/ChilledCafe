@@ -11,7 +11,6 @@ import Kingfisher
 
 struct CafeDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    // Max Height...
     let maxWidth = UIScreen.main.bounds.width
     let maxHeight = UIScreen.main.bounds.height
     
@@ -37,20 +36,23 @@ struct CafeDetailView: View {
         VStack{
             GeometryReader { proxy in
                 ScrollView(.vertical, showsIndicators: false) {
-
+                    
                     VStack(spacing: 15) {
-
+                        
                         // Top Nav View
                         GeometryReader { geo in
                             Background(cafe: cafe, offset: $offset)
                                 .edgesIgnoringSafeArea(.all)
                                 .background(Color.white)
-                            // Sticky effect
+                            // 드래그시 사진이 늘어나게끔 프레임 설정
                                 .frame(width: maxWidth, height: getHeaderHeight(), alignment: .bottom)
+                            
+                            // MARK: 상단 사라지는 메뉴 바
+                            
                                 .overlay(
-                                    // Top Nav View
                                     HStack(spacing: 15) {
-                                        // Go back
+                                        
+                                        // 뒤로가기 버튼
                                         Button(action: {
                                             self.presentationMode.wrappedValue.dismiss()
                                         }) {
@@ -61,21 +63,21 @@ struct CafeDetailView: View {
                                         .padding(.leading, 20)
                                         .padding(.top, 25)
                                         .opacity(topBarTitleOpacity())
-
+                                        
                                         Spacer()
-
-                                        // Cafe Title
+                                        
+                                        // 카페명
                                         Text(cafe.name)
                                             .customTitle2()
                                             .padding(.top, 25)
                                             .foregroundColor(.black)
                                             .opacity(topBarTitleOpacity())
-
+                                        
                                         Spacer()
-
-                                        // Heart Button
+                                        
+                                        // 좋아요 버튼
                                         Button(action: {
-
+                                            
                                         }) {
                                             Image(systemName: "heart.fill")
                                                 .foregroundColor(.black)
@@ -83,26 +85,26 @@ struct CafeDetailView: View {
                                         .padding(.top, 25)
                                         .padding(.trailing, 20)
                                         .opacity(topBarTitleOpacity())
-
-
+                                        
+                                        
                                     }
-                                    // .padding(.trailing)
                                         .background(Color.clear)
                                         .frame(height: 80)
                                         .padding(.top, topEdge)
-
+                                    
                                     ,alignment: .top
                                 )
-
+                            
                         }
                         .frame(height: maxHeight)
-
-                        // Fixing at top..
+                        
+                        // 상단에 offset 고정
                         .offset(y: -offset)
                         .zIndex(1)
-
-                        //++++++++++++++++++++++++++++++++++++++++++++
-
+                        
+                        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                        // MARK: 메인 탭뷰
+                        
                         LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
                             Section {
                                 Spacer()
@@ -110,56 +112,25 @@ struct CafeDetailView: View {
                                     TabView(selection: $currentType) {
                                         Mood(cafe: cafe).tag("Mood")
                                         Menu(cafe: cafe).tag("Menu")
-                                        Info(cafe: cafe).tag("Info")
+                                        Info().tag("Info")
                                     }
                                 }
                                 .tabViewStyle(.page(indexDisplayMode: .never))
                                 .frame(maxWidth: .infinity, minHeight: proxy.size.height)
                                 .offset(y: headerOffsets.1 > 0 ? 0 : -headerOffsets.1 / 8)
-
+                                
                             } header: {
                                 PinnedHeaderView()
                                     .background(Color.white)
                                     .offset(y: headerOffsets.1 > 0 ? 0 : -headerOffsets.1 / 8)
                                     .modifier(OffsetModifier2(offset: $headerOffsets.0, returnFromStart: false))
                                     .modifier(OffsetModifier2(offset: $headerOffsets.1))
-
+                                
                             }
                         }
-
-
-
-//                            LazyVStack(pinnedViews: [.sectionHeaders]) {
-//                                Section {
-//                                    if currentType == "Mood" {
-//                                        Mood()
-//                                        .offset(y: headerOffsets.1 > 0 ? 0 : -headerOffsets.1 / 8)
-////                                        SampleContents()
-////                                            .offset(y: headerOffsets.1 > 0 ? 0 : -headerOffsets.1 / 8)
-//                                    }
-//                                    else if currentType == "Menu" {
-//                                        Menu()
-//                                            .offset(y: headerOffsets.1 > 0 ? 0 : -headerOffsets.1 / 8)
-//                                    }
-//                                    else {
-//                                        Info()
-//                                            .offset(y: headerOffsets.1 > 0 ? 0 : -headerOffsets.1 / 8)
-//                                    }
-//                                }
-//                                header: {
-//                                    PinnedHeaderView()
-//                                        .background(Color.white)
-//                                        .offset(y: headerOffsets.1 > 0 ? 0 : -headerOffsets.1 / 7)
-//                                        .modifier(OffsetModifier2(offset: $headerOffsets.0, returnFromStart: false))
-//                                        .modifier(OffsetModifier2(offset: $headerOffsets.1))
-//                                }
-//                            }
-                            .padding(.bottom)
-
-
-
-                        //++++++++++++++++++++++++++++++++++++++++++++
-
+                        .padding(.bottom)
+                        
+                        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                     }
                     .modifier(OffsetModifier(offset: $offset))
                 }
@@ -174,61 +145,88 @@ struct CafeDetailView: View {
                 })
             }
             .ignoresSafeArea(.all)
-            
-            // setting coordinate space
         }
         .ignoresSafeArea(.all)
         .navigationBarHidden(true)
     }
     
-    // MARK: Pinned Header
+    // MARK: 스티키 헤더를 위한 메뉴 선택 바
     
     @ViewBuilder
     func PinnedHeaderView() -> some View {
-        // ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 25) {
-        
-                    ForEach(tabBarElements, id: \.self) { type in
-                        VStack(spacing: 12) {
-        
-                            Text(type)
-                                .CustomDesignedBody()
-                                .foregroundColor(currentType == type ? .black : .gray)
-        
-                            ZStack {
-                                if currentType == type {
-                                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                                        .fill(.black)
-                                        .matchedGeometryEffect(id: "TAB", in: animation)
-                                }
-                                else {
-                                    RoundedRectangle(cornerRadius: 4, style: .continuous)
-                                        .fill(.clear)
-                                }
-                            }
-                            .padding(.horizontal, 8)
-                            .frame(height: 4)
+        HStack(spacing: 25) {
+            
+            ForEach(tabBarElements, id: \.self) { type in
+                VStack(spacing: 12) {
+                    
+                    Text(type)
+                        .CustomDesignedBody()
+                        .foregroundColor(currentType == type ? .black : .gray)
+                    
+                    ZStack {
+                        if currentType == type {
+                            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                .fill(.black)
+                                .matchedGeometryEffect(id: "TAB", in: animation)
                         }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            withAnimation(.easeInOut) {
-                                currentType = type
-                            }
+                        else {
+                            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                .fill(.clear)
                         }
                     }
+                    .padding(.horizontal, 8)
+                    .frame(height: 4)
                 }
-                .padding(.horizontal)
-                .padding(.top, 25)
-                .padding(.bottom, 5)
-         
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation(.easeInOut) {
+                        currentType = type
+                    }
+                }
+            }
+        }
+        .padding(.horizontal)
+        .padding(.top, 25)
+        .padding(.bottom, 5)
+        
     }
     
-    // MARK: Pinned Content
+    // MARK: 상단 헤더의 높이를 가져옴
+    
+    func getHeaderHeight() -> CGFloat {
+        let topHeight: CGFloat = maxHeight + offset
+        
+        // 80 is the constant top Nav bar height
+        // since we included top safe area so we also need to include that too..
+        return topHeight > (80 + topEdge) ? topHeight : (80 + topEdge)
+    }
+    
+    // MARK: 메인 화면을 내리면서 상단바를 보이게끔 opacity 조정
+    
+    func topBarTitleOpacity() -> CGFloat {
+        let progress = -(offset + 40) / (maxHeight - (80 + topEdge))
+        
+        return progress
+    }
+    
+    // MARK: 스크롤을 내릴때 offset에 따라서 opacity를 변경합니다.
+    
+    func getOpacity() -> CGFloat {
+        
+        // 아래 숫자를 조정하면서 얼마나 빠르게 또는 느리게 사라지게할지 조정 가능
+        let progress = -offset / 750
+        
+        let opacity = 1 - progress
+        
+        return offset < 0 ? opacity : 1
+    }
+    
+    // MARK: 테스트용 샘플 컨텐츠
     
     @ViewBuilder
     func SampleContents() -> some View {
         VStack(spacing: 15) {
-
+            
             Spacer()
             ForEach(0 ..< 10) { num in
                 Text("참깨빵위에")
@@ -241,38 +239,11 @@ struct CafeDetailView: View {
             }
         }
     }
-    
-    func getHeaderHeight() -> CGFloat {
-        let topHeight: CGFloat = maxHeight + offset
-        
-        // 80 is the constant top Nav bar height
-        // since we included top safe area so we also need to include that too..
-        return topHeight > (80 + topEdge) ? topHeight : (80 + topEdge)
-    }
-    
-    func topBarTitleOpacity() -> CGFloat {
-        // to start after the main content vanished..
-        // we need to eliminate 500 from offset...
-        
-        let progress = -(offset + 40) / (maxHeight - (80 + topEdge))
-        
-        return progress
-    }
-    
-    func getOpacity() -> CGFloat {
-        
-        // 70 = Some random amount of time to visible on scroll...
-        let progress = -offset / 750
-        
-        let opacity = 1 - progress
-        
-        return offset < 0 ? opacity : 1
-    }
 }
 
 
 
-// MARK: Moving Background
+// MARK: GIF 화면
 
 struct Background: View {
     @State var cafe: Cafe
@@ -306,9 +277,8 @@ struct Background: View {
         .opacity(getOpacity())
     }
     
+    
     func getOpacity() -> CGFloat {
-        
-        // 70 = Some random amount of time to visible on scroll...
         let progress = -offset / 850
         
         let opacity = 1 - progress
@@ -318,7 +288,7 @@ struct Background: View {
 }
 
 
-// MARK: Go back with gesture
+// MARK: 뒤로가기 제스쳐 확장
 
 extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate {
     override open func viewDidLoad() {
@@ -331,9 +301,3 @@ extension UINavigationController: ObservableObject, UIGestureRecognizerDelegate 
     }
 }
 
-
-//struct CafeDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CafeDetailView()
-//    }
-//}
