@@ -89,7 +89,7 @@ struct CafeListView: View {
                                             .hidden()
                                         ForEach(firebaseStorageManager.cafeClassification["내가 좋아한 카페"]!, id: \.self) { cafe in
                                             NavigationLink(destination: CafeDetailView(topEdge: 40, cafe: cafe)){
-                                                LikedCafeCardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
+                                                TransparentLikedCafeCardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
                                             }
                                         }
                                     }
