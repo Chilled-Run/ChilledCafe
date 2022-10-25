@@ -55,7 +55,8 @@ struct CafeDetailView: View {
                                             self.presentationMode.wrappedValue.dismiss()
                                         }) {
                                             Image(systemName: "chevron.backward")
-                                                .foregroundColor(.blue)
+                                                .foregroundColor(.black)
+                                            
                                         }
                                         .padding(.leading, 20)
                                         .padding(.top, 25)
@@ -65,8 +66,9 @@ struct CafeDetailView: View {
 
                                         // Cafe Title
                                         Text(cafe.name)
+                                            .customTitle2()
                                             .padding(.top, 25)
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(.black)
                                             .opacity(topBarTitleOpacity())
 
                                         Spacer()
@@ -76,7 +78,7 @@ struct CafeDetailView: View {
                                             self.presentationMode.wrappedValue.dismiss()
                                         }) {
                                             Image(systemName: "heart.fill")
-                                                .foregroundColor(.blue)
+                                                .foregroundColor(.black)
                                         }
                                         .padding(.top, 25)
                                         .padding(.trailing, 20)
@@ -190,7 +192,7 @@ struct CafeDetailView: View {
                         VStack(spacing: 12) {
         
                             Text(type)
-                                .fontWeight(.semibold)
+                                .CustomDesignedBody()
                                 .foregroundColor(currentType == type ? .black : .gray)
         
                             ZStack {

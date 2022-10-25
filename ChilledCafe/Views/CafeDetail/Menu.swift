@@ -16,9 +16,11 @@ struct Menu: View {
                 .resizable()
                 .scaledToFit()
                 .padding(.horizontal)
+                .padding(.top, 80)
+            Spacer()
         }
         .padding(.horizontal)
-        .padding(.bottom, 150)
+        .padding(.bottom, 100)
     }
 }
 
