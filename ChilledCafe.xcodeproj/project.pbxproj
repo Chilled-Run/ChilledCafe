@@ -20,6 +20,7 @@
 		3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC7B29040AED00B26783 /* CafeListView.swift */; };
 		3906DC812904484700B26783 /* ACarousel in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC802904484700B26783 /* ACarousel */; };
 		393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393A5BA1290739B600C4E31E /* SelectAtmosphereView.swift */; };
+		393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393A5BC72907BE5900C4E31E /* TransparentLikedCafeCardView.swift */; };
 		39B7C51329058172000C8B07 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51229058172000C8B07 /* CardView.swift */; };
 		39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */; };
 		39B7C51B2905A9F7000C8B07 /* Optima.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 39B7C51A2905A9F7000C8B07 /* Optima.ttc */; };
@@ -55,6 +56,7 @@
 		3906DC722903121700B26783 /* MainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryView.swift; sourceTree = "<group>"; };
 		3906DC7B29040AED00B26783 /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
 		393A5BA1290739B600C4E31E /* SelectAtmosphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAtmosphereView.swift; sourceTree = "<group>"; };
+		393A5BC72907BE5900C4E31E /* TransparentLikedCafeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentLikedCafeCardView.swift; sourceTree = "<group>"; };
 		39B7C51229058172000C8B07 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCafeCardView.swift; sourceTree = "<group>"; };
 		39B7C51A2905A9F7000C8B07 /* Optima.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Optima.ttc; sourceTree = "<group>"; };
@@ -154,6 +156,17 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		393A5BC92907C15900C4E31E /* CafeList */ = {
+			isa = PBXGroup;
+			children = (
+				3906DC7B29040AED00B26783 /* CafeListView.swift */,
+				39B7C51229058172000C8B07 /* CardView.swift */,
+				39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */,
+				393A5BC72907BE5900C4E31E /* TransparentLikedCafeCardView.swift */,
+			);
+			path = CafeList;
+			sourceTree = "<group>";
+		};
 		39B7C5192905A9E7000C8B07 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,12 +196,10 @@
 		9A9B2F0C29011985005AC001 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				393A5BC92907C15900C4E31E /* CafeList */,
 				207DA37B29066FB300D65EC4 /* CafeDetail */,
 				39B7C52829070985000C8B07 /* Onboarding */,
 				3906DC722903121700B26783 /* MainCategoryView.swift */,
-				3906DC7B29040AED00B26783 /* CafeListView.swift */,
-				39B7C51229058172000C8B07 /* CardView.swift */,
-				39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +324,7 @@
 				207DA37F2906700700D65EC4 /* Menu.swift in Sources */,
 				207DA37D29066FE500D65EC4 /* Mood.swift in Sources */,
 				393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */,
+				393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
 				39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */,
 				9A2930F3290438820005D339 /* Cafe.swift in Sources */,
