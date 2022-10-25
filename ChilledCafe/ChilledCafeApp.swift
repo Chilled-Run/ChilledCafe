@@ -25,8 +25,7 @@ struct ChilledCafeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainCategoryView()
-                .environmentObject(FirebaseStorageManager())
+            SelectAtmosphereView()
         }
     }
 }

@@ -13,15 +13,15 @@ struct CafeListView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var firebaseStorageManager: FirebaseStorageManager
     @State var currentIndex: Int = 0
+    @State var detailViewIndex: Int = 0
+    @State var checkingCarousel : Bool = true
+    
     var navigationTitle: String
     
     init(navigationTitle: String) {
         self.navigationTitle = navigationTitle
         
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().isTranslucent = true
     }
     
     var body: some View {
@@ -31,96 +31,107 @@ struct CafeListView: View {
                     firebaseStorageManager.getCafes(spot: navigationTitle)
                 })
         } else {
-            ScrollView(.vertical) {
-                VStack {
-                    NavigationLink(destination: DetailView(cafe: firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"]![currentIndex])){
-                    ZStack(alignment: .top) {
-                            ACarousel(firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"] ?? [], id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {
-                                recommendCafeView(imageURL: $0.thumbnail, name: $0.name, shortIntroduction: $0.shortIntroduction)
-                            }
-                            .frame(height: UIScreen.getHeight(515))
-                            VStack {
-                                HStack {
-                                    Text("내 취향에 딱 맞는 카페")
-                                        .customHeadline()
-                                        .foregroundColor(Color.white)
-                                    Spacer()
-                                }
-                                .padding(EdgeInsets(top: UIScreen.getHeight(116), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
-                                Spacer()
-                                HStack {
-                                    ForEach(Array(firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"]!.enumerated()), id: \.offset) { index, element in
-                                        if index == currentIndex {
-                                            Image("filledbox")
-                                        } else {
-                                            Image("box")
-                                        }
-                                    }
-                                    Spacer()
-                                }
-                                .padding()
-                            }}
-                    }
-
+            GeometryReader {geo in
+                let topEdge: CGFloat = geo.safeAreaInsets.top
+                ScrollView(.vertical) {
                     VStack {
-                        // MARK: - 내가 좋아한 카페
-                        HStack {
-                            Text("내가 좋아한 카페")
-                                .customTitle2()
-                            Spacer()
-                        }
-                        .padding(EdgeInsets(top: UIScreen.getHeight(0), leading: UIScreen.getWidth(10), bottom: UIScreen.getHeight(20), trailing: 0))
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack (spacing: 10) {
-                                RoundedRectangle(cornerRadius: 1)
-                                    .frame(width: UIScreen.getWidth(1))
-                                    .hidden()
-                                ForEach(firebaseStorageManager.cafeClassification["내가 좋아한 카페"]!, id: \.self) { cafe in
-                                    NavigationLink(destination: DetailView(cafe: cafe)){
-                                        LikedCafeCardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
+                        Group{
+                            NavigationLink(destination: CafeDetailView(topEdge: 40, cafe: firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"]![checkingCarousel ? detailViewIndex : currentIndex])){
+                                ZStack(alignment: .top) {
+                                    ACarousel(firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"] ?? [], id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: checkingCarousel ?  .inactive : .active(5)) {
+                                        recommendCafeView(imageURL: $0.thumbnail, name: $0.name, shortIntroduction: $0.shortIntroduction)
                                     }
-                                }
+                                    .frame(height: UIScreen.getHeight(515))
+                                    .onAppear(){
+                                        checkingCarousel.toggle()
+                                    }
+                                    .onDisappear(){
+                                        checkingCarousel.toggle()
+                                        detailViewIndex = currentIndex
+                                    }
+                                    VStack {
+                                        HStack {
+                                            Text("내 취향에 딱 맞는 카페")
+                                                .customHeadline()
+                                                .foregroundColor(Color.white)
+                                            Spacer()
+                                        }
+                                        .padding(EdgeInsets(top: UIScreen.getHeight(116), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
+                                        Spacer()
+                                        HStack {
+                                            ForEach(Array(firebaseStorageManager.cafeClassification["내 취향에 맞는 카페"]!.enumerated()), id: \.offset) { index, element in
+                                                if index == currentIndex {
+                                                    Image("filledbox")
+                                                } else {
+                                                    Image("box")
+                                                }
+                                            }
+                                            Spacer()
+                                        }
+                                        .padding()
+                                    }}
                             }
                         }
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
                         
-                        // MARK: - 태그 별 카페
-                        ForEach(Array(firebaseStorageManager.cafeClassification.keys), id: \.self, content: { key in
-                            if key != "내 취향에 맞는 카페" && key != "내가 좋아한 카페" {
+                        VStack {
+                            // MARK: - 내가 좋아한 카페
+                            Group{
                                 HStack {
-                                    Text(key)
+                                    Text("내가 좋아한 카페")
                                         .customTitle2()
                                     Spacer()
                                 }
-                                .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(10), bottom: 0, trailing: 0))
+                                .padding(EdgeInsets(top: UIScreen.getHeight(0), leading: UIScreen.getWidth(10), bottom: UIScreen.getHeight(20), trailing: 0))
                                 ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack(spacing: 10) {
+                                    HStack (spacing: 10) {
                                         RoundedRectangle(cornerRadius: 1)
                                             .frame(width: UIScreen.getWidth(1))
                                             .hidden()
-                                        ForEach(firebaseStorageManager.cafeClassification["\(key)"]!, id: \.self) { cafe in
-                                            NavigationLink(destination: DetailView(cafe: cafe)){
-                                                CardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
+                                        ForEach(firebaseStorageManager.cafeClassification["내가 좋아한 카페"]!, id: \.self) { cafe in
+                                            NavigationLink(destination: CafeDetailView(topEdge: 40, cafe: cafe)){
+                                                LikedCafeCardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
                                             }
                                         }
                                     }
                                 }
-                                .padding(EdgeInsets(top: UIScreen.getHeight(10), leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
+                                .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
                             }
-                        })
+                            
+                            // MARK: - 태그 별 카페
+                            ForEach(Array(firebaseStorageManager.cafeClassification.keys), id: \.self, content: { key in
+                                if key != "내 취향에 맞는 카페" && key != "내가 좋아한 카페" {
+                                    HStack {
+                                        Text(key)
+                                            .customTitle2()
+                                        Spacer()
+                                    }
+                                    .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(10), bottom: 0, trailing: 0))
+                                    ScrollView(.horizontal, showsIndicators: false) {
+                                        HStack(spacing: 10) {
+                                            RoundedRectangle(cornerRadius: 1)
+                                                .frame(width: UIScreen.getWidth(1))
+                                                .hidden()
+                                            ForEach(firebaseStorageManager.cafeClassification["\(key)"]!, id: \.self) { cafe in
+                                                NavigationLink(destination: CafeDetailView(topEdge: 40, cafe: cafe)){
+                                                    CardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .padding(EdgeInsets(top: UIScreen.getHeight(10), leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
+                                }
+                            })
+                        }
+                        .padding(EdgeInsets(top: UIScreen.getHeight(40), leading: 0, bottom: 0, trailing: 0))
                     }
-                    .padding(EdgeInsets(top: UIScreen.getHeight(40), leading: 0, bottom: 0, trailing: 0))
+                    .ignoresSafeArea()
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarTitle(navigationTitle, displayMode: .inline)
+                    .navigationBarItems(leading: backButton)
+                    .foregroundColor(.black)
                 }
                 .ignoresSafeArea()
-                .navigationBarBackButtonHidden(true)
-                .navigationBarTitle(navigationTitle, displayMode: .inline)
-                .navigationBarItems(leading: backButton)
-                .foregroundColor(.black)
             }
-            .ignoresSafeArea()
-            .onAppear(perform: {
-                firebaseStorageManager.getCafes(spot: navigationTitle)
-            })
         }
     }
     
