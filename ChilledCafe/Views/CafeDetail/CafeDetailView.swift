@@ -279,6 +279,7 @@ struct Background: View {
     
     
     func getOpacity() -> CGFloat {
+        // 아래 숫자를 조정하면서 얼마나 빠르게 또는 느리게 사라지게할지 조정 가능
         let progress = -offset / 850
         
         let opacity = 1 - progress
