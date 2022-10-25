@@ -21,7 +21,7 @@ struct LikedCafeCardView: View {
                 ZStack {
                     Color.white
                     RoundedRectangle(cornerRadius: 4)
-                        .stroke(Color("CustomGray1"), lineWidth: 1)
+                        .stroke(Color("CustomGray3"), lineWidth: 1)
                         .frame(width: UIScreen.getWidth(160), height: UIScreen.getHeight(200))
                     VStack {
                         KFImage(URL(string: thumbnail))
@@ -37,7 +37,7 @@ struct LikedCafeCardView: View {
                                     .customTitle1()
                                 Spacer()
                             }
-                            .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: 0, bottom: UIScreen.getHeight(4), trailing: 0))
+                            .padding(EdgeInsets(top: UIScreen.getHeight(10), leading: 0, bottom: UIScreen.getHeight(4), trailing: 0))
                             HStack {
                                 Text(shortIntroduction)
                                     .customSubhead1()
