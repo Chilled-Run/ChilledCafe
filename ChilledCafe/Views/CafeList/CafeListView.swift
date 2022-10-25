@@ -28,7 +28,7 @@ struct CafeListView: View {
         if firebaseStorageManager.cafeClassification.isEmpty {
             Text("데이터 없음")
                 .onAppear(perform: {
-                    firebaseStorageManager.getCafes(spot: navigationTitle)
+                    firebaseStorageManager.getCafes(spot: "영일대")
                 })
         } else {
             GeometryReader {geo in
