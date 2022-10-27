@@ -40,7 +40,7 @@ struct MainCategoryView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(15), trailing: 0))
                     
                     HStack(spacing: UIScreen.getWidth(10)) {
-                        categoryCardView(imageURL: firebaseStorageManager.hotPlace[2].imageURL, spot: firebaseStorageManager.hotPlace[2].spot, description: firebaseStorageManager.hotPlace[2].descript ion)
+                        categoryCardView(imageURL: firebaseStorageManager.hotPlace[2].imageURL, spot: firebaseStorageManager.hotPlace[2].spot, description: firebaseStorageManager.hotPlace[2].description)
                         categoryCardView(imageURL: firebaseStorageManager.hotPlace[3].imageURL, spot: firebaseStorageManager.hotPlace[3].spot, description: firebaseStorageManager.hotPlace[3].description)
                     }
                     .padding(EdgeInsets(top: 0, leading: 0,  bottom: UIScreen.getHeight(15), trailing: 0))
@@ -53,7 +53,7 @@ struct MainCategoryView: View {
     }
     
     @ViewBuilder
-    func categoryCardView(imageURL: String = SAMPLE_URL, spot: String = "영일대", description: String = "바다 앞 카페를 찾는다면") -> some View {
+    func categoryCardView(imageURL: String, spot: String = "영일대", description: String = "바다 앞 카페를 찾는다면") -> some View {
         NavigationLink(destination: CafeListView(navigationTitle: spot)) {
             ZStack {
                 KFImage(URL(string: imageURL)!)
