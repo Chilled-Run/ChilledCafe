@@ -142,7 +142,7 @@ struct CafeListView: View {
         ZStack {
             KFImage(URL(string: imageURL))
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(515))
                 .overlay(content: {
                     Color.black
