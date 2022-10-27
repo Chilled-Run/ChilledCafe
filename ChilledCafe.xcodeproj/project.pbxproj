@@ -23,6 +23,7 @@
 		393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393A5BC72907BE5900C4E31E /* TransparentLikedCafeCardView.swift */; };
 		3947F1A9290A598C009FA15C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3947F1A8290A598C009FA15C /* GoogleService-Info.plist */; };
 		3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947F1AA290A6B5A009FA15C /* IntroView.swift */; };
+		3947F1AD290A6C94009FA15C /* CustomConfirmButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947F1AC290A6C94009FA15C /* CustomConfirmButtonView.swift */; };
 		39B7C51329058172000C8B07 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51229058172000C8B07 /* CardView.swift */; };
 		39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */; };
 		39B7C51B2905A9F7000C8B07 /* Optima.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 39B7C51A2905A9F7000C8B07 /* Optima.ttc */; };
@@ -60,6 +61,7 @@
 		393A5BC72907BE5900C4E31E /* TransparentLikedCafeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentLikedCafeCardView.swift; sourceTree = "<group>"; };
 		3947F1A8290A598C009FA15C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3947F1AA290A6B5A009FA15C /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		3947F1AC290A6C94009FA15C /* CustomConfirmButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfirmButtonView.swift; sourceTree = "<group>"; };
 		39B7C51229058172000C8B07 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCafeCardView.swift; sourceTree = "<group>"; };
 		39B7C51A2905A9F7000C8B07 /* Optima.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Optima.ttc; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				393A5BA1290739B600C4E31E /* SelectAtmosphereView.swift */,
 				3947F1AA290A6B5A009FA15C /* IntroView.swift */,
+				3947F1AC290A6C94009FA15C /* CustomConfirmButtonView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3947F1AD290A6C94009FA15C /* CustomConfirmButtonView.swift in Sources */,
 				3906DC732903121700B26783 /* MainCategoryView.swift in Sources */,
 				39B7C51329058172000C8B07 /* CardView.swift in Sources */,
 				3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */,

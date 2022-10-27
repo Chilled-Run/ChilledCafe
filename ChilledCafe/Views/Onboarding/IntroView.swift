@@ -17,8 +17,8 @@ struct IntroView: View {
                 VStack {
                     Spacer()
                     NavigationLink(destination: SelectAtmosphereView(), label: {
-//                        CustomButtonView(title: "next")
-//                            .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
+                        CustomConfirmButtonView(title: "next")
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
                     })
                 }
             }
