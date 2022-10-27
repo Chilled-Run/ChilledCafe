@@ -69,14 +69,13 @@ struct SelectAtmosphereView: View {
                     Spacer()
                     if checked.filter { $0 == true }.isEmpty == false {
                         NavigationLink(destination: MainCategoryView().environmentObject(FirebaseStorageManager()), label: {
-                            Image("ReadyButton")
-                                .resizable()
-                                .frame(width: UIScreen.getWidth(140), height: UIScreen.getHeight(50))
+                            CustomConfirmButtonView(title: "ready!")
                         })
                     }
                 }
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
