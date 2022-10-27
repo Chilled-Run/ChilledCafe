@@ -10,7 +10,6 @@ import Kingfisher
 
 struct MainCategoryView: View {
     @EnvironmentObject var firebaseStorageManager: FirebaseStorageManager
-    static let SAMPLE_URL = "https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/HotPlace%2F%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%83%E1%85%A2.jpeg?alt=media&token=6de64b0d-71be-43cd-ac0b-d3a85d6ae2bb"
     
 
     var body: some View {
@@ -28,7 +27,7 @@ struct MainCategoryView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(10), trailing: 0))
                     
                     HStack {
-                        Text("오늘의 작은 여행은 어디인가요?")
+                        Text("가볍게 즐기는 색다른 경험")
                             .customSubhead4()
                         Spacer()
                     }
@@ -41,7 +40,7 @@ struct MainCategoryView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(15), trailing: 0))
                     
                     HStack(spacing: UIScreen.getWidth(10)) {
-                        categoryCardView(imageURL: firebaseStorageManager.hotPlace[2].imageURL, spot: firebaseStorageManager.hotPlace[2].spot, description: firebaseStorageManager.hotPlace[2].description)
+                        categoryCardView(imageURL: firebaseStorageManager.hotPlace[2].imageURL, spot: firebaseStorageManager.hotPlace[2].spot, description: firebaseStorageManager.hotPlace[2].descript ion)
                         categoryCardView(imageURL: firebaseStorageManager.hotPlace[3].imageURL, spot: firebaseStorageManager.hotPlace[3].spot, description: firebaseStorageManager.hotPlace[3].description)
                     }
                     .padding(EdgeInsets(top: 0, leading: 0,  bottom: UIScreen.getHeight(15), trailing: 0))
