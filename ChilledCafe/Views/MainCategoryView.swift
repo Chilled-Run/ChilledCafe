@@ -10,7 +10,6 @@ import Kingfisher
 
 struct MainCategoryView: View {
     @EnvironmentObject var firebaseStorageManager: FirebaseStorageManager
-    static let SAMPLE_URL = "https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/HotPlace%2F%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%83%E1%85%A2.jpeg?alt=media&token=6de64b0d-71be-43cd-ac0b-d3a85d6ae2bb"
     
 
     var body: some View {
