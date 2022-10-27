@@ -5,7 +5,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>AppleSDGothicNeo</string>
-		<string>Optima</string>
+		<string>LTMuseum-Bold.ttf</string>
+		<string>LTMuseum-Reg.ttf</string>
 		<string>AppleSDGothicNeoEB.ttf</string>
 	</array>
 </dict>

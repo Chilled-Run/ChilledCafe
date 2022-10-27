@@ -65,11 +65,11 @@ extension Text {
     }
     
     func CustomDesignedTitle() -> some View {
-        self.font(.custom("Optima-Bold", size: 20))
+        self.font(.custom("LTMuseum-Bold", size: 20))
     }
-    
+
     func CustomDesignedBody() -> some View {
-        self.font(.custom("Optima-Regular", size: 16))
+        self.font(.custom("LTMuseum-Medium", size: 16))
     }
 }
 
