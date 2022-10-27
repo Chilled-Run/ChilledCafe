@@ -27,7 +27,7 @@ struct MainCategoryView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(10), trailing: 0))
                     
                     HStack {
-                        Text("오늘의 작은 여행은 어디인가요?")
+                        Text("가볍게 즐기는 색다른 경험")
                             .customSubhead4()
                         Spacer()
                     }
@@ -40,7 +40,7 @@ struct MainCategoryView: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(15), trailing: 0))
                     
                     HStack(spacing: UIScreen.getWidth(10)) {
-                        categoryCardView(imageURL: firebaseStorageManager.hotPlace[2].imageURL, spot: firebaseStorageManager.hotPlace[2].spot, description: firebaseStorageManager.hotPlace[2].description)
+                        categoryCardView(imageURL: firebaseStorageManager.hotPlace[2].imageURL, spot: firebaseStorageManager.hotPlace[2].spot, description: firebaseStorageManager.hotPlace[2].descript ion)
                         categoryCardView(imageURL: firebaseStorageManager.hotPlace[3].imageURL, spot: firebaseStorageManager.hotPlace[3].spot, description: firebaseStorageManager.hotPlace[3].description)
                     }
                     .padding(EdgeInsets(top: 0, leading: 0,  bottom: UIScreen.getHeight(15), trailing: 0))
