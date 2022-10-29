@@ -10,6 +10,7 @@
 		2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003255728FFC9A0004DE5B6 /* ChilledCafeApp.swift */; };
 		2003255C28FFC9A0004DE5B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2003255B28FFC9A0004DE5B6 /* Assets.xcassets */; };
 		2003255F28FFC9A0004DE5B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2003255E28FFC9A0004DE5B6 /* Preview Assets.xcassets */; };
+		2035ECA5290D6D4100D6A5FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2035ECA4290D6D4100D6A5FC /* GoogleService-Info.plist */; };
 		207DA37D29066FE500D65EC4 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA37C29066FE500D65EC4 /* Mood.swift */; };
 		207DA37F2906700700D65EC4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA37E2906700700D65EC4 /* Menu.swift */; };
 		207DA3812906702700D65EC4 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA3802906702700D65EC4 /* Info.swift */; };
@@ -21,7 +22,6 @@
 		3906DC812904484700B26783 /* ACarousel in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC802904484700B26783 /* ACarousel */; };
 		393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393A5BA1290739B600C4E31E /* SelectAtmosphereView.swift */; };
 		393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393A5BC72907BE5900C4E31E /* TransparentLikedCafeCardView.swift */; };
-		3947F1A9290A598C009FA15C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3947F1A8290A598C009FA15C /* GoogleService-Info.plist */; };
 		3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947F1AA290A6B5A009FA15C /* IntroView.swift */; };
 		3947F1AD290A6C94009FA15C /* CustomConfirmButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947F1AC290A6C94009FA15C /* CustomConfirmButtonView.swift */; };
 		3947F1B0290A8413009FA15C /* LTMuseum-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3947F1AE290A8413009FA15C /* LTMuseum-Bold.ttf */; };
@@ -51,6 +51,7 @@
 		2003255728FFC9A0004DE5B6 /* ChilledCafeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChilledCafeApp.swift; sourceTree = "<group>"; };
 		2003255B28FFC9A0004DE5B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2003255E28FFC9A0004DE5B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2035ECA4290D6D4100D6A5FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		207DA37C29066FE500D65EC4 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		207DA37E2906700700D65EC4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		207DA3802906702700D65EC4 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		3906DC7B29040AED00B26783 /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
 		393A5BA1290739B600C4E31E /* SelectAtmosphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAtmosphereView.swift; sourceTree = "<group>"; };
 		393A5BC72907BE5900C4E31E /* TransparentLikedCafeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentLikedCafeCardView.swift; sourceTree = "<group>"; };
-		3947F1A8290A598C009FA15C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3947F1AA290A6B5A009FA15C /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		3947F1AC290A6C94009FA15C /* CustomConfirmButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfirmButtonView.swift; sourceTree = "<group>"; };
 		3947F1AE290A8413009FA15C /* LTMuseum-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LTMuseum-Bold.ttf"; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		2003254B28FFC9A0004DE5B6 = {
 			isa = PBXGroup;
 			children = (
-				3947F1A8290A598C009FA15C /* GoogleService-Info.plist */,
+				2035ECA4290D6D4100D6A5FC /* GoogleService-Info.plist */,
 				39B7C5192905A9E7000C8B07 /* Fonts */,
 				2003255628FFC9A0004DE5B6 /* ChilledCafe */,
 				2003255528FFC9A0004DE5B6 /* Products */,
@@ -304,12 +304,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2003255F28FFC9A0004DE5B6 /* Preview Assets.xcassets in Resources */,
-				3947F1A9290A598C009FA15C /* GoogleService-Info.plist in Resources */,
 				2003255C28FFC9A0004DE5B6 /* Assets.xcassets in Resources */,
 				3947F1B0290A8413009FA15C /* LTMuseum-Bold.ttf in Resources */,
 				39B7C5242905AD98000C8B07 /* AppleSDGothicNeoEB.ttf in Resources */,
 				39B7C51D2905AA23000C8B07 /* AppleSDGothicNeo.ttc in Resources */,
 				3947F1B1290A8413009FA15C /* LTMuseum-Reg.ttf in Resources */,
+				2035ECA5290D6D4100D6A5FC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = PQ5FS4VVLR;
+				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
@@ -504,7 +504,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = PQ5FS4VVLR;
+				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
