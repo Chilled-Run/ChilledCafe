@@ -238,25 +238,6 @@ struct CafeDetailView: View {
         
         return offset < 0 ? opacity : 1
     }
-    
-    // MARK: 테스트용 샘플 컨텐츠
-    
-    @ViewBuilder
-    func SampleContents() -> some View {
-        VStack(spacing: 15) {
-            
-            Spacer()
-            ForEach(0 ..< 10) { num in
-                Text("참깨빵위에")
-                Text("순쇠고기 패티 두장")
-                Text("특별한 소스")
-                Text("양상추")
-                Text("치즈 피클")
-                Text("양파까지")
-                Text("빠바바바빰")
-            }
-        }
-    }
 }
 
 
