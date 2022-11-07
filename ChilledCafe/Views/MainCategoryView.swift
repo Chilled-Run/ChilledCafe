@@ -11,7 +11,6 @@ import Kingfisher
 struct MainCategoryView: View {
     @EnvironmentObject var firebaseStorageManager: FirebaseStorageManager
     
-
     var body: some View {
         if firebaseStorageManager.hotPlace.isEmpty {
             Text("데이터 없음")
@@ -56,28 +55,30 @@ struct MainCategoryView: View {
     func categoryCardView(imageURL: String, spot: String = "영일대", description: String = "바다 앞 카페를 찾는다면") -> some View {
         NavigationLink(destination: CafeListView(navigationTitle: spot)) {
             ZStack {
-                KFImage(URL(string: imageURL)!)
-                    .resizable()
-                    .aspectRatio(0.57, contentMode: .fit)
-                    .overlay {
-                        VStack {
+                KFImage(URL(string: imageURL)!).placeholder{
+                    ProgressView().progressViewStyle(CircularProgressViewStyle())
+                }
+                .resizable()
+                .aspectRatio(0.57, contentMode: .fit)
+                .overlay {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Text(spot)
+                                .customTitle3()
+                                .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(1), trailing: 0))
                             Spacer()
-                            HStack {
-                                Text(spot)
-                                    .customTitle3()
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(1), trailing: 0))
-                                Spacer()
-                            }
-                            HStack {
-                                Text(description)
-                                    .customSubhead2()
-                                    .lineLimit(1)
-                                Spacer()
-                            }
                         }
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: 0))
+                        HStack {
+                            Text(description)
+                                .customSubhead2()
+                                .lineLimit(1)
+                            Spacer()
+                        }
                     }
+                    .foregroundColor(.white)
+                    .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: 0))
+                }
             }
         }
         .navigationTitle("")

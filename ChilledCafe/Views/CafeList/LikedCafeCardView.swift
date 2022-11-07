@@ -24,12 +24,14 @@ struct LikedCafeCardView: View {
                         .stroke(Color("CustomGray3"), lineWidth: 1)
                         .frame(width: UIScreen.getWidth(160), height: UIScreen.getHeight(200))
                     VStack {
-                        KFImage(URL(string: thumbnail))
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: UIScreen.getWidth(160), height: UIScreen.getHeight(120))
-                            .cornerRadius(4, corners: .topRight)
-                            .cornerRadius(4, corners: .topLeft)
+                        KFImage(URL(string: thumbnail)).placeholder{
+                            ProgressView().progressViewStyle(CircularProgressViewStyle())
+                        }
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: UIScreen.getWidth(160), height: UIScreen.getHeight(120))
+                        .cornerRadius(4, corners: .topRight)
+                        .cornerRadius(4, corners: .topLeft)
                         
                         Group {
                             HStack {

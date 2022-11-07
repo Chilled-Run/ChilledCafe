@@ -15,38 +15,40 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            KFImage(URL(string: thumbnail))
-                .resizable()
-                .cornerRadius(4)
-                .frame(width: UIScreen.getWidth(160), height: UIScreen.getHeight(250))
-                .overlay {
-                    ZStack {
-                        Color.black
-                            .opacity(0.5)
-                        VStack(alignment: .leading) {
-                            
-                            HStack {
-                                Text(name)
-                                    .customTitle2()
-                                    .lineLimit(1)
-                                Spacer()
-                            }
-                            .padding(EdgeInsets(top: UIScreen.getHeight(148), leading: 0, bottom: UIScreen.getHeight(5), trailing: 0))
-                            HStack {
-                                Text(shortIntroduction)
-                                    .customSubhead3()
-                                    .font(.system(size: 13))
-                                    .lineSpacing(1)
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(2)
-                                Spacer()
-                            }
+            KFImage(URL(string: thumbnail)).placeholder{
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+            }
+            .resizable()
+            .cornerRadius(4)
+            .frame(width: UIScreen.getWidth(160), height: UIScreen.getHeight(250))
+            .overlay {
+                ZStack {
+                    Color.black
+                        .opacity(0.5)
+                    VStack(alignment: .leading) {
+                        
+                        HStack {
+                            Text(name)
+                                .customTitle2()
+                                .lineLimit(1)
                             Spacer()
                         }
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(10), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(10)))
+                        .padding(EdgeInsets(top: UIScreen.getHeight(148), leading: 0, bottom: UIScreen.getHeight(5), trailing: 0))
+                        HStack {
+                            Text(shortIntroduction)
+                                .customSubhead3()
+                                .font(.system(size: 13))
+                                .lineSpacing(1)
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(2)
+                            Spacer()
+                        }
+                        Spacer()
                     }
+                    .foregroundColor(.white)
+                    .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(10), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(10)))
                 }
+            }
         }
         .cornerRadius(4)
     }
