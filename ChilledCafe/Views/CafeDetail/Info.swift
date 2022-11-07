@@ -23,7 +23,6 @@ struct Info: View {
                         .customBody()
                     Text("21:30 라스트 오더")
                         .customBody()
-
                 }
                 .padding(.leading, 25)
             }
