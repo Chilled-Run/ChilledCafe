@@ -12,18 +12,21 @@ struct Menu: View {
     let cafe: Cafe
     var body: some View {
         VStack(alignment: .center) {
-            KFImage(URL(string: cafe.menuImages[0]))
+            KFImage(URL(string: cafe.menuImages[0])).placeholder{
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+            }
                 .resizable()
                 .scaledToFit()
-                .padding(.horizontal)
+                .frame(width: UIScreen.screenWidth - 40, alignment: .center)
+                .cornerRadius(4)
+                .overlay(RoundedRectangle(cornerRadius: 4)
+                            .stroke(Color("CustomGray3"), lineWidth: 1))
+            
+            
+            Spacer()
         }
+        .padding(.top, 80)
         .padding(.horizontal)
-        .padding(.bottom, 150)
     }
 }
 
-//struct Menu_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Menu()
-//    }
-//}

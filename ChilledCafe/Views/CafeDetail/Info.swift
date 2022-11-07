@@ -8,37 +8,54 @@
 import SwiftUI
 
 struct Info: View {
-    let cafe: Cafe
     var body: some View {
         VStack (alignment: .leading){
-            Text("11:00에 영업 시작")
-                .padding(.top, 25)
-                .padding(.horizontal, 65)
-            Text("매일 11:00 - 22:00")
-                .padding(.horizontal, 65)
-            Text("21:30 라스트 오더")
-                .padding(.horizontal, 65)
+            HStack{
+                Image(systemName: "clock.fill")
+                    .padding(.leading, 20)
+                    .foregroundColor(Color("MainColor"))
+                    .padding(.bottom, 37)
+                VStack(alignment: .leading) {
+                    Text("11:00에 영업 시작")
+                        .customBody()
+
+                    Text("매일 11:00 - 22:00")
+                        .customBody()
+                    Text("21:30 라스트 오더")
+                        .customBody()
+                }
+                .padding(.leading, 25)
+            }
+            .padding(.top, 80)
             
-            Text("경북 포항시 남구 형산강북로 135")
-                .padding(.top, 40)
-                .padding(.horizontal, 65)
+            HStack{
+                Image("locationIcon")
+                    .foregroundColor(.black)
+                    .padding(.leading, 20)
+                
+                Text("경북 포항시 남구 형산강북로 135")
+                    .customBody()
+                    .padding(.leading, 25)
+            }
+            .padding(.top, 40)
+            .padding(.bottom, 25)
             
             Image("map")
                 .resizable()
                 .scaledToFit()
-                .padding(.top, 25)
-                .padding(.horizontal)
-                .frame(width: UIScreen.main.bounds.width)
+                .frame(width: UIScreen.main.bounds.width - 40)
+                .cornerRadius(4)
+                .overlay(RoundedRectangle(cornerRadius: 4)
+                            .stroke(Color("CustomGray3"), lineWidth: 1))
             
             Spacer()
         }
         .padding(.horizontal)
-        .padding(.bottom, 500)
     }
 }
 
-//struct Info_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Info()
-//    }
-//}
+struct Info_Previews: PreviewProvider {
+    static var previews: some View {
+        Info()
+    }
+}
