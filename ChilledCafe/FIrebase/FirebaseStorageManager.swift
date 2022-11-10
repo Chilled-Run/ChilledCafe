@@ -148,6 +148,7 @@ class FirebaseStorageManager: ObservableObject {
                 }
             }
         }
+       
     }
     
 }

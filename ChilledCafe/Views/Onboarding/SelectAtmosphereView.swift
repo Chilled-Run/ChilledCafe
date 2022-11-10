@@ -14,7 +14,6 @@ struct SelectAtmosphereView: View {
     
     init() {
         print("SelectAtmosphereView 뷰 초기화")
-        FirebaseStorageManager().getCafeList()
     }
     
     var body: some View {

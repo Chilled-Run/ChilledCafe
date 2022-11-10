@@ -18,17 +18,4 @@ struct Cafes: Codable, Hashable {
     let tag: [String]
     let location: String
     let businessHour: [String]
-
-    enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case shortIntroduction = "shortIntroduction"
-        case thumbnail = "thumbnail"
-        case moodImages = "moodImages"
-        case cafeInfo = "cafeInfo"
-        case bookmark = "bookmark"
-        case ar = "ar"
-        case tag = "tag"
-        case location = "location"
-        case businessHour = "businessHour"
-        }
 }
