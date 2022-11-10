@@ -44,6 +44,7 @@
 		9A749D3629193310008761AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A749D3529193310008761AB /* GoogleService-Info.plist */; };
 		9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F12290119B7005AC001 /* HotPlace.swift */; };
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
+		9AD1DA74291CF1BA0089E88A /* Cafes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1DA73291CF1BA0089E88A /* Cafes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		9A749D3529193310008761AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
+		9AD1DA73291CF1BA0089E88A /* Cafes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 			children = (
 				9A9B2F12290119B7005AC001 /* HotPlace.swift */,
 				9A2930F2290438820005D339 /* Cafe.swift */,
+				9AD1DA73291CF1BA0089E88A /* Cafes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			files = (
 				3947F1AD290A6C94009FA15C /* CustomConfirmButtonView.swift in Sources */,
 				3906DC732903121700B26783 /* MainCategoryView.swift in Sources */,
+				9AD1DA74291CF1BA0089E88A /* Cafes.swift in Sources */,
 				39B7C51329058172000C8B07 /* CardView.swift in Sources */,
 				3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */,
 				9A050AE729063892000FB253 /* CafeDetailView.swift in Sources */,
