@@ -12,7 +12,10 @@ class FirebaseStorageManager: ObservableObject {
     @Published var hotPlace: [HotPlace] = []
     @Published var cafes: [Cafe] = []
     @Published var cafeClassification: [String: [Cafe]] = [:]
-   
+    
+    @Published var cafeList: [Cafes] = []
+    @Published var cafeListClassification: [String: [Cafes]] = [:]
+    
     init() {
         getHotPlace()
     }
@@ -102,5 +105,49 @@ class FirebaseStorageManager: ObservableObject {
         }
     }
     
+    func getCafeList(){
+        cafeListClassification = [:]
+        var ref : DatabaseReference!{
+            Database.database().reference()
+        }
+        let firestoreDB = Firestore.firestore()
+        
+        
+        firestoreDB.collection("Cafes").addSnapshotListener {
+            snapshot, error in
+            guard let documents = snapshot?.documents else {
+                print("error")
+                return
+            }
+            self.cafeList = documents.compactMap {
+                doc
+                in
+                let data = try! JSONSerialization.data(withJSONObject: doc.data(), options: [])
+                do {
+                    let decoder = JSONDecoder()
+                    let cafe = try decoder.decode(Cafes.self, from: data)
+                    
+                    for tag in cafe.tag {
+                        let tagedCafes = self.cafeListClassification[tag]
+                        
+                        if let temp = tagedCafes {
+                            var tempCafes = temp
+                            tempCafes.append(cafe)
+                            self.cafeListClassification.updateValue(tempCafes, forKey: tag)
+                        }
+                        else {
+                            self.cafeListClassification[tag] = [cafe]
+                        }
+                    }
+                    return cafe
+                }
+                catch let error {
+                    print("decoding 실패")
+                    return nil
+                }
+            }
+        }
+       
+    }
     
 }
