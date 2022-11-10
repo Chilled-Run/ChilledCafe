@@ -130,7 +130,7 @@ class FirebaseStorageManager: ObservableObject {
                     for tag in cafe.tag {
                         let tagedCafes = self.cafeListClassification[tag]
                         
-                        if let temp = tagedCafes{
+                        if let temp = tagedCafes {
                             var tempCafes = temp
                             tempCafes.append(cafe)
                             self.cafeListClassification.updateValue(tempCafes, forKey: tag)
