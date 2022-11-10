@@ -115,7 +115,7 @@ class FirebaseStorageManager: ObservableObject {
         
         firestoreDB.collection("Cafes").addSnapshotListener {
             snapshot, error in
-            guard let documents = snapshot?.documents else{
+            guard let documents = snapshot?.documents else {
                 print("error")
                 return
             }
