@@ -34,7 +34,6 @@ struct CafeListView: View {
                 })
         } else {
             GeometryReader {geo in
-                let topEdge: CGFloat = geo.safeAreaInsets.top
                 ScrollView(.vertical) {
                     VStack {
                         Group{
@@ -89,7 +88,7 @@ struct CafeListView: View {
                                         RoundedRectangle(cornerRadius: 1)
                                             .frame(width: UIScreen.getWidth(1))
                                             .hidden()
-                                        ForEach(firebaseStorageManager.cafeClassification[likedCafeText]!, id: \.self) { cafe in
+                                        ForEach(firebaseStorageManager.cafeClassification[likedCafeText] ?? [], id: \.self) { cafe in
                                             NavigationLink(destination: CafeDetailView(topEdge: 40, cafe: cafe)){
                                                 TransparentLikedCafeCardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
                                             }
@@ -113,7 +112,7 @@ struct CafeListView: View {
                                             RoundedRectangle(cornerRadius: 1)
                                                 .frame(width: UIScreen.getWidth(1))
                                                 .hidden()
-                                            ForEach(firebaseStorageManager.cafeClassification["\(key)"]!, id: \.self) { cafe in
+                                            ForEach(firebaseStorageManager.cafeClassification["\(key)"] ?? [], id: \.self) { cafe in
                                                 NavigationLink(destination: CafeDetailView(topEdge: 40, cafe: cafe)){
                                                     CardView(thumbnail: cafe.thumbnail, name: cafe.name, shortIntroduction: cafe.shortIntroduction)
                                                 }
