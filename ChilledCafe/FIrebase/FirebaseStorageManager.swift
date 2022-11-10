@@ -12,7 +12,7 @@ class FirebaseStorageManager: ObservableObject {
     @Published var hotPlace: [HotPlace] = []
     @Published var cafes: [Cafe] = []
     @Published var cafeClassification: [String: [Cafe]] = [:]
-   
+    
     @Published var cafeList: [Cafes] = []
     @Published var cafeListClassification: [String: [Cafes]] = [:]
     
@@ -130,7 +130,7 @@ class FirebaseStorageManager: ObservableObject {
                     
                     for tag in cafe.tag {
                         let tagedCafes = self.cafeListClassification[tag]
-
+                        
                         if let temp = tagedCafes{
                             var tempCafes = temp
                             tempCafes.append(cafe)
@@ -140,10 +140,7 @@ class FirebaseStorageManager: ObservableObject {
                             self.cafeListClassification[tag] = [cafe]
                         }
                     }
-                    
-                    print("Debuging, cafeListClassfication", self.cafeListClassification)
                     return cafe
-                    
                 }
                 catch let error {
                     print("decoding 실패")

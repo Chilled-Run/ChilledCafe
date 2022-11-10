@@ -17,7 +17,7 @@ struct Cafes: Codable, Hashable {
     let ar: Bool
     let tag: [String]
     let location: String
-    let businessHour: String
+    let businessHour: [String]
 
     enum CodingKeys: String, CodingKey {
         case name = "name"
