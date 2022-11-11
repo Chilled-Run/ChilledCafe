@@ -25,7 +25,7 @@ struct ChilledCafeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            IntroView()
+            MainView()
         }
     }
 }
