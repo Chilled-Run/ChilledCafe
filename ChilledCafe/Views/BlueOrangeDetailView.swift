@@ -11,7 +11,7 @@ import ACarousel
 
 struct BlueOrangeDetailView: View {
     @State var currentIndex: Int = 0
-    let sample = Cafes(name: "꾸꾸하우스", shortIntroduction: "에스프레소 맛에 진심인 카페", thumbnail: "OnboardingImage1", moodImages: ["https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F1.jpg?alt=media&token=b9a5422a-8b3e-4eec-a350-c4dcc9364313","https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F11.jpg?alt=media&token=ad6aaf6d-e13a-4d2c-b290-f7475a7d2b8b","https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F11.jpg?alt=media&token=ad6aaf6d-e13a-4d2c-b290-f7475a7d2b8b","https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F11.jpg?alt=media&token=ad6aaf6d-e13a-4d2c-b290-f7475a7d2b8b","https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F11.jpg?alt=media&token=ad6aaf6d-e13a-4d2c-b290-f7475a7d2b8b"], cafeInfo: ["테라스에 앉아 바다를 배경으로 그림 그리기","낮에는 커피를 팔고 밤에는 술을 파는 곳","AR 컨텐츠르로 다양한 공간 스토리를 볼 수 있는 곳"], bookmark: true, ar: true, tag: ["바다와 함께","AR 경험"], location: "포항시 남구 지곡로 82", businessHour: [""])
+    let sample = Cafes(name: "꾸꾸하우스", shortIntroduction: "에스프레소 맛에 진심인 카페", thumbnail: "OnboardingImage1", moodImages: ["https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F1.jpg?alt=media&token=b9a5422a-8b3e-4eec-a350-c4dcc9364313","https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F11.jpg?alt=media&token=ad6aaf6d-e13a-4d2c-b290-f7475a7d2b8b","https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F1.jpg?alt=media&token=b9a5422a-8b3e-4eec-a350-c4dcc9364313","https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F11.jpg?alt=media&token=ad6aaf6d-e13a-4d2c-b290-f7475a7d2b8b","https://firebasestorage.googleapis.com/v0/b/chilledcafe-1cc36.appspot.com/o/Cafe%2F%EC%98%81%EC%9D%BC%EB%8C%80%2F%EC%95%84%EB%9D%BC%EB%B9%84%EC%B9%B4%EC%BB%A4%ED%94%BC%EB%A1%9C%EC%8A%A4%ED%84%B0%EC%8A%A4%2F1.jpg?alt=media&token=b9a5422a-8b3e-4eec-a350-c4dcc9364313"], cafeInfo: ["테라스에 앉아 바다를 배경으로 그림 그리기","낮에는 커피를 팔고 밤에는 술을 파는 곳","AR 컨텐츠르로 다양한 공간 스토리를 볼 수 있는 곳"], bookmark: true, ar: true, tag: ["바다와 함께","AR 경험"], location: "포항시 남구 지곡로 82", businessHour: [""])
     
     var body: some View {
         NavigationView{
@@ -20,7 +20,6 @@ struct BlueOrangeDetailView: View {
                     carouselView
                     titleView
                     dividerView
-                        .padding(.top, UIScreen.getHeight(20))
                     tagView
                     infoView
                     locationView
@@ -30,7 +29,6 @@ struct BlueOrangeDetailView: View {
                     HStack{
                         Spacer()
                         indexView
-                            .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
                     }
                     Spacer()
                     HStack{
@@ -54,7 +52,7 @@ struct BlueOrangeDetailView_Previews: PreviewProvider {
 private extension BlueOrangeDetailView{
     var carouselView: some View{
         ZStack(alignment: .top) {
-            NavigationLink(destination: GalleryView(images: sample.moodImages )){
+            NavigationLink(destination: MoodView(images: sample.moodImages )){
                 ACarousel(sample.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {_ in
                     ZStack{
                         //                                KFImage(URL(string: sample.moodImages[currentIndex]))
@@ -105,7 +103,7 @@ private extension BlueOrangeDetailView{
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: UIScreen.getWidth(20), trailing: UIScreen.getWidth(20)))
+        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
     }
 }
 private extension BlueOrangeDetailView{
@@ -114,6 +112,7 @@ private extension BlueOrangeDetailView{
             .fill(Color("CustomGray3"))
             .frame(height: UIScreen.getHeight(2))
             .edgesIgnoringSafeArea(.horizontal)
+            .padding(.top, UIScreen.getHeight(20))
     }
 }
 
@@ -209,7 +208,7 @@ private extension BlueOrangeDetailView{
                     Text("\(currentIndex + 1)" + "/" + "\(sample.moodImages.count)")
                         .customSubhead3()
                 )
-        }
+        } .padding(EdgeInsets(top: UIScreen.getHeight(199), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
     }
 }
 

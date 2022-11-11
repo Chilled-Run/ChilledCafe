@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct GalleryView: View {
+struct MoodView: View {
     let images: [String]
     
     var body: some View {
-        Text("\(index)")
+        VStack{}
     }
 }
 
