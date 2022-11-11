@@ -14,29 +14,31 @@ struct BlueOrangeDetailView: View {
     let sample = Cafes(name: "꾸꾸하우스", shortIntroduction: "에스프레소 맛에 진심인 카페", thumbnail: "OnboardingImage1", moodImages: ["OnboardingImage1","OnboardingImage2","OnboardingImage3","OnboardingImage4","OnboardingImage5"], cafeInfo: ["테라스에 앉아 바다를 배경으로 그림 그리기","낮에는 커피를 팔고 밤에는 술을 파는 곳","AR 컨텐츠르로 다양한 공간 스토리를 볼 수 있는 곳"], bookmark: true, ar: true, tag: ["바다와 함께","AR 경험"], location: "포항시 남구 지곡로 82", businessHour: [""])
     
     var body: some View {
-        GeometryReader {geo in
-            ZStack{
-                VStack {
-                    carouselView
-                    titleView
-                    Divider()
-                        .padding(.top, 20)
-                    tagView
-                    infoView
-                    locationView
-                }.ignoresSafeArea(.all)
-                VStack{
-                    HStack{
-                        Spacer()
-                        indexView
-                            .padding(EdgeInsets(top: 57, leading: 0, bottom: 0, trailing: 20))
-                    }
+        ZStack{
+            VStack(spacing: 0) {
+                carouselView
+                titleView
+                dividerView
+                    .padding(.top, 20)
+                // 패딩 이상하
+                tagView
+                infoView
+                locationView
+                Spacer()
+            }.ignoresSafeArea(.all)
+            VStack{
+                HStack{
                     Spacer()
-                    HStack{
-                        Spacer()
-                        arButton
-                    }.padding(EdgeInsets(top: 0, leading: 0, bottom: 34, trailing: 20))
+                    indexView
+                        .padding(EdgeInsets(top: 57, leading: 0, bottom: 0, trailing: 20))
                 }
+                Spacer()
+                HStack{
+                    Spacer()
+                    if sample.ar {
+                        arButton
+                    }
+                }.padding(EdgeInsets(top: 0, leading: 0, bottom: 34, trailing: 20))
             }
         }.ignoresSafeArea(.all)
     }
@@ -46,7 +48,9 @@ struct BlueOrangeDetailView_Previews: PreviewProvider {
         BlueOrangeDetailView()
     }
 }
-extension BlueOrangeDetailView{
+
+// MARK: 캐러셀
+private extension BlueOrangeDetailView{
     var carouselView: some View{
         ZStack(alignment: .top) {
             ACarousel(sample.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {_ in
@@ -67,19 +71,29 @@ extension BlueOrangeDetailView{
     }
 }
 
-extension BlueOrangeDetailView{
+// MARK: 카페의 이름,북마크, 짧은 소개
+private extension BlueOrangeDetailView{
     var titleView: some View{
         VStack(alignment: .leading, spacing: 10){
             HStack{
                 Text(sample.name + " 카페")
                     .customTitle3()
                 Spacer()
-                Image("바다와 함께")
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(Color.red)
-                    .frame(width:30, height:30)
                 
+                if sample.bookmark {
+                    Image("bookmarked")
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(Color("SubColor"))
+                        .frame(width:30, height:30)
+                }
+                else {
+                    Image("bookmark")
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(Color.black)
+                        .frame(width:30, height:30)
+                }
             }
             HStack{
                 Text(sample.shortIntroduction)
@@ -91,13 +105,23 @@ extension BlueOrangeDetailView{
         .padding(EdgeInsets(top: 30, leading: 20, bottom: 0, trailing: 20))
     }
 }
+private extension BlueOrangeDetailView{
+    var dividerView: some View{
+        Rectangle()
+            .fill(Color.gray)
+            .frame(height: 2)
+            .edgesIgnoringSafeArea(.horizontal)
+    }
+}
 
-extension BlueOrangeDetailView{
+
+// MARK: 해당 카페의 태그들을 보여주느 뷰
+private extension BlueOrangeDetailView{
     var tagView: some View{
         HStack{
             ForEach(sample.tag, id: \.self){
                 tag in
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 4)
                     .fill(Color("MainColor"))
                     .frame(height: 31)
                     .overlay(
@@ -113,42 +137,57 @@ extension BlueOrangeDetailView{
                                 .foregroundColor(Color.white)
                         }
                     )
+                    .frame(width: (CGFloat(tag.count) * 15 + 24))
+                // 패딩 이상함
             }
+            Spacer()
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20))
     }
 }
 
-
-
-
-extension BlueOrangeDetailView{
+// MARK: 카페의 정보를 보여주는 뷰
+private extension BlueOrangeDetailView{
     var infoView: some View{
-        VStack(alignment: .leading, spacing: 20){
-            Text("이 공간의 특별함")
-                .customTitle2()
-            ForEach(sample.cafeInfo, id: \.self){
-                info in
-                HStack{
-                    Image("바다와 함께")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    Text(info)
-                        .customBody()
-                        .foregroundColor(Color("CustomGray1"))
+        HStack{
+            VStack(alignment: .leading, spacing: 20){
+                Text("이 공간의 특별함")
+                    .customTitle2()
+                ForEach(sample.cafeInfo, id: \.self){
+                    info in
+                    HStack{
+                        Image("orange")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(Color("MainColor"))
+                            .frame(width: 20, height: 20)
+                        VStack{
+                            Text(info)
+                                .customBody()
+                                .foregroundColor(Color("CustomGray1"))
+                                .lineLimit(nil) //3줄까지만 제한을 둔다. ()안에 nil을 쓰면 무제한
+                            //                            .multilineTextAlignment(.leading) //여러줄의 텍스트 표시 정렬방식
+                            //                            .lineSpacing(50) //텍스트 줄간격 조절
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                    }
                 }
             }
+            Spacer()
         }.padding(EdgeInsets(top: 30, leading: 20, bottom: 0, trailing: 20))
     }
 }
 
-extension BlueOrangeDetailView{
+// MARK: 위치정보
+private extension BlueOrangeDetailView{
     var locationView: some View{
         VStack(alignment: .leading, spacing: 20 ){
             Text("위치")
                 .customTitle2()
             HStack{
-                Image("바다와 함께")
+                Image("locate")
                     .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(Color("MainColor"))
                     .frame(width: 20, height: 20)
                 Text(sample.location)
                     .customBody()
@@ -158,29 +197,38 @@ extension BlueOrangeDetailView{
         }.padding(EdgeInsets(top: 30, leading: 20, bottom: 0, trailing: 20))    }
 }
 
-extension BlueOrangeDetailView{
+// MARK: 캐러셀의 사진 개수와 현재 인덱스를 보여주는 뷰
+private extension BlueOrangeDetailView{
     var indexView: some View{
         HStack{
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color("CustomGray2"))
                 .frame(width:40, height:24)
                 .overlay(
-                    Text("\(currentIndex)" + "/" + "\(sample.moodImages.count)")
+                    Text("\(currentIndex + 1)" + "/" + "\(sample.moodImages.count)")
                         .customSubhead3()
                 )
         }
     }
 }
 
-extension BlueOrangeDetailView{
+// MARK: ar기능을 위한 플로팅 버튼
+private extension BlueOrangeDetailView{
     var arButton: some View{
         VStack{
             Button(action: {}){
-                Image("바다와 함께")
-                    .resizable()
+                Circle()
+                    .fill(Color("MainColor"))
                     .frame(width: 60, height: 60)
-                    .clipShape(Circle())
-                    .shadow(radius: 3)
+                    .overlay(
+                        Image("ar")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(Color.white)
+                            .frame(width: 40, height: 40)
+                            .clipShape(Circle())
+                    )
+                    .shadow(radius: 4, x: 0, y: 4)
             }
         }
     }
