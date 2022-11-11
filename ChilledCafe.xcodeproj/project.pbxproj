@@ -14,6 +14,8 @@
 		207DA37F2906700700D65EC4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA37E2906700700D65EC4 /* Menu.swift */; };
 		207DA3812906702700D65EC4 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA3802906702700D65EC4 /* Info.swift */; };
 		207DA3832906725B00D65EC4 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA3822906725B00D65EC4 /* OffsetModifier.swift */; };
+		20D8E945291EAAAF00EAC612 /* MoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */; };
+		20D8E947291EABE300EAC612 /* MoodImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E946291EABE300EAC612 /* MoodImageView.swift */; };
 		3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC70290311E500B26783 /* UIScreenExtension.swift */; };
 		3906DC732903121700B26783 /* MainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC722903121700B26783 /* MainCategoryView.swift */; };
 		3906DC76290312FE00B26783 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC75290312FE00B26783 /* Kingfisher */; };
@@ -58,6 +60,8 @@
 		207DA37E2906700700D65EC4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		207DA3802906702700D65EC4 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		207DA3822906725B00D65EC4 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
+		20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewModel.swift; sourceTree = "<group>"; };
+		20D8E946291EABE300EAC612 /* MoodImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodImageView.swift; sourceTree = "<group>"; };
 		3906DC70290311E500B26783 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		3906DC722903121700B26783 /* MainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryView.swift; sourceTree = "<group>"; };
 		3906DC7B29040AED00B26783 /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
@@ -157,6 +161,16 @@
 			path = CafeDetail;
 			sourceTree = "<group>";
 		};
+		20D8E943291EAA9B00EAC612 /* MoodView */ = {
+			isa = PBXGroup;
+			children = (
+				9A637F3F291E3784009BCBED /* MoodView.swift */,
+				20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */,
+				20D8E946291EABE300EAC612 /* MoodImageView.swift */,
+			);
+			path = MoodView;
+			sourceTree = "<group>";
+		};
 		3906DC6F290311C700B26783 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,12 +225,12 @@
 		9A9B2F0C29011985005AC001 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				20D8E943291EAA9B00EAC612 /* MoodView */,
 				393A5BC92907C15900C4E31E /* CafeList */,
 				207DA37B29066FB300D65EC4 /* CafeDetail */,
 				39B7C52829070985000C8B07 /* Onboarding */,
 				3906DC722903121700B26783 /* MainCategoryView.swift */,
 				9AD1DA75291D47A30089E88A /* BlueOrangeDetailView.swift */,
-				9A637F3F291E3784009BCBED /* MoodView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -342,6 +356,8 @@
 				3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */,
 				9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */,
 				9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */,
+				20D8E945291EAAAF00EAC612 /* MoodViewModel.swift in Sources */,
+				20D8E947291EABE300EAC612 /* MoodImageView.swift in Sources */,
 				207DA37F2906700700D65EC4 /* Menu.swift in Sources */,
 				207DA37D29066FE500D65EC4 /* Mood.swift in Sources */,
 				393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */,
