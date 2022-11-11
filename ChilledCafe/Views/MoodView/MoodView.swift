@@ -39,7 +39,7 @@ struct MoodView: View {
                                 .resizable()
                                 .cornerRadius(4)
                                 .scaledToFit()
-                                .frame(width: UIScreen.main.bounds.width / 2.2 - 1)
+                                .frame(width: UIScreen.screenWidth / 2.2 - 1)
                         }
                     })
                 }
@@ -56,7 +56,7 @@ struct MoodView: View {
                     Color.black
                         .opacity(moodViewData.bgOpacity)
                         .ignoresSafeArea()
-                        .frame(height: UIScreen.main.bounds.size.height)
+                        .frame(height: UIScreen.screenHeight)
                     
                     MoodImageView(images: images)
                 }
