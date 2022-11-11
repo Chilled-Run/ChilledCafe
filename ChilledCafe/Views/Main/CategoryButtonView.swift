@@ -13,7 +13,9 @@ struct CategoryButtonView: View {
     
     var body: some View {
         VStack {
+            // MARK: - 카테고리 아이콘
             Image(imageName)
+            // MARK: - 카테고리 명
             Text(title)
                 .customSubhead3()
         }
