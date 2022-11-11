@@ -34,7 +34,7 @@ struct HorizontalScrollMenuBarView: View {
                     // MARK: - 카테고리
                     ForEach(Array(category.enumerated()), id: \.0) { index, item in
                         VStack {
-                            CategoryButtonView(imageName: "Bada", title: "\(item)")
+                            CategoryButtonView(title: "\(item)")
                                 .foregroundColor(index == choosed ? Color("MainColor") : Color("CustomGray2"))
                                 .id(index)
                                 .onTapGesture {

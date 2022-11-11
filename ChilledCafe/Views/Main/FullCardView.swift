@@ -73,7 +73,6 @@ struct FullCardView: View {
                 }
                 .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(20)))
             })
-            
     }  
 }
 
