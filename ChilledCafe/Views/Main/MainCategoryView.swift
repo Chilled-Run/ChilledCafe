@@ -24,7 +24,6 @@ struct MainCategoryView: View {
                         Spacer()
                     }
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(10), trailing: 0))
-                    
                     HStack {
                         Text("가볍게 즐기는 색다른 경험")
                             .customSubhead4()
