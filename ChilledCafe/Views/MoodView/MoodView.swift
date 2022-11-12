@@ -16,6 +16,7 @@ struct MoodView: View {
     var columnGrid: [GridItem] = [GridItem(.flexible(), spacing: 1), GridItem(.flexible(), spacing: 1)]
     
     // TODO: images --> cafe.moodImages
+    // 추후 데이터베이스 연동 후 객체를 변동해야합니다.
     let images: [String]
     
     var body: some View {
@@ -23,7 +24,7 @@ struct MoodView: View {
             LazyVGrid(columns: columnGrid,  alignment: .center, spacing: 1) {
                 
                 // TODO: images --> cafe.moodImages
-                
+                // 추후 데이터베이스 연동 후 객체를 변동해야합니다.
                 ForEach (images.indices, id: \.self) { index in
                     Button(action: {
                         withAnimation(.easeInOut) {
@@ -65,6 +66,8 @@ struct MoodView: View {
         .environmentObject(moodViewData)
         
     }
+    
+    // MARK: 뒤로가기 버튼
     
     var backButton : some View {
         Button(action: {

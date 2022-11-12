@@ -25,7 +25,7 @@ struct MoodImageView: View {
                     
                         .offset(y: moodViewData.imageViewerOffset.height)
                         .gesture(
-                            // magnifying gesture
+                            // 확대 제스쳐
                             MagnificationGesture().onChanged({ (value) in
                                 moodViewData.imageScale = value
                                 
@@ -39,14 +39,20 @@ struct MoodImageView: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .overlay(
-                Text("\(images.firstIndex(of: "\(moodViewData.selectedImageID)")! + 1) / \(images.count) ")
-                    .foregroundColor(.green)
+                
+                // MARK: 사진 인덱스
+                
+                Text("\(images.firstIndex(of: "\(moodViewData.selectedImageID)")! + 1)/\(images.count) ")
+                    .foregroundColor(.white)
                     .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                     .opacity(moodViewData.bgOpacity)
-                    
+                
                 , alignment: .topTrailing
             )
             .overlay(
+                
+                // MARK: 닫기 버튼
+                
                 Button(action: {
                     withAnimation(.default) {
                         moodViewData.showImageViewer.toggle()

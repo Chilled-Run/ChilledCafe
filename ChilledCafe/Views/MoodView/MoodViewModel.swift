@@ -8,20 +8,27 @@
 import SwiftUI
 
 class MoodViewModel: ObservableObject {
+    
+    // 이미지 뷰어를 위한 프로퍼티들
     @Published var showImageViewer = false
     
     @Published var selectedImageID: String = ""
     
     @Published var imageViewerOffset: CGSize = .zero
     
+    // 배경 Opacity
     @Published var bgOpacity: Double = 1
     
+    // 확대를 위한 이미지 스케일링
     @Published var imageScale: CGFloat = 1
     
     func onChange(value: CGSize) {
+        
+        // offset 업데이트
         imageViewerOffset = value
         
-        let halgHeight = UIScreen.main.bounds.height / 2
+        // offset 계산
+        let halgHeight = UIScreen.screenHeight / 2
         let progress = imageViewerOffset.height / halgHeight
         
         withAnimation(.default) {
@@ -37,7 +44,7 @@ class MoodViewModel: ObservableObject {
                 translation = -translation
             }
             
-            if translation < 10 {
+            if translation < 200 {
                 imageViewerOffset = .zero
                 bgOpacity = 1
             }
