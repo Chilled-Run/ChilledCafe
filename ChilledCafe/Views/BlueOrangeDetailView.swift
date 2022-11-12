@@ -225,7 +225,8 @@ private extension BlueOrangeDetailView{
                         .customSubhead3()
                         .foregroundColor(Color.white)
                 )
-        } .padding(EdgeInsets(top: UIScreen.getHeight(256), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
+        } 
+        .padding(EdgeInsets(top: UIScreen.getHeight(256), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
     }
 }
 
