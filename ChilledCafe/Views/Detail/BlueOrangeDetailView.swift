@@ -19,56 +19,67 @@ struct BlueOrangeDetailView: View {
     
     var body: some View {
         NavigationView {
-            
-            //스크롤 뷰 고정
-            ScrollView(.vertical, showsIndicators: false) {
-                
-                VStack(spacing: 0) {
+            ZStack{
+                //스크롤 뷰 고정
+                ScrollView(.vertical, showsIndicators: false) {
                     
-                    //carousel nav
-                    NavigationLink(destination: MoodView(images: sample.moodImages )) {
+                    VStack(spacing: 0) {
                         
-                        ZStack(alignment: .top) {
+                        //carousel nav
+                        NavigationLink(destination: MoodView(images: sample.moodImages )) {
                             
-                            // MARK: 카페 캐러셀 이미지
-                            ACarousel(sample.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {_ in
-                                KFImage(URL(string: sample.moodImages[currentIndex]))
-                                    .placeholder{
-                                        ProgressView().progressViewStyle(CircularProgressViewStyle())
-                                    }
+                            ZStack(alignment: .top) {
+                                
+                                // MARK: 카페 캐러셀 이미지
+                                ACarousel(sample.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {_ in
+                                    KFImage(URL(string: sample.moodImages[currentIndex]))
+                                        .placeholder{
+                                            ProgressView().progressViewStyle(CircularProgressViewStyle())
+                                        }
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(300))
+                                }
+                                
+                                //gradient effect
+                                Image("gradient")
                                     .resizable()
-                                    .scaledToFill()
-                                    .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(300))
+                                    .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeight(111))
+                                
+                                // MARK: 캐러셀 인덱스
+                                HStack{
+                                    Spacer()
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.black)
+                                        .opacity(0.4)
+                                        .frame(width:UIScreen.getWidth(42), height:UIScreen.getHeight(24))
+                                        .overlay(
+                                            Text("\(currentIndex + 1)" + "/" + "\(sample.moodImages.count)")
+                                                .customSubhead3()
+                                                .foregroundColor(Color.white)
+                                        )
+                                }
+                                .padding(EdgeInsets(top: UIScreen.getHeight(256), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
+                                
                             }
-                            
-                            //gradient effect
-                            Image("gradient")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeight(111))
-                            
-                            // MARK: 캐러셀 인덱스
-                            HStack{
-                                Spacer()
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.black)
-                                    .opacity(0.4)
-                                    .frame(width:UIScreen.getWidth(42), height:UIScreen.getHeight(24))
-                                    .overlay(
-                                        Text("\(currentIndex + 1)" + "/" + "\(sample.moodImages.count)")
-                                            .customSubhead3()
-                                            .foregroundColor(Color.white)
-                                    )
-                            } .padding(EdgeInsets(top: UIScreen.getHeight(256), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
+                            //carousel height
+                            .frame(height: UIScreen.getHeight(300))
                             
                         }
-                        //carousel height
-                        .frame(height: UIScreen.getHeight(300))
-                        
+                        DetailInfoView(sample: sample)
+                        Spacer()
                     }
-                    DetailInfoView(sample: sample)
-                    Spacer()
                 }
-                .frame(height: UIScreen.getHeight(810))
+                
+                // MARK: 플로팅 버튼
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        arButtonView()
+                    }
+                }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(34), trailing: UIScreen.getWidth(20)))
             }
             .ignoresSafeArea(.all)
         }
@@ -80,5 +91,22 @@ struct BlueOrangeDetailView_Previews: PreviewProvider {
     }
 }
 
+// MARK: AR 버튼
 
-
+@ViewBuilder
+func arButtonView() -> some View {
+    Button(action: {}) {
+        Circle()
+            .fill(Color("MainColor"))
+            .frame(width: UIScreen.getWidth(60), height: UIScreen.getWidth(60))
+            .overlay(
+                Image("ar")
+                    .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(Color.white)
+                    .frame(width: 40, height: 40)
+                    .clipShape(Circle())
+            )
+            .shadow(radius: 4, x: 0, y: 4)
+    }
+}
