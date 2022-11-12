@@ -12,7 +12,9 @@ struct DetailInfoView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
+                
                 // MARK: 카페 타이틀과 북마크, 한 줄 소개
+                
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Text(sample.name)
@@ -43,6 +45,7 @@ struct DetailInfoView: View {
                 .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
                 
                 // MARK: divider
+                
                 Rectangle()
                     .fill(Color("CustomGray3"))
                     .frame(height: UIScreen.getHeight(2))
@@ -51,12 +54,13 @@ struct DetailInfoView: View {
         
                 DetailTagView(sample: sample)
                 
+                // MARK: 공간의 특징
+                
                 HStack {
                     VStack(alignment: .leading, spacing: 20) {
                         Text("이 공간의 특별함")
                             .customTitle2()
-                        
-                        // MARK: 공간의 특징
+                        // 공간에 대한 특징
                         ForEach(sample.cafeInfo, id: \.self) {
                             info in
                             HStack(alignment:.top ) {
@@ -78,6 +82,8 @@ struct DetailInfoView: View {
                     Spacer()
                 }.padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
                 
+                //MARK: 카페 위치정보
+                
                 VStack(alignment: .leading, spacing: 20) {
                     Text("위치")
                         .customTitle2()
@@ -95,10 +101,14 @@ struct DetailInfoView: View {
                 }.padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
             }
         }
+        
         Spacer()
+        
+        // MARK: 플로팅 버튼
+        
         HStack {
             Spacer()
-            buttonView().padding(.trailing, UIScreen.getWidth(20))
+            arButtonView().padding(.trailing, UIScreen.getWidth(20))
         }
     }
 }
@@ -109,8 +119,10 @@ struct DetailInfoView_Previews: PreviewProvider {
     }
 }
 
+// MARK: AR 버튼
+
 @ViewBuilder
-func buttonView() -> some View {
+func arButtonView() -> some View {
             Button(action: {}) {
                 Circle()
                     .fill(Color("MainColor"))

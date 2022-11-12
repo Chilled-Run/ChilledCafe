@@ -19,11 +19,18 @@ struct BlueOrangeDetailView: View {
     
     var body: some View {
         NavigationView {
+            
+            //스크롤 뷰 고정
             ScrollView(.vertical, showsIndicators: false) {
+                
                 VStack(spacing: 0) {
+                    
+                    //carousel nav
                     NavigationLink(destination: MoodView(images: sample.moodImages )) {
+                        
                         ZStack(alignment: .top) {
-                            // MARK: 카페 이미지에 대한 캐러셀
+                            
+                            // MARK: 카페 캐러셀 이미지
                             ACarousel(sample.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {_ in
                                 KFImage(URL(string: sample.moodImages[currentIndex]))
                                     .placeholder{
@@ -33,11 +40,13 @@ struct BlueOrangeDetailView: View {
                                     .scaledToFill()
                                     .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(300))
                             }
+                            
+                            //gradient effect
                             Image("gradient")
                                 .resizable()
                                 .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeight(111))
                             
-                            // MARK: 캐러셀에서 현재 보여주는 사진의 인덱스를 나타내는 뷰
+                            // MARK: 캐러셀 인덱스
                             HStack{
                                 Spacer()
                                 RoundedRectangle(cornerRadius: 10)
@@ -50,8 +59,11 @@ struct BlueOrangeDetailView: View {
                                             .foregroundColor(Color.white)
                                     )
                             } .padding(EdgeInsets(top: UIScreen.getHeight(256), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
+                            
                         }
+                        //carousel height
                         .frame(height: UIScreen.getHeight(300))
+                        
                     }
                     DetailInfoView(sample: sample)
                     Spacer()
