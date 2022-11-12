@@ -207,7 +207,9 @@ private extension BlueOrangeDetailView{
                     .foregroundColor(Color("CustomGray1"))
                 Spacer()
             }
-        }.padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))    }
+        }
+        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))    
+    }
 }
 
 // MARK: 캐러셀의 사진 개수와 현재 인덱스를 보여주는 뷰
