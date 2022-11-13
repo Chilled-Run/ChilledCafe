@@ -14,8 +14,9 @@
 		207DA37F2906700700D65EC4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA37E2906700700D65EC4 /* Menu.swift */; };
 		207DA3812906702700D65EC4 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA3802906702700D65EC4 /* Info.swift */; };
 		207DA3832906725B00D65EC4 /* OffsetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA3822906725B00D65EC4 /* OffsetModifier.swift */; };
+		20D8E945291EAAAF00EAC612 /* MoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */; };
+		20D8E947291EABE300EAC612 /* MoodImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E946291EABE300EAC612 /* MoodImageView.swift */; };
 		3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC70290311E500B26783 /* UIScreenExtension.swift */; };
-		3906DC732903121700B26783 /* MainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC722903121700B26783 /* MainCategoryView.swift */; };
 		3906DC76290312FE00B26783 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC75290312FE00B26783 /* Kingfisher */; };
 		3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC7B29040AED00B26783 /* CafeListView.swift */; };
 		3906DC812904484700B26783 /* ACarousel in Frameworks */ = {isa = PBXBuildFile; productRef = 3906DC802904484700B26783 /* ACarousel */; };
@@ -25,6 +26,12 @@
 		3947F1AD290A6C94009FA15C /* CustomConfirmButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947F1AC290A6C94009FA15C /* CustomConfirmButtonView.swift */; };
 		3947F1B0290A8413009FA15C /* LTMuseum-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3947F1AE290A8413009FA15C /* LTMuseum-Bold.ttf */; };
 		3947F1B1290A8413009FA15C /* LTMuseum-Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3947F1AF290A8413009FA15C /* LTMuseum-Reg.ttf */; };
+		3997AEA7291D12BD00D57176 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3997AEA6291D12BD00D57176 /* GoogleService-Info.plist */; };
+		3997AEA9291D187300D57176 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997AEA8291D187300D57176 /* MainView.swift */; };
+		3997AEAC291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997AEAB291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift */; };
+		3997AEAE291D274600D57176 /* CategoryButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997AEAD291D274600D57176 /* CategoryButtonView.swift */; };
+		3997AECC291E0DDA00D57176 /* FullCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997AECB291E0DDA00D57176 /* FullCardView.swift */; };
+		3997AECE291E0EAC00D57176 /* FullCardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997AECD291E0EAC00D57176 /* FullCardScrollView.swift */; };
 		39B7C51329058172000C8B07 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51229058172000C8B07 /* CardView.swift */; };
 		39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */; };
 		39B7C51D2905AA23000C8B07 /* AppleSDGothicNeo.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 39B7C51C2905AA23000C8B07 /* AppleSDGothicNeo.ttc */; };
@@ -42,7 +49,6 @@
 		9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */; };
 		9A2930F3290438820005D339 /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2930F2290438820005D339 /* Cafe.swift */; };
 		9A637F40291E3784009BCBED /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A637F3F291E3784009BCBED /* MoodView.swift */; };
-		9A749D3629193310008761AB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A749D3529193310008761AB /* GoogleService-Info.plist */; };
 		9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F12290119B7005AC001 /* HotPlace.swift */; };
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
 		9AC209F9291FEC59006E2CA0 /* DetailTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC209F8291FEC59006E2CA0 /* DetailTagView.swift */; };
@@ -60,8 +66,9 @@
 		207DA37E2906700700D65EC4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		207DA3802906702700D65EC4 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		207DA3822906725B00D65EC4 /* OffsetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetModifier.swift; sourceTree = "<group>"; };
+		20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewModel.swift; sourceTree = "<group>"; };
+		20D8E946291EABE300EAC612 /* MoodImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodImageView.swift; sourceTree = "<group>"; };
 		3906DC70290311E500B26783 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
-		3906DC722903121700B26783 /* MainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryView.swift; sourceTree = "<group>"; };
 		3906DC7B29040AED00B26783 /* CafeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeListView.swift; sourceTree = "<group>"; };
 		393A5BA1290739B600C4E31E /* SelectAtmosphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAtmosphereView.swift; sourceTree = "<group>"; };
 		393A5BC72907BE5900C4E31E /* TransparentLikedCafeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentLikedCafeCardView.swift; sourceTree = "<group>"; };
@@ -69,6 +76,12 @@
 		3947F1AC290A6C94009FA15C /* CustomConfirmButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfirmButtonView.swift; sourceTree = "<group>"; };
 		3947F1AE290A8413009FA15C /* LTMuseum-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LTMuseum-Bold.ttf"; sourceTree = "<group>"; };
 		3947F1AF290A8413009FA15C /* LTMuseum-Reg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LTMuseum-Reg.ttf"; sourceTree = "<group>"; };
+		3997AEA6291D12BD00D57176 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3997AEA8291D187300D57176 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		3997AEAB291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollMenuBarView.swift; sourceTree = "<group>"; };
+		3997AEAD291D274600D57176 /* CategoryButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonView.swift; sourceTree = "<group>"; };
+		3997AECB291E0DDA00D57176 /* FullCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCardView.swift; sourceTree = "<group>"; };
+		3997AECD291E0EAC00D57176 /* FullCardScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCardScrollView.swift; sourceTree = "<group>"; };
 		39B7C51229058172000C8B07 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		39B7C51429058AA9000C8B07 /* LikedCafeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedCafeCardView.swift; sourceTree = "<group>"; };
 		39B7C51C2905AA23000C8B07 /* AppleSDGothicNeo.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeo.ttc; sourceTree = "<group>"; };
@@ -80,7 +93,6 @@
 		9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		9A2930F2290438820005D339 /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
 		9A637F3F291E3784009BCBED /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
-		9A749D3529193310008761AB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
 		9AC209F8291FEC59006E2CA0 /* DetailTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTagView.swift; sourceTree = "<group>"; };
@@ -111,7 +123,7 @@
 		2003254B28FFC9A0004DE5B6 = {
 			isa = PBXGroup;
 			children = (
-				9A749D3529193310008761AB /* GoogleService-Info.plist */,
+				3997AEA6291D12BD00D57176 /* GoogleService-Info.plist */,
 				39B7C5192905A9E7000C8B07 /* Fonts */,
 				2003255628FFC9A0004DE5B6 /* ChilledCafe */,
 				2003255528FFC9A0004DE5B6 /* Products */,
@@ -130,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				3906DC6F290311C700B26783 /* Extension */,
-				9A2930EF290291F60005D339 /* FIrebase */,
+				9A2930EF290291F60005D339 /* Firebase */,
 				9A9B2F0E29011995005AC001 /* Data */,
 				9A9B2F0D2901198A005AC001 /* Model */,
 				9A9B2F0C29011985005AC001 /* Views */,
@@ -161,6 +173,16 @@
 			path = CafeDetail;
 			sourceTree = "<group>";
 		};
+		20D8E943291EAA9B00EAC612 /* MoodView */ = {
+			isa = PBXGroup;
+			children = (
+				9A637F3F291E3784009BCBED /* MoodView.swift */,
+				20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */,
+				20D8E946291EABE300EAC612 /* MoodImageView.swift */,
+			);
+			path = MoodView;
+			sourceTree = "<group>";
+		};
 		3906DC6F290311C700B26783 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +203,18 @@
 				393A5BC72907BE5900C4E31E /* TransparentLikedCafeCardView.swift */,
 			);
 			path = CafeList;
+			sourceTree = "<group>";
+		};
+		3997AEAA291D1C9100D57176 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3997AEA8291D187300D57176 /* MainView.swift */,
+				3997AEAB291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift */,
+				3997AEAD291D274600D57176 /* CategoryButtonView.swift */,
+				3997AECB291E0DDA00D57176 /* FullCardView.swift */,
+				3997AECD291E0EAC00D57176 /* FullCardScrollView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		39B7C5192905A9E7000C8B07 /* Fonts */ = {
@@ -204,23 +238,26 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		9A2930EF290291F60005D339 /* FIrebase */ = {
+		9A2930EF290291F60005D339 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
 				9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */,
 			);
-			path = FIrebase;
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		9A9B2F0C29011985005AC001 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+
 				9AC209F5291FE533006E2CA0 /* DetailPages */,
+				20D8E943291EAA9B00EAC612 /* MoodView */,
+				9AD1DA75291D47A30089E88A /* BlueOrangeDetailView.swift */,
+				3997AEAA291D1C9100D57176 /* Main */,
 				393A5BC92907C15900C4E31E /* CafeList */,
 				207DA37B29066FB300D65EC4 /* CafeDetail */,
 				39B7C52829070985000C8B07 /* Onboarding */,
-				3906DC722903121700B26783 /* MainCategoryView.swift */,
-				9A637F3F291E3784009BCBED /* MoodView.swift */,
+
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -332,7 +369,7 @@
 				39B7C5242905AD98000C8B07 /* AppleSDGothicNeoEB.ttf in Resources */,
 				39B7C51D2905AA23000C8B07 /* AppleSDGothicNeo.ttc in Resources */,
 				3947F1B1290A8413009FA15C /* LTMuseum-Reg.ttf in Resources */,
-				9A749D3629193310008761AB /* GoogleService-Info.plist in Resources */,
+				3997AEA7291D12BD00D57176 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,26 +381,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				3947F1AD290A6C94009FA15C /* CustomConfirmButtonView.swift in Sources */,
-				3906DC732903121700B26783 /* MainCategoryView.swift in Sources */,
 				9AD1DA74291CF1BA0089E88A /* Cafes.swift in Sources */,
 				39B7C51329058172000C8B07 /* CardView.swift in Sources */,
 				3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */,
 				9A050AE729063892000FB253 /* CafeDetailView.swift in Sources */,
 				39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */,
+				3997AEAC291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift in Sources */,
 				207DA3832906725B00D65EC4 /* OffsetModifier.swift in Sources */,
 				39B7C5222905AB41000C8B07 /* TextExtension.swift in Sources */,
 				9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */,
 				3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */,
+				3997AECE291E0EAC00D57176 /* FullCardScrollView.swift in Sources */,
 				9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */,
 				9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */,
+				20D8E945291EAAAF00EAC612 /* MoodViewModel.swift in Sources */,
+				20D8E947291EABE300EAC612 /* MoodImageView.swift in Sources */,
 				207DA37F2906700700D65EC4 /* Menu.swift in Sources */,
+				3997AEAE291D274600D57176 /* CategoryButtonView.swift in Sources */,
+				3997AECC291E0DDA00D57176 /* FullCardView.swift in Sources */,
 				207DA37D29066FE500D65EC4 /* Mood.swift in Sources */,
 				393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */,
 				3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */,
 				393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
 				39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */,
+
 				9AC209FB291FECA2006E2CA0 /* DetailInfoView.swift in Sources */,
+        3997AEA9291D187300D57176 /* MainView.swift in Sources */,
+
 				9A2930F3290438820005D339 /* Cafe.swift in Sources */,
 				39B7C5262905B6F3000C8B07 /* ViewExtension.swift in Sources */,
 				9AC209F9291FEC59006E2CA0 /* DetailTagView.swift in Sources */,
@@ -498,7 +543,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
+				DEVELOPMENT_TEAM = PQ5FS4VVLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
@@ -532,7 +577,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
+				DEVELOPMENT_TEAM = PQ5FS4VVLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
