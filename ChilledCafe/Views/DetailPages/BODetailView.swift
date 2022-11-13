@@ -12,11 +12,7 @@ import ACarousel
 
 struct BODetailView: View {
     @State var currentIndex: Int = 0
-    let sample = constant().sample
-    
-    init() {
-        UIScrollView.appearance().bounces = false
-    }
+    let cafe: Cafes
     
     var body: some View {
         NavigationView {
@@ -28,13 +24,13 @@ struct BODetailView: View {
                     VStack(spacing: 0) {
                         
                         //carousel nav
-                        NavigationLink(destination: MoodView(images: sample.moodImages )) {
+                        NavigationLink(destination: MoodView(images: cafe.moodImages )) {
                             
                             ZStack(alignment: .top) {
                                 
                                 // MARK: 카페 캐러셀 이미지
-                                ACarousel(sample.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {_ in
-                                    KFImage(URL(string: sample.moodImages[currentIndex]))
+                                ACarousel(cafe.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {_ in
+                                    KFImage(URL(string: cafe.moodImages[currentIndex]))
                                         .placeholder{
                                             ProgressView().progressViewStyle(CircularProgressViewStyle())
                                         }
@@ -56,7 +52,7 @@ struct BODetailView: View {
                                         .opacity(0.4)
                                         .frame(width:UIScreen.getWidth(42), height:UIScreen.getHeight(24))
                                         .overlay(
-                                            Text("\(currentIndex + 1)" + "/" + "\(sample.moodImages.count)")
+                                            Text("\(currentIndex + 1)" + "/" + "\(cafe.moodImages.count)")
                                                 .customSubhead3()
                                                 .foregroundColor(Color.white)
                                         )
@@ -65,17 +61,17 @@ struct BODetailView: View {
                                 
                             }
                             
-                            
                             //carousel height
                             .frame(height: UIScreen.getHeight(300))
                             
                         }
                         
-                        DetailInfoView(sample: sample)
+                        DetailInfoView(sample: cafe)
                         Spacer()
                     }
                     
                 }
+                
                 
                 // MARK: 플로팅 버튼
                 VStack {
@@ -92,11 +88,11 @@ struct BODetailView: View {
     }
 }
 
-struct BODetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        BODetailView()
-    }
-}
+//struct BODetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BODetailView(cafe: constant().sample)
+//    }
+//}
 
 // MARK: AR 버튼
 

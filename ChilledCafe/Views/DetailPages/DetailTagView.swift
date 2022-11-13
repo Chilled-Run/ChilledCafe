@@ -21,7 +21,7 @@ struct DetailTagView: View {
                 ) {
                     item in
                     HStack(spacing: 0) {
-                        Image("바다와 함께")
+                        Image("\(Icon(rawValue: item) ?? .ocean)")
                             .resizable()
                             .renderingMode(.template)
                             .foregroundColor(Color.white)

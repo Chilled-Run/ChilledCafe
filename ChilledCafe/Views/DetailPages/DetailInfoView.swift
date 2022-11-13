@@ -29,10 +29,9 @@ struct DetailInfoView: View {
                             .frame(width:UIScreen.getWidth(30), height:UIScreen.getHeight(30))
                     }
                     else {
-                        Image("bookmarkBlack")
+                        Image("bookmarkWhite")
                             .resizable()
                             .renderingMode(.template)
-                            .foregroundColor(Color.black)
                             .frame(width:UIScreen.getWidth(30), height:UIScreen.getHeight(30))
                     }
                 }
@@ -110,3 +109,4 @@ struct DetailInfoView_Previews: PreviewProvider {
         DetailInfoView(sample: constant().sample)
     }
 }
+
