@@ -14,7 +14,7 @@ struct FullCardScrollView: View {
         ScrollView(.vertical, showsIndicators: false) {
             ForEach(firebaseSM.cafeListClassification[firebaseSM.selectedCategory] ?? [], id: \.self) { cafe in
                 NavigationLink(destination: {
-                    BODetailView(cafe: cafe)
+                    EmptyView()
                 }, label: {
                     FullCardView(cafe: cafe)
                 })
