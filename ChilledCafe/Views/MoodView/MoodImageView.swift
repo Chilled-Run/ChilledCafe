@@ -79,6 +79,6 @@ struct MoodImageView: View {
 
 struct MoodImageView_Previews: PreviewProvider {
     static var previews: some View {
-        MainCategoryView()
+        MainView()
     }
 }

@@ -84,6 +84,6 @@ struct MoodView: View {
 
 struct GalleryView_Previews: PreviewProvider {
     static var previews: some View {
-        MainCategoryView()
+        MainView()
     }
 }
