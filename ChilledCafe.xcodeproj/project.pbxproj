@@ -51,8 +51,6 @@
 		9A637F40291E3784009BCBED /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A637F3F291E3784009BCBED /* MoodView.swift */; };
 		9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F12290119B7005AC001 /* HotPlace.swift */; };
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
-		9AC209F9291FEC59006E2CA0 /* DetailTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC209F8291FEC59006E2CA0 /* DetailTagView.swift */; };
-		9AC209FB291FECA2006E2CA0 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC209FA291FECA2006E2CA0 /* DetailInfoView.swift */; };
 		9AD1DA74291CF1BA0089E88A /* Cafes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1DA73291CF1BA0089E88A /* Cafes.swift */; };
 		9AD1DA76291D47A30089E88A /* BlueOrangeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1DA75291D47A30089E88A /* BlueOrangeDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -95,8 +93,6 @@
 		9A637F3F291E3784009BCBED /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
-		9AC209F8291FEC59006E2CA0 /* DetailTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTagView.swift; sourceTree = "<group>"; };
-		9AC209FA291FECA2006E2CA0 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		9AD1DA73291CF1BA0089E88A /* Cafes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafes.swift; sourceTree = "<group>"; };
 		9AD1DA75291D47A30089E88A /* BlueOrangeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueOrangeDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,15 +245,12 @@
 		9A9B2F0C29011985005AC001 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-
-				9AC209F5291FE533006E2CA0 /* DetailPages */,
 				20D8E943291EAA9B00EAC612 /* MoodView */,
 				9AD1DA75291D47A30089E88A /* BlueOrangeDetailView.swift */,
 				3997AEAA291D1C9100D57176 /* Main */,
 				393A5BC92907C15900C4E31E /* CafeList */,
 				207DA37B29066FB300D65EC4 /* CafeDetail */,
 				39B7C52829070985000C8B07 /* Onboarding */,
-
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -278,16 +271,6 @@
 				9A9B2F1629011A1C005AC001 /* temparyData.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		9AC209F5291FE533006E2CA0 /* DetailPages */ = {
-			isa = PBXGroup;
-			children = (
-				9AD1DA75291D47A30089E88A /* BlueOrangeDetailView.swift */,
-				9AC209F8291FEC59006E2CA0 /* DetailTagView.swift */,
-				9AC209FA291FECA2006E2CA0 /* DetailInfoView.swift */,
-			);
-			path = DetailPages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,13 +388,9 @@
 				393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
 				39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */,
-
-				9AC209FB291FECA2006E2CA0 /* DetailInfoView.swift in Sources */,
-        3997AEA9291D187300D57176 /* MainView.swift in Sources */,
-
+				3997AEA9291D187300D57176 /* MainView.swift in Sources */,
 				9A2930F3290438820005D339 /* Cafe.swift in Sources */,
 				39B7C5262905B6F3000C8B07 /* ViewExtension.swift in Sources */,
-				9AC209F9291FEC59006E2CA0 /* DetailTagView.swift in Sources */,
 				207DA3812906702700D65EC4 /* Info.swift in Sources */,
 				9AD1DA76291D47A30089E88A /* BlueOrangeDetailView.swift in Sources */,
 				9A637F40291E3784009BCBED /* MoodView.swift in Sources */,
