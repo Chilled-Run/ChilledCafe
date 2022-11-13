@@ -11,16 +11,19 @@ struct MainView: View {
     @StateObject var firebaseSM: FirebaseStorageManager = FirebaseStorageManager()
     
     var body: some View {
-        NavigationView {
             VStack {
                 HStack {
                     Image("AppTitle")
                         .resizable()
                         .frame(width: UIScreen.getWidth(100), height: UIScreen.getHeight(30))
                     Spacer()
-                    Image("bookmarks")
-                        .resizable()
-                        .frame(width: UIScreen.getWidth(30), height: UIScreen.getHeight(30))
+                    NavigationLink(destination: {
+                        MyBookmarkView(firebaseSM: firebaseSM)
+                    }) {
+                        Image("bookmarks")
+                            .resizable()
+                            .frame(width: UIScreen.getWidth(30), height: UIScreen.getHeight(30))
+                    }
                 }
                 .padding(EdgeInsets(top: UIScreen.getHeight(10), leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(20)))
                 // MARK: - 스크롤 메뉴
@@ -33,9 +36,9 @@ struct MainView: View {
                 
                 Spacer()
             }
+            .navigationBarHidden(true)
+            .navigationTitle("")
             .ignoresSafeArea(.all, edges: .bottom)
-        }
-        
     }
 }
 
