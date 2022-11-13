@@ -13,11 +13,11 @@ import ACarousel
 struct BODetailView: View {
     @State var currentIndex: Int = 0
     let cafe: Cafes
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView {
-            
-            ZStack{
+     
+            ZStack {
                 //스크롤 뷰 고정
                 ScrollView(.vertical, showsIndicators: false) {
                     
@@ -45,7 +45,7 @@ struct BODetailView: View {
                                     .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeight(111))
                                 
                                 // MARK: 캐러셀 인덱스
-                                HStack{
+                                HStack {
                                     Spacer()
                                     RoundedRectangle(cornerRadius: 10)
                                         .fill(Color.black)
@@ -70,46 +70,63 @@ struct BODetailView: View {
                         Spacer()
                     }
                     
-                }
+                }.navigationBarHidden(true)
                 
                 
                 // MARK: 플로팅 버튼
                 VStack {
+                    HStack {
+                        backButton
+                        Spacer()
+                    }
+                    .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
                     Spacer()
                     HStack {
                         Spacer()
-                        arButtonView()
+                        arButtonView
                     }
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(34), trailing: UIScreen.getWidth(20)))
             }
             .ignoresSafeArea(.all)
+    }
+    
+    var backButton : some View {
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            HStack {
+                Image(systemName: "chevron.backward")
+                    .foregroundColor(.white)
+            }
+            .frame(width: UIScreen.getWidth(14) ,height: UIScreen.getHeight(24))
+        }
+    }
+    
+    // MARK: AR 버튼
+    
+    var arButtonView : some View {
+        Button(action: {}) {
+            Circle()
+                .fill(Color("MainColor"))
+                .frame(width: UIScreen.getWidth(60), height: UIScreen.getWidth(60))
+                .overlay(
+                    Image("ar")
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(Color.white)
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                )
+                .shadow(radius: 4, x: 0, y: 4)
         }
     }
 }
 
-//struct BODetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BODetailView(cafe: constant().sample)
-//    }
-//}
-
-// MARK: AR 버튼
-
-@ViewBuilder
-func arButtonView() -> some View {
-    Button(action: {}) {
-        Circle()
-            .fill(Color("MainColor"))
-            .frame(width: UIScreen.getWidth(60), height: UIScreen.getWidth(60))
-            .overlay(
-                Image("ar")
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(Color.white)
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
-            )
-            .shadow(radius: 4, x: 0, y: 4)
+struct BODetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        BODetailView(cafe: constant().sample)
     }
 }
+
+
