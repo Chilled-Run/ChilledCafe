@@ -62,9 +62,3 @@ struct HorizontalScrollMenuBarView: View {
         }
     }
 }
-
-//struct HorizontalScrollMenuBarView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HorizontalScrollMenuBarView()
-//    }
-//}

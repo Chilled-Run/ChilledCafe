@@ -16,6 +16,7 @@ class FirebaseStorageManager: ObservableObject {
     @Published var cafeList: [Cafes] = []
     @Published var cafeListClassification: [String: [Cafes]] = [:]
     @Published var selectedCategory: String = "거대한 공간"
+    @Published var bookmarkedCafeList: [Cafes] = []
     
     init() {
         getCafeList()
@@ -107,7 +108,9 @@ class FirebaseStorageManager: ObservableObject {
     }
     
     func getCafeList(){
-        cafeListClassification = [:]
+        self.cafeListClassification = [:]
+        self.bookmarkedCafeList = []
+        
         var ref : DatabaseReference!{
             Database.database().reference()
         }
@@ -127,6 +130,9 @@ class FirebaseStorageManager: ObservableObject {
                 do {
                     let decoder = JSONDecoder()
                     let cafe = try decoder.decode(Cafes.self, from: data)
+                    if cafe.bookmark {
+                        self.bookmarkedCafeList.append(cafe)
+                    }
                     
                     for tag in cafe.tag {
                         let tagedCafes = self.cafeListClassification[tag]
@@ -148,7 +154,7 @@ class FirebaseStorageManager: ObservableObject {
                 }
             }
         }
-       
+        
     }
     
 }
