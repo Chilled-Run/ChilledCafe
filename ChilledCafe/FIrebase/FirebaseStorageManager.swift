@@ -15,9 +15,10 @@ class FirebaseStorageManager: ObservableObject {
     
     @Published var cafeList: [Cafes] = []
     @Published var cafeListClassification: [String: [Cafes]] = [:]
+    @Published var selectedCategory: String = "거대한 공간"
     
     init() {
-        getHotPlace()
+        getCafeList()
     }
     
     static func downloadImage(urlString: String, completion: @escaping (UIImage?) -> Void) {
