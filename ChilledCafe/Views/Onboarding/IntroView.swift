@@ -16,14 +16,15 @@ struct IntroView: View {
                     .ignoresSafeArea()
                 VStack {
                     Spacer()
-                    NavigationLink(destination: SelectAtmosphereView(), label: {
-                        CustomConfirmButtonView(title: "next")
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(40), trailing: 0))
+                    NavigationLink(destination: MainView(), label: {
+                        CustomConfirmButtonView(title: "Let's go!")
                     })
                 }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(60), trailing: 0))
             }
+            .navigationBarHidden(true)
         }
-
+        .accentColor(Color("MainColor"))
     }
 }
 
