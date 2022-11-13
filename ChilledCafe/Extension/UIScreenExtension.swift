@@ -19,5 +19,4 @@ extension UIScreen {
     static func getHeight(_ height: CGFloat) -> CGFloat {
         screenHeight / 844 * height
     }
-    
 }
