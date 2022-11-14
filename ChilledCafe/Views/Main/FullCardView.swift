@@ -13,6 +13,9 @@ struct FullCardView: View {
 
     var body: some View {
         KFImage(URL(string: cafe.thumbnail))
+            .placeholder{
+                ProgressView().progressViewStyle(CircularProgressViewStyle())
+            }
             .resizable()
             .scaledToFill()
             .frame(width: UIScreen.getWidth(350), height: UIScreen.getHeight(250))
