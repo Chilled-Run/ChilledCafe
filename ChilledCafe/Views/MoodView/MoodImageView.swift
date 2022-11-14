@@ -44,7 +44,7 @@ struct MoodImageView: View {
                 
                 Text("\(images.firstIndex(of: "\(moodViewData.selectedImageID)")! + 1)/\(images.count) ")
                     .foregroundColor(.white)
-                    .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
+                    .padding(EdgeInsets(top: (UIApplication.shared.windows.first?.safeAreaInsets.top)! + 10, leading: 10, bottom: 10, trailing: 10))
                     .opacity(moodViewData.bgOpacity)
                 
                 , alignment: .topTrailing
