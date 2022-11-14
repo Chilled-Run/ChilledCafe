@@ -20,19 +20,20 @@ struct DetailInfoView: View {
                     Text(sample.name)
                         .customTitle3()
                     Spacer()
-                    
-                    if sample.bookmark {
-                        Image("bookmarkToggled")
-                            .resizable()
-                            .renderingMode(.template)
-                            .foregroundColor(Color("SubColor"))
-                            .frame(width:UIScreen.getWidth(30), height:UIScreen.getHeight(30))
-                    }
-                    else {
-                        Image("bookmarkWhite")
-                            .resizable()
-                            .renderingMode(.template)
-                            .frame(width:UIScreen.getWidth(30), height:UIScreen.getHeight(30))
+                    Button(action: {}) {
+                        
+                        if sample.bookmark {
+                            Image("bookmarkToggled")
+                                .resizable()
+                                .frame(width:UIScreen.getWidth(30), height:UIScreen.getHeight(30))
+                                .foregroundColor(Color("SubColor"))
+                        }
+                        else {
+                            Image("bookmarkEmpty")
+                                .resizable()
+                                .frame(width:UIScreen.getWidth(30), height:UIScreen.getHeight(30))
+                                .foregroundColor(Color.black)
+                        }
                     }
                 }
                 HStack {
@@ -65,9 +66,8 @@ struct DetailInfoView: View {
                         HStack(alignment:.top ) {
                             Image("orange")
                                 .resizable()
-                                .renderingMode(.template)
-                                .foregroundColor(Color("MainColor"))
                                 .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
+                                .foregroundColor(Color("MainColor"))
                             VStack {
                                 Text(info)
                                     .customBody()
@@ -90,9 +90,8 @@ struct DetailInfoView: View {
                 HStack {
                     Image("place")
                         .resizable()
-                        .renderingMode(.template)
-                        .foregroundColor(Color("MainColor"))
                         .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
+                        .foregroundColor(Color("MainColor"))
                     Text(sample.location)
                         .customBody()
                         .foregroundColor(Color("CustomGray1"))

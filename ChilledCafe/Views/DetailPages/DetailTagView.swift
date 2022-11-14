@@ -23,10 +23,9 @@ struct DetailTagView: View {
                     HStack(spacing: 0) {
                         Image("\(Icon(rawValue: item) ?? .ocean)")
                             .resizable()
-                            .renderingMode(.template)
-                            .foregroundColor(Color.white)
                             .frame(width: UIScreen.getWidth(24), height: UIScreen.getHeight(24))
                             .padding(.leading, 10)
+                            .foregroundColor(Color.white)
                         
                         Text(item)
                             .customSubhead3()
