@@ -23,7 +23,7 @@ struct DetailTagView: View {
                     HStack(spacing: 0) {
                         Image("\(Icon(rawValue: item) ?? .ocean)")
                             .resizable()
-                            .frame(width: UIScreen.getWidth(24), height: UIScreen.getHeight(24))
+                            .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
                             .padding(.leading, 10)
                             .foregroundColor(Color.white)
                         
@@ -102,7 +102,6 @@ struct FlexibleView<Data: Collection, Content: View>: View where Data.Element: H
             }
             
             remainingWidth = remainingWidth - (elementSize.width + spacing)
-            print("Debuging second",remainingWidth)
         }
         
         return rows

@@ -114,7 +114,6 @@ struct BODetailView: View {
                     Image("ar")
                         .resizable()
                         .frame(width: 40, height: 40)
-                        .clipShape(Circle())
                         .foregroundColor(Color.white)
                 )
                 .shadow(radius: 4, x: 0, y: 4)
