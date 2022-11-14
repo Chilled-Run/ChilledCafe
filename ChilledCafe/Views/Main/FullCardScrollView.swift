@@ -19,6 +19,7 @@ struct FullCardScrollView: View {
                     FullCardView(cafe: cafe)
                 })
             }
+            Spacer(minLength: UIScreen.getHeight(30))
         }
     }
 }
