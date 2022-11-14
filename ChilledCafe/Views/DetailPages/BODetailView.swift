@@ -101,9 +101,9 @@ struct BODetailView: View {
             }
             .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(34), trailing: UIScreen.getWidth(20)))
         }
-        .navigationBarBackground({
-            Color.white.opacity(0)
-                })
+//        .navigationBarBackground({
+//            Color.white.opacity(0)
+//                })
         .ignoresSafeArea(.all)
     }
     

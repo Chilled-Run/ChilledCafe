@@ -75,6 +75,9 @@ struct MoodImageView: View {
         }).onEnded(moodViewData.onEnd(value:)))
         .transition(.move(edge:.bottom))
         .navigationBarHidden(true)
+                .navigationBarBackground({
+                    Color.white.opacity(0)
+                        })
     }
 }
 
