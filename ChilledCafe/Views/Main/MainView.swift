@@ -11,8 +11,8 @@ struct MainView: View {
     @StateObject var firebaseSM: FirebaseStorageManager = FirebaseStorageManager()
     
     var body: some View {
-            VStack {
-                HStack {
+        VStack(spacing: 0) {
+                HStack(alignment: .center) {
                     Image("AppTitle")
                         .resizable()
                         .frame(width: UIScreen.getWidth(100), height: UIScreen.getHeight(30))
@@ -42,8 +42,8 @@ struct MainView: View {
     }
 }
 
-//struct MainView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MainView()
-//    }
-//}
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView()
+    }
+}

@@ -11,6 +11,7 @@ struct HorizontalScrollMenuBarView: View {
     @State var choosed: Int = 0
     @ObservedObject var firebaseSM: FirebaseStorageManager
     var category: [String]
+    let spacing: CGFloat = UIScreen.getHeight(8)
     
     init(category: [String], firebaseSM: FirebaseStorageManager) {
         self.firebaseSM = firebaseSM
@@ -23,7 +24,7 @@ struct HorizontalScrollMenuBarView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .bottom , spacing: 0) {
                     // MARK: - 여백
-                    VStack {
+                    VStack(spacing: spacing) {
                         Circle()
                             .frame(width:UIScreen.getWidth(20), height: 1)
                             .hidden()
@@ -33,7 +34,7 @@ struct HorizontalScrollMenuBarView: View {
                     }
                     // MARK: - 카테고리
                     ForEach(Array(category.enumerated()), id: \.0) { index, item in
-                        VStack {
+                        VStack(spacing: spacing) {
                             CategoryButtonView(title: "\(item)")
                                 .foregroundColor(index == choosed ? Color("MainColor") : Color("CustomGray2"))
                                 .id(index)
@@ -42,6 +43,7 @@ struct HorizontalScrollMenuBarView: View {
                                     firebaseSM.selectedCategory = item
                                     withAnimation { proxy.scrollTo(index, anchor: UnitPoint.center) }
                                 }
+                                .fixedSize()
                             Rectangle()
                                 .frame(width: UIScreen.getWidth(88) ,height: UIScreen.getHeight(2))
                                 .foregroundColor(index == choosed ? Color("MainColor") : Color("CustomGray3"))
@@ -49,7 +51,7 @@ struct HorizontalScrollMenuBarView: View {
                         
                     }
                     // MARK: - 여백
-                    VStack {
+                    VStack(spacing: spacing) {
                         Circle()
                             .frame(width:UIScreen.getWidth(20), height: 1)
                             .hidden()
@@ -58,7 +60,15 @@ struct HorizontalScrollMenuBarView: View {
                             .foregroundColor(Color("CustomGray3"))
                     }
                 }
+                .frame(height: UIScreen.getHeight(66))
             }
         }
+    }
+}
+
+
+struct HorizontalScrollMenuBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        HorizontalScrollMenuBarView(category: ["바다와 함께", "리버뷰"], firebaseSM: FirebaseStorageManager())
     }
 }

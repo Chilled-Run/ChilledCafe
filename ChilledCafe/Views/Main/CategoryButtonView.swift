@@ -11,14 +11,15 @@ struct CategoryButtonView: View {
     let title: String
     
     var body: some View {
-        VStack {
+        VStack(spacing: 6) {
             // MARK: - 카테고리 아이콘
             Image("\(Icon(rawValue: title) ?? .ocean)")
+                .resizable()
+                .frame(width: UIScreen.getWidth(30), height: UIScreen.getHeight(30))
             // MARK: - 카테고리 명
             Text(title)
                 .customSubhead3()
         }
-        .frame(width: UIScreen.getWidth(80), height: UIScreen.getHeight(86))
     }
 }
 
