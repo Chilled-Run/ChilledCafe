@@ -9,6 +9,7 @@ import SwiftUI
 import Kingfisher
 import Firebase
 
+
 struct MoodView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var moodViewData = MoodViewModel()
@@ -55,11 +56,12 @@ struct MoodView: View {
             ZStack {
                 if moodViewData.showImageViewer {
                     Color.black
-                        .opacity(moodViewData.bgOpacity)
                         .ignoresSafeArea()
+                        .opacity(moodViewData.bgOpacity)
                         .frame(height: UIScreen.screenHeight)
                     
                     MoodImageView(images: images)
+                        .preferredColorScheme(.dark)
                 }
             }
         )
@@ -76,6 +78,7 @@ struct MoodView: View {
             HStack {
                 Image(systemName: "chevron.backward")
                     .foregroundColor(Color("MainColor"))
+                    .frame(width: 14, height: 24, alignment: .center)
             }
         }
     }

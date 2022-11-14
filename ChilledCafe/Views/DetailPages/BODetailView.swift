@@ -10,6 +10,7 @@ import SwiftUI
 import Kingfisher
 import ACarousel
 
+
 struct BODetailView: View {
     @State var currentIndex: Int = 0
     let cafe: Cafes
@@ -70,16 +71,16 @@ struct BODetailView: View {
                         Spacer()
                     }
                     
-                }.navigationBarHidden(true)
+                }
                 
                 
                 // MARK: 플로팅 버튼
                 VStack {
-                    HStack {
-                        backButton
-                        Spacer()
-                    }
-                    .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
+//                    HStack {
+//                        backButton
+//                        Spacer()
+//                    }
+//                    .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
                     Spacer()
                     HStack {
                         Spacer()
