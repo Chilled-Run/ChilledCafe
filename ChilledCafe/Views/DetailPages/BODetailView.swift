@@ -66,6 +66,7 @@ struct BODetailView: View {
                             .frame(height: UIScreen.getHeight(300))
                             
                         }
+                        .navigationBarHidden(true)
                         
                         DetailInfoView(sample: cafe)
                         Spacer()
@@ -76,15 +77,17 @@ struct BODetailView: View {
                 
                 // MARK: 플로팅 버튼
                 VStack {
-//                    HStack {
-//                        backButton
-//                        Spacer()
-//                    }
-//                    .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
+                    HStack {
+                        backButton
+                        Spacer()
+                    }
+                    .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
                     Spacer()
                     HStack {
                         Spacer()
-                        arButtonView
+                        if cafe.ar {
+                            arButtonView
+                        }
                     }
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(34), trailing: UIScreen.getWidth(20)))
@@ -98,9 +101,10 @@ struct BODetailView: View {
         }) {
             HStack {
                 Image(systemName: "chevron.backward")
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("MainColor"))
+                    .frame(width: UIScreen.getWidth(14) ,height: UIScreen.getHeight(24))
             }
-            .frame(width: UIScreen.getWidth(14) ,height: UIScreen.getHeight(24))
+            
         }
     }
     
