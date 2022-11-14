@@ -75,7 +75,7 @@ struct MoodView: View {
         }) {
             HStack {
                 Image(systemName: "chevron.backward")
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("MainColor"))
             }
         }
     }
