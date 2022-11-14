@@ -21,7 +21,6 @@ struct DetailInfoView: View {
                         .customTitle3()
                     Spacer()
                     Button(action: {}) {
-                        
                         if sample.bookmark {
                             Image("bookmarkToggled")
                                 .resizable()
