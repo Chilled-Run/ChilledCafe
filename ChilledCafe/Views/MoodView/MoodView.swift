@@ -45,8 +45,8 @@ struct MoodView: View {
                     })
                 }
             }
+            .padding(.top, 20)
             .padding(.horizontal)
-            .padding(.bottom, 150)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitle("분위기 보기", displayMode: .inline)
