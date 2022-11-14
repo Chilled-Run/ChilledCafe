@@ -16,79 +16,92 @@ struct BODetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-     
-            ZStack {
-                //스크롤 뷰 고정
-                ScrollView(.vertical, showsIndicators: false) {
+        
+        ZStack {
+            //스크롤 뷰 고정
+            ScrollView(.vertical, showsIndicators: false) {
+                
+                VStack(spacing: 0) {
                     
-                    VStack(spacing: 0) {
+                    //carousel nav
+                    NavigationLink(destination: MoodView(images: cafe.moodImages )) {
                         
-                        //carousel nav
-                        NavigationLink(destination: MoodView(images: cafe.moodImages )) {
+                        ZStack(alignment: .top) {
                             
-                            ZStack(alignment: .top) {
-                                
-                                // MARK: 카페 캐러셀 이미지
-                                ACarousel(cafe.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {_ in
-                                    KFImage(URL(string: cafe.moodImages[currentIndex]))
-                                        .placeholder{
-                                            ProgressView().progressViewStyle(CircularProgressViewStyle())
-                                        }
-                                        .resizable()
-                                        .scaledToFill()
-                                        .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(300))
-                                }
-                                
-                                //gradient effect
-                                Image("gradient")
+                            // MARK: 카페 캐러셀 이미지
+                            ACarousel(cafe.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .active(5)) {_ in
+                                KFImage(URL(string: cafe.moodImages[currentIndex]))
+                                    .placeholder{
+                                        ProgressView().progressViewStyle(CircularProgressViewStyle())
+                                    }
                                     .resizable()
-                                    .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeight(111))
-                                
-                                // MARK: 캐러셀 인덱스
-                                HStack {
-                                    Spacer()
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.black)
-                                        .opacity(0.4)
-                                        .frame(width:UIScreen.getWidth(42), height:UIScreen.getHeight(24))
-                                        .overlay(
-                                            Text("\(currentIndex + 1)" + "/" + "\(cafe.moodImages.count)")
-                                                .customSubhead3()
-                                                .foregroundColor(Color.white)
-                                        )
-                                }
-                                .padding(EdgeInsets(top: UIScreen.getHeight(256), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
-                                
+                                    .scaledToFill()
+                                    .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(300))
                             }
                             
-                            //carousel height
-                            .frame(height: UIScreen.getHeight(300))
+                            //gradient effect
+                            Image("gradient")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeight(111))
+                            
+                            // MARK: 캐러셀 인덱스
+                            HStack {
+                                Spacer()
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.black)
+                                    .opacity(0.4)
+                                    .frame(width:UIScreen.getWidth(42), height:UIScreen.getHeight(24))
+                                    .overlay(
+                                        Text("\(currentIndex + 1)" + "/" + "\(cafe.moodImages.count)")
+                                            .customSubhead3()
+                                            .foregroundColor(Color.white)
+                                    )
+                            }
+                            .padding(EdgeInsets(top: UIScreen.getHeight(256), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
                             
                         }
+                        //carousel height
+                        .frame(height: UIScreen.getHeight(300))
                         
-                        DetailInfoView(sample: cafe)
-                        Spacer()
                     }
                     
-                }.navigationBarHidden(true)
+                    DetailInfoView(sample: cafe)
+                    Spacer(minLength: UIScreen.getHeight(114))
+                }
                 
-                
-                // MARK: 플로팅 버튼
-                VStack {
-                    HStack {
-                        backButton
-                        Spacer()
-                    }
-                    .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
+            }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: backButton)
+            .onAppear() {
+                UINavigationBar.appearance().barTintColor = .clear
+                UINavigationBar.appearance().backgroundColor = .clear
+                UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+                UINavigationBar.appearance().shadowImage = UIImage()
+            }
+            .onDisappear() {
+                UINavigationBar.appearance().barTintColor = .white
+                UINavigationBar.appearance().backgroundColor = .white
+                UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+                UINavigationBar.appearance().shadowImage = UIImage()
+            }
+            // MARK: 플로팅 버튼
+            VStack {
+//                HStack {
+//                    backButton
+//                    Spacer()
+//                }
+//                .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(20), bottom: 0, trailing: 0))
+                Spacer()
+                HStack {
                     Spacer()
-                    HStack {
-                        Spacer()
+                    if cafe.ar {
                         arButtonView
                     }
                 }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(34), trailing: UIScreen.getWidth(20)))
             }
-            .ignoresSafeArea(.all)
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(34), trailing: UIScreen.getWidth(20)))
+        }
+        .ignoresSafeArea(.all)
     }
     
     var backButton : some View {
@@ -97,9 +110,9 @@ struct BODetailView: View {
         }) {
             HStack {
                 Image(systemName: "chevron.backward")
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("MainColor"))
             }
-            .frame(width: UIScreen.getWidth(14) ,height: UIScreen.getHeight(24))
+            .frame(width: UIScreen.getWidth(20) ,height: UIScreen.getHeight(30))
         }
     }
     

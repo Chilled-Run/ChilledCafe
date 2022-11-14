@@ -64,7 +64,10 @@ struct MoodView: View {
             }
         )
         .environmentObject(moodViewData)
-        
+        .navigationBarBackground({
+                    Color.white
+                })
+    
     }
     
     // MARK: 뒤로가기 버튼
