@@ -9,7 +9,9 @@ import SwiftUI
 import Kingfisher
 
 struct FullCardView: View {
-    let cafe: Cafes
+    @State var cafe: Cafes = constant().sample
+    var firebaseSM: FirebaseStorageManager
+    var index: Int
 
     var body: some View {
         KFImage(URL(string: cafe.thumbnail))
@@ -43,6 +45,8 @@ struct FullCardView: View {
                             if cafe.bookmark {
                                 Button(action: {
                                     // TODO: 북마크 토글 동작
+                                    cafe.toggleBookmark()
+                                    firebaseSM.toggleBookmark(index: index)
                                 }, label: {
                                     Image("bookmarkToggled")
                                         .resizable()
@@ -52,6 +56,8 @@ struct FullCardView: View {
                             } else {
                                 Button(action: {
                                     // TODO: 북마크 토글 동작
+                                    cafe.toggleBookmark()
+                                    firebaseSM.toggleBookmark(index: index)
                                 }, label: {
                                     Image("bookmarkBlack")
                                         .resizable()
@@ -82,6 +88,9 @@ struct FullCardView: View {
                     .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(20)))
                 }
             })
+            .onAppear() {
+                cafe = firebaseSM.getSelectedCafe(index: index)
+            }
     }  
 }
 

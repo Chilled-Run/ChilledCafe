@@ -13,7 +13,10 @@ import ACarousel
 
 struct BODetailView: View {
     @State var currentIndex: Int = 0
-    let cafe: Cafes
+    @State var cafe: Cafes = constant().sample
+    var firebaseSM: FirebaseStorageManager
+    var index: Int
+    
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -68,10 +71,13 @@ struct BODetailView: View {
                         }
                         .navigationBarHidden(true)
                         
-                        DetailInfoView(sample: cafe)
-                        Spacer()
+                        DetailInfoView(firebaseSM: firebaseSM, index: index)
+                        Spacer(minLength: UIScreen.getHeight(110))
                     }
                     
+                }
+                .onAppear() {
+                    cafe = firebaseSM.getSelectedCafe(index: index)
                 }
                 
                 
@@ -129,7 +135,7 @@ struct BODetailView: View {
 
 struct BODetailView_Previews: PreviewProvider {
     static var previews: some View {
-        BODetailView(cafe: constant().sample)
+        BODetailView(cafe: constant().sample, firebaseSM: FirebaseStorageManager(), index: 0)
     }
 }
 

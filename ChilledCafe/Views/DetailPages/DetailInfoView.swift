@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct DetailInfoView: View {
-    let sample: Cafes
+    @State var sample: Cafes = constant().sample
+    var firebaseSM: FirebaseStorageManager
+    var index: Int
+    
     var body: some View {
         
         VStack(spacing: 0) {
@@ -20,7 +23,10 @@ struct DetailInfoView: View {
                     Text(sample.name)
                         .customTitle3()
                     Spacer()
-                    Button(action: {}) {
+                    Button(action: {
+                        sample.toggleBookmark()
+                        firebaseSM.toggleBookmark(index: index)
+                    }) {
                         if sample.bookmark {
                             Image("bookmarkToggled")
                                 .resizable()
@@ -99,12 +105,15 @@ struct DetailInfoView: View {
             }
             .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
         }
+        .onAppear() {
+            sample = firebaseSM.getSelectedCafe(index: index)
+        }
     }
 }
 
-struct DetailInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailInfoView(sample: constant().sample)
-    }
-}
+//struct DetailInfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DetailInfoView(sample: constant().sample)
+//    }
+//}
 

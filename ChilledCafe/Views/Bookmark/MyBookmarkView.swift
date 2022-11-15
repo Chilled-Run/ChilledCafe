@@ -18,11 +18,11 @@ struct MyBookmarkView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ForEach(firebaseSM.bookmarkedCafeList, id: \.self) { cafe in
+            ForEach(Array(zip(firebaseSM.bookmarkedCafeList.indices, firebaseSM.bookmarkedCafeList)), id: \.1) { index, cafe in
                 NavigationLink(destination: {
-                    BODetailView(cafe: cafe)
+                    BODetailView(firebaseSM: firebaseSM, index: index)
                 }, label: {
-                    FullCardView(cafe: cafe)
+                    FullCardView(firebaseSM: firebaseSM, index: index)
                 })
             }
         }

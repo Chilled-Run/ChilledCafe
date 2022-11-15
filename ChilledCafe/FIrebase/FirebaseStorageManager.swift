@@ -15,11 +15,21 @@ class FirebaseStorageManager: ObservableObject {
     
     @Published var cafeList: [Cafes] = []
     @Published var cafeListClassification: [String: [Cafes]] = [:]
-    @Published var selectedCategory: String = "거대한 공간"
+    @Published var selectedCategory: String = "AR 경험"
     @Published var bookmarkedCafeList: [Cafes] = []
     
     init() {
         getCafeList()
+    }
+    
+    //선택된 카테고리와 인덱스를 비교하여 카페정보 제공
+    func getSelectedCafe(index: Int) -> Cafes {
+        return self.cafeListClassification[self.selectedCategory]?[index] ?? constant().sample
+    }
+    
+    //cafeListClassification에 저장된 카페의 bookmark를 토글
+    func toggleBookmark(index: Int) {
+        self.cafeListClassification[self.selectedCategory]?[index].toggleBookmark()
     }
     
     static func downloadImage(urlString: String, completion: @escaping (UIImage?) -> Void) {

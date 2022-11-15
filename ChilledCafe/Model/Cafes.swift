@@ -13,9 +13,13 @@ struct Cafes: Codable, Hashable {
     let thumbnail: String
     let moodImages: [String]
     let cafeInfo: [String]
-    let bookmark: Bool
+    var bookmark: Bool
     let ar: Bool
     let tag: [String]
     let location: String
     let businessHour: [String]
+    
+    mutating func toggleBookmark() {
+        bookmark.toggle()
+    }
 }
