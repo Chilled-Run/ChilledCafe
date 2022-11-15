@@ -10,6 +10,9 @@
 		2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003255728FFC9A0004DE5B6 /* ChilledCafeApp.swift */; };
 		2003255C28FFC9A0004DE5B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2003255B28FFC9A0004DE5B6 /* Assets.xcassets */; };
 		2003255F28FFC9A0004DE5B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2003255E28FFC9A0004DE5B6 /* Preview Assets.xcassets */; };
+		2003DAE3292388AD00C09F5F /* ARMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003DAE2292388AD00C09F5F /* ARMainView.swift */; };
+		2003DAE5292388D800C09F5F /* SampleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003DAE4292388D800C09F5F /* SampleCardView.swift */; };
+		201C84D92923DEA000884AC1 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C84D82923DEA000884AC1 /* ARViewContainer.swift */; };
 		207DA37D29066FE500D65EC4 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA37C29066FE500D65EC4 /* Mood.swift */; };
 		207DA37F2906700700D65EC4 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA37E2906700700D65EC4 /* Menu.swift */; };
 		207DA3812906702700D65EC4 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207DA3802906702700D65EC4 /* Info.swift */; };
@@ -63,6 +66,9 @@
 		2003255728FFC9A0004DE5B6 /* ChilledCafeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChilledCafeApp.swift; sourceTree = "<group>"; };
 		2003255B28FFC9A0004DE5B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2003255E28FFC9A0004DE5B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2003DAE2292388AD00C09F5F /* ARMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMainView.swift; sourceTree = "<group>"; };
+		2003DAE4292388D800C09F5F /* SampleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCardView.swift; sourceTree = "<group>"; };
+		201C84D82923DEA000884AC1 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		207DA37C29066FE500D65EC4 /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		207DA37E2906700700D65EC4 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		207DA3802906702700D65EC4 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
@@ -163,6 +169,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2003DADF2923887B00C09F5F /* ARView */ = {
+			isa = PBXGroup;
+			children = (
+				2003DAE2292388AD00C09F5F /* ARMainView.swift */,
+				2003DAE4292388D800C09F5F /* SampleCardView.swift */,
+				201C84D82923DEA000884AC1 /* ARViewContainer.swift */,
+			);
+			path = ARView;
+			sourceTree = "<group>";
+		};
 		207DA37B29066FB300D65EC4 /* CafeDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +275,7 @@
 		9A9B2F0C29011985005AC001 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2003DADF2923887B00C09F5F /* ARView */,
 				3997AED22920EE1100D57176 /* Bookmark */,
 				9AF6281E2920CA6D004D9412 /* DetailPages */,
 				20D8E943291EAA9B00EAC612 /* MoodView */,
@@ -390,6 +407,7 @@
 			files = (
 				3947F1AD290A6C94009FA15C /* CustomConfirmButtonView.swift in Sources */,
 				9AD1DA74291CF1BA0089E88A /* Cafes.swift in Sources */,
+				2003DAE3292388AD00C09F5F /* ARMainView.swift in Sources */,
 				39B7C51329058172000C8B07 /* CardView.swift in Sources */,
 				3906DC7C29040AED00B26783 /* CafeListView.swift in Sources */,
 				9A050AE729063892000FB253 /* CafeDetailView.swift in Sources */,
@@ -398,6 +416,7 @@
 				207DA3832906725B00D65EC4 /* OffsetModifier.swift in Sources */,
 				39B7C5222905AB41000C8B07 /* TextExtension.swift in Sources */,
 				9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */,
+				201C84D92923DEA000884AC1 /* ARViewContainer.swift in Sources */,
 				3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */,
 				3997AECE291E0EAC00D57176 /* FullCardScrollView.swift in Sources */,
 				9AF628202920CA93004D9412 /* BODetailView.swift in Sources */,
@@ -413,6 +432,7 @@
 				9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */,
 				3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */,
 				9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */,
+				2003DAE5292388D800C09F5F /* SampleCardView.swift in Sources */,
 				393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
 				39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */,
@@ -554,6 +574,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "AR 사용을 위한 카메라가 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -588,6 +609,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "AR 사용을 위한 카메라가 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -86,7 +86,12 @@ struct BODetailView: View {
                     HStack {
                         Spacer()
                         if cafe.ar {
-                            arButtonView
+                            NavigationLink(destination:
+                                            ARMainView()
+                            )
+                            {
+                                arButtonView
+                            }
                         }
                     }
                 }
@@ -112,18 +117,17 @@ struct BODetailView: View {
     // MARK: AR 버튼
     
     var arButtonView : some View {
-        Button(action: {}) {
-            Circle()
-                .fill(Color("MainColor"))
-                .frame(width: UIScreen.getWidth(60), height: UIScreen.getWidth(60))
-                .overlay(
-                    Image("ar")
-                        .resizable()
-                        .frame(width: 40, height: 40)
-                        .foregroundColor(Color.white)
-                )
-                .shadow(radius: 4, x: 0, y: 4)
-        }
+        Circle()
+            .fill(Color("MainColor"))
+            .frame(width: UIScreen.getWidth(60), height: UIScreen.getWidth(60))
+            .overlay(
+                Image("ar")
+                    .resizable()
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(Color.white)
+            )
+            .shadow(radius: 4, x: 0, y: 4)
+        
     }
 }
 
