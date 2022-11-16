@@ -86,10 +86,7 @@ struct BODetailView: View {
                     HStack {
                         Spacer()
                         if cafe.ar {
-                            NavigationLink(destination:
-                                            ARMainView()
-                            )
-                            {
+                            NavigationLink(destination: ARMainView()) {
                                 arButtonView
                             }
                         }
