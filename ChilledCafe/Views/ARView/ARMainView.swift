@@ -16,7 +16,6 @@ struct ARMainView: View {
             Image("ARGuide")
                 .resizable()
                 .scaledToFit()
-                
         }
         .ignoresSafeArea(.all)
     }
