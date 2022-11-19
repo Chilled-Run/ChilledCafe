@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject var firebaseSM: FirebaseStorageManager = FirebaseStorageManager()
+    @ObservedObject var firebaseSM: FirebaseStorageManager
+    @AppStorage("isFirst") var ifFirst: Bool = true
     
     var body: some View {
         VStack(spacing: 0) {
@@ -44,6 +45,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(firebaseSM: FirebaseStorageManager(), ifFirst: true)
     }
 }
