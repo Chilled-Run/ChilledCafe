@@ -9,13 +9,11 @@ import SwiftUI
 import Kingfisher
 
 struct FullCardView: View {
-    let cafe: Cafes
+    @ObservedObject var firebaseSM: FirebaseStorageManager
+    let cafe: Cafe
 
     var body: some View {
-        KFImage(URL(string: cafe.thumbnail))
-            .placeholder{
-                ProgressView().progressViewStyle(CircularProgressViewStyle())
-            }
+        Image(uiImage: firebaseSM.cafeThumbnail[cafe.name]!)
             .resizable()
             .scaledToFill()
             .frame(width: UIScreen.getWidth(350), height: UIScreen.getHeight(250))
@@ -84,9 +82,3 @@ struct FullCardView: View {
             })
     }  
 }
-
-//struct FullCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FullCardView(imageURL: "")
-//    }
-//}

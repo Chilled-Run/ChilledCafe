@@ -12,11 +12,11 @@ struct FullCardScrollView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            ForEach(firebaseSM.cafeListClassification[firebaseSM.selectedCategory] ?? [], id: \.self) { cafe in
+            ForEach(firebaseSM.cafeList[firebaseSM.selectedCategory] ?? [], id: \.self) { cafe in
                 NavigationLink(destination: {
                     BODetailView(cafe: cafe)
                 }, label: {
-                    FullCardView(cafe: cafe)
+                    FullCardView(firebaseSM: firebaseSM, cafe: cafe)
                 })
             }
             Spacer(minLength: UIScreen.getHeight(30))
