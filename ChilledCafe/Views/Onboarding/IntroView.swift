@@ -7,6 +7,7 @@
 import SwiftUI
 
 struct IntroView: View {
+    var firebaseSM: FirebaseStorageManager = FirebaseStorageManager()
     var body: some View {
         NavigationView {
             ZStack {
@@ -25,6 +26,12 @@ struct IntroView: View {
             .navigationBarHidden(true)
         }
         .accentColor(Color("MainColor"))
+        .onAppear(){
+            //keychain.createDeviceID()
+            let iphoneUUID = S_Keychain.getDeviceUUID()
+            print("Debuging uuid ", iphoneUUID)
+            firebaseSM.getUser()
+        }
     }
 }
 
@@ -33,3 +40,5 @@ struct IntroView_Previews: PreviewProvider {
         IntroView()
     }
 }
+
+//4EC8EB89-3A5E-4428-9720-181272CF38A9

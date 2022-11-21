@@ -55,6 +55,8 @@
 		9A637F40291E3784009BCBED /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A637F3F291E3784009BCBED /* MoodView.swift */; };
 		9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F12290119B7005AC001 /* HotPlace.swift */; };
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
+		9AB643BA2927624A00BFD19B /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB643B92927624A00BFD19B /* KeyChain.swift */; };
+		9AB643BC2927690F00BFD19B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB643BB2927690F00BFD19B /* User.swift */; };
 		9AD1DA74291CF1BA0089E88A /* Cafes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1DA73291CF1BA0089E88A /* Cafes.swift */; };
 		9AF628202920CA93004D9412 /* BODetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF6281F2920CA93004D9412 /* BODetailView.swift */; };
 		9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF628212920CCE5004D9412 /* DetailInfoView.swift */; };
@@ -103,6 +105,8 @@
 		9A637F3F291E3784009BCBED /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
+		9AB643B92927624A00BFD19B /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
+		9AB643BB2927690F00BFD19B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9AD1DA73291CF1BA0089E88A /* Cafes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafes.swift; sourceTree = "<group>"; };
 		9AF6281F2920CA93004D9412 /* BODetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BODetailView.swift; sourceTree = "<group>"; };
 		9AF628212920CCE5004D9412 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		2003254B28FFC9A0004DE5B6 = {
 			isa = PBXGroup;
 			children = (
+				9AB643B92927624A00BFD19B /* KeyChain.swift */,
 				3997AEA6291D12BD00D57176 /* GoogleService-Info.plist */,
 				39B7C5192905A9E7000C8B07 /* Fonts */,
 				2003255628FFC9A0004DE5B6 /* ChilledCafe */,
@@ -293,6 +298,7 @@
 				9A9B2F12290119B7005AC001 /* HotPlace.swift */,
 				9A2930F2290438820005D339 /* Cafe.swift */,
 				9AD1DA73291CF1BA0089E88A /* Cafes.swift */,
+				9AB643BB2927690F00BFD19B /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,9 +437,11 @@
 				393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */,
 				9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */,
 				3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */,
+				9AB643BC2927690F00BFD19B /* User.swift in Sources */,
 				9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */,
 				2003DAE5292388D800C09F5F /* SampleCardView.swift in Sources */,
 				393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */,
+				9AB643BA2927624A00BFD19B /* KeyChain.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
 				39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */,
 				3997AED42920EE3100D57176 /* MyBookmarkView.swift in Sources */,

@@ -10,7 +10,8 @@ import Kingfisher
 
 struct FullCardView: View {
     let cafe: Cafes
-
+    @ObservedObject var firebaseSM: FirebaseStorageManager
+    
     var body: some View {
         KFImage(URL(string: cafe.thumbnail))
             .placeholder{
@@ -40,9 +41,10 @@ struct FullCardView: View {
                                 })
                             }
                             // MARK: - 북마크 토글 여부
-                            if cafe.bookmark {
+                            if firebaseSM.checkBookmark(cafeName: cafe.name) {
                                 Button(action: {
                                     // TODO: 북마크 토글 동작
+                                    firebaseSM.updateUser(userUUID: S_Keychain.getDeviceUUID(), cafeID: cafe.name)
                                 }, label: {
                                     Image("bookmarkToggled")
                                         .resizable()
@@ -52,6 +54,7 @@ struct FullCardView: View {
                             } else {
                                 Button(action: {
                                     // TODO: 북마크 토글 동작
+                                    firebaseSM.updateUser(userUUID: S_Keychain.getDeviceUUID(), cafeID: cafe.name)
                                 }, label: {
                                     Image("bookmarkBlack")
                                         .resizable()
