@@ -13,7 +13,7 @@ import ACarousel
 
 struct BODetailView: View {
     @State var currentIndex: Int = 0
-    let cafe: Cafes
+    let cafe: Cafe
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {

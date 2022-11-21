@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailInfoView: View {
-    let sample: Cafes
+    let sample: Cafe
     var body: some View {
         
         VStack(spacing: 0) {
