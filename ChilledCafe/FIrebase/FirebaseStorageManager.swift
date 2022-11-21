@@ -1,160 +1,76 @@
-//
-//  FireBaseStorageManager.swift
-//  ChilledCafe
-//
-//  Created by 종건 on 2022/10/21.
-//
 import SwiftUI
 import FirebaseStorage
 import Firebase
 
 class FirebaseStorageManager: ObservableObject {
-    @Published var hotPlace: [HotPlace] = []
-    @Published var cafes: [Cafe] = []
-    @Published var cafeClassification: [String: [Cafe]] = [:]
-    
-    @Published var cafeList: [Cafes] = []
-    @Published var cafeListClassification: [String: [Cafes]] = [:]
     @Published var selectedCategory: String = "AR 경험"
-    @Published var bookmarkedCafeList: [Cafes] = []
+    @Published var cafeList: [String: [Cafe]] = [:]
+    @Published var bookmarkedCafeList: [Cafe] = []
+    @Published var cafeThumbnail: [String : UIImage] = [:]
     
-    init() {
-        getCafeList()
-    }
-    
-    static func downloadImage(urlString: String, completion: @escaping (UIImage?) -> Void) {
-        let storageReference = Storage.storage().reference(forURL: urlString)
-        let megaByte = Int64(1 * 1024 * 1024)
-        
-        storageReference.getData(maxSize: megaByte) { data, error in
-            guard let imageData = data else {
-                completion(nil)
-                return
-            }
-            completion(UIImage(data: imageData))
-        }
-    }
-    
-    func getHotPlace(){
-        var ref : DatabaseReference!{
-            Database.database().reference()
-        }
-        let firestoreDB = Firestore.firestore()
-        
-        
-        firestoreDB.collection("HotPlace").addSnapshotListener
-        {
-            snapshot, error in
-            guard let documents = snapshot?.documents else{
-                print("error")
-                return
-            }
-            self.hotPlace = documents.compactMap {
-                doc -> HotPlace? in
-                let data = try! JSONSerialization.data(withJSONObject: doc.data(), options: [])
-                do {
-                    let decoder = JSONDecoder()
-                    let hotPlaces = try decoder.decode(HotPlace.self, from: data)
-                    return hotPlaces
-                    
-                } catch let error {
-                    print("decoding 실패 \(error.localizedDescription)")
-                    return nil
+    // MARK: - Storage에서 이미지 가져오기
+    func downloadImage(dispatchGroup: DispatchGroup, urlString: String, completion: @escaping (UIImage?) -> Void) {
+            let storageReference = Storage.storage().reference(forURL: urlString)
+            let megaByte = Int64(1 * 1024 * 1024)
+            
+            storageReference.getData(maxSize: megaByte) { data, error in
+                if let error = error {
+                    print("[사진 다운 에러] \(error.localizedDescription)")
+                    completion(nil)
+                    return
                 }
-            }
-        }
-    }
-    func getCafes(spot: String){
-        cafeClassification = [:]
-        var ref : DatabaseReference!{
-            Database.database().reference()
-        }
-        let firestoreDB = Firestore.firestore()
-        
-        
-        firestoreDB.collection("Cafe").whereField("spot", isEqualTo: spot).addSnapshotListener
-        {
-            snapshot, error in
-            guard let documents = snapshot?.documents else{
-                print("error")
-                return
-            }
-            self.cafes = documents.compactMap {
-                doc
-                in
-                let data = try! JSONSerialization.data(withJSONObject: doc.data(), options: [])
-                do {
-                    let decoder = JSONDecoder()
-                    let cafe = try decoder.decode(Cafe.self, from: data)
-                    let tagedCafes = self.cafeClassification[cafe.tag]
-                    
-                    if let temp = tagedCafes{
-                        var tempCafes = temp
-                        tempCafes.append(cafe)
-                        self.cafeClassification.updateValue(tempCafes, forKey: cafe.tag)
-                    }
-                    else{
-                        self.cafeClassification[cafe.tag] = [cafe]
-                    }
-                    return cafe
-                    
+                guard let imageData = data else {
+                    completion(nil)
+                    return
                 }
-                catch let error {
-                    print("decoding 실패")
-                    return nil
-                }
+                completion(UIImage(data: imageData))
             }
         }
-    }
     
-    func getCafeList(){
-        self.cafeListClassification = [:]
-        self.bookmarkedCafeList = []
-        
-        var ref : DatabaseReference!{
-            Database.database().reference()
-        }
-        let firestoreDB = Firestore.firestore()
-        
-        
-        firestoreDB.collection("Cafes").addSnapshotListener {
-            snapshot, error in
-            guard let documents = snapshot?.documents else {
-                print("error")
-                return
-            }
-            self.cafeList = documents.compactMap {
-                doc
-                in
-                let data = try! JSONSerialization.data(withJSONObject: doc.data(), options: [])
-                do {
-                    let decoder = JSONDecoder()
-                    let cafe = try decoder.decode(Cafes.self, from: data)
-                    if cafe.bookmark {
-                        self.bookmarkedCafeList.append(cafe)
-                    }
-                    
-                    for tag in cafe.tag {
-                        let tagedCafes = self.cafeListClassification[tag]
+    // MARK: - Firestore에서 카페 데이터 가져오기
+    func getCafes(dispatchGroup: DispatchGroup) {
+        Firestore.firestore().collection("Cafes").getDocuments { [weak self] (querySnapshot, err) in
+            if let err = err {
+                print("[에러] \(err.localizedDescription)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let jsonData = try! JSONSerialization.data(withJSONObject: document.data())
+                    do {
+                        let decoder = JSONDecoder()
+                        let cafe = try decoder.decode(Cafe.self, from: jsonData)
                         
-                        if let temp = tagedCafes {
-                            var tempCafes = temp
-                            tempCafes.append(cafe)
-                            self.cafeListClassification.updateValue(tempCafes, forKey: tag)
+                        // MARK: - Thumbnail loading
+                        dispatchGroup.enter()
+                        DispatchQueue.global().async {
+                            self?.downloadImage(dispatchGroup: dispatchGroup, urlString: cafe.thumbnail) { uiImage in
+                                self?.cafeThumbnail[cafe.name] = uiImage
+                                dispatchGroup.leave()
+                            }
                         }
-                        else {
-                            self.cafeListClassification[tag] = [cafe]
+                        
+                        // MARK: - Bookmark
+                        if cafe.bookmark {
+                            self?.bookmarkedCafeList.append(cafe)
+                        }
+                        
+                        // MARK: - CafeList
+                        for tag in cafe.tag {
+                            if let tagedCafes = self?.cafeList[tag] {
+                                var tagedCafes = tagedCafes
+                                tagedCafes.append(cafe)
+                                self?.cafeList.updateValue(tagedCafes, forKey: tag)
+                            }
+                            else {
+                                self?.cafeList[tag] = [cafe]
+                            }
                         }
                     }
-                    return cafe
+                    catch let err {
+                        print("[에러] \(err.localizedDescription)")
+                    }
                 }
-                catch let error {
-                    print("decoding 실패")
-                    return nil
-                }
+                dispatchGroup.leave()
             }
         }
-        
     }
-    
 }
