@@ -7,8 +7,9 @@
 import SwiftUI
 
 struct IntroView: View {
+    @AppStorage("isFirst") var isFirst: Bool = true
+    
     var body: some View {
-        NavigationView {
             ZStack {
                 Image("OnboardingBackground")
                     .resizable()
@@ -16,15 +17,16 @@ struct IntroView: View {
                     .ignoresSafeArea()
                 VStack {
                     Spacer()
-                    NavigationLink(destination: MainView(), label: {
+                    Button(action: {
+                        isFirst = false
+                    }, label: {
                         CustomConfirmButtonView(title: "Let's go!")
                     })
+                    
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(60), trailing: 0))
             }
             .navigationBarHidden(true)
-        }
-        .accentColor(Color("MainColor"))
     }
 }
 

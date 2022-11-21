@@ -21,11 +21,20 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct ChilledCafeApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @AppStorage("isFirst") private var isFirst: Bool = true
+    @StateObject var firebaseSM: FirebaseStorageManager = FirebaseStorageManager()
     
     
     var body: some Scene {
         WindowGroup {
-            IntroView()
+            NavigationView {
+                if isFirst {
+                    IntroView()
+                } else {
+                    MainView(firebaseSM: firebaseSM, ifFirst: true)
+                }
+            }
+            .accentColor(Color("MainColor"))
         }
     }
 }

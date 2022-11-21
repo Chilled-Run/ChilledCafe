@@ -68,9 +68,9 @@ struct SelectAtmosphereView: View {
                 VStack {
                     Spacer()
                     if checked.filter { $0 == true }.isEmpty == false {
-                        NavigationLink(destination: MainView().environmentObject(FirebaseStorageManager()), label: {
-                            CustomConfirmButtonView(title: "ready!")
-                        })
+//                        NavigationLink(destination: MainView().environmentObject(FirebaseStorageManager()), label: {
+//                            CustomConfirmButtonView(title: "ready!")
+//                        })
                     }
                 }
             }

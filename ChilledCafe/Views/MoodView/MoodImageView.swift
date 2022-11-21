@@ -77,9 +77,3 @@ struct MoodImageView: View {
         .navigationBarHidden(true)
     }
 }
-
-struct MoodImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
