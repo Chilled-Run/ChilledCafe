@@ -58,27 +58,73 @@ struct DetailInfoView: View {
             
             // MARK: 공간의 특징
             
+            // 임시구현!!
+            // 데이터 구조 변경 후 수정
             HStack {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("이 공간의 특별함")
+                VStack(alignment: .leading, spacing: 0) {
+                    
+                    Text("공간의 특징")
                         .customTitle2()
-                    // 공간에 대한 특징
-                    ForEach(sample.cafeInfo, id: \.self) {
-                        info in
-                        HStack(alignment:.top ) {
-                            Image("orange")
-                                .resizable()
-                                .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
-                                .foregroundColor(Color("MainColor"))
-                            VStack {
-                                Text(info)
-                                    .customBody()
-                                    .foregroundColor(Color("CustomGray1"))
-                                    .lineLimit(3)
-                                    .fixedSize(horizontal: false, vertical: true)
+                        .padding(.bottom, UIScreen.getHeight(10))
+                    
+                    HStack{
+                        VStack(alignment: .leading, spacing: 0) {
+                            HStack {
+                                Image("mood")
+                                    .resizable()
+                                    .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
+                                Text("분위기")
+                                    .customTitle1()
+                                    .foregroundColor(Color("MainColor"))
                             }
+                            Text(sample.cafeInfo[0])
+                                .customSubhead3()
+                                .foregroundColor(Color("CustomGray1"))
+                                .padding(.top, UIScreen.getHeight(10))
+                            
+                            HStack {
+                                Image("menu")
+                                    .resizable()
+                                    .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
+                                Text("시그니처 메뉴")
+                                    .customTitle1()
+                                    .foregroundColor(Color("MainColor"))
+                            }
+                            .padding(.top, UIScreen.getHeight(20))
+                            
+                            Text(sample.cafeInfo[1])
+                                .customSubhead3()
+                                .foregroundColor(Color("CustomGray1"))
+                                .padding(.top, UIScreen.getHeight(10))
                         }
+                        Spacer()
                     }
+                    .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: 0))
+                    .overlay(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(Color("CustomGray3"), lineWidth: 2)
+                    )
+                    .background(Color("CustomGray3"))
+                       
+                    
+                   
+                    
+//                    ForEach(sample.cafeInfo, id: \.self) {
+//                        info in
+//                        HStack(alignment:.top ) {
+//                            Image("orange")
+//                                .resizable()
+//                                .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
+//                                .foregroundColor(Color("MainColor"))
+//                            VStack {
+//                                Text(info)
+//                                    .customBody()
+//                                    .foregroundColor(Color("CustomGray1"))
+//                                    .lineLimit(3)
+//                                    .fixedSize(horizontal: false, vertical: true)
+//                            }
+//                        }
+//                    }
                 }
                 Spacer()
             }
@@ -98,8 +144,10 @@ struct DetailInfoView: View {
                         .customBody()
                         .foregroundColor(Color("CustomGray1"))
                     Spacer()
-                    Button(action: {}){
-                        
+                    
+                    //지도 모달로 이어지는 버튼
+                    Button(action: {}){//
+                        Text("길찾기")
                     }
                 }
             }
