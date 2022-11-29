@@ -13,6 +13,10 @@ struct DetailInfoView: View {
         
         VStack(spacing: 0) {
             
+            
+            // 테그 추가
+            DetailTagView(sample: sample)
+            
             // MARK: 카페 타이틀과 북마크, 한 줄 소개
             
             VStack(alignment: .leading, spacing: 10) {
@@ -41,7 +45,7 @@ struct DetailInfoView: View {
                         .foregroundColor(Color("CustomGray1"))
                 }
             }
-            .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
+            .padding(EdgeInsets(top: UIScreen.getHeight(16), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
             
             // MARK: divider
             
@@ -51,7 +55,6 @@ struct DetailInfoView: View {
                 .edgesIgnoringSafeArea(.horizontal)
                 .padding(.top, UIScreen.getHeight(20))
             
-            DetailTagView(sample: sample)
             
             // MARK: 공간의 특징
             
@@ -95,6 +98,9 @@ struct DetailInfoView: View {
                         .customBody()
                         .foregroundColor(Color("CustomGray1"))
                     Spacer()
+                    Button(action: {}){
+                        
+                    }
                 }
             }
             .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))

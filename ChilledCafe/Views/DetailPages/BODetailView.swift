@@ -104,7 +104,7 @@ struct BODetailView: View {
             HStack {
                 Image(systemName: "chevron.backward")
                     .resizable()
-                    .foregroundColor(Color("MainColor"))
+                    .foregroundColor(Color.white)
                     .frame(width: UIScreen.getWidth(10) ,height: UIScreen.getHeight(19))
             }
             

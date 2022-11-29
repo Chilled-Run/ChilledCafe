@@ -16,28 +16,30 @@ struct DetailTagView: View {
                 // 한 줄의 길이보다 테그들의 길이가 길면 다음줄로 넘겨줌
                 FlexibleView(
                     availableWidth: UIScreen.getWidth(350), data: sample.tag,
-                    spacing: 10,
+                    spacing: 6,
                     alignment: .leading
                 ) {
                     item in
                     HStack(spacing: 0) {
-                        Image("\(Icon(rawValue: item) ?? .ocean)")
-                            .resizable()
-                            .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
-                            .padding(.leading, 10)
-                            .foregroundColor(Color.white)
                         
+                        //테그에 아이콘 삭제
+//                        Image("\(Icon(rawValue: item) ?? .ocean)")
+//                            .resizable()
+//                            .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
+//                            .padding(.leading, 10)
+//                            .foregroundColor(Color("MainColor"))
+//
                         Text(item)
-                            .customSubhead3()
-                            .foregroundColor(Color.white)
-                            .padding(.leading, 6)
+                            .customSubhead1()
+                            .foregroundColor(Color("MainColor"))
+                            .padding(.leading, 10)
                             .padding(.trailing, 10)
                     }
-                    .frame(height: UIScreen.getHeight(31))
-                    .background(Color("MainColor"))
+                    .frame(height: UIScreen.getHeight(22))
+                    .background(Color.white)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color("MainColor"), lineWidth: 2)
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color("MainColor"), lineWidth: 1)
                     )
                 }
                 Spacer()
