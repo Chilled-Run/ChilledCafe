@@ -92,6 +92,7 @@ struct HalfModalView<Content: View> : View {
                                     }
                                 }
                                 .padding(.top, UIScreen.getHeight(10))
+                                Spacer()
                             }
                             .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing: 0))
                             .frame(width: UIScreen.main.bounds.size.width, height:modalHeight)

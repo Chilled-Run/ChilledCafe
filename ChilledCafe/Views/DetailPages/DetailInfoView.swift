@@ -80,6 +80,8 @@ struct DetailInfoView: View {
                                 }
                                 Text(sample.cafeInfo[0])
                                     .customSubhead3()
+                                    .lineLimit(3)
+                                    .lineSpacing(6)
                                     .foregroundColor(Color("CustomGray1"))
                                     .padding(.top, UIScreen.getHeight(10))
                                 
@@ -95,6 +97,8 @@ struct DetailInfoView: View {
                                 
                                 Text(sample.cafeInfo[1])
                                     .customSubhead3()
+                                    .lineLimit(3)
+                                    .lineSpacing(6)
                                     .foregroundColor(Color("CustomGray1"))
                                     .padding(.top, UIScreen.getHeight(10))
                             }
@@ -110,35 +114,6 @@ struct DetailInfoView: View {
                     Spacer()
                 }
                 .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
-                
-//                //MARK: 카페 위치정보
-//                
-//                VStack(alignment: .leading, spacing: 20) {
-//                    Text("위치")
-//                        .customTitle2()
-//                    HStack {
-//                        Image("place")
-//                            .resizable()
-//                            .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
-//                            .foregroundColor(Color("MainColor"))
-//                        Text(sample.location)
-//                            .customBody()
-//                            .foregroundColor(Color("CustomGray1"))
-//                        Spacer()
-//                        
-//                        //지도 모달로 이어지는 버튼
-//                        Button(action: {halfModal_shown.toggle()}) {
-//                            Text("길찾기")
-//                                .foregroundColor(Color("MainColor"))
-//                                .frame(width: UIScreen.getWidth(62) ,height: UIScreen.getHeight(35))
-//                                .overlay(
-//                                    RoundedRectangle(cornerRadius: 4)
-//                                        .stroke(Color("MainColor"), lineWidth: 1)
-//                                )
-//                        }
-//                    }
-//                }
-//                .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
             }
         }
     }

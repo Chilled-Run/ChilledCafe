@@ -12,7 +12,6 @@ import ACarousel
 
 
 struct BODetailView: View {
-    @State var currentIndex: Int = 0
     @State var halfModal_shown: Bool = false
     let cafe: Cafes
     @Environment(\.presentationMode) var presentationMode
@@ -26,48 +25,7 @@ struct BODetailView: View {
                 VStack(spacing: 0) {
                     
                     //carousel nav
-                    NavigationLink(destination: MoodView(images: cafe.moodImages )) {
-                        
-                        ZStack(alignment: .top) {
-                            
-                            // MARK: 카페 캐러셀 이미지
-                            ACarousel(cafe.moodImages, id: \.self, index: $currentIndex, spacing: 0, headspace: 0, sidesScaling: 1, isWrap: false, autoScroll: .inactive) {_ in
-                                KFImage(URL(string: cafe.moodImages[currentIndex]))
-                                    .placeholder{
-                                        ProgressView().progressViewStyle(CircularProgressViewStyle())
-                                    }
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(300))
-                            }
-                            
-                            //gradient effect
-                            Image("gradient")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeight(111))
-                            
-                            // MARK: 캐러셀 인덱스
-                            HStack {
-                                Spacer()
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.black)
-                                    .opacity(0.4)
-                                    .frame(width:UIScreen.getWidth(42), height:UIScreen.getHeight(24))
-                                    .overlay(
-                                        Text("\(currentIndex + 1)" + "/" + "\(cafe.moodImages.count)")
-                                            .customSubhead3()
-                                            .foregroundColor(Color.white)
-                                    )
-                            }
-                            .padding(EdgeInsets(top: UIScreen.getHeight(256), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
-                            
-                        }
-                        
-                        //carousel height
-                        .frame(height: UIScreen.getHeight(300))
-                        
-                    }
-                    .navigationBarHidden(true)
+                    CarouselView(cafe: cafe)
                     
                     //공간의 특징
                     DetailInfoView(sample: cafe)
@@ -100,6 +58,10 @@ struct BODetailView: View {
                         }
                     }
                     .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
+                    
+                    //방문자 로그 뷰
+                    GuestLogView()
+                    
                     Spacer()
                 }
                 
@@ -108,6 +70,7 @@ struct BODetailView: View {
             HalfModalView(isShown: $halfModal_shown, modalHeight: UIScreen.getHeight(313)){
                 VStack{}
             }
+        
             // MARK: 플로팅 버튼
             VStack {
                 HStack {
