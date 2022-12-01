@@ -11,6 +11,8 @@ import ACarousel
 
 struct CarouselView: View {
     @State var currentIndex: Int = 0
+    @Environment(\.presentationMode) var presentationMode
+    
     let cafe: Cafes
     var body: some View {
         VStack {
@@ -27,36 +29,36 @@ struct CarouselView: View {
                             }
                             .resizable()
                             .scaledToFill()
-                            .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(300))
+                            .frame(width: UIScreen.screenWidth, height: UIScreen.getHeight(390))
                     }
-                    
-                    //gradient effect
-                    Image("gradient")
-                        .resizable()
-                        .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeight(111))
-                    
-                    // MARK: 캐러셀 인덱스
-                    HStack {
+                    VStack {
+                        //gradient effect
+                        Image("gradient")
+                            .resizable()
+                            .frame(width: UIScreen.main.bounds.size.width, height: UIScreen.getHeight(111))
+                        
                         Spacer()
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.black)
-                            .opacity(0.4)
-                            .frame(width:UIScreen.getWidth(42), height:UIScreen.getHeight(24))
-                            .overlay(
-                                Text("\(currentIndex + 1)" + "/" + "\(cafe.moodImages.count)")
-                                    .customSubhead3()
-                                    .foregroundColor(Color.white)
-                            )
+                        // MARK: 캐러셀 인덱스
+                        HStack {
+                            Spacer()
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.black)
+                                .opacity(0.4)
+                                .frame(width:UIScreen.getWidth(42), height:UIScreen.getHeight(24))
+                                .overlay(
+                                    Text("\(currentIndex + 1)" + "/" + "\(cafe.moodImages.count)")
+                                        .customSubhead3()
+                                        .foregroundColor(Color.white)
+                                )
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(20)))
                     }
-                    .padding(EdgeInsets(top: UIScreen.getHeight(256), leading: 0, bottom: 0, trailing: UIScreen.getWidth(20)))
-                    
                 }
                 
                 //carousel height
-                .frame(height: UIScreen.getHeight(300))
+                .frame(height: UIScreen.getHeight(390))
                 
             }
-            .navigationBarHidden(true)
         }
     }
 }

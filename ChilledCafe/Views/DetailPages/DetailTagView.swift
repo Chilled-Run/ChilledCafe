@@ -21,14 +21,6 @@ struct DetailTagView: View {
                 ) {
                     item in
                     HStack(spacing: 0) {
-                        
-                        //테그에 아이콘 삭제
-//                        Image("\(Icon(rawValue: item) ?? .ocean)")
-//                            .resizable()
-//                            .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
-//                            .padding(.leading, 10)
-//                            .foregroundColor(Color("MainColor"))
-//
                         Text(item)
                             .customSubhead1()
                             .foregroundColor(Color("MainColor"))

@@ -12,7 +12,12 @@ import ACarousel
 
 
 struct BODetailView: View {
+    //지도 모달
     @State var halfModal_shown: Bool = false
+    //화면이 밑으로 내려가는 것을 체크하기 위한 timer
+    @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
+    //캐러셀 밑으로 내려가면 true
+    @State var checkingNavigationBar = false
     let cafe: Cafes
     @Environment(\.presentationMode) var presentationMode
     
@@ -23,10 +28,24 @@ struct BODetailView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 
                 VStack(spacing: 0) {
-                    
-                    //carousel nav
-                    CarouselView(cafe: cafe)
-                    
+                    GeometryReader {
+                        geo in
+                        //carousel nav
+                        CarouselView(cafe: cafe)
+                            .offset(y: geo.frame(in: .global).minY > 0 ? -geo.frame(in: .global).minY : 0 )
+                            .frame(height: geo.frame(in: .global).minY > 0 ? UIScreen.getHeight(390) + geo.frame(in: .global).minY : UIScreen.getHeight(390))
+                            .onReceive(self.time) { (_) in
+                                // 화면 위치 체크
+                                let y = geo.frame(in: .global).minY
+                                if -y > (UIScreen.getHeight(390) - UIScreen.getHeight(100)) {
+                                    checkingNavigationBar = true
+                                }
+                                else {
+                                    checkingNavigationBar = false
+                                }
+                            }
+                    }
+                    .frame(height: UIScreen.getHeight(390))
                     //공간의 특징
                     DetailInfoView(sample: cafe)
                     
@@ -64,23 +83,36 @@ struct BODetailView: View {
                     
                     Spacer()
                 }
-                
-            }
+            } // scrollView 끝
             
+            
+            // 모달 뷰
             HalfModalView(isShown: $halfModal_shown, modalHeight: UIScreen.getHeight(313)){
                 VStack{}
             }
         
             // MARK: 플로팅 버튼
-            VStack {
-                HStack {
-                    backButton
+            // true라면 navigationBar를 불러와 백버튼과 이름 추가
+            if checkingNavigationBar {
+                VStack{}
+                .navigationBarHidden(false)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarTitle(cafe.name, displayMode: .inline)
+                .navigationBarItems(leading: backButton)
+            }
+            else {
+                // false면 맨위 흰색 뒤로가기 버튼만
+                VStack {
+                    HStack {
+                        backButton
+                        Spacer()
+                    }
+                    .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(17), bottom: 0, trailing: 0))
                     Spacer()
                 }
-                .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(17), bottom: 0, trailing: 0))
-                Spacer()
+                .navigationBarHidden(true)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(34), trailing: UIScreen.getWidth(20)))
             }
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(34), trailing: UIScreen.getWidth(20)))
         }
         .ignoresSafeArea(.all)
     }
@@ -92,28 +124,12 @@ struct BODetailView: View {
             HStack {
                 Image(systemName: "chevron.backward")
                     .resizable()
-                    .foregroundColor(Color.white)
+                    .foregroundColor(checkingNavigationBar ? Color("MainColor"): Color.white)
                     .frame(width: UIScreen.getWidth(10) ,height: UIScreen.getHeight(19))
             }
-            
         }
     }
     
-    // MARK: AR 버튼
-    
-    var arButtonView : some View {
-        Circle()
-            .fill(Color("MainColor"))
-            .frame(width: UIScreen.getWidth(60), height: UIScreen.getWidth(60))
-            .overlay(
-                Image("ar")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .foregroundColor(Color.white)
-            )
-            .shadow(radius: 4, x: 0, y: 4)
-        
-    }
 }
 
 struct BODetailView_Previews: PreviewProvider {
