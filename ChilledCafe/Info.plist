@@ -9,5 +9,12 @@
 		<string>LTMuseum-Reg.ttf</string>
 		<string>AppleSDGothicNeoEB.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>SplashView</string>
+		<key>UILaunchScreen</key>
+		<dict/>
+	</dict>
 </dict>
 </plist>

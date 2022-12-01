@@ -22,7 +22,7 @@ struct MyBookmarkView: View {
                 NavigationLink(destination: {
                     BODetailView(cafe: cafe)
                 }, label: {
-                    FullCardView(cafe: cafe)
+                    FullCardView(firebaseSM: firebaseSM, cafe: cafe)
                 })
             }
         }

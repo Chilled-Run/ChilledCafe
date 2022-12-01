@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailTagView: View {
-    let sample: Cafes
+    let sample: Cafe
     var body: some View {
         
         VStack(alignment: .leading) {
