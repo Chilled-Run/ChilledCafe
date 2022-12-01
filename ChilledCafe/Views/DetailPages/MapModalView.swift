@@ -102,13 +102,13 @@ struct HalfModalView<Content: View> : View {
                     .animation(.interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
                     .gesture(drag)
                     
-                    
                 }
             }.edgesIgnoringSafeArea(.all)
         }
     }
 }
 
+//
 enum DragState {
     case inactive
     case dragging(translation: CGSize)

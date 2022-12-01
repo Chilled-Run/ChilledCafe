@@ -67,6 +67,7 @@ struct BODetailView: View {
                             //지도 모달로 이어지는 버튼
                             Button(action: {halfModal_shown.toggle()}) {
                                 Text("길찾기")
+                                    .customSubhead4()
                                     .foregroundColor(Color("MainColor"))
                                     .frame(width: UIScreen.getWidth(62) ,height: UIScreen.getHeight(35))
                                     .overlay(
@@ -83,22 +84,26 @@ struct BODetailView: View {
                     
                     Spacer()
                 }
-            } // scrollView 끝
+            }
+            .onAppear {
+                UIScrollView.appearance().bounces = false
+            }
+            // scrollView 끝
             
             
             // 모달 뷰
             HalfModalView(isShown: $halfModal_shown, modalHeight: UIScreen.getHeight(313)){
                 VStack{}
             }
-        
+            
             // MARK: 플로팅 버튼
             // true라면 navigationBar를 불러와 백버튼과 이름 추가
             if checkingNavigationBar {
                 VStack{}
-                .navigationBarHidden(false)
-                .navigationBarBackButtonHidden(true)
-                .navigationBarTitle(cafe.name, displayMode: .inline)
-                .navigationBarItems(leading: backButton)
+                    .navigationBarHidden(false)
+                    .navigationBarBackButtonHidden(true)
+                    .navigationBarTitle(cafe.name, displayMode: .inline)
+                    .navigationBarItems(leading: backButton)
             }
             else {
                 // false면 맨위 흰색 뒤로가기 버튼만
