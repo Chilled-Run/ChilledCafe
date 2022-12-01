@@ -47,6 +47,9 @@
 		9A2930E8290270EF0005D339 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930E7290270EF0005D339 /* FirebaseStorage */; };
 		9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */; };
 		9A637F40291E3784009BCBED /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A637F3F291E3784009BCBED /* MoodView.swift */; };
+		9A8E8FCB29369DA40059D82B /* MapModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FCA29369DA40059D82B /* MapModalView.swift */; };
+		9A8E8FCD293733080059D82B /* GuestLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FCC293733080059D82B /* GuestLogView.swift */; };
+		9A8E8FCF293741AA0059D82B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FCE293741AA0059D82B /* CarouselView.swift */; };
 		9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F12290119B7005AC001 /* HotPlace.swift */; };
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
 		9AD1DA74291CF1BA0089E88A /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1DA73291CF1BA0089E88A /* Cafe.swift */; };
@@ -89,6 +92,9 @@
 		39D87D012928BEB0008AC253 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		9A637F3F291E3784009BCBED /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
+		9A8E8FCA29369DA40059D82B /* MapModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModalView.swift; sourceTree = "<group>"; };
+		9A8E8FCC293733080059D82B /* GuestLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestLogView.swift; sourceTree = "<group>"; };
+		9A8E8FCE293741AA0059D82B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
 		9AD1DA73291CF1BA0089E88A /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
@@ -293,6 +299,9 @@
 				9AF6281F2920CA93004D9412 /* BODetailView.swift */,
 				9AF628212920CCE5004D9412 /* DetailInfoView.swift */,
 				9AF628232920CD16004D9412 /* DetailTagView.swift */,
+				9A8E8FCA29369DA40059D82B /* MapModalView.swift */,
+				9A8E8FCC293733080059D82B /* GuestLogView.swift */,
+				9A8E8FCE293741AA0059D82B /* CarouselView.swift */,
 			);
 			path = DetailPages;
 			sourceTree = "<group>";
@@ -389,6 +398,7 @@
 			files = (
 				3947F1AD290A6C94009FA15C /* CustomConfirmButtonView.swift in Sources */,
 				9AD1DA74291CF1BA0089E88A /* Cafe.swift in Sources */,
+				9A8E8FCB29369DA40059D82B /* MapModalView.swift in Sources */,
 				2003DAE3292388AD00C09F5F /* ARMainView.swift in Sources */,
 				39B7C51329058172000C8B07 /* CardView.swift in Sources */,
 				39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */,
@@ -409,7 +419,9 @@
 				9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */,
 				3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */,
 				9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */,
+				9A8E8FCD293733080059D82B /* GuestLogView.swift in Sources */,
 				2003DAE5292388D800C09F5F /* SampleCardView.swift in Sources */,
+				9A8E8FCF293741AA0059D82B /* CarouselView.swift in Sources */,
 				393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */,
 				39D87D022928BEB0008AC253 /* LaunchScreenView.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
