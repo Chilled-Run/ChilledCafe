@@ -13,7 +13,7 @@ struct CarouselView: View {
     @State var currentIndex: Int = 0
     @Environment(\.presentationMode) var presentationMode
     
-    let cafe: Cafes
+    let cafe: Cafe
     var body: some View {
         VStack {
             //carousel nav
