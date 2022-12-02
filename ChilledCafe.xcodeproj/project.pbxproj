@@ -50,6 +50,7 @@
 		9A8E8FCB29369DA40059D82B /* MapModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FCA29369DA40059D82B /* MapModalView.swift */; };
 		9A8E8FCD293733080059D82B /* GuestLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FCC293733080059D82B /* GuestLogView.swift */; };
 		9A8E8FCF293741AA0059D82B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FCE293741AA0059D82B /* CarouselView.swift */; };
+		9A8E8FF02939D0DB0059D82B /* VisitPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FEF2939D0DB0059D82B /* VisitPostView.swift */; };
 		9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F12290119B7005AC001 /* HotPlace.swift */; };
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
 		9AD1DA74291CF1BA0089E88A /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1DA73291CF1BA0089E88A /* Cafe.swift */; };
@@ -95,6 +96,7 @@
 		9A8E8FCA29369DA40059D82B /* MapModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModalView.swift; sourceTree = "<group>"; };
 		9A8E8FCC293733080059D82B /* GuestLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestLogView.swift; sourceTree = "<group>"; };
 		9A8E8FCE293741AA0059D82B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		9A8E8FEF2939D0DB0059D82B /* VisitPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitPostView.swift; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
 		9AD1DA73291CF1BA0089E88A /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
@@ -261,9 +263,18 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		9A8E8FEE2939D0BE0059D82B /* VisitLogView */ = {
+			isa = PBXGroup;
+			children = (
+				9A8E8FEF2939D0DB0059D82B /* VisitPostView.swift */,
+			);
+			path = VisitLogView;
+			sourceTree = "<group>";
+		};
 		9A9B2F0C29011985005AC001 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9A8E8FEE2939D0BE0059D82B /* VisitLogView */,
 				39D87D002928BE9E008AC253 /* LaunchScreen */,
 				2003DADF2923887B00C09F5F /* ARView */,
 				3997AED22920EE1100D57176 /* Bookmark */,
@@ -417,6 +428,7 @@
 				3997AECC291E0DDA00D57176 /* FullCardView.swift in Sources */,
 				393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */,
 				9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */,
+				9A8E8FF02939D0DB0059D82B /* VisitPostView.swift in Sources */,
 				3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */,
 				9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */,
 				9A8E8FCD293733080059D82B /* GuestLogView.swift in Sources */,
