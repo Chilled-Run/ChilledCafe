@@ -8,71 +8,103 @@
 import SwiftUI
 
 struct VisitPostView: View {
-    let pawColor = footKind.bearPaw.footColor
-    let pawBackgroundColor = footKind.bearPaw.footBackground
+    @State var isToggleLike = false
+    
+    //임시로 만든 게시글 데이터
+    var post = constant().guestSample
+    //게시글의 글자색
+    var pawForegroundColor: Color {
+        getForegroundColor(foot: post.image)
+    }
+    //게시글의 배경색
+    var pawBackgroundColor: Color {
+        getBackgroundColor(foot: post.image)
+    }
     
     var body: some View {
-            VStack(alignment: .leading) {
-                //첫번째 문단
+        VStack {
+            // 취소 버튼
+            HStack {
+                Spacer()
+                backButton
+            }
+            .padding(.bottom, UIScreen.getHeight(20))
+            .padding(.trailing, UIScreen.getHeight(30))
+            
+            // 게시글
+            VStack(alignment: .leading, spacing: 0) {
+                
+                //첫번째 문단, 아이디, 날짜, 발자국이 보이는 곳
                 HStack {
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("12번째 방문한")
+                        Text("\(post.visitCount)번째 방문한")
                             .customTitle1()
-                        Text("아이디")
+                        Text(post.userName)
                             .customLargeTitle()
                             .padding(.top, UIScreen.getHeight(10))
-                        Text("2022.11.17 다녀감")
+                        Text("\(post.time) 다녀감")
                             .customSubhead3()
                             .padding(.top, UIScreen.getHeight(10))
                     }
-                    .foregroundColor(pawColor)
+                    .foregroundColor(pawForegroundColor)
                     Spacer()
-                    Image("bearPaw")
+                    Image(post.image)
                         .resizable()
                         .frame(width: 90, height: 90)
                 }
                 .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
-                //두번째 문단
+    
+                //두번째 문단, 본문이 보이는 곳
                 VStack(alignment: .leading) {
-                    Text("사장님,")
-                        .customSubhead4()
-                    Text("딸기 말고 다른 맛은")
-                        .customSubhead4()
-                    Text("만드실 생각")
-                        .customSubhead4()
-                    Text("없으신지요?")
+                    Text(post.context)
                         .customSubhead4()
                     Spacer()
                 }
                 .foregroundColor(Color.white)
                 .frame(height: UIScreen.getHeight(100))
                 .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
-                //세번째 문단
+               
+                //세번째 문단, 좋아요, 댓글의 개수가 보이는 곳
                 Spacer()
                 HStack {
-                    Image(systemName: "heart")
-                    Text("999+")
-                    Image(systemName: "message")
-                    Text("999+")
+                    Button(action: {isToggleLike.toggle()}){
+                        if isToggleLike {
+                            HStack(spacing: 4) {
+                                Image(systemName: "heart.fill")
+                                Text("1")
+                            }
+                        }
+                        else {
+                            HStack(spacing: 4) {
+                                Image(systemName: "heart")
+                                Text("0")
+                            }
+                        }
+                    }
+                    HStack(spacing: 4) {
+                        Image(systemName: "message")
+                        Text("\(post.comments.count)")
+                    }
                     Spacer()
                 }
-                .foregroundColor(pawColor)
+                .foregroundColor(pawForegroundColor)
                 .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
+                
+                
                 
                 // 구분선
                 Rectangle()
-                    .fill(pawColor)
-                    .frame(height: 2)
-                    .edgesIgnoringSafeArea(.horizontal)
+                    .fill(pawForegroundColor)
+                    .frame(height: 1)
                     .padding(.top, UIScreen.getHeight(10))
-
-                //댓글 문단
+                
+                //댓글 문단, 댓글의 아이디, 내용이 보이는 곳
                 VStack(alignment: .leading, spacing: 6) {
-                        Text("아이디")
-                        .foregroundColor(pawColor)
+                    Text(post.comments[0].userName)
+                        .foregroundColor(pawForegroundColor)
                         .customSubhead2()
-            
-                        Text("어떤걸로 해드릴까요")
+                    
+                    Text(post.comments[0].context)
                         .foregroundColor(Color.white)
                         .customSubhead4()
                 }
@@ -84,7 +116,26 @@ struct VisitPostView: View {
                     .stroke(pawBackgroundColor, lineWidth: 2)
             )
             .background(pawBackgroundColor)
+            
+            Spacer()
+        }
         
+    }
+    
+    var backButton : some View {
+        Button(action: {
+            
+        }) {
+            ZStack {
+                    Circle()
+                        .frame(width: UIScreen.getWidth(40) ,height: UIScreen.getHeight(40))
+                        .foregroundColor(Color("CustomGray3"))
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .foregroundColor(Color.black)
+                        .frame(width: UIScreen.getWidth(15) ,height: UIScreen.getHeight(15))
+            }
+        }
     }
 }
 
@@ -94,62 +145,55 @@ struct VisitPostView_Previews: PreviewProvider {
     }
 }
 
+
 //발자국 종류에 따른 색 변경
-enum footKind {
-    case bearPaw
-    case birdFoot
-    case catPaw
-    case dogFoot
-    case duckFoot
-    case horsePaw
-    case leftFoot
-    case rightFoot
-    
-    var footColor: Color {
-        switch self {
+func getForegroundColor(foot: String) -> Color {
+    switch foot {
         //return mainColor
-        case .leftFoot:
-            return Color("MainColor")
-        case .bearPaw:
-            return Color("MainColor")
-        case .birdFoot:
-            return Color("MainColor")
-        case .rightFoot:
-            return Color("MainColor")
-         
+    case "leftFoot":
+        return Color("MainColor")
+    case "bearPaw":
+        return Color("MainColor")
+    case "birdFoot":
+        return Color("MainColor")
+    case "rightFoot":
+        return Color("MainColor")
+        
         //return CustomGreen
-        case .catPaw:
-            return Color("CustomGreen")
-        case .dogFoot:
-            return Color("CustomGreen")
-        case .duckFoot:
-            return Color("CustomGreen")
-        case .horsePaw:
-            return Color("CustomGreen")
-        }
-    }
-    
-    var footBackground: Color {
-        switch self {
-        //return pastelBlue
-        case .leftFoot:
-            return Color("pastelBlue")
-        case .bearPaw:
-            return Color("pastelBlue")
-        case .birdFoot:
-            return Color("pastelBlue")
-        case .rightFoot:
-            return Color("pastelBlue")
-         
-        //return pastelGreen
-        case .catPaw:
-            return Color("pastelGreen")
-        case .dogFoot:
-            return Color("pastelGreen")
-        case .duckFoot:
-            return Color("pastelGreen")
-        case .horsePaw:
-            return Color("pastelGreen")
-        }
+    case "catPaw":
+        return Color("CustomGreen")
+    case "dogFoot":
+        return Color("CustomGreen")
+    case "duckFoot":
+        return Color("CustomGreen")
+        //horsePaw
+    default:
+        return Color("CustomGreen")
     }
 }
+
+func getBackgroundColor(foot: String) -> Color {
+    switch foot {
+        //return pastelBlue
+    case "leftFoot":
+        return Color("pastelBlue")
+    case "bearPaw":
+        return Color("pastelBlue")
+    case "birdFoot":
+        return Color("pastelBlue")
+    case "rightFoot":
+        return Color("pastelBlue")
+        
+        //return pastelGreen
+    case "catPaw":
+        return Color("pastelGreen")
+    case "dogFoot":
+        return Color("pastelGreen")
+    case "duckFoot":
+        return Color("pastelGreen")
+        //horsePaw
+    default:
+        return Color("pastelGreen")
+    }
+}
+
