@@ -38,6 +38,9 @@
 		39B7C5222905AB41000C8B07 /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C5212905AB41000C8B07 /* TextExtension.swift */; };
 		39B7C5242905AD98000C8B07 /* AppleSDGothicNeoEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 39B7C5232905AD98000C8B07 /* AppleSDGothicNeoEB.ttf */; };
 		39B7C5262905B6F3000C8B07 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B7C5252905B6F3000C8B07 /* ViewExtension.swift */; };
+		39C8CB0C293A282700DEF6E4 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8CB0B293A282700DEF6E4 /* TestView.swift */; };
+		39C8CB0E293DB73700DEF6E4 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8CB0D293DB73700DEF6E4 /* ViewRouter.swift */; };
+		39C8CB10293DB76800DEF6E4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C8CB0F293DB76800DEF6E4 /* Page.swift */; };
 		39D87D022928BEB0008AC253 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D87D012928BEB0008AC253 /* LaunchScreenView.swift */; };
 		9A2930DE290270EF0005D339 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930DD290270EF0005D339 /* FirebaseAnalytics */; };
 		9A2930E0290270EF0005D339 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9A2930DF290270EF0005D339 /* FirebaseAuth */; };
@@ -89,6 +92,9 @@
 		39B7C5212905AB41000C8B07 /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 		39B7C5232905AD98000C8B07 /* AppleSDGothicNeoEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleSDGothicNeoEB.ttf; sourceTree = "<group>"; };
 		39B7C5252905B6F3000C8B07 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		39C8CB0B293A282700DEF6E4 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		39C8CB0D293DB73700DEF6E4 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		39C8CB0F293DB76800DEF6E4 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		39D87D012928BEB0008AC253 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		9A2930E9290271DB0005D339 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		9A637F3F291E3784009BCBED /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
@@ -149,6 +155,7 @@
 				9A9B2F0D2901198A005AC001 /* Model */,
 				9A9B2F0C29011985005AC001 /* Views */,
 				2003255728FFC9A0004DE5B6 /* ChilledCafeApp.swift */,
+				39C8CB0B293A282700DEF6E4 /* TestView.swift */,
 				2003255B28FFC9A0004DE5B6 /* Assets.xcassets */,
 				2003255D28FFC9A0004DE5B6 /* Preview Content */,
 			);
@@ -272,6 +279,7 @@
 				3997AEAA291D1C9100D57176 /* Main */,
 				393A5BC92907C15900C4E31E /* CafeList */,
 				39B7C52829070985000C8B07 /* Onboarding */,
+				39C8CB0D293DB73700DEF6E4 /* ViewRouter.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 			children = (
 				9A9B2F12290119B7005AC001 /* HotPlace.swift */,
 				9AD1DA73291CF1BA0089E88A /* Cafe.swift */,
+				39C8CB0F293DB76800DEF6E4 /* Page.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -417,11 +426,13 @@
 				3997AECC291E0DDA00D57176 /* FullCardView.swift in Sources */,
 				393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */,
 				9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */,
+				39C8CB0C293A282700DEF6E4 /* TestView.swift in Sources */,
 				3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */,
 				9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */,
 				9A8E8FCD293733080059D82B /* GuestLogView.swift in Sources */,
 				2003DAE5292388D800C09F5F /* SampleCardView.swift in Sources */,
 				9A8E8FCF293741AA0059D82B /* CarouselView.swift in Sources */,
+				39C8CB0E293DB73700DEF6E4 /* ViewRouter.swift in Sources */,
 				393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */,
 				39D87D022928BEB0008AC253 /* LaunchScreenView.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
@@ -430,6 +441,7 @@
 				3997AEA9291D187300D57176 /* MainView.swift in Sources */,
 				39B7C5262905B6F3000C8B07 /* ViewExtension.swift in Sources */,
 				9A637F40291E3784009BCBED /* MoodView.swift in Sources */,
+				39C8CB10293DB76800DEF6E4 /* Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
