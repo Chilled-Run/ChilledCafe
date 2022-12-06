@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "arkit-smarthittest",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maxxfrazer/ARKit-SmartHitTest",
+      "state" : {
+        "revision" : "2b7145d55ca273f1ec0328783f87e93b9473f9f5",
+        "version" : "2.0.0"
+      }
+    },
+    {
       "identity" : "boringssl-swiftpm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/boringssl-SwiftPM.git",
@@ -34,6 +43,15 @@
       "state" : {
         "revision" : "7e80c25b51c2ffa238879b07fbfc5baa54bb3050",
         "version" : "9.6.0"
+      }
+    },
+    {
+      "identity" : "focusentity",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maxxfrazer/FocusEntity",
+      "state" : {
+        "revision" : "4b4840678c618c675a84960cf11c50a8aecc0104",
+        "version" : "1.1.1"
       }
     },
     {
@@ -115,6 +133,15 @@
       "state" : {
         "revision" : "3e4e743631e86c8c70dbc6efdc7beaa6e90fd3bb",
         "version" : "2.1.1"
+      }
+    },
+    {
+      "identity" : "realityui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/maxxfrazer/RealityUI.git",
+      "state" : {
+        "revision" : "06e0e801d0c245bcff8f2f5ef2f67c1127057a87",
+        "version" : "1.2.2"
       }
     },
     {
