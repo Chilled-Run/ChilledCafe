@@ -10,10 +10,7 @@ import SwiftUI
 struct LaunchScreenView: View {
     var body: some View {
         ZStack(alignment: .center) {
-            Color("MainColor")
-            Image("WhiteAppTitle")
-                .resizable()
-                .frame(width: 250, height: 75)
+            Image("Launch")
         }
         .edgesIgnoringSafeArea(.all)
     }

@@ -3,7 +3,7 @@ import FirebaseStorage
 import Firebase
 
 class FirebaseStorageManager: ObservableObject {
-    @Published var selectedCategory: String = "AR 경험"
+    @Published var selectedCategory: String = "거대한 공간"
     @Published var cafeList: [String: [Cafe]] = [:]
     @Published var bookmarkedCafeList: [Cafe] = []
     @Published var cafeThumbnail: [String : UIImage] = [:]

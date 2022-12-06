@@ -20,7 +20,7 @@ struct MainView: View {
                 Spacer()
                 Image(systemName: "person")
                     .resizable()
-                    .frame(width: UIScreen.getWidth(25), height: UIScreen.getHeight(25))
+                    .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
                     .foregroundColor(Color("MainColor"))
                 
             }
