@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct StorySmallView: View {
+    //
     let story: Story
     let storyForegroundColor: Color
     let storyBackgroundColor: Color
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            // 유저 아이디
             Text(story.userName)
                 .foregroundColor(storyForegroundColor)
                 .customSubhead3()
-            
+            // 작성한 본문
             Text(story.context)
                 .foregroundColor(Color.white)
                 .CustomDesignedBody()
@@ -25,7 +27,7 @@ struct StorySmallView: View {
                 .lineSpacing(3)
                 .padding(.top, UIScreen.getHeight(10))
             Spacer()
-            
+            // 메세지 개수 보여주기
             HStack {
                 Spacer()
                 Image(systemName: "message")
@@ -40,6 +42,7 @@ struct StorySmallView: View {
         }
         .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(20)))
         .frame(width: UIScreen.getWidth(170), height: UIScreen.getHeight(170))
+        //배경 설정
         .overlay(
             RoundedRectangle(cornerRadius: 4)
                 .stroke(storyBackgroundColor, lineWidth: 2)

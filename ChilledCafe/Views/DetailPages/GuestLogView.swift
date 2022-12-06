@@ -15,15 +15,17 @@ struct GuestLogView: View {
                         .customTitle2()
                     Spacer()
                 }
-                //Story로 이어지는 뷰
+                // Story로 이어지는 뷰
+                // 모든 사람들에게 보여지는 공간 이야기
             HStack(spacing: 8) {
                     StorySmallView(story: constant().storySamples[0], storyForegroundColor: Color("customGreen"), storyBackgroundColor: Color("pastelGreen"))
                     
                     StorySmallView(story: constant().storySamples[1], storyForegroundColor: Color("MainColor"), storyBackgroundColor: Color("pastelBlue"))
                 }
                 .padding(.top, UIScreen.getHeight(20))
-                //그라데이션을 위한 ZStack
+                // 그라데이션을 위한 ZStack
                 ZStack {
+                    // 방문인증 후 보여지는 공간이야기
                     HStack(spacing: 8) {
                         
                         StorySmallView(story: constant().storySamples[1], storyForegroundColor: Color("MainColor"), storyBackgroundColor: Color("pastelBlue"))
@@ -32,7 +34,7 @@ struct GuestLogView: View {
                     
                         
                     }
-                    //방문 인증을 위한 뷰
+                    // ZStack 위에 올라가는 방문 인증을 위한 뷰
                     VStack(spacing: 0) {
                         Image(systemName: "lock")
                             .foregroundColor(Color("MainColor"))
@@ -76,6 +78,7 @@ struct GuestLogView: View {
                         LinearGradient(gradient: Gradient(colors: [Color.black, Color.black, Color.black, Color.black.opacity(0.8)]), startPoint: .bottom, endPoint: .top)
                                 )
                 }
+            // ZStack 끝
         }
         .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
     }
