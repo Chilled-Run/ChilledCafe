@@ -32,151 +32,148 @@ struct CreateStroyView: View {
     }
     
     var body: some View {
-        ZStack {
-            //             배경색
-            Color.black.ignoresSafeArea()
-                .opacity(0.8)
-            // 팝업 버튼
-            //            Button(action: {
-            //                isPopup.toggle()
-            //            }) {
-            //                Text("팝업")
-            //            }
-            // 팝업에 나오는 뷰
-            VStack {
-                HStack {
-                    backButton
-                    Spacer()
-                    if !content.isEmpty {
-                        completeButton
-                    }
-                }
-                .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(30)))
+            ZStack {
+                //             배경색
+                Color.black.ignoresSafeArea()
+                    .opacity(0.8)
                 
-                VStack(alignment: .leading, spacing: 0) {
-                    
-                    //첫번째 문단, 아이디, 날짜, 발자국이 보이는 곳
+                VStack {
                     HStack {
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text("1 번째 방문한")
-                                .customTitle1()
-                            Text("guest")
-                                .customLargeTitle()
-                                .padding(.top, UIScreen.getHeight(0))
-                            Text("\(postTime) 다녀감")
-                                .customSubhead3()
-                                .padding(.top, UIScreen.getHeight(0))
-                        }
-                        .foregroundColor(pawForegroundColor)
+                        backButton
                         Spacer()
-                        Image(postImage)
-                            .resizable()
-                            .frame(width: 90, height: 90)
+                        if !content.isEmpty {
+                            completeButton
+                        }
                     }
-                    .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
+                    .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(30)))
+                    .navigationBarHidden(true)
                     
-                    //두번째 문단, 본문이 보이는 곳
-                    VStack(alignment: .leading) {
-                        ZStack {
-                            //ios 16이상의 경우
-                            //texteditor의 배경을 바꾸기위한 작업
-                            if #available(iOS 16.0, *) {
-                                // placeholder를 위한 texteditor
-                                if self.content.isEmpty {
-                                    TextEditor(text:$placeholderText)
+                    VStack(alignment: .leading, spacing: 0) {
+                        
+                        //첫번째 문단, 아이디, 날짜, 발자국이 보이는 곳
+                        HStack {
+                            VStack(alignment: .leading, spacing: 0) {
+                                Text("1 번째 방문한")
+                                    .customTitle1()
+                                Text("guest")
+                                    .customLargeTitle()
+                                    .padding(.top, UIScreen.getHeight(0))
+                                Text("\(postTime) 다녀감")
+                                    .customSubhead3()
+                                    .padding(.top, UIScreen.getHeight(0))
+                            }
+                            .foregroundColor(pawForegroundColor)
+                            Spacer()
+                            Image(postImage)
+                                .resizable()
+                                .frame(width: 90, height: 90)
+                        }
+                        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
+                        
+                        //두번째 문단, 본문이 보이는 곳
+                        VStack(alignment: .leading) {
+                            ZStack {
+                                //ios 16이상의 경우
+                                //texteditor의 배경을 바꾸기위한 작업
+                                if #available(iOS 16.0, *) {
+                                    // placeholder를 위한 texteditor
+                                    if self.content.isEmpty {
+                                        TextEditor(text:$placeholderText)
+                                            .scrollContentBackground(.hidden)
+                                            .background(pawBackgroundColor)
+                                            .font(
+                                                .custom("AppleSDGothicNeo-Medium", size: 16)
+                                            )
+                                            .foregroundColor(.gray)
+                                            .disabled(true)
+                                        
+                                    }
+                                    
+                                    // 글을 쓰기 위한 texteditor
+                                    TextEditor(text: $content)
                                         .scrollContentBackground(.hidden)
                                         .background(pawBackgroundColor)
+                                        .opacity(self.content.isEmpty ? 0.25 : 1)
+                                        .foregroundColor(.white)
                                         .font(
                                             .custom("AppleSDGothicNeo-Medium", size: 16)
                                         )
-                                        .foregroundColor(.gray)
-                                        .disabled(true)
-                                    
-                                }
-                                
-                                // 글을 쓰기 위한 texteditor
-                                TextEditor(text: $content)
-                                    .scrollContentBackground(.hidden)
-                                    .background(pawBackgroundColor)
-                                    .opacity(self.content.isEmpty ? 0.25 : 1)
-                                    .foregroundColor(.white)
-                                    .font(
-                                        .custom("AppleSDGothicNeo-Medium", size: 16)
-                                    )
-                                    .lineSpacing(4) //줄 간격
-                                // 글자수 제한
-                                    .onChange(of: content) { value in
-                                        self.words = content.count
-                                        if self.words > 150 {
-                                            self.content = self.lastText
+                                        .lineSpacing(4) //줄 간격
+                                    // 글자수 제한
+                                        .onChange(of: content) { value in
+                                            self.words = content.count
+                                            if self.words > 150 {
+                                                self.content = self.lastText
+                                            }
+                                            self.lastText = self.content
                                         }
-                                        self.lastText = self.content
+                                }
+                                // ios 16 미만의 경우
+                                else {
+                                    // placeholder를 위한 texteditor
+                                    if self.content.isEmpty {
+                                        TextEditor(text:$placeholderText)
+                                            .background(pawBackgroundColor)
+                                            .font(
+                                                .custom("AppleSDGothicNeo-Medium", size: 16)
+                                            )
+                                            .foregroundColor(.gray)
+                                            .disabled(true)
+                                        //배경지우기
+                                        //UITextView의 배경을 지워야 다른 배경을 입힐 수 있다.
+                                            .onAppear() {
+                                                UITextView.appearance().backgroundColor = .clear
+                                            }
+                                        
                                     }
-                            }
-                            // ios 16 미만의 경우
-                            else {
-                                // placeholder를 위한 texteditor
-                                if self.content.isEmpty {
-                                    TextEditor(text:$placeholderText)
+                                    
+                                    // 글을 쓰기 위한 texteditor
+                                    TextEditor(text: $content)
                                         .background(pawBackgroundColor)
+                                        .opacity(self.content.isEmpty ? 0.25 : 1)
+                                        .foregroundColor(.white)
                                         .font(
                                             .custom("AppleSDGothicNeo-Medium", size: 16)
                                         )
-                                        .foregroundColor(.gray)
-                                        .disabled(true)
-                                    //배경지우기
-                                    //UITextView의 배경을 지워야 다른 배경을 입힐 수 있다.
-                                        .onAppear() {
-                                            UITextView.appearance().backgroundColor = .clear
+                                        .lineSpacing(4) //줄 간격
+                                    // 글자수 제한
+                                        .onChange(of: content) { value in
+                                            self.words = content.count
+                                            if self.words > 150 {
+                                                self.content = self.lastText
+                                            }
+                                            self.lastText = self.content
                                         }
-                                    
                                 }
-                                
-                                // 글을 쓰기 위한 texteditor
-                                TextEditor(text: $content)
-                                    .background(pawBackgroundColor)
-                                    .opacity(self.content.isEmpty ? 0.25 : 1)
-                                    .foregroundColor(.white)
-                                    .font(
-                                        .custom("AppleSDGothicNeo-Medium", size: 16)
-                                    )
-                                    .lineSpacing(4) //줄 간격
-                                // 글자수 제한
-                                    .onChange(of: content) { value in
-                                        self.words = content.count
-                                        if self.words > 150 {
-                                            self.content = self.lastText
-                                        }
-                                        self.lastText = self.content
-                                    }
                             }
+                            Spacer()
                         }
+                        .frame(height: UIScreen.getHeight(133))
+                        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
+                        
                         Spacer()
+                        
+                        //글자 수 표시
+                        HStack {
+                            Spacer()
+                            Text("\(words)/150")
+                                .customTitle1()
+                                .foregroundColor(pawForegroundColor)
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(30), trailing: UIScreen.getWidth(30)))
                     }
-                    .frame(height: UIScreen.getHeight(133))
-                    .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
-                    
+                    .frame(width: UIScreen.getWidth(340), height: UIScreen.getHeight(340))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4)
+                            .stroke(pawBackgroundColor, lineWidth: 2)
+                    )
+                    .background(pawBackgroundColor)
+                    .padding(.top, UIScreen.getHeight(60))
                     Spacer()
-                    
-                    //글자 수 표시
-                    HStack {
-                        Spacer()
-                        Text("\(words)/150")
-                            .customTitle1()
-                            .foregroundColor(pawForegroundColor)
-                    }
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.getHeight(30), trailing: UIScreen.getWidth(30)))
+                      
                 }
-                .frame(width: UIScreen.getWidth(340), height: UIScreen.getHeight(340))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 4)
-                        .stroke(pawBackgroundColor, lineWidth: 2)
-                )
-                .background(pawBackgroundColor)
-                Spacer()
+                
             }
-            .padding(.top, 50)
-        }
     }
     
     var backButton : some View {
