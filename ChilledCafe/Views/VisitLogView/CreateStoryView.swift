@@ -54,7 +54,7 @@ struct CreateStoryView: View {
                         //첫번째 문단, 아이디, 날짜, 발자국이 보이는 곳
                         HStack {
                             VStack(alignment: .leading, spacing: 0) {
-                                Text("1 번째 방문한")
+                                Text("1번 방문한")
                                     .customTitle1()
                                 Text("guest")
                                     .customLargeTitle()
@@ -193,7 +193,7 @@ struct CreateStoryView: View {
     
     var completeButton : some View {
         Button(action: {
-            let newStory = Story(storyId: UUID(), userName: "guest", visitCount: 0, context: content, image: postImage, like: false, likeCount: 0, time: postTime, comments: [])
+//            let newStory = Story(storyId: UUID(), userName: "guest", visitCount: 0, context: content, image: postImage, like: false, likeCount: 0, time: postTime, comments: [])
             isPopup.toggle()
             self.isContinue = false
             content = ""

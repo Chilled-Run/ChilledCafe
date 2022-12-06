@@ -82,7 +82,6 @@ struct BODetailView: View {
                     
                     //방문자 로그 뷰
                     GuestLogView()
-                    
                     Spacer()
                 }
             }
