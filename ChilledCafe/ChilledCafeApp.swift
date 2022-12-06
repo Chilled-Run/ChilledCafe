@@ -27,29 +27,30 @@ struct ChilledCafeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if isLoading {
-                LaunchScreenView()
-                    .edgesIgnoringSafeArea(.all)
-                    .onAppear {
-                        let dispatchGroup = DispatchGroup()
-                        DispatchQueue.global().async(group: dispatchGroup) {
-                            dispatchGroup.enter()
-                            firebaseSM.getCafes(dispatchGroup: dispatchGroup)
-                        }
-                        dispatchGroup.notify(queue: DispatchQueue.main) {
-                            isLoading.toggle()
-                        }
-                     }
-            } else {
-                NavigationView {
-                    if isFirst {
-                        IntroView()
-                    } else {
-                        MainView(firebaseSM: firebaseSM, ifFirst: true)
-                    }
-                }
-                .accentColor(Color("MainColor"))
-            }
+            CreateStroyView()
+//            if isLoading {
+//                LaunchScreenView()
+//                    .edgesIgnoringSafeArea(.all)
+//                    .onAppear {
+//                        let dispatchGroup = DispatchGroup()
+//                        DispatchQueue.global().async(group: dispatchGroup) {
+//                            dispatchGroup.enter()
+//                            firebaseSM.getCafes(dispatchGroup: dispatchGroup)
+//                        }
+//                        dispatchGroup.notify(queue: DispatchQueue.main) {
+//                            isLoading.toggle()
+//                        }
+//                     }
+//            } else {
+//                NavigationView {
+//                    if isFirst {
+//                        IntroView()
+//                    } else {
+//                        MainView(firebaseSM: firebaseSM, ifFirst: true)
+//                    }
+//                }
+//                .accentColor(Color("MainColor"))
+//            }
         }
     }
 }

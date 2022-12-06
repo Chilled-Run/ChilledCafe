@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct GuestPost {
-    let postId: String
+struct Story {
+    let storyId: UUID
     let userName: String
     let visitCount: Int
     let context: String

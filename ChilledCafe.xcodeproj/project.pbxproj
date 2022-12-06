@@ -50,8 +50,9 @@
 		9A8E8FCB29369DA40059D82B /* MapModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FCA29369DA40059D82B /* MapModalView.swift */; };
 		9A8E8FCD293733080059D82B /* GuestLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FCC293733080059D82B /* GuestLogView.swift */; };
 		9A8E8FCF293741AA0059D82B /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FCE293741AA0059D82B /* CarouselView.swift */; };
-		9A8E8FF02939D0DB0059D82B /* VisitPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FEF2939D0DB0059D82B /* VisitPostView.swift */; };
-		9A8E8FF22939E71D0059D82B /* GuestPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FF12939E71D0059D82B /* GuestPost.swift */; };
+		9A8E8FF02939D0DB0059D82B /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FEF2939D0DB0059D82B /* StoryView.swift */; };
+		9A8E8FF22939E71D0059D82B /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FF12939E71D0059D82B /* Story.swift */; };
+		9A8E8FF4293B3D5A0059D82B /* CreateStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A8E8FF3293B3D5A0059D82B /* CreateStoryView.swift */; };
 		9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F12290119B7005AC001 /* HotPlace.swift */; };
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
 		9AD1DA74291CF1BA0089E88A /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1DA73291CF1BA0089E88A /* Cafe.swift */; };
@@ -97,8 +98,9 @@
 		9A8E8FCA29369DA40059D82B /* MapModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModalView.swift; sourceTree = "<group>"; };
 		9A8E8FCC293733080059D82B /* GuestLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestLogView.swift; sourceTree = "<group>"; };
 		9A8E8FCE293741AA0059D82B /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
-		9A8E8FEF2939D0DB0059D82B /* VisitPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitPostView.swift; sourceTree = "<group>"; };
-		9A8E8FF12939E71D0059D82B /* GuestPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestPost.swift; sourceTree = "<group>"; };
+		9A8E8FEF2939D0DB0059D82B /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
+		9A8E8FF12939E71D0059D82B /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		9A8E8FF3293B3D5A0059D82B /* CreateStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStoryView.swift; sourceTree = "<group>"; };
 		9A9B2F12290119B7005AC001 /* HotPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPlace.swift; sourceTree = "<group>"; };
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
 		9AD1DA73291CF1BA0089E88A /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
@@ -268,7 +270,8 @@
 		9A8E8FEE2939D0BE0059D82B /* VisitLogView */ = {
 			isa = PBXGroup;
 			children = (
-				9A8E8FEF2939D0DB0059D82B /* VisitPostView.swift */,
+				9A8E8FEF2939D0DB0059D82B /* StoryView.swift */,
+				9A8E8FF3293B3D5A0059D82B /* CreateStoryView.swift */,
 			);
 			path = VisitLogView;
 			sourceTree = "<group>";
@@ -294,7 +297,7 @@
 			children = (
 				9A9B2F12290119B7005AC001 /* HotPlace.swift */,
 				9AD1DA73291CF1BA0089E88A /* Cafe.swift */,
-				9A8E8FF12939E71D0059D82B /* GuestPost.swift */,
+				9A8E8FF12939E71D0059D82B /* Story.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				2003DAE3292388AD00C09F5F /* ARMainView.swift in Sources */,
 				39B7C51329058172000C8B07 /* CardView.swift in Sources */,
 				39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */,
+				9A8E8FF4293B3D5A0059D82B /* CreateStoryView.swift in Sources */,
 				3997AEAC291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift in Sources */,
 				39B7C5222905AB41000C8B07 /* TextExtension.swift in Sources */,
 				9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */,
@@ -430,9 +434,9 @@
 				3997AEAE291D274600D57176 /* CategoryButtonView.swift in Sources */,
 				3997AECC291E0DDA00D57176 /* FullCardView.swift in Sources */,
 				393A5BA2290739B600C4E31E /* SelectAtmosphereView.swift in Sources */,
-				9A8E8FF22939E71D0059D82B /* GuestPost.swift in Sources */,
+				9A8E8FF22939E71D0059D82B /* Story.swift in Sources */,
 				9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */,
-				9A8E8FF02939D0DB0059D82B /* VisitPostView.swift in Sources */,
+				9A8E8FF02939D0DB0059D82B /* StoryView.swift in Sources */,
 				3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */,
 				9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */,
 				9A8E8FCD293733080059D82B /* GuestLogView.swift in Sources */,
@@ -502,7 +506,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -556,7 +560,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
