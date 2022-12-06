@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct CreateStroyView: View {
+struct CreateStoryView: View {
     
     @State var content: String = ""
     @State var placeholderText: String = "공간의 이야기를 나눠주세요!"
     @State var lastText: String = ""
     @State var words: Int = 0
     @Binding var isPopup: Bool
+    @Binding var isContinue: Bool
     
     
     var postTime: String {
@@ -194,6 +195,7 @@ struct CreateStroyView: View {
         Button(action: {
             let newStory = Story(storyId: UUID(), userName: "guest", visitCount: 0, context: content, image: postImage, like: false, likeCount: 0, time: postTime, comments: [])
             isPopup.toggle()
+            self.isContinue = false
             content = ""
             
         }) {
