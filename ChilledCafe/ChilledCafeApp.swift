@@ -23,33 +23,89 @@ struct ChilledCafeApp: App {
     @AppStorage("isFirst") private var isFirst: Bool = true
     @StateObject var firebaseSM: FirebaseStorageManager = FirebaseStorageManager()
     @State var isLoading: Bool = true
+    @State var selectedTab: Int = 0
+    @StateObject var viewRouter: ViewRouter = ViewRouter()
     
     
     var body: some Scene {
         WindowGroup {
-            if isLoading {
-                LaunchScreenView()
-                    .edgesIgnoringSafeArea(.all)
-                    .onAppear {
-                        let dispatchGroup = DispatchGroup()
-                        DispatchQueue.global().async(group: dispatchGroup) {
-                            dispatchGroup.enter()
-                            firebaseSM.getCafes(dispatchGroup: dispatchGroup)
+            GeometryReader { geometry in
+                if isLoading {
+                    LaunchScreenView()
+                        .edgesIgnoringSafeArea(.all)
+                        .onAppear {
+                            let dispatchGroup = DispatchGroup()
+                            DispatchQueue.global().async(group: dispatchGroup) {
+                                dispatchGroup.enter()
+                                firebaseSM.getCafes(dispatchGroup: dispatchGroup)
+                            }
+                            dispatchGroup.notify(queue: DispatchQueue.main) {
+                                isLoading.toggle()
+                            }
                         }
-                        dispatchGroup.notify(queue: DispatchQueue.main) {
-                            isLoading.toggle()
+                } else {
+                    NavigationView {
+                        if isFirst {
+                            IntroView()
+                        } else {
+                            VStack(spacing: 0) {
+                                switch viewRouter.currentPage {
+                                case .home:
+                                    MainView(firebaseSM: firebaseSM, ifFirst: true)
+                                case .ar:
+                                    ARMainView()
+                                case .bookmarked:
+                                    MyBookmarkView(firebaseSM: firebaseSM)
+                                }
+                                Spacer(minLength: 0)
+                                ZStack {
+                                    HStack {
+                                        TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "home")
+
+                                        NavigationLink(destination: ARMainView()) {
+                                            VStack {
+                                                Image("ar")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: geometry.size.width/3, height: geometry.size.height/28)
+                                                    .foregroundColor(.gray)
+                                            }
+                                        }
+                            
+                                        TabBarIcon(viewRouter: viewRouter, assignedPage: .bookmarked, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "bookmarks")
+                                    }
+                                    .frame(width: geometry.size.width, height: geometry.size.height/14) 
+                                    .overlay(Divider(), alignment: .top)
+                                }
+                                .padding(0)
+                            }
                         }
-                     }
-            } else {
-                NavigationView {
-                    if isFirst {
-                        IntroView()
-                    } else {
-                        MainView(firebaseSM: firebaseSM, ifFirst: true)
                     }
+                    .accentColor(Color("MainColor"))
                 }
-                .accentColor(Color("MainColor"))
             }
         }
+    }
+}
+
+struct TabBarIcon: View {
+    
+    @StateObject var viewRouter: ViewRouter
+    let assignedPage: Page
+    
+    let width, height: CGFloat
+    let iconName: String
+
+    var body: some View {
+        VStack {
+            Image(iconName)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: width, height: height)
+        }
+            .onTapGesture {
+                viewRouter.currentPage = assignedPage
+            }
+            .foregroundColor(viewRouter.currentPage == assignedPage ? .blue : .gray)
     }
 }
