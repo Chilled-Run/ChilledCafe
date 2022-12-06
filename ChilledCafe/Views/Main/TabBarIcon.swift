@@ -22,6 +22,6 @@ struct TabBarIcon: View {
             .onTapGesture {
                 viewRouter.currentPage = assignedPage
             }
-            .foregroundColor(viewRouter.currentPage == assignedPage ? .blue : .gray)
+            .foregroundColor(viewRouter.currentPage == assignedPage ? Color("MainColor") : .gray)
     }
 }
