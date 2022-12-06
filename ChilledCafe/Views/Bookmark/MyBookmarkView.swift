@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MyBookmarkView: View {
     @ObservedObject var firebaseSM: FirebaseStorageManager
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     init(firebaseSM: FirebaseStorageManager){
         self.firebaseSM = firebaseSM
@@ -28,26 +27,8 @@ struct MyBookmarkView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton)
-        .navigationBarTitle("내가 갈 카페")
+        .navigationBarTitle("내가 갈 공간")
         .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: 0, bottom: 0, trailing: 0))
-    }
-    
-    // MARK: 뒤로가기 버튼
-    var backButton: some View {
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            HStack {
-                Image(systemName: "chevron.backward")
-                    .foregroundColor(Color("MainColor"))
-            }
-        }
     }
 }
 
-//struct MyBookmarkView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MyBookmarkView()
-//    }
-//}

@@ -21,6 +21,7 @@ struct FullCardScrollView: View {
             }
             Spacer(minLength: UIScreen.getHeight(30))
         }
+        .padding(0)
     }
 }
 
