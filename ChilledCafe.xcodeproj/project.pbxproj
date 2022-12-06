@@ -24,6 +24,7 @@
 		3947F1AD290A6C94009FA15C /* CustomConfirmButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3947F1AC290A6C94009FA15C /* CustomConfirmButtonView.swift */; };
 		3947F1B0290A8413009FA15C /* LTMuseum-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3947F1AE290A8413009FA15C /* LTMuseum-Bold.ttf */; };
 		3947F1B1290A8413009FA15C /* LTMuseum-Reg.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3947F1AF290A8413009FA15C /* LTMuseum-Reg.ttf */; };
+		395664FB293F2D7000FC8C0E /* TabBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395664FA293F2D7000FC8C0E /* TabBarIcon.swift */; };
 		3997AEA7291D12BD00D57176 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3997AEA6291D12BD00D57176 /* GoogleService-Info.plist */; };
 		3997AEA9291D187300D57176 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997AEA8291D187300D57176 /* MainView.swift */; };
 		3997AEAC291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997AEAB291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift */; };
@@ -77,6 +78,7 @@
 		3947F1AC290A6C94009FA15C /* CustomConfirmButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfirmButtonView.swift; sourceTree = "<group>"; };
 		3947F1AE290A8413009FA15C /* LTMuseum-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LTMuseum-Bold.ttf"; sourceTree = "<group>"; };
 		3947F1AF290A8413009FA15C /* LTMuseum-Reg.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "LTMuseum-Reg.ttf"; sourceTree = "<group>"; };
+		395664FA293F2D7000FC8C0E /* TabBarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIcon.swift; sourceTree = "<group>"; };
 		3997AEA6291D12BD00D57176 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3997AEA8291D187300D57176 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		3997AEAB291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollMenuBarView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				3997AEA8291D187300D57176 /* MainView.swift */,
 				3997AEAB291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift */,
 				3997AEAD291D274600D57176 /* CategoryButtonView.swift */,
+				395664FA293F2D7000FC8C0E /* TabBarIcon.swift */,
 				3997AECB291E0DDA00D57176 /* FullCardView.swift */,
 				3997AECD291E0EAC00D57176 /* FullCardScrollView.swift */,
 			);
@@ -425,6 +428,7 @@
 				9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */,
 				3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */,
 				9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */,
+				395664FB293F2D7000FC8C0E /* TabBarIcon.swift in Sources */,
 				9A8E8FCD293733080059D82B /* GuestLogView.swift in Sources */,
 				2003DAE5292388D800C09F5F /* SampleCardView.swift in Sources */,
 				9A8E8FCF293741AA0059D82B /* CarouselView.swift in Sources */,

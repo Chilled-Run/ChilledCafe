@@ -9,6 +9,5 @@ import Foundation
 
 enum Page {
     case home
-    case ar
     case bookmarked
 }

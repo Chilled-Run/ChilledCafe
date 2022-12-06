@@ -52,16 +52,16 @@ struct ChilledCafeApp: App {
                                 switch viewRouter.currentPage {
                                 case .home:
                                     MainView(firebaseSM: firebaseSM, ifFirst: true)
-                                case .ar:
-                                    ARMainView()
                                 case .bookmarked:
                                     MyBookmarkView(firebaseSM: firebaseSM)
                                 }
                                 Spacer(minLength: 0)
                                 ZStack {
                                     HStack {
+                                        // 홈
                                         TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "home")
-
+                                        
+                                        // AR
                                         NavigationLink(destination: ARMainView()) {
                                             VStack {
                                                 Image("ar")
@@ -72,6 +72,7 @@ struct ChilledCafeApp: App {
                                             }
                                         }
                             
+                                        // 북마크
                                         TabBarIcon(viewRouter: viewRouter, assignedPage: .bookmarked, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "bookmarks")
                                     }
                                     .frame(width: geometry.size.width, height: geometry.size.height/14) 
@@ -88,24 +89,4 @@ struct ChilledCafeApp: App {
     }
 }
 
-struct TabBarIcon: View {
-    
-    @StateObject var viewRouter: ViewRouter
-    let assignedPage: Page
-    
-    let width, height: CGFloat
-    let iconName: String
 
-    var body: some View {
-        VStack {
-            Image(iconName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: width, height: height)
-        }
-            .onTapGesture {
-                viewRouter.currentPage = assignedPage
-            }
-            .foregroundColor(viewRouter.currentPage == assignedPage ? .blue : .gray)
-    }
-}
