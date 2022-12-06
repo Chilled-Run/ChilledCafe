@@ -58,11 +58,14 @@ struct ARMainView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(Color.black)
+                                .opacity(0.8)
                                 .frame(width: 215, height: 40)
                         
                             Text("평평한 바닥을 인식해주세요")
+                                .foregroundColor(.white)
+                                .customTitle1()
                         }
-                        .padding(.top, geo.safeAreaInsets.top + 80)
+                        .padding(.top, geo.safeAreaInsets.top + 30)
                         
                         Spacer()
                         
@@ -78,11 +81,14 @@ struct ARMainView: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 4)
                                     .fill(Color.black)
+                                    .opacity(0.8)
                                     .frame(width: 300, height: 60)
                                 
                                 Text("이 공간에 방문객들의 스토리가 담겨져 있네요! \n발자국을 눌러 확인해보세요!")
+                                    .foregroundColor(.white)
+                                    .customTitle1()
                             }
-                            .padding(.top, geo.safeAreaInsets.top + 80)
+                            .padding(.top, geo.safeAreaInsets.top + 30)
                             
                             Spacer()
                             
@@ -96,11 +102,14 @@ struct ARMainView: View {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 4)
                                         .fill(Color.black)
+                                        .opacity(0.8)
                                         .frame(width: 283, height: 40)
                                     
                                     Text("원하는 모양의 발바닥을 남겨주세요")
+                                        .foregroundColor(.white)
+                                        .customTitle1()
                                 }
-                                .padding(.top, geo.safeAreaInsets.top + 80)
+                                .padding(.top, geo.safeAreaInsets.top + 30)
                                 
                                 Spacer()
                                 
@@ -269,6 +278,18 @@ extension CustomARView: FEDelegate {
     }
 }
 
+struct GrowingButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(.white.opacity(0.8))
+            .foregroundColor(.black)
+            .clipShape(Capsule())
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+    }
+}
+
 struct startFootprintButton: View {
     @Binding var isContinue: Bool
     var body: some View {
@@ -276,10 +297,9 @@ struct startFootprintButton: View {
             self.isContinue = true
         }) {
             Text("+ 발자국 남기러 가기")
-                .foregroundColor(.white)
-                .padding()
+                .foregroundColor(.black)
         }
-        .background(Capsule().stroke(lineWidth: 2))
+        .buttonStyle(GrowingButton())
 
     }
 }
@@ -291,10 +311,9 @@ struct startStoryButton: View {
             self.isShowSheet.toggle()
         }) {
             Text("스토리 남기러 가기 ->")
-                .foregroundColor(.white)
-                .padding()
+                .foregroundColor(.black)
         }
-        .background(Capsule().stroke(lineWidth: 2))
+        .buttonStyle(GrowingButton())
 
     }
 }
@@ -322,7 +341,8 @@ struct ModelPickerView: View {
                             .aspectRatio(1/1, contentMode: .fit)
                             .background(Color.white)
                             .cornerRadius(12)
-                    }.buttonStyle(PlainButtonStyle())
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
         }
@@ -350,7 +370,6 @@ struct EmptyButtonsView: View {
                     .font(.title)
                     .background(Color.white.opacity(0.75))
                     .cornerRadius(30)
-                    .padding(20)
             }
         }
     }
