@@ -195,7 +195,7 @@ struct CreateStroyView: View {
     
     var completeButton : some View {
         Button(action: {
-            let newStory = Story(postId: UUID(), userName: "guest", visitCount: 0, context: content, image: postImage, like: false, likeCount: 0, time: postTime, comments: [])
+            let newStory = Story(storyId: UUID(), userName: "guest", visitCount: 0, context: content, image: postImage, like: false, likeCount: 0, time: postTime, comments: [])
             isPopup.toggle()
             content = ""
            
