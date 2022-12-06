@@ -9,49 +9,75 @@ import SwiftUI
 
 struct GuestLogView: View {
     var body: some View {
-        VStack(spacing: UIScreen.getHeight(20)) {
-            VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 0) {
                 HStack {
-                    Text("방문자 로그 (32)")
+                    Text("공간 스토리 (32)")
                         .customTitle2()
                     Spacer()
                 }
-                Spacer()
-                
-                Image(systemName: "lock")
-                    .foregroundColor(Color("MainColor"))
-                    .frame(width: UIScreen.getWidth(17), height: UIScreen.getHeight(19))
-                
-                Text("방문자 로그를 잠금해제하려면")
-                    .customSubhead4()
-                    .foregroundColor(Color("MainColor"))
-                Text("방문 인증이 필요해요")
-                    .customSubhead4()
-                    .foregroundColor(Color("MainColor"))
-            }
-            .frame(height: UIScreen.getHeight(300))
-            .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
-            
-            VStack {
-                Button(action: {}) {
-                    HStack(spacing: 6) {
-                        Image("foot")
-                            .resizable()
-                            .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
-                        Text("방문 인증하기")
-                            .customSubhead4()
-                        .foregroundColor(Color.white)
-                    }
+                //Story로 이어지는 뷰
+            HStack(spacing: 8) {
+                    StorySmallView(story: constant().storySamples[0], storyForegroundColor: Color("customGreen"), storyBackgroundColor: Color("pastelGreen"))
+                    
+                    StorySmallView(story: constant().storySamples[1], storyForegroundColor: Color("MainColor"), storyBackgroundColor: Color("pastelBlue"))
                 }
-            }
-            .frame(width: UIScreen.getWidth(280),height: UIScreen.getHeight(50))
-            .overlay(
-                RoundedRectangle(cornerRadius: 4)
-                    .stroke(Color("MainColor"), lineWidth: 2)
-            )
-            .background(Color("MainColor"))
+                .padding(.top, UIScreen.getHeight(20))
+                //그라데이션을 위한 ZStack
+                ZStack {
+                    HStack(spacing: 8) {
+                        
+                        StorySmallView(story: constant().storySamples[1], storyForegroundColor: Color("MainColor"), storyBackgroundColor: Color("pastelBlue"))
+
+                        StorySmallView(story: constant().storySamples[0], storyForegroundColor: Color("customGreen"), storyBackgroundColor: Color("pastelGreen"))
+                    
+                        
+                    }
+                    //방문 인증을 위한 뷰
+                    VStack(spacing: 0) {
+                        Image(systemName: "lock")
+                            .foregroundColor(Color("MainColor"))
+                            .frame(width: UIScreen.getWidth(17), height: UIScreen.getHeight(19))
+                            .padding(UIScreen.getHeight(10))
+                        
+                        Text("방문자 로그를 잠금해제하려면")
+                            .customSubhead4()
+                            .foregroundColor(Color("MainColor"))
+                            .padding(.top, UIScreen.getHeight(10))
+                        
+                        Text("방문 인증이 필요해요")
+                            .customSubhead4()
+                            .foregroundColor(Color("MainColor"))
+                        
+                        VStack {
+                            Button(action: {}) {
+                                HStack(spacing: 6) {
+                                    Image("foot")
+                                        .resizable()
+                                        .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
+                                    Text("방문 인증하기")
+                                        .customSubhead4()
+                                    .foregroundColor(Color.white)
+                                }
+                            }
+                        }
+                        .frame(width: UIScreen.getWidth(280),height: UIScreen.getHeight(50))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color("MainColor"), lineWidth: 2)
+                        )
+                        .background(Color("MainColor"))
+                        .padding(.top, UIScreen.getHeight(20))
+                    }
+                    .frame(width: UIScreen.getWidth(350), height: UIScreen.getHeight(188))
+                    .padding(.top, 0)
+                    .background(Color.white)
+                    .mask(
+                        // 그래디언트 설정
+                        LinearGradient(gradient: Gradient(colors: [Color.black, Color.black, Color.black, Color.black.opacity(0.8)]), startPoint: .bottom, endPoint: .top)
+                                )
+                }
         }
-        .padding(.bottom, UIScreen.getHeight(40))
+        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
     }
 }
 

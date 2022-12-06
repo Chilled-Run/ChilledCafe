@@ -47,7 +47,7 @@ struct StoryView: View {
                         //첫번째 문단, 아이디, 날짜, 발자국이 보이는 곳
                         HStack {
                             VStack(alignment: .leading, spacing: 0) {
-                                Text("\(post.visitCount)번째 방문한")
+                                Text("\(post.visitCount)번 방문한")
                                     .customTitle1()
                                 Text(post.userName)
                                     .customLargeTitle()

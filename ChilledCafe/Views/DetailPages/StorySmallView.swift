@@ -1,0 +1,54 @@
+//
+//  StorySmallVIew.swift
+//  ChilledCafe
+//
+//  Created by 종건 on 2022/12/06.
+//
+
+import SwiftUI
+
+struct StorySmallView: View {
+    let story: Story
+    let storyForegroundColor: Color
+    let storyBackgroundColor: Color
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text(story.userName)
+                .foregroundColor(storyForegroundColor)
+                .customSubhead3()
+            
+            Text(story.context)
+                .foregroundColor(Color.white)
+                .CustomDesignedBody()
+                .lineLimit(4)
+                .lineSpacing(3)
+                .padding(.top, UIScreen.getHeight(10))
+            Spacer()
+            
+            HStack {
+                Spacer()
+                Image(systemName: "message")
+                    .resizable()
+                    .foregroundColor(storyForegroundColor)
+                    .frame(width: UIScreen.getWidth(18), height: UIScreen.getHeight(18))
+                Text("\(story.comments.count)")
+                    .customSubhead3()
+                    .foregroundColor(storyForegroundColor)
+            }
+            .padding(.top, UIScreen.getHeight(10))
+        }
+        .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(20)))
+        .frame(width: UIScreen.getWidth(170), height: UIScreen.getHeight(170))
+        .overlay(
+            RoundedRectangle(cornerRadius: 4)
+                .stroke(storyBackgroundColor, lineWidth: 2)
+        )
+        .background(storyBackgroundColor)
+    }
+}
+struct StorySmallVIew_Previews: PreviewProvider {
+    static var previews: some View {
+        StorySmallView(story: constant().storySample, storyForegroundColor: Color("customGreen"), storyBackgroundColor: Color("pastelGreen"))
+    }
+}
