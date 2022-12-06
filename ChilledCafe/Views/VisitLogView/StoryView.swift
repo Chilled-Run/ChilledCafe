@@ -26,11 +26,6 @@ struct StoryView: View {
             Color.black.ignoresSafeArea()
                 .opacity(0.8)
             
-            Button(action: {
-                isPopup.toggle()
-            }) {
-                Text("팝업")
-            }
             if isPopup {
                 VStack {
                     // 취소 버튼

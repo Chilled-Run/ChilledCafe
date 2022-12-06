@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-struct CreateStroyView: View {
-   
+struct CreateStoryView: View {
+    
     @State var content: String = ""
     @State var placeholderText: String = "공간의 이야기를 나눠주세요!"
     @State var lastText: String = ""
     @State var words: Int = 0
-    @State var isPopup: Bool = false
+    @Binding var isPopup: Bool
+    @Binding var isContinue: Bool
+    
     
     var postTime: String {
         let format = DateFormatter()
@@ -31,18 +33,11 @@ struct CreateStroyView: View {
     }
     
     var body: some View {
-        ZStack {
-            //             배경색
-            Color.black.ignoresSafeArea()
-                .opacity(0.8)
-            // 팝업 버튼
-            Button(action: {
-                isPopup.toggle()
-            }) {
-                Text("팝업")
-            }
-            // 팝업에 나오는 뷰
-            if isPopup {
+            ZStack {
+                //             배경색
+                Color.black.ignoresSafeArea()
+                    .opacity(0.8)
+                
                 VStack {
                     HStack {
                         backButton
@@ -51,7 +46,8 @@ struct CreateStroyView: View {
                             completeButton
                         }
                     }
-                    .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(30)))
+                    .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(30)))
+                    .navigationBarHidden(true)
                     
                     VStack(alignment: .leading, spacing: 0) {
                         
@@ -173,10 +169,12 @@ struct CreateStroyView: View {
                             .stroke(pawBackgroundColor, lineWidth: 2)
                     )
                     .background(pawBackgroundColor)
+                    .padding(.top, UIScreen.getHeight(60))
                     Spacer()
+                      
                 }
+                
             }
-        }
     }
     
     var backButton : some View {
@@ -197,8 +195,9 @@ struct CreateStroyView: View {
         Button(action: {
             let newStory = Story(storyId: UUID(), userName: "guest", visitCount: 0, context: content, image: postImage, like: false, likeCount: 0, time: postTime, comments: [])
             isPopup.toggle()
+            self.isContinue = false
             content = ""
-           
+            
         }) {
             Text("완료")
                 .customTitle1()
@@ -210,7 +209,8 @@ struct CreateStroyView: View {
 
 struct CreateVisitPostView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateStroyView()
+        // CreateStroyView()
+        ARMainView()
     }
 }
 
