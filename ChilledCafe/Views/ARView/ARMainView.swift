@@ -48,9 +48,10 @@ struct ARMainView: View {
             ZStack(alignment: .bottom) {
                 
                 ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, isShowSheet: $isShowSheet)
-                    .sheet(isPresented: $isShowSheet) {
-                        SampleView(selectedModel: $selectedModel, backupModel: $backups)
-                    }
+                
+                if isShowSheet {
+                    CreateStroyView(isPopup: $isShowSheet)
+                }
                 // TODO: 지금 조건문이 굉장히 많은데 이거 나중에 enum으로 리팩토링 필수!!
                 if !self.isSetPosition {
                     // 초기 좌표 세팅
