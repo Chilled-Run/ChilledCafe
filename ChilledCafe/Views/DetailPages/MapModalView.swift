@@ -141,7 +141,7 @@ enum mapKind {
     var openURL: String {
         switch self {
         case .naver:
-            return "nmap://place?lat=37.4979502&lng=127.0276368&name=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%84%B1%EB%82%A8%EC%8B%9C%20%EB%B6%84%EB%8B%B9%EA%B5%AC%20%EC%A0%95%EC%9E%90%EB%8F%99&appname=com.cookie.openURLTest:"
+            return "nmap://place?lat=37.4979502&lng=127.0276368&name=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%84%B1%EB%82%A8%EC%8B%9C%20%EB%B6%84%EB%8B%B9%EA%B5%AC%20%EC%A0%95%EC%9E%90%EB%8F%99&appname=.com.ChilledCafe:"
         case .kakao:
             return "kakaomap://look?p=37.537229,127.005515"
         case .google:

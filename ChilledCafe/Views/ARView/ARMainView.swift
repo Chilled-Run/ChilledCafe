@@ -216,10 +216,10 @@ struct ARViewContainer: UIViewRepresentable {
                     (clickedObj, atPosition) in
                     
                     // 객체를 클릭했을때 나오는 무언가 ㅇㅅㅇ
-                    print("hello hello")
-                    print(anchorEntity.position)
-                    
-                    self.isShowSheet.toggle()
+//                    print("hello hello")
+//                    print(anchorEntity.position)
+//                    
+//                    self.isShowSheet.toggle()
                     
                 }
                 anchorEntity.addChild(clicky)

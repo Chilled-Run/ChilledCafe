@@ -52,7 +52,7 @@ struct GuestLogView: View {
                         
                         VStack {
                             Button(action: {}) {
-                                HStack(spacing: 6) {
+                                HStack(alignment: .center, spacing: 6) {
                                     Image("foot")
                                         .resizable()
                                         .frame(width: UIScreen.getWidth(20), height: UIScreen.getHeight(20))
@@ -80,7 +80,7 @@ struct GuestLogView: View {
                 }
             // ZStack 끝
         }
-        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
+        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(40), trailing: UIScreen.getWidth(20)))
     }
 }
 
