@@ -30,6 +30,17 @@ private var models: [FootprintModel] = {
     return availableModels
 }()
 
+enum ARMainViewState {
+    case idle
+    case beforeFloorDetected
+    case afterFloorDetected
+    case chooseFootprint
+    case beforeStepFootprint
+    case afterStepFootprint
+    case uploadStory
+    case readStory
+}
+
 let backupModel = models
 
 struct ARMainView: View {
@@ -41,32 +52,35 @@ struct ARMainView: View {
     @State private var stepFootprint: FootprintModel?
     @State private var isShowSheet = false
     @State private var isShowStoryButton = false
-    @State private var otherFootprintModel = backupModel
+    @State private var otherFootprintModel = models
     @State private var otherFootprintName = ""
+    
+    @State private var arMainViewState = ARMainViewState.beforeFloorDetected
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
                 
-                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, isShowSheet: $isShowSheet, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
+                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, arMainViewState: $arMainViewState, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
                 
-//                if isShowSheet {
-//                    CreateStoryView(isPopup: $isShowSheet, isContinue: $isContinue)
-//                }
                 
-                if isShowSheet {
-                    StoryView(isPopup: $isShowSheet, otherFootPrintName: $otherFootprintName)
+                if arMainViewState == .readStory {
+                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName)
                 }
-                // TODO: 지금 조건문이 굉장히 많은데 이거 나중에 enum으로 리팩토링 필수!!
-                if !self.isSetPosition {
-                    // 초기 좌표 세팅
+                
+                if arMainViewState == .uploadStory {
+                    CreateStoryView(arMainViewState: $arMainViewState)
+                }
+
+                // 초기 좌표 세팅
+                if arMainViewState == .beforeFloorDetected {
                     VStack{
                         ZStack {
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(Color.black)
                                 .opacity(0.8)
                                 .frame(width: 215, height: 40)
-                        
+                            
                             Text("평평한 바닥을 인식해주세요")
                                 .foregroundColor(.white)
                                 .customTitle1()
@@ -75,74 +89,102 @@ struct ARMainView: View {
                         
                         Spacer()
                         
-                        EmptyButtonsView(isSetPosition: $isSetPosition, selectedModel: $selectedModel, modelConfirmedForPlacement: $modelConfirmedForPlacement)
+                        EmptyButtonsView(arMainViewState: $arMainViewState, selectedModel: $selectedModel, modelConfirmedForPlacement: $modelConfirmedForPlacement)
                     }
                     .padding(.bottom, 60)
                 }
                 
-                else {
-                    if !self.isContinue {
-                        // 발자국 찍기 시작하기 버튼
-                        VStack {
-                            ZStack {
-                                VStack(alignment: .center){
-                                    Text("이 공간에 방문객들의 스토리가 담겨져 있네요!")
-                                        .foregroundColor(.white)
-                                        .customTitle1()
-                                    Text("발자국을 눌러 확인해보세요!")
-                                        .foregroundColor(.white)
-                                        .customTitle1()
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(Color.black)
-                                .opacity(0.8)
-                                .cornerRadius(4)
+                if arMainViewState == .afterFloorDetected {
+                    // 발자국 찍기 시작하기 버튼
+                    VStack {
+                        ZStack {
+                            VStack(alignment: .center){
+                                Text("이 공간에 방문객들의 스토리가 담겨져 있네요!")
+                                    .foregroundColor(.white)
+                                    .customTitle1()
+                                Text("발자국을 눌러 확인해보세요!")
+                                    .foregroundColor(.white)
+                                    .customTitle1()
                             }
-                            .padding(.top, geo.safeAreaInsets.top)
-                            
-                            Spacer()
-                            
-                            startFootprintButton(isContinue: $isContinue)
-                                .padding(.bottom, 60)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(Color.black)
+                            .opacity(0.8)
+                            .cornerRadius(4)
                         }
-                    }
-                    else {
-                        if self.isPlacementEnabled && self.isSetPosition {
-                            PlacementButtonsView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
-                                .padding(.bottom, 60)
-                            
-                        }
-                        else {
-                            
-                            if self.isShowStoryButton {
-                                startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
-                                .padding(.bottom, 60)
-                                
-                            }
-                            else {
-                                if !self.isShowSheet {
-                                    VStack{
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 4)
-                                                .fill(Color.black)
-                                                .opacity(0.8)
-                                                .frame(width: 283, height: 40)
-                                            
-                                            Text("원하는 모양의 발바닥을 남겨주세요")
-                                                .foregroundColor(.white)
-                                                .customTitle1()
-                                        }
-                                        .padding(.top, geo.safeAreaInsets.top)
-                                        
-                                        Spacer()
-                                        ModelPickerView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, models: models)
-                                    }
-                                }
-                            }
-                        }
+                        .padding(.top, geo.safeAreaInsets.top)
+                        
+                        Spacer()
+                        
+                        startFootprintButton(arMainViewState: $arMainViewState)
+                            .padding(.bottom, 60)
                     }
                 }
+                
+                if arMainViewState == .chooseFootprint {
+                    VStack{
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 4)
+                                .fill(Color.black)
+                                .opacity(0.8)
+                                .frame(width: 283, height: 40)
+                            
+                            Text("원하는 모양의 발바닥을 남겨주세요")
+                                .foregroundColor(.white)
+                                .customTitle1()
+                        }
+                        .padding(.top, geo.safeAreaInsets.top)
+                        
+                        Spacer()
+                        ModelPickerView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, models: models)
+                    }
+                }
+                    
+                if arMainViewState == .beforeStepFootprint {
+                    PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
+                        .padding(.bottom, 60)
+                }
+                
+                if arMainViewState == .afterStepFootprint{
+                    startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
+                    .padding(.bottom, 60)
+                }
+
+//                        if self.isPlacementEnabled && self.isSetPosition {
+//                            PlacementButtonsView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
+//                                .padding(.bottom, 60)
+//
+//                        }
+//                        else {
+//
+//                            if self.isShowStoryButton {
+//                                startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
+//                                .padding(.bottom, 60)
+//
+//                            }
+//                            else {
+//                                if !self.isShowSheet {
+//                                    VStack{
+//                                        ZStack {
+//                                            RoundedRectangle(cornerRadius: 4)
+//                                                .fill(Color.black)
+//                                                .opacity(0.8)
+//                                                .frame(width: 283, height: 40)
+//
+//                                            Text("원하는 모양의 발바닥을 남겨주세요")
+//                                                .foregroundColor(.white)
+//                                                .customTitle1()
+//                                        }
+//                                        .padding(.top, geo.safeAreaInsets.top)
+//
+//                                        Spacer()
+//                                        ModelPickerView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, models: models)
+//                                    }
+//                                }
+//                            }
+//                        }
+                    
+                
             }
             .ignoresSafeArea()
         }
@@ -153,7 +195,7 @@ struct ARMainView: View {
 struct ARViewContainer: UIViewRepresentable {
     @Binding var modelConfirmedForPlacement: FootprintModel?
     @Binding var stepFootprint: FootprintModel?
-    @Binding var isShowSheet: Bool
+    @Binding var arMainViewState: ARMainViewState
     @Binding var otherFootprintModel: [FootprintModel]
     @Binding var otherFootprintName: String
     
@@ -172,7 +214,7 @@ struct ARViewContainer: UIViewRepresentable {
         let anchorEntity = AnchorEntity(plane: .any)
         if let model = self.modelConfirmedForPlacement {
             if let modelEntity = model.modelEntity {
-                print("DEBUG - adding model to scene: \(model.modelName)")
+                print("DEBUG11111111111 - adding model to scene: \(model.modelName)")
                 let clicky = ClickyEntity(model: modelEntity.model!) {
                     (clickedObj, atPosition) in
                     // 객체를 클릭했을때 나오는 무언가 ㅇㅅㅇ
@@ -192,12 +234,12 @@ struct ARViewContainer: UIViewRepresentable {
                 let anchorEntity2 = AnchorEntity(plane: .any)
                 let model2 = otherFootprintModel[count]
                 if let modelEntity2 = model2.modelEntity {
-                    print("DEBUG - adding model to scene: \(model2.modelName)")
+                    print("DEBUG222222222 - adding model to scene: \(model2.modelName)")
                     let clicky2 = ClickyEntity(model: modelEntity2.model!) {
                         (clickedObj, atPosition) in
                         // 객체를 클릭했을때 나오는 무언가 ㅇㅅㅇ
                         self.otherFootprintName = model2.modelName
-                        self.isShowSheet = true
+                        self.arMainViewState = .readStory
                         
                     }
                     anchorEntity2.transform.translation = [xX, 0, zZ]
@@ -220,7 +262,7 @@ struct ARViewContainer: UIViewRepresentable {
         
         if let secondModel = self.stepFootprint {
             if let secondEntity = secondModel.modelEntity {
-                print("DEBUG - adding model to scene: \(secondModel.modelName)")
+                print("DEBUG22222222 - adding model to scene: \(secondModel.modelName)")
                 let clicky = ClickyEntity(model: secondEntity.model!) {
                     (clickedObj, atPosition) in
                     
@@ -228,7 +270,7 @@ struct ARViewContainer: UIViewRepresentable {
                     print("hello hello")
                     print(anchorEntity.position)
                     
-                    self.isShowSheet.toggle()
+                    self.arMainViewState = .uploadStory
                     
                 }
                 anchorEntity.addChild(clicky)
@@ -287,64 +329,10 @@ extension CustomARView: FEDelegate {
     }
 }
 
-struct GrowingButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.vertical, 8)
-            .padding(.horizontal, 16)
-            .background(.white.opacity(0.8))
-            .foregroundColor(.black)
-            .clipShape(Capsule())
-            .scaleEffect(configuration.isPressed ? 1.2 : 1)
-            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-    }
-}
-
-struct startFootprintButton: View {
-    @Binding var isContinue: Bool
-    var body: some View {
-        Button(action: {
-            self.isContinue = true
-        }) {
-            HStack(alignment: .center) {
-                Image(systemName: "plus")
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-                Text("발자국 남기러 가기")
-                    .customTitle2()
-                    .foregroundColor(.black)
-            }
-        }
-        .buttonStyle(GrowingButton())
-
-    }
-}
-
-struct startStoryButton: View {
-    @Binding var isShowSheet: Bool
-    @Binding var isShowStoryButton: Bool
-    var body: some View {
-        Button(action: {
-            self.isShowSheet = true
-            self.isShowStoryButton = false
-        }) {
-            HStack (alignment: .center) {
-                Text("스토리 남기러 가기")
-                    .customTitle2()
-                    .foregroundColor(.black)
-                Image(systemName: "arrow.forward")
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-            }
-        }
-        .buttonStyle(GrowingButton())
-
-    }
-}
 
 // Picker UI
 struct ModelPickerView: View {
-    @Binding var isPlacementEnabled: Bool
+    @Binding var arMainViewState: ARMainViewState
     @Binding var selectedModel: FootprintModel?
     
     var models: [FootprintModel]
@@ -357,7 +345,7 @@ struct ModelPickerView: View {
                     Button(action: {
                         print("DEBUG - selected model with name: \(self.models[index].modelName)")
                         self.selectedModel = self.models[index]
-                        self.isPlacementEnabled = true
+                        self.arMainViewState = .beforeStepFootprint
                     }) {
                         Image(uiImage: self.models[index].image)
                             .resizable()
@@ -378,7 +366,7 @@ struct ModelPickerView: View {
 
 // Placement confirm/cancel UI
 struct EmptyButtonsView: View {
-    @Binding var isSetPosition: Bool
+    @Binding var arMainViewState: ARMainViewState
     @Binding var selectedModel: FootprintModel?
     @Binding var modelConfirmedForPlacement: FootprintModel?
     
@@ -400,51 +388,8 @@ struct EmptyButtonsView: View {
     }
     
     func resetParameters() {
-        self.isSetPosition = true
+        self.arMainViewState = .afterFloorDetected
         // self.selectedModel = nil
-    }
-}
-
-
-// Placement confirm/cancel UI
-struct PlacementButtonsView: View {
-    @Binding var isPlacementEnabled: Bool
-    @Binding var selectedModel: FootprintModel?
-    @Binding var modelConfirmedForPlacement: FootprintModel?
-    @Binding var isShowStoryButton: Bool
-    
-    var body: some View {
-        HStack(spacing: 30) {
-            // Cancel button
-            Button(action: {
-                print("DEBUG - cancel model placement")
-                self.isPlacementEnabled = false
-            }) {
-                Image(systemName: "xmark.circle.fill")
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .fontWeight(.medium)
-                    .foregroundColor(Color.white.opacity(0.75))
-            }
-            
-            // Confirmation button
-            Button(action: {
-                print("DEBUG - confirm model placement")
-                self.modelConfirmedForPlacement = self.selectedModel
-                resetParameters()
-            }) {
-                Image(systemName: "checkmark.circle.fill")
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .fontWeight(.medium)
-                    .foregroundColor(Color.white.opacity(0.75))
-            }
-        }
-    }
-    
-    func resetParameters() {
-        self.isPlacementEnabled = false
-        self.isShowStoryButton = true
     }
 }
 
