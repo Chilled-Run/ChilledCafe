@@ -37,6 +37,7 @@ struct CreateStoryView: View {
                 //             배경색
                 Color.black.ignoresSafeArea()
                     .opacity(0.8)
+                    .navigationBarHidden(true)
                 
                 VStack {
                     HStack {

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StoryView: View {
-    @State var isToggleLike = false
     @Binding var isPopup: Bool
     @Binding var otherFootPrintName: String
     //임시로 만든 게시글 데이터
@@ -22,112 +21,62 @@ struct StoryView: View {
         getBackgroundColor(foot: otherFootPrintName)
     }
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-                .opacity(0.8)
-                .navigationBarHidden(true)
-            if isPopup {
-                VStack {
-                    // 취소 버튼
-                    HStack {
-                        Spacer()
-                        backButton
-                    }
-                    .padding(.bottom, UIScreen.getHeight(20))
-                    .padding(.trailing, UIScreen.getHeight(30))
-                    
-                    // 게시글
-                    VStack(alignment: .leading, spacing: 0) {
-                        
-                        //첫번째 문단, 아이디, 날짜, 발자국이 보이는 곳
+        NavigationView {
+            ZStack {
+                Color.black.ignoresSafeArea()
+                    .opacity(0.8)
+                    .navigationBarHidden(true)
+                if isPopup {
+                    VStack {
+                        // 취소 버튼
                         HStack {
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text("\(post.visitCount)번 방문한")
-                                    .customTitle1()
-                                Text(post.userName)
-                                    .customLargeTitle()
-                                    .padding(.top, UIScreen.getHeight(10))
-                                Text("\(post.time) 다녀감")
-                                    .customSubhead3()
-                                    .padding(.top, UIScreen.getHeight(10))
-                            }
-                            .foregroundColor(pawForegroundColor)
                             Spacer()
-                            Image(otherFootPrintName)
-                                .resizable()
-                                .frame(width: 90, height: 90)
+                            backButton
                         }
-                        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
+                        .padding(.bottom, UIScreen.getHeight(20))
+                        .padding(.trailing, UIScreen.getHeight(30))
                         
-                        //두번째 문단, 본문이 보이는 곳
-                        VStack(alignment: .leading) {
-                            Text(post.context)
-                                .customSubhead4()
-                            Spacer()
-                        }
-                        .foregroundColor(Color.white)
-                        .frame(height: UIScreen.getHeight(100))
-                        .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
-                        
-                        //세번째 문단, 좋아요, 댓글의 개수가 보이는 곳
-                        Spacer()
-                        HStack {
-                            Button(action: {isToggleLike.toggle()}){
-                                if isToggleLike {
-                                    HStack(spacing: 4) {
-                                        Image(systemName: "heart.fill")
-                                        Text("1")
-                                    }
-                                }
-                                else {
-                                    HStack(spacing: 4) {
-                                        Image(systemName: "heart")
-                                        Text("0")
-                                    }
-                                }
-                            }
-                            HStack(spacing: 4) {
-                                Image(systemName: "message")
-                                Text("\(post.comments.count)")
-                            }
-                            Spacer()
-                        }
-                        .foregroundColor(pawForegroundColor)
-                        .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
-                        
-                        
-                        
-                        // 구분선
-                        Rectangle()
-                            .fill(pawForegroundColor)
-                            .frame(height: 1)
-                            .padding(.top, UIScreen.getHeight(10))
-                        
-                        //댓글 문단, 댓글의 아이디, 내용이 보이는 곳
-                        VStack(alignment: .leading, spacing: 6) {
-                            Text(post.comments[0].userName)
-                                .foregroundColor(pawForegroundColor)
-                                .customSubhead2()
+                        // 게시글
+                        VStack(alignment: .leading, spacing: 0) {
                             
-                            Text(post.comments[0].context)
-                                .foregroundColor(Color.white)
-                                .customSubhead4()
+                            //본문
+                            StoryContetView(post: post, pawForegroundColor: pawForegroundColor, pawBackgroundColor: pawBackgroundColor, otherFootPrintName: otherFootPrintName)
+                            
+                            // 구분선
+                            Rectangle()
+                                .fill(pawForegroundColor)
+                                .frame(height: 1)
+                                .padding(.top, UIScreen.getHeight(10))
+                            
+                            //전체 댓글 페이지로 이동
+                            NavigationLink(destination: CommnetView(post: post, pawForegroundColor: pawForegroundColor, pawBackgroundColor: pawBackgroundColor, otherFootPrintName: otherFootPrintName)) {
+                                //댓글 문단, 댓글의 아이디, 내용이 보이는 곳
+                                VStack(alignment: .leading, spacing: 6) {
+                                    Text(post.comments[0].userName)
+                                        .foregroundColor(pawForegroundColor)
+                                        .customSubhead2()
+                                    
+                                    Text(post.comments[0].context)
+                                        .foregroundColor(Color.white)
+                                        .customSubhead4()
+                                }
+                                .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing:UIScreen.getWidth(30)))
+                            }
                         }
-                        .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing:UIScreen.getWidth(30)))
+                        .frame(width: UIScreen.getWidth(340), height: UIScreen.getHeight(420))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(pawBackgroundColor, lineWidth: 2)
+                        )
+                        .background(pawBackgroundColor)
+                        
+                        Spacer()
                     }
-                    .frame(width: UIScreen.getWidth(340), height: UIScreen.getHeight(420))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(pawBackgroundColor, lineWidth: 2)
-                    )
-                    .background(pawBackgroundColor)
-                    
-                    Spacer()
+                    .padding(.top, UIScreen.getHeight(117))
                 }
-                .padding(.top, UIScreen.getHeight(117))
             }
-        }
-        .padding(.top, 0)
+            .padding(.top, 0)
+        }.padding(.top, 0)
         
     }
     
@@ -168,14 +117,14 @@ struct StoryView: View {
         
         //return CustomGreen
     case "catPaw":
-        return Color("CustomGreen")
+        return Color("customGreen")
     case "dogFoot":
-        return Color("CustomGreen")
+        return Color("customGreen")
     case "duckFoot":
-        return Color("CustomGreen")
+        return Color("customGreen")
         //horsePaw
     default:
-        return Color("CustomGreen")
+        return Color("customGreen")
     }
 }
 

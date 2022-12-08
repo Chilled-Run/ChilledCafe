@@ -20,6 +20,7 @@ struct Story {
 }
 
 struct Comment {
+    let commentId: UUID
     let userName: String
     let context: String
 }
