@@ -17,23 +17,11 @@ struct ARBackButton: View {
     @Binding var arMainState: ARMainViewState
     var body: some View {
         Button(action: {
-            if arMainState == .beforeFloorDetected {
-                
+            if arMainState == .chooseFootprint {
+                self.arMainState = .afterFloorDetected
             }
-            else if arMainState == .afterFloorDetected {
-                
-            }
-            else if arMainState == .chooseFootprint {
-                
-            }
-            else if arMainState == .beforeStepFootprint {
-                
-            }
-            else if arMainState == .afterStepFootprint {
-                
-            }
-            else {
-                
+            if arMainState == .afterStepFootprint{
+                self.arMainState = .chooseFootprint
             }
         }) {
             Image(systemName: "chevron.left.circle.fill")

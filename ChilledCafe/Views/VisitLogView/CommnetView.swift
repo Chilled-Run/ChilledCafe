@@ -48,7 +48,6 @@ struct CommnetView: View {
                         .frame(height: 1)
                 }
             }
-            .frame(height: <#T##CGFloat?#>)
             .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
         }
     }

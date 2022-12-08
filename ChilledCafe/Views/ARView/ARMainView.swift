@@ -61,16 +61,16 @@ struct ARMainView: View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
                 
-                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, isShowSheet: $isShowSheet, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
+                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, arMainViewState: $arMainViewState, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
                 
-//                if isShowSheet {
-//                    CreateStoryView(isPopup: $isShowSheet, isContinue: $isContinue)
-//                }
                 
-                if isShowSheet {
-                    StoryView(isPopup: $isShowSheet, otherFootPrintName: $otherFootprintName)
+                if arMainViewState == .readStory {
+                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName)
                 }
-                // TODO: 지금 조건문이 굉장히 많은데 이거 나중에 enum으로 리팩토링 필수!!
+                
+                if arMainViewState == .uploadStory {
+                    CreateStoryView(arMainViewState: $arMainViewState)
+                }
 
                 // 초기 좌표 세팅
                 if arMainViewState == .beforeFloorDetected {
@@ -195,7 +195,7 @@ struct ARMainView: View {
 struct ARViewContainer: UIViewRepresentable {
     @Binding var modelConfirmedForPlacement: FootprintModel?
     @Binding var stepFootprint: FootprintModel?
-    @Binding var isShowSheet: Bool
+    @Binding var arMainViewState: ARMainViewState
     @Binding var otherFootprintModel: [FootprintModel]
     @Binding var otherFootprintName: String
     
@@ -239,7 +239,7 @@ struct ARViewContainer: UIViewRepresentable {
                         (clickedObj, atPosition) in
                         // 객체를 클릭했을때 나오는 무언가 ㅇㅅㅇ
                         self.otherFootprintName = model2.modelName
-                        self.isShowSheet = true
+                        self.arMainViewState = .readStory
                         
                     }
                     anchorEntity2.transform.translation = [xX, 0, zZ]
@@ -270,7 +270,7 @@ struct ARViewContainer: UIViewRepresentable {
                     print("hello hello")
                     print(anchorEntity.position)
                     
-                    self.isShowSheet.toggle()
+                    self.arMainViewState = .uploadStory
                     
                 }
                 anchorEntity.addChild(clicky)
