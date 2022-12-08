@@ -33,6 +33,9 @@ private var models: [FootprintModel] = {
 // ARMainView 내 각각의 상태값들
 enum ARMainViewState {
     case idle
+    case checkingLocation
+    case accessGranted
+    case accessDenied
     case beforeFloorDetected
     case afterFloorDetected
     case chooseFootprint
@@ -49,14 +52,49 @@ struct ARMainView: View {
     @State private var otherFootprintModel = models
     @State private var otherFootprintName = ""
     
-    @State private var arMainViewState = ARMainViewState.beforeFloorDetected
+    // @State private var arMainViewState = ARMainViewState.beforeFloorDetected
+    @State private var arMainViewState = ARMainViewState.idle
+    @StateObject var checkCurrentLocationViewModel = CheckCurrentLocationViewModel()
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
+                if arMainViewState == .idle {
+                    Color.black.ignoresSafeArea()
+                        .opacity(0.8)
+                        .navigationBarHidden(true)
+                        .onAppear {
+                        checkCurrentLocationViewModel.requestPermission()
+                    }
+                }
                 
-                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, arMainViewState: $arMainViewState, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
-                
+                if checkCurrentLocationViewModel.authorizationStatus == .authorizedWhenInUse || checkCurrentLocationViewModel.authorizationStatus == .authorizedAlways {
+                    ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, arMainViewState: $arMainViewState, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
+                        .onAppear {
+                            arMainViewState = .checkingLocation
+                        }
+                }
+            
+                    
+    
+                Group {
+                    if arMainViewState == .checkingLocation {
+                        CheckCurrentLocationView(arMainViewState: $arMainViewState)
+                            .environmentObject(checkCurrentLocationViewModel)
+                    }
+                    
+                    Group {
+                        if arMainViewState == .accessGranted {
+                            AccessGrantedView(arMainViewState: $arMainViewState)
+                                .onAppear {
+                                    HapticManager.instance.notification(type: .success)
+                                }
+                        }
+                    }
+                    if arMainViewState == .accessDenied {
+                        AccessDeniedView(arMainViewState: $arMainViewState)
+                    }
+                }
                 
                 if arMainViewState == .readStory {
                     StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName)
@@ -284,50 +322,6 @@ struct ARViewContainer: UIViewRepresentable {
     }
     
 }
-
-
-
-// Custom ARView with FocusEntity
-class CustomARView: ARView {
-    let focusSquare = FESquare()
-    
-    required init(frame frameRect: CGRect) {
-        super.init(frame: frameRect)
-        
-        focusSquare.viewDelegate = self
-        focusSquare.delegate = self
-        focusSquare.setAutoUpdate(to: true) // Scene내에서 자동 업데이트
-        
-        self.setupARView()
-    }
-    
-    
-    @objc required dynamic init?(coder decoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupARView() {
-        let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.horizontal, .vertical]
-        config.environmentTexturing = .automatic
-        
-        if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
-            config.sceneReconstruction = .mesh
-        }
-        
-        self.session.run(config)
-    }
-}
-
-extension CustomARView: FEDelegate {
-    func toTrackingState() {
-        print("Tracking FE")
-    }
-    func toInitializingState() {
-        print("Tnitializing FE")
-    }
-}
-
 
 // Picker UI
 struct ModelPickerView: View {

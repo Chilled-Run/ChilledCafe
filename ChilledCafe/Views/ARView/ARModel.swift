@@ -29,7 +29,7 @@ class FootprintModel {
                 // 에러 핸들
                 print("DEBUG - unable to load model entity for modelName: \(self.modelName)")
             }, receiveValue: { modelEntity in
-                // 모델 엔티티 가져옥기
+                // 모델 엔티티 가져오기
                 self.modelEntity = modelEntity
 
                 print("DEBUG - successfully loaded model eneity for modelName: \(self.modelName)")
@@ -52,4 +52,3 @@ class ClickyEntity: Entity, HasClick, HasModel {
      self.init()
   }
 }
-

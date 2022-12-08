@@ -11,6 +11,13 @@
 		2003255C28FFC9A0004DE5B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2003255B28FFC9A0004DE5B6 /* Assets.xcassets */; };
 		2003255F28FFC9A0004DE5B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2003255E28FFC9A0004DE5B6 /* Preview Assets.xcassets */; };
 		2003DAE3292388AD00C09F5F /* ARMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2003DAE2292388AD00C09F5F /* ARMainView.swift */; };
+		2013E6E329422B8600042B00 /* CheckCurrentLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2013E6E229422B8600042B00 /* CheckCurrentLocationView.swift */; };
+		2013E6E52942306A00042B00 /* CheckCurrentLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2013E6E42942306A00042B00 /* CheckCurrentLocationViewModel.swift */; };
+		2013E6E829423B2D00042B00 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 2013E6E729423B2D00042B00 /* Lottie */; };
+		2013E6EA29423B9F00042B00 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2013E6E929423B9F00042B00 /* LottieView.swift */; };
+		202B4CB329425A3100827036 /* AccessDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202B4CB229425A3100827036 /* AccessDeniedView.swift */; };
+		202B4CB529425AEC00827036 /* AccessGrantedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202B4CB429425AEC00827036 /* AccessGrantedView.swift */; };
+		202B4CB829425DED00827036 /* locater.json in Resources */ = {isa = PBXBuildFile; fileRef = 202B4CB629425DED00827036 /* locater.json */; };
 		207C1796293F3BAF005DC0DB /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = 207C1795293F3BAF005DC0DB /* RealityUI */; };
 		207C1799293F3C06005DC0DB /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 207C1798293F3C06005DC0DB /* FocusEntity */; };
 		207C179B293F3C84005DC0DB /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207C179A293F3C84005DC0DB /* ARModel.swift */; };
@@ -23,7 +30,10 @@
 		207C17AC293F3D3C005DC0DB /* leftFoot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17A6293F3D3C005DC0DB /* leftFoot.usdz */; };
 		207C17AD293F3D3C005DC0DB /* birdFoot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17A7293F3D3C005DC0DB /* birdFoot.usdz */; };
 		207C17AF293F3DC2005DC0DB /* mark.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17AE293F3DC2005DC0DB /* mark.usdz */; };
+		20C0287429426090005983D3 /* welcoming.json in Resources */ = {isa = PBXBuildFile; fileRef = 20C0287329426090005983D3 /* welcoming.json */; };
 		20C770022941D13000FB1C85 /* ARButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C770012941D13000FB1C85 /* ARButtons.swift */; };
+		20CCDF9A29426F3A0072297B /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CCDF9929426F3A0072297B /* HapticManager.swift */; };
+		20CCDF9C294270EB0072297B /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CCDF9B294270EB0072297B /* CustomARView.swift */; };
 		20D8E945291EAAAF00EAC612 /* MoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */; };
 		20D8E947291EABE300EAC612 /* MoodImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E946291EABE300EAC612 /* MoodImageView.swift */; };
 		3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC70290311E500B26783 /* UIScreenExtension.swift */; };
@@ -84,6 +94,12 @@
 		2003255B28FFC9A0004DE5B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2003255E28FFC9A0004DE5B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2003DAE2292388AD00C09F5F /* ARMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMainView.swift; sourceTree = "<group>"; };
+		2013E6E229422B8600042B00 /* CheckCurrentLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCurrentLocationView.swift; sourceTree = "<group>"; };
+		2013E6E42942306A00042B00 /* CheckCurrentLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCurrentLocationViewModel.swift; sourceTree = "<group>"; };
+		2013E6E929423B9F00042B00 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		202B4CB229425A3100827036 /* AccessDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessDeniedView.swift; sourceTree = "<group>"; };
+		202B4CB429425AEC00827036 /* AccessGrantedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessGrantedView.swift; sourceTree = "<group>"; };
+		202B4CB629425DED00827036 /* locater.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locater.json; sourceTree = "<group>"; };
 		207C179A293F3C84005DC0DB /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
 		207C179E293F3D1F005DC0DB /* horseFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = horseFoot.usdz; sourceTree = "<group>"; };
 		207C179F293F3D1F005DC0DB /* bearFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = bearFoot.usdz; sourceTree = "<group>"; };
@@ -94,7 +110,10 @@
 		207C17A6293F3D3C005DC0DB /* leftFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = leftFoot.usdz; sourceTree = "<group>"; };
 		207C17A7293F3D3C005DC0DB /* birdFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = birdFoot.usdz; sourceTree = "<group>"; };
 		207C17AE293F3DC2005DC0DB /* mark.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = mark.usdz; sourceTree = "<group>"; };
+		20C0287329426090005983D3 /* welcoming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcoming.json; sourceTree = "<group>"; };
 		20C770012941D13000FB1C85 /* ARButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARButtons.swift; sourceTree = "<group>"; };
+		20CCDF9929426F3A0072297B /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		20CCDF9B294270EB0072297B /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewModel.swift; sourceTree = "<group>"; };
 		20D8E946291EABE300EAC612 /* MoodImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodImageView.swift; sourceTree = "<group>"; };
 		3906DC70290311E500B26783 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
@@ -152,6 +171,7 @@
 				9A2930E4290270EF0005D339 /* FirebaseFirestore in Frameworks */,
 				3906DC76290312FE00B26783 /* Kingfisher in Frameworks */,
 				9A2930E6290270EF0005D339 /* FirebaseFunctions in Frameworks */,
+				2013E6E829423B2D00042B00 /* Lottie in Frameworks */,
 				9A2930DE290270EF0005D339 /* FirebaseAnalytics in Frameworks */,
 				9A2930E0290270EF0005D339 /* FirebaseAuth in Frameworks */,
 				9A2930E8290270EF0005D339 /* FirebaseStorage in Frameworks */,
@@ -183,6 +203,7 @@
 		2003255628FFC9A0004DE5B6 /* ChilledCafe */ = {
 			isa = PBXGroup;
 			children = (
+				2013E6EB29423CBC00042B00 /* Lottie */,
 				207C179C293F3CE4005DC0DB /* ARModels */,
 				3906DC6F290311C700B26783 /* Extension */,
 				9A2930EF290291F60005D339 /* Firebase */,
@@ -210,8 +231,24 @@
 				2003DAE2292388AD00C09F5F /* ARMainView.swift */,
 				207C179A293F3C84005DC0DB /* ARModel.swift */,
 				20C770012941D13000FB1C85 /* ARButtons.swift */,
+				2013E6E229422B8600042B00 /* CheckCurrentLocationView.swift */,
+				2013E6E42942306A00042B00 /* CheckCurrentLocationViewModel.swift */,
+				202B4CB229425A3100827036 /* AccessDeniedView.swift */,
+				202B4CB429425AEC00827036 /* AccessGrantedView.swift */,
+				20CCDF9929426F3A0072297B /* HapticManager.swift */,
+				20CCDF9B294270EB0072297B /* CustomARView.swift */,
 			);
 			path = ARView;
+			sourceTree = "<group>";
+		};
+		2013E6EB29423CBC00042B00 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				202B4CB629425DED00827036 /* locater.json */,
+				20C0287329426090005983D3 /* welcoming.json */,
+				2013E6E929423B9F00042B00 /* LottieView.swift */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		207C179C293F3CE4005DC0DB /* ARModels */ = {
@@ -415,6 +452,7 @@
 				3906DC802904484700B26783 /* ACarousel */,
 				207C1795293F3BAF005DC0DB /* RealityUI */,
 				207C1798293F3C06005DC0DB /* FocusEntity */,
+				2013E6E729423B2D00042B00 /* Lottie */,
 			);
 			productName = ChilledCafe;
 			productReference = 2003255428FFC9A0004DE5B6 /* ChilledCafe.app */;
@@ -450,6 +488,7 @@
 				3906DC7F2904484600B26783 /* XCRemoteSwiftPackageReference "ACarousel" */,
 				207C1794293F3BAF005DC0DB /* XCRemoteSwiftPackageReference "RealityUI" */,
 				207C1797293F3C06005DC0DB /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				2013E6E629423B2D00042B00 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 2003255528FFC9A0004DE5B6 /* Products */;
 			projectDirPath = "";
@@ -468,6 +507,7 @@
 				207C17A9293F3D3C005DC0DB /* dogFoot.usdz in Resources */,
 				207C17A1293F3D1F005DC0DB /* bearFoot.usdz in Resources */,
 				2003255F28FFC9A0004DE5B6 /* Preview Assets.xcassets in Resources */,
+				20C0287429426090005983D3 /* welcoming.json in Resources */,
 				2003255C28FFC9A0004DE5B6 /* Assets.xcassets in Resources */,
 				207C17AC293F3D3C005DC0DB /* leftFoot.usdz in Resources */,
 				207C17AD293F3D3C005DC0DB /* birdFoot.usdz in Resources */,
@@ -476,6 +516,7 @@
 				207C17AF293F3DC2005DC0DB /* mark.usdz in Resources */,
 				39B7C5242905AD98000C8B07 /* AppleSDGothicNeoEB.ttf in Resources */,
 				207C17A8293F3D3C005DC0DB /* catFoot.usdz in Resources */,
+				202B4CB829425DED00827036 /* locater.json in Resources */,
 				207C17AA293F3D3C005DC0DB /* duckFoot.usdz in Resources */,
 				39B7C51D2905AA23000C8B07 /* AppleSDGothicNeo.ttc in Resources */,
 				207C17AB293F3D3C005DC0DB /* rightFoot.usdz in Resources */,
@@ -495,10 +536,13 @@
 				9AD1DA74291CF1BA0089E88A /* Cafe.swift in Sources */,
 				9A8E8FCB29369DA40059D82B /* MapModalView.swift in Sources */,
 				2003DAE3292388AD00C09F5F /* ARMainView.swift in Sources */,
+				202B4CB329425A3100827036 /* AccessDeniedView.swift in Sources */,
 				39B7C51329058172000C8B07 /* CardView.swift in Sources */,
 				39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */,
 				9A8E8FF4293B3D5A0059D82B /* CreateStoryView.swift in Sources */,
 				3997AEAC291D1CCC00D57176 /* HorizontalScrollMenuBarView.swift in Sources */,
+				20CCDF9A29426F3A0072297B /* HapticManager.swift in Sources */,
+				20CCDF9C294270EB0072297B /* CustomARView.swift in Sources */,
 				39B7C5222905AB41000C8B07 /* TextExtension.swift in Sources */,
 				9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */,
 				3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */,
@@ -506,6 +550,7 @@
 				9AF628202920CA93004D9412 /* BODetailView.swift in Sources */,
 				9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */,
 				9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */,
+				202B4CB529425AEC00827036 /* AccessGrantedView.swift in Sources */,
 				20D8E945291EAAAF00EAC612 /* MoodViewModel.swift in Sources */,
 				20D8E947291EABE300EAC612 /* MoodImageView.swift in Sources */,
 				3997AEAE291D274600D57176 /* CategoryButtonView.swift in Sources */,
@@ -519,12 +564,14 @@
 				9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */,
 				207C179B293F3C84005DC0DB /* ARModel.swift in Sources */,
 				395664FB293F2D7000FC8C0E /* TabBarIcon.swift in Sources */,
+				2013E6E329422B8600042B00 /* CheckCurrentLocationView.swift in Sources */,
 				9A8E8FCD293733080059D82B /* GuestLogView.swift in Sources */,
 				9AACCC54293F893600232297 /* StorySmallView.swift in Sources */,
 				9A8E8FCF293741AA0059D82B /* CarouselView.swift in Sources */,
 				39C8CB0E293DB73700DEF6E4 /* ViewRouter.swift in Sources */,
 				393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */,
 				39D87D022928BEB0008AC253 /* LaunchScreenView.swift in Sources */,
+				2013E6E52942306A00042B00 /* CheckCurrentLocationViewModel.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
 				9ADA35E92941C7EF00F02404 /* StoryContetView.swift in Sources */,
 				39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */,
@@ -532,6 +579,7 @@
 				3997AEA9291D187300D57176 /* MainView.swift in Sources */,
 				39B7C5262905B6F3000C8B07 /* ViewExtension.swift in Sources */,
 				9A637F40291E3784009BCBED /* MoodView.swift in Sources */,
+				2013E6EA29423B9F00042B00 /* LottieView.swift in Sources */,
 				39C8CB10293DB76800DEF6E4 /* Page.swift in Sources */,
 				20C770022941D13000FB1C85 /* ARButtons.swift in Sources */,
 			);
@@ -668,6 +716,7 @@
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "in here!";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AR 사용을 위한 카메라가 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 확인을 위한 GPS 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -703,6 +752,7 @@
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "in here!";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AR 사용을 위한 카메라가 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 확인을 위한 GPS 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -748,6 +798,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2013E6E629423B2D00042B00 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		207C1794293F3BAF005DC0DB /* XCRemoteSwiftPackageReference "RealityUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maxxfrazer/RealityUI.git";
@@ -791,6 +849,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2013E6E729423B2D00042B00 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2013E6E629423B2D00042B00 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		207C1795293F3BAF005DC0DB /* RealityUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 207C1794293F3BAF005DC0DB /* XCRemoteSwiftPackageReference "RealityUI" */;
