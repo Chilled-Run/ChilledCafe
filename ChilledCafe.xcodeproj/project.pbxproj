@@ -24,6 +24,7 @@
 		207C17AC293F3D3C005DC0DB /* leftFoot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17A6293F3D3C005DC0DB /* leftFoot.usdz */; };
 		207C17AD293F3D3C005DC0DB /* birdFoot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17A7293F3D3C005DC0DB /* birdFoot.usdz */; };
 		207C17AF293F3DC2005DC0DB /* mark.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17AE293F3DC2005DC0DB /* mark.usdz */; };
+		20C770022941D13000FB1C85 /* ARButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C770012941D13000FB1C85 /* ARButtons.swift */; };
 		20D8E945291EAAAF00EAC612 /* MoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */; };
 		20D8E947291EABE300EAC612 /* MoodImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E946291EABE300EAC612 /* MoodImageView.swift */; };
 		3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC70290311E500B26783 /* UIScreenExtension.swift */; };
@@ -93,6 +94,7 @@
 		207C17A6293F3D3C005DC0DB /* leftFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = leftFoot.usdz; sourceTree = "<group>"; };
 		207C17A7293F3D3C005DC0DB /* birdFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = birdFoot.usdz; sourceTree = "<group>"; };
 		207C17AE293F3DC2005DC0DB /* mark.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = mark.usdz; sourceTree = "<group>"; };
+		20C770012941D13000FB1C85 /* ARButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARButtons.swift; sourceTree = "<group>"; };
 		20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewModel.swift; sourceTree = "<group>"; };
 		20D8E946291EABE300EAC612 /* MoodImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodImageView.swift; sourceTree = "<group>"; };
 		3906DC70290311E500B26783 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				2003DAE2292388AD00C09F5F /* ARMainView.swift */,
 				2003DAE4292388D800C09F5F /* SampleView.swift */,
 				207C179A293F3C84005DC0DB /* ARModel.swift */,
+				20C770012941D13000FB1C85 /* ARButtons.swift */,
 			);
 			path = ARView;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				39B7C5262905B6F3000C8B07 /* ViewExtension.swift in Sources */,
 				9A637F40291E3784009BCBED /* MoodView.swift in Sources */,
 				39C8CB10293DB76800DEF6E4 /* Page.swift in Sources */,
+				20C770022941D13000FB1C85 /* ARButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

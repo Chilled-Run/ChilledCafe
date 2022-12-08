@@ -329,60 +329,6 @@ extension CustomARView: FEDelegate {
     }
 }
 
-struct GrowingButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.vertical, 8)
-            .padding(.horizontal, 16)
-            .background(.white.opacity(0.8))
-            .foregroundColor(.black)
-            .clipShape(Capsule())
-            .scaleEffect(configuration.isPressed ? 1.2 : 1)
-            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-    }
-}
-
-struct startFootprintButton: View {
-    @Binding var arMainViewState: ARMainViewState
-    var body: some View {
-        Button(action: {
-            self.arMainViewState = .chooseFootprint
-        }) {
-            HStack(alignment: .center) {
-                Image(systemName: "plus")
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-                Text("발자국 남기러 가기")
-                    .customTitle2()
-                    .foregroundColor(.black)
-            }
-        }
-        .buttonStyle(GrowingButton())
-
-    }
-}
-
-struct startStoryButton: View {
-    @Binding var isShowSheet: Bool
-    @Binding var isShowStoryButton: Bool
-    var body: some View {
-        Button(action: {
-            self.isShowSheet = true
-            self.isShowStoryButton = false
-        }) {
-            HStack (alignment: .center) {
-                Text("스토리 남기러 가기")
-                    .customTitle2()
-                    .foregroundColor(.black)
-                Image(systemName: "arrow.forward")
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-            }
-        }
-        .buttonStyle(GrowingButton())
-
-    }
-}
 
 // Picker UI
 struct ModelPickerView: View {
@@ -445,50 +391,6 @@ struct EmptyButtonsView: View {
         self.arMainViewState = .afterFloorDetected
         // self.selectedModel = nil
     }
-}
-
-
-// Placement confirm/cancel UI
-struct PlacementButtonsView: View {
-    @Binding var arMainViewState: ARMainViewState
-    @Binding var selectedModel: FootprintModel?
-    @Binding var modelConfirmedForPlacement: FootprintModel?
-    @Binding var isShowStoryButton: Bool
-    
-    var body: some View {
-        HStack(spacing: 30) {
-            // Cancel button
-            Button(action: {
-                print("DEBUG - cancel model placement")
-                self.arMainViewState = .chooseFootprint
-            }) {
-                Image(systemName: "xmark.circle.fill")
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .fontWeight(.medium)
-                    .foregroundColor(Color.white.opacity(0.75))
-            }
-            
-            // Confirmation button
-            Button(action: {
-                print("DEBUG - confirm model placement")
-                self.modelConfirmedForPlacement = self.selectedModel
-                self.arMainViewState = .afterStepFootprint
-            }) {
-                Image(systemName: "checkmark.circle.fill")
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .fontWeight(.medium)
-                    .foregroundColor(Color.white.opacity(0.75))
-            }
-        }
-    }
-    
-//    func resetParameters() {
-//        self.arMainViewState = .beforeStepFootprint
-////        self.isPlacementEnabled = false
-////        self.isShowStoryButton = true
-//    }
 }
 
 
