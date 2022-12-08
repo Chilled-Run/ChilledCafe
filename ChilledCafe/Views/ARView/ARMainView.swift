@@ -41,13 +41,13 @@ struct ARMainView: View {
     @State private var stepFootprint: FootprintModel?
     @State private var isShowSheet = false
     @State private var isShowStoryButton = false
-    @State private var backups = backupModel
+    @State private var otherFootPrint = backupModel
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
                 
-                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, isShowSheet: $isShowSheet)
+                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, isShowSheet: $isShowSheet, otherFootPrint: $otherFootPrint)
                 
                 if isShowSheet {
                     CreateStoryView(isPopup: $isShowSheet, isContinue: $isContinue)
@@ -149,6 +149,8 @@ struct ARViewContainer: UIViewRepresentable {
     @Binding var modelConfirmedForPlacement: FootprintModel?
     @Binding var stepFootprint: FootprintModel?
     @Binding var isShowSheet: Bool
+    @Binding var otherFootPrint: [FootprintModel]
+    
     
     func makeUIView(context: Context) -> ARView {
         
@@ -182,13 +184,13 @@ struct ARViewContainer: UIViewRepresentable {
             _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ t in
                 
                 let anchorEntity2 = AnchorEntity(plane: .any)
-                let model2 = backupModel[count]
+                let model2 = otherFootPrint[count]
                 if let modelEntity2 = model2.modelEntity {
                     print("DEBUG - adding model to scene: \(model2.modelName)")
                     let clicky2 = ClickyEntity(model: modelEntity2.model!) {
                         (clickedObj, atPosition) in
                         // 객체를 클릭했을때 나오는 무언가 ㅇㅅㅇ
-
+                        print(model2.modelName)
                         
                     }
                     anchorEntity2.transform.translation = [xX, 0, zZ]
@@ -250,6 +252,7 @@ class CustomARView: ARView {
         
         self.setupARView()
     }
+    
     
     @objc required dynamic init?(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
