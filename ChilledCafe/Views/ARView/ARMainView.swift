@@ -37,6 +37,8 @@ enum ARMainViewState {
     case chooseFootprint
     case beforeStepFootprint
     case afterStepFootprint
+    case uploadStory
+    case readStory
 }
 
 let backupModel = models
@@ -50,10 +52,10 @@ struct ARMainView: View {
     @State private var stepFootprint: FootprintModel?
     @State private var isShowSheet = false
     @State private var isShowStoryButton = false
-    @State private var otherFootprintModel = backupModel
+    @State private var otherFootprintModel = models
     @State private var otherFootprintName = ""
     
-    @State private var arMainViewState = ARMainViewState.idle
+    @State private var arMainViewState = ARMainViewState.beforeFloorDetected
     
     var body: some View {
         GeometryReader { geo in
@@ -69,15 +71,16 @@ struct ARMainView: View {
                     StoryView(isPopup: $isShowSheet, otherFootPrintName: $otherFootprintName)
                 }
                 // TODO: 지금 조건문이 굉장히 많은데 이거 나중에 enum으로 리팩토링 필수!!
-                if !self.isSetPosition {
-                    // 초기 좌표 세팅
+
+                // 초기 좌표 세팅
+                if arMainViewState == .beforeFloorDetected {
                     VStack{
                         ZStack {
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(Color.black)
                                 .opacity(0.8)
                                 .frame(width: 215, height: 40)
-                        
+                            
                             Text("평평한 바닥을 인식해주세요")
                                 .foregroundColor(.white)
                                 .customTitle1()
@@ -86,74 +89,102 @@ struct ARMainView: View {
                         
                         Spacer()
                         
-                        EmptyButtonsView(isSetPosition: $isSetPosition, selectedModel: $selectedModel, modelConfirmedForPlacement: $modelConfirmedForPlacement)
+                        EmptyButtonsView(arMainViewState: $arMainViewState, selectedModel: $selectedModel, modelConfirmedForPlacement: $modelConfirmedForPlacement)
                     }
                     .padding(.bottom, 60)
                 }
                 
-                else {
-                    if !self.isContinue {
-                        // 발자국 찍기 시작하기 버튼
-                        VStack {
-                            ZStack {
-                                VStack(alignment: .center){
-                                    Text("이 공간에 방문객들의 스토리가 담겨져 있네요!")
-                                        .foregroundColor(.white)
-                                        .customTitle1()
-                                    Text("발자국을 눌러 확인해보세요!")
-                                        .foregroundColor(.white)
-                                        .customTitle1()
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                                .background(Color.black)
-                                .opacity(0.8)
-                                .cornerRadius(4)
+                if arMainViewState == .afterFloorDetected {
+                    // 발자국 찍기 시작하기 버튼
+                    VStack {
+                        ZStack {
+                            VStack(alignment: .center){
+                                Text("이 공간에 방문객들의 스토리가 담겨져 있네요!")
+                                    .foregroundColor(.white)
+                                    .customTitle1()
+                                Text("발자국을 눌러 확인해보세요!")
+                                    .foregroundColor(.white)
+                                    .customTitle1()
                             }
-                            .padding(.top, geo.safeAreaInsets.top)
-                            
-                            Spacer()
-                            
-                            startFootprintButton(isContinue: $isContinue)
-                                .padding(.bottom, 60)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(Color.black)
+                            .opacity(0.8)
+                            .cornerRadius(4)
                         }
-                    }
-                    else {
-                        if self.isPlacementEnabled && self.isSetPosition {
-                            PlacementButtonsView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
-                                .padding(.bottom, 60)
-                            
-                        }
-                        else {
-                            
-                            if self.isShowStoryButton {
-                                startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
-                                .padding(.bottom, 60)
-                                
-                            }
-                            else {
-                                if !self.isShowSheet {
-                                    VStack{
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 4)
-                                                .fill(Color.black)
-                                                .opacity(0.8)
-                                                .frame(width: 283, height: 40)
-                                            
-                                            Text("원하는 모양의 발바닥을 남겨주세요")
-                                                .foregroundColor(.white)
-                                                .customTitle1()
-                                        }
-                                        .padding(.top, geo.safeAreaInsets.top)
-                                        
-                                        Spacer()
-                                        ModelPickerView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, models: models)
-                                    }
-                                }
-                            }
-                        }
+                        .padding(.top, geo.safeAreaInsets.top)
+                        
+                        Spacer()
+                        
+                        startFootprintButton(arMainViewState: $arMainViewState)
+                            .padding(.bottom, 60)
                     }
                 }
+                
+                if arMainViewState == .chooseFootprint {
+                    VStack{
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 4)
+                                .fill(Color.black)
+                                .opacity(0.8)
+                                .frame(width: 283, height: 40)
+                            
+                            Text("원하는 모양의 발바닥을 남겨주세요")
+                                .foregroundColor(.white)
+                                .customTitle1()
+                        }
+                        .padding(.top, geo.safeAreaInsets.top)
+                        
+                        Spacer()
+                        ModelPickerView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, models: models)
+                    }
+                }
+                    
+                if arMainViewState == .beforeStepFootprint {
+                    PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
+                        .padding(.bottom, 60)
+                }
+                
+                if arMainViewState == .afterStepFootprint{
+                    startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
+                    .padding(.bottom, 60)
+                }
+
+//                        if self.isPlacementEnabled && self.isSetPosition {
+//                            PlacementButtonsView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
+//                                .padding(.bottom, 60)
+//
+//                        }
+//                        else {
+//
+//                            if self.isShowStoryButton {
+//                                startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
+//                                .padding(.bottom, 60)
+//
+//                            }
+//                            else {
+//                                if !self.isShowSheet {
+//                                    VStack{
+//                                        ZStack {
+//                                            RoundedRectangle(cornerRadius: 4)
+//                                                .fill(Color.black)
+//                                                .opacity(0.8)
+//                                                .frame(width: 283, height: 40)
+//
+//                                            Text("원하는 모양의 발바닥을 남겨주세요")
+//                                                .foregroundColor(.white)
+//                                                .customTitle1()
+//                                        }
+//                                        .padding(.top, geo.safeAreaInsets.top)
+//
+//                                        Spacer()
+//                                        ModelPickerView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, models: models)
+//                                    }
+//                                }
+//                            }
+//                        }
+                    
+                
             }
             .ignoresSafeArea()
         }
@@ -183,7 +214,7 @@ struct ARViewContainer: UIViewRepresentable {
         let anchorEntity = AnchorEntity(plane: .any)
         if let model = self.modelConfirmedForPlacement {
             if let modelEntity = model.modelEntity {
-                print("DEBUG - adding model to scene: \(model.modelName)")
+                print("DEBUG11111111111 - adding model to scene: \(model.modelName)")
                 let clicky = ClickyEntity(model: modelEntity.model!) {
                     (clickedObj, atPosition) in
                     // 객체를 클릭했을때 나오는 무언가 ㅇㅅㅇ
@@ -203,7 +234,7 @@ struct ARViewContainer: UIViewRepresentable {
                 let anchorEntity2 = AnchorEntity(plane: .any)
                 let model2 = otherFootprintModel[count]
                 if let modelEntity2 = model2.modelEntity {
-                    print("DEBUG - adding model to scene: \(model2.modelName)")
+                    print("DEBUG222222222 - adding model to scene: \(model2.modelName)")
                     let clicky2 = ClickyEntity(model: modelEntity2.model!) {
                         (clickedObj, atPosition) in
                         // 객체를 클릭했을때 나오는 무언가 ㅇㅅㅇ
@@ -231,7 +262,7 @@ struct ARViewContainer: UIViewRepresentable {
         
         if let secondModel = self.stepFootprint {
             if let secondEntity = secondModel.modelEntity {
-                print("DEBUG - adding model to scene: \(secondModel.modelName)")
+                print("DEBUG22222222 - adding model to scene: \(secondModel.modelName)")
                 let clicky = ClickyEntity(model: secondEntity.model!) {
                     (clickedObj, atPosition) in
                     
@@ -312,10 +343,10 @@ struct GrowingButton: ButtonStyle {
 }
 
 struct startFootprintButton: View {
-    @Binding var isContinue: Bool
+    @Binding var arMainViewState: ARMainViewState
     var body: some View {
         Button(action: {
-            self.isContinue = true
+            self.arMainViewState = .chooseFootprint
         }) {
             HStack(alignment: .center) {
                 Image(systemName: "plus")
@@ -355,7 +386,7 @@ struct startStoryButton: View {
 
 // Picker UI
 struct ModelPickerView: View {
-    @Binding var isPlacementEnabled: Bool
+    @Binding var arMainViewState: ARMainViewState
     @Binding var selectedModel: FootprintModel?
     
     var models: [FootprintModel]
@@ -368,7 +399,7 @@ struct ModelPickerView: View {
                     Button(action: {
                         print("DEBUG - selected model with name: \(self.models[index].modelName)")
                         self.selectedModel = self.models[index]
-                        self.isPlacementEnabled = true
+                        self.arMainViewState = .beforeStepFootprint
                     }) {
                         Image(uiImage: self.models[index].image)
                             .resizable()
@@ -389,7 +420,7 @@ struct ModelPickerView: View {
 
 // Placement confirm/cancel UI
 struct EmptyButtonsView: View {
-    @Binding var isSetPosition: Bool
+    @Binding var arMainViewState: ARMainViewState
     @Binding var selectedModel: FootprintModel?
     @Binding var modelConfirmedForPlacement: FootprintModel?
     
@@ -411,7 +442,7 @@ struct EmptyButtonsView: View {
     }
     
     func resetParameters() {
-        self.isSetPosition = true
+        self.arMainViewState = .afterFloorDetected
         // self.selectedModel = nil
     }
 }
@@ -419,7 +450,7 @@ struct EmptyButtonsView: View {
 
 // Placement confirm/cancel UI
 struct PlacementButtonsView: View {
-    @Binding var isPlacementEnabled: Bool
+    @Binding var arMainViewState: ARMainViewState
     @Binding var selectedModel: FootprintModel?
     @Binding var modelConfirmedForPlacement: FootprintModel?
     @Binding var isShowStoryButton: Bool
@@ -429,7 +460,7 @@ struct PlacementButtonsView: View {
             // Cancel button
             Button(action: {
                 print("DEBUG - cancel model placement")
-                self.isPlacementEnabled = false
+                self.arMainViewState = .chooseFootprint
             }) {
                 Image(systemName: "xmark.circle.fill")
                     .resizable()
@@ -442,7 +473,7 @@ struct PlacementButtonsView: View {
             Button(action: {
                 print("DEBUG - confirm model placement")
                 self.modelConfirmedForPlacement = self.selectedModel
-                resetParameters()
+                self.arMainViewState = .afterStepFootprint
             }) {
                 Image(systemName: "checkmark.circle.fill")
                     .resizable()
@@ -453,10 +484,11 @@ struct PlacementButtonsView: View {
         }
     }
     
-    func resetParameters() {
-        self.isPlacementEnabled = false
-        self.isShowStoryButton = true
-    }
+//    func resetParameters() {
+//        self.arMainViewState = .beforeStepFootprint
+////        self.isPlacementEnabled = false
+////        self.isShowStoryButton = true
+//    }
 }
 
 
