@@ -93,6 +93,9 @@ struct ARMainView: View {
                     }
                     if arMainViewState == .accessDenied {
                         AccessDeniedView(arMainViewState: $arMainViewState)
+                            .onAppear {
+                                HapticManager.instance.notification(type: .error)
+                            }
                     }
                 }
                 
