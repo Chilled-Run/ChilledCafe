@@ -71,8 +71,6 @@ struct StoryContetView: View {
             }
             .foregroundColor(pawForegroundColor)
             .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
-            
-            
         }
     }
 }
