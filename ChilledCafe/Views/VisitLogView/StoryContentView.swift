@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct StoryContetView: View {
-    @State var isToggleLike = false
+struct StoryContentView: View {
     let post: Story
     let pawForegroundColor: Color
     let pawBackgroundColor: Color
@@ -45,32 +44,6 @@ struct StoryContetView: View {
             .foregroundColor(Color.white)
             .frame(height: UIScreen.getHeight(100))
             .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
-            
-            //세번째 문단, 좋아요, 댓글의 개수가 보이는 곳
-            Spacer()
-            HStack {
-                Button(action: {isToggleLike.toggle()}){
-                    if isToggleLike {
-                        HStack(spacing: 4) {
-                            Image(systemName: "heart.fill")
-                            Text("1")
-                        }
-                    }
-                    else {
-                        HStack(spacing: 4) {
-                            Image(systemName: "heart")
-                            Text("0")
-                        }
-                    }
-                }
-                HStack(spacing: 4) {
-                    Image(systemName: "message")
-                    Text("\(post.comments.count)")
-                }
-                Spacer()
-            }
-            .foregroundColor(pawForegroundColor)
-            .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
         }
     }
 }
