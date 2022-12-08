@@ -41,16 +41,21 @@ struct ARMainView: View {
     @State private var stepFootprint: FootprintModel?
     @State private var isShowSheet = false
     @State private var isShowStoryButton = false
-    @State private var otherFootPrint = backupModel
+    @State private var otherFootprintModel = backupModel
+    @State private var otherFootprintName = ""
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
                 
-                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, isShowSheet: $isShowSheet, otherFootPrint: $otherFootPrint)
+                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, isShowSheet: $isShowSheet, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
+                
+//                if isShowSheet {
+//                    CreateStoryView(isPopup: $isShowSheet, isContinue: $isContinue)
+//                }
                 
                 if isShowSheet {
-                    CreateStoryView(isPopup: $isShowSheet, isContinue: $isContinue)
+                    StoryView(isPopup: $isShowSheet, otherFootPrintName: $otherFootprintName)
                 }
                 // TODO: 지금 조건문이 굉장히 많은데 이거 나중에 enum으로 리팩토링 필수!!
                 if !self.isSetPosition {
@@ -149,7 +154,8 @@ struct ARViewContainer: UIViewRepresentable {
     @Binding var modelConfirmedForPlacement: FootprintModel?
     @Binding var stepFootprint: FootprintModel?
     @Binding var isShowSheet: Bool
-    @Binding var otherFootPrint: [FootprintModel]
+    @Binding var otherFootprintModel: [FootprintModel]
+    @Binding var otherFootprintName: String
     
     
     func makeUIView(context: Context) -> ARView {
@@ -184,13 +190,14 @@ struct ARViewContainer: UIViewRepresentable {
             _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ t in
                 
                 let anchorEntity2 = AnchorEntity(plane: .any)
-                let model2 = otherFootPrint[count]
+                let model2 = otherFootprintModel[count]
                 if let modelEntity2 = model2.modelEntity {
                     print("DEBUG - adding model to scene: \(model2.modelName)")
                     let clicky2 = ClickyEntity(model: modelEntity2.model!) {
                         (clickedObj, atPosition) in
                         // 객체를 클릭했을때 나오는 무언가 ㅇㅅㅇ
-                        print(model2.modelName)
+                        self.otherFootprintName = model2.modelName
+                        self.isShowSheet = true
                         
                     }
                     anchorEntity2.transform.translation = [xX, 0, zZ]

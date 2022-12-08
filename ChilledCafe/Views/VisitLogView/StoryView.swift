@@ -9,18 +9,18 @@ import SwiftUI
 
 struct StoryView: View {
     @State var isToggleLike = false
-    @State var isPopup = false
+    @Binding var isPopup: Bool
+    @Binding var otherFootPrintName: String
     //임시로 만든 게시글 데이터
     var post = constant().storySample
     //게시글의 글자색
     var pawForegroundColor: Color {
-        getForegroundColor(foot: post.image)
+        getForegroundColor(foot: otherFootPrintName)
     }
     //게시글의 배경색
     var pawBackgroundColor: Color {
-        getBackgroundColor(foot: post.image)
+        getBackgroundColor(foot: otherFootPrintName)
     }
-    
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -53,7 +53,7 @@ struct StoryView: View {
                             }
                             .foregroundColor(pawForegroundColor)
                             Spacer()
-                            Image(post.image)
+                            Image(otherFootPrintName)
                                 .resizable()
                                 .frame(width: 90, height: 90)
                         }
@@ -126,6 +126,9 @@ struct StoryView: View {
                 }
             }
         }
+        .onAppear {
+            print(otherFootPrintName)
+        }
         
     }
     
@@ -144,11 +147,11 @@ struct StoryView: View {
     }
 }
 
-struct VisitPostView_Previews: PreviewProvider {
-    static var previews: some View {
-        StoryView()
-    }
-}
+//struct VisitPostView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StoryView()
+//    }
+//}
 
 // TODO: 추후 extension으로 리팩필요
 //발자국 종류에 따른 색 변경
