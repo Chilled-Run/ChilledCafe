@@ -41,17 +41,10 @@ enum ARMainViewState {
     case readStory
 }
 
-let backupModel = models
-
 struct ARMainView: View {
-    @State private var isPlacementEnabled = false
     @State private var selectedModel: FootprintModel?
-    @State private var isSetPosition = false
-    @State private var isContinue = false
     @State private var modelConfirmedForPlacement: FootprintModel?
     @State private var stepFootprint: FootprintModel?
-    @State private var isShowSheet = false
-    @State private var isShowStoryButton = false
     @State private var otherFootprintModel = models
     @State private var otherFootprintName = ""
     
@@ -75,6 +68,11 @@ struct ARMainView: View {
                 // 초기 좌표 세팅
                 if arMainViewState == .beforeFloorDetected {
                     VStack{
+                        HStack {
+                            ARCloseButton(arMainViewState: $arMainViewState)
+                                .padding(.leading, 20)
+                            Spacer()
+                        }
                         ZStack {
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(Color.black)
@@ -85,18 +83,25 @@ struct ARMainView: View {
                                 .foregroundColor(.white)
                                 .customTitle1()
                         }
-                        .padding(.top, geo.safeAreaInsets.top)
+                        .padding(.top, 30)
                         
                         Spacer()
                         
                         EmptyButtonsView(arMainViewState: $arMainViewState, selectedModel: $selectedModel, modelConfirmedForPlacement: $modelConfirmedForPlacement)
                     }
+                    .padding(.top, geo.safeAreaInsets.top + 17)
                     .padding(.bottom, 60)
                 }
                 
                 if arMainViewState == .afterFloorDetected {
                     // 발자국 찍기 시작하기 버튼
                     VStack {
+                        HStack {
+                            ARCloseButton(arMainViewState: $arMainViewState)
+                                .padding(.leading, 20)
+                            Spacer()
+                        }
+                        
                         ZStack {
                             VStack(alignment: .center){
                                 Text("이 공간에 방문객들의 스토리가 담겨져 있네요!")
@@ -112,17 +117,23 @@ struct ARMainView: View {
                             .opacity(0.8)
                             .cornerRadius(4)
                         }
-                        .padding(.top, geo.safeAreaInsets.top)
+                        .padding(.top, 30)
                         
                         Spacer()
                         
                         startFootprintButton(arMainViewState: $arMainViewState)
-                            .padding(.bottom, 60)
                     }
+                    .padding(.top, geo.safeAreaInsets.top + 17)
+                    .padding(.bottom, 60)
                 }
                 
                 if arMainViewState == .chooseFootprint {
-                    VStack{
+                    VStack {
+                        HStack {
+                            ARBackButton(arMainViewState: $arMainViewState)
+                                .padding(.leading, 20)
+                            Spacer()
+                        }
                         ZStack {
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(Color.black)
@@ -133,60 +144,39 @@ struct ARMainView: View {
                                 .foregroundColor(.white)
                                 .customTitle1()
                         }
-                        .padding(.top, geo.safeAreaInsets.top)
+                        .padding(.top, 30)
                         
                         Spacer()
+                        
                         ModelPickerView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, models: models)
                     }
+                    .padding(.top, geo.safeAreaInsets.top + 17)
                 }
                     
                 if arMainViewState == .beforeStepFootprint {
-                    PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
+                    PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint)
                         .padding(.bottom, 60)
                 }
                 
                 if arMainViewState == .afterStepFootprint{
-                    startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
+                    VStack {
+                        HStack {
+                            ARCloseButton(arMainViewState: $arMainViewState)
+                                .padding(.leading, 20)
+                            Spacer()
+                        }
+                        
+                        Spacer()
+                        
+                        startStoryButton(arMainViewState: $arMainViewState)
+                            .padding(.bottom, 60)
+                    }
+                    .padding(.top, geo.safeAreaInsets.top + 17)
                     .padding(.bottom, 60)
                 }
-
-//                        if self.isPlacementEnabled && self.isSetPosition {
-//                            PlacementButtonsView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
-//                                .padding(.bottom, 60)
-//
-//                        }
-//                        else {
-//
-//                            if self.isShowStoryButton {
-//                                startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
-//                                .padding(.bottom, 60)
-//
-//                            }
-//                            else {
-//                                if !self.isShowSheet {
-//                                    VStack{
-//                                        ZStack {
-//                                            RoundedRectangle(cornerRadius: 4)
-//                                                .fill(Color.black)
-//                                                .opacity(0.8)
-//                                                .frame(width: 283, height: 40)
-//
-//                                            Text("원하는 모양의 발바닥을 남겨주세요")
-//                                                .foregroundColor(.white)
-//                                                .customTitle1()
-//                                        }
-//                                        .padding(.top, geo.safeAreaInsets.top)
-//
-//                                        Spacer()
-//                                        ModelPickerView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, models: models)
-//                                    }
-//                                }
-//                            }
-//                        }
-                    
-                
             }
             .ignoresSafeArea()
+            .navigationBarBackButtonHidden(true)
         }
     }
 }

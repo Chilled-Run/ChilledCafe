@@ -7,29 +7,17 @@
 
 import SwiftUI
 
-struct ARButtons: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
 struct ARBackButton: View {
-    @Binding var arMainState: ARMainViewState
+    @Binding var arMainViewState: ARMainViewState
     var body: some View {
         Button(action: {
-            if arMainState == .chooseFootprint {
-                self.arMainState = .afterFloorDetected
-            }
-            if arMainState == .afterStepFootprint{
-                self.arMainState = .chooseFootprint
-            }
+            self.arMainViewState = .afterFloorDetected
         }) {
             Image(systemName: "chevron.left.circle.fill")
                 .resizable()
-                .foregroundColor(Color.gray)
+                .foregroundColor(Color.white.opacity(0.8))
                 .opacity(0.8)
                 .frame(width: UIScreen.getWidth(40) ,height: UIScreen.getHeight(40))
-                .shadow(radius:8 ,x: 0, y: 0)
         }
         
     }
@@ -49,12 +37,10 @@ struct GrowingButton: ButtonStyle {
 }
 
 struct startStoryButton: View {
-    @Binding var isShowSheet: Bool
-    @Binding var isShowStoryButton: Bool
+    @Binding var arMainViewState: ARMainViewState
     var body: some View {
         Button(action: {
-            self.isShowSheet = true
-            self.isShowStoryButton = false
+            self.arMainViewState = .uploadStory
         }) {
             HStack (alignment: .center) {
                 Text("스토리 남기러 가기")
@@ -95,7 +81,6 @@ struct PlacementButtonsView: View {
     @Binding var arMainViewState: ARMainViewState
     @Binding var selectedModel: FootprintModel?
     @Binding var modelConfirmedForPlacement: FootprintModel?
-    @Binding var isShowStoryButton: Bool
     
     var body: some View {
         HStack(spacing: 30) {
@@ -125,16 +110,26 @@ struct PlacementButtonsView: View {
             }
         }
     }
-    
-//    func resetParameters() {
-//        self.arMainViewState = .beforeStepFootprint
-////        self.isPlacementEnabled = false
-////        self.isShowStoryButton = true
-//    }
 }
 
-struct ARButtons_Previews: PreviewProvider {
-    static var previews: some View {
-        ARButtons()
+struct ARCloseButton: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Binding var arMainViewState: ARMainViewState
+    var body: some View {
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
+            Image(systemName: "xmark.circle.fill")
+                .resizable()
+                .foregroundColor(Color.white.opacity(0.8))
+                .opacity(0.8)
+                .frame(width: UIScreen.getWidth(40) ,height: UIScreen.getHeight(40))
+        }
+        
     }
 }
+//struct ARButtons_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ARButtons()
+//    }
+//}
