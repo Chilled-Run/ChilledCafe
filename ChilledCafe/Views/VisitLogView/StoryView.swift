@@ -168,14 +168,14 @@ struct StoryView: View {
         
         //return CustomGreen
     case "catPaw":
-        return Color("CustomGreen")
+        return Color("customGreen")
     case "dogFoot":
-        return Color("CustomGreen")
+        return Color("customGreen")
     case "duckFoot":
-        return Color("CustomGreen")
+        return Color("customGreen")
         //horsePaw
     default:
-        return Color("CustomGreen")
+        return Color("customGreen")
     }
 }
 
