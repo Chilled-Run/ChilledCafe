@@ -30,6 +30,15 @@ private var models: [FootprintModel] = {
     return availableModels
 }()
 
+enum ARMainViewState {
+    case idle
+    case beforeFloorDetected
+    case afterFloorDetected
+    case chooseFootprint
+    case beforeStepFootprint
+    case afterStepFootprint
+}
+
 let backupModel = models
 
 struct ARMainView: View {
@@ -43,6 +52,8 @@ struct ARMainView: View {
     @State private var isShowStoryButton = false
     @State private var otherFootprintModel = backupModel
     @State private var otherFootprintName = ""
+    
+    @State private var arMainViewState = ARMainViewState.idle
     
     var body: some View {
         GeometryReader { geo in
