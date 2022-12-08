@@ -82,6 +82,7 @@ struct BODetailView: View {
                     
                     //방문자 로그 뷰
                     GuestLogView()
+                        .padding(.bottom, UIScreen.getHeight(40))
                     Spacer()
                 }
             }
