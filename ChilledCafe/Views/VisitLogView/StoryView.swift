@@ -11,6 +11,7 @@ struct StoryView: View {
     @State var isToggleLike = false
     @State var isPopup = false
     //임시로 만든 게시글 데이터
+    
     var post = constant().storySample
     //게시글의 글자색
     var pawForegroundColor: Color {

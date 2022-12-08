@@ -153,17 +153,40 @@ enum mapKind {
 //openURL을 사용해 map 앱과 연동
 //추후 위도와 경도르 받아오는 작업 추가
 func touchUpToConnectApp(mapKind: mapKind) {
-        let kakaoTalk = mapKind.openURL
-        let kakaoTalkURL = NSURL(string: kakaoTalk)
+        let mapLoaction = mapKind.openURL
+        let mapLoactionURL = NSURL(string: mapLoaction)
         
-        if (UIApplication.shared.canOpenURL(kakaoTalkURL! as URL)) {
+        if (UIApplication.shared.canOpenURL(mapLoactionURL! as URL)) {
     
-            UIApplication.shared.open(kakaoTalkURL! as URL)
+            UIApplication.shared.open(mapLoactionURL! as URL)
         }
         else {
-            print("No kakaotalk installed.")
+            print("No installed.")
         }
 }
+
+//앱 설치
+func installMap(mapKind: mapKind) {
+    //앱 다운 링크
+    var downlinkURL: NSURL = NSURL(string: "")! as NSURL
+    
+    switch mapKind {
+    case .naver:
+        let downlink = "itms-apps://itunes.apple.com/app/id311867728"
+        downlinkURL = NSURL(string: downlink)! as NSURL
+    case .kakao:
+        let downlink = "itms-apps://itunes.apple.com/app/AppleID"
+        downlinkURL = NSURL(string: downlink)! as NSURL
+    case .google:
+        let downlink = "itms-apps://itunes.apple.com/app/AppleID"
+        downlinkURL = NSURL(string: downlink)! as NSURL
+    }
+    if (UIApplication.shared.canOpenURL(downlinkURL as URL)) {
+
+        UIApplication.shared.open(downlinkURL as URL)
+    }
+}
+
 
 func fraction_progress(lowerLimit: Double = 0, upperLimit:Double, current:Double, inverted:Bool = false) -> Double{
     var val:Double = 0
