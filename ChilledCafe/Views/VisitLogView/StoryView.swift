@@ -25,7 +25,7 @@ struct StoryView: View {
         ZStack {
             Color.black.ignoresSafeArea()
                 .opacity(0.8)
-            
+                .navigationBarHidden(true)
             if isPopup {
                 VStack {
                     // 취소 버튼
@@ -124,11 +124,10 @@ struct StoryView: View {
                     
                     Spacer()
                 }
+                .padding(.top, UIScreen.getHeight(117))
             }
         }
-        .onAppear {
-            print(otherFootPrintName)
-        }
+        .padding(.top, 0)
         
     }
     
