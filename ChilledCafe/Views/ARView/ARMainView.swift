@@ -13,7 +13,7 @@ import UIKit
 import RealityUI
 
 private var models: [FootprintModel] = {
-    // Dynamically get file names
+    // 동적으로 파일명을 가져옵니다.
     let filemanager =  FileManager.default
     
     guard let path = Bundle.main.resourcePath, let files = try? filemanager.contentsOfDirectory(atPath: path) else {
@@ -30,6 +30,7 @@ private var models: [FootprintModel] = {
     return availableModels
 }()
 
+// ARMainView 내 각각의 상태값들
 enum ARMainViewState {
     case idle
     case beforeFloorDetected
@@ -65,7 +66,8 @@ struct ARMainView: View {
                     CreateStoryView(arMainViewState: $arMainViewState)
                 }
 
-                // 초기 좌표 세팅
+                // 초기 바닥 좌표 세팅
+                // ARMainViewState :: .beforeFloorDetected
                 if arMainViewState == .beforeFloorDetected {
                     VStack{
                         HStack {
@@ -93,8 +95,9 @@ struct ARMainView: View {
                     .padding(.bottom, 60)
                 }
                 
+                // 바닥 좌표 세팅 완료 후 순차적으로 다른 사람들 발바닥 조회
+                // ARMainViewState :: .afterFloorDetected
                 if arMainViewState == .afterFloorDetected {
-                    // 발자국 찍기 시작하기 버튼
                     VStack {
                         HStack {
                             ARCloseButton(arMainViewState: $arMainViewState)
@@ -127,6 +130,8 @@ struct ARMainView: View {
                     .padding(.bottom, 60)
                 }
                 
+                // MARK: 발자국 선택창
+                // ARMainViewState :: .chooseFootrint
                 if arMainViewState == .chooseFootprint {
                     VStack {
                         HStack {
@@ -152,12 +157,16 @@ struct ARMainView: View {
                     }
                     .padding(.top, geo.safeAreaInsets.top + 17)
                 }
-                    
+                
+                // MARK: 발자국 선택 후 스테핑할 위치 선정
+                // ARMainViewState :: .beforeStepFootprint
                 if arMainViewState == .beforeStepFootprint {
                     PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint)
                         .padding(.bottom, 60)
                 }
                 
+                // MARK: 발자국 스테핑 후 스토리 작성 선택 창
+                // ARMainViewState :: .afterStepFootprint
                 if arMainViewState == .afterStepFootprint{
                     VStack {
                         HStack {
@@ -287,7 +296,7 @@ class CustomARView: ARView {
         
         focusSquare.viewDelegate = self
         focusSquare.delegate = self
-        focusSquare.setAutoUpdate(to: true) // Auto-update position in scene
+        focusSquare.setAutoUpdate(to: true) // Scene내에서 자동 업데이트
         
         self.setupARView()
     }
@@ -379,7 +388,6 @@ struct EmptyButtonsView: View {
     
     func resetParameters() {
         self.arMainViewState = .afterFloorDetected
-        // self.selectedModel = nil
     }
 }
 

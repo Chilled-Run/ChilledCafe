@@ -26,10 +26,10 @@ class FootprintModel {
         
         self.cancellable = ModelEntity.loadModelAsync(named: filename)
             .sink(receiveCompletion: { loadCompletion in
-                // Handle error
+                // 에러 핸들
                 print("DEBUG - unable to load model entity for modelName: \(self.modelName)")
             }, receiveValue: { modelEntity in
-                // Get model entity
+                // 모델 엔티티 가져옥기
                 self.modelEntity = modelEntity
 
                 print("DEBUG - successfully loaded model eneity for modelName: \(self.modelName)")
@@ -38,9 +38,7 @@ class FootprintModel {
 }
 
 
-/// Example class that uses the HasClick protocol
 class ClickyEntity: Entity, HasClick, HasModel {
-  // Required property from HasClick
   var tapAction: ((HasClick, SIMD3<Float>?) -> Void)?
 
     init(model: ModelComponent, tapAction: @escaping ((HasClick, SIMD3<Float>?) -> Void)) {
