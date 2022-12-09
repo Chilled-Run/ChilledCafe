@@ -13,8 +13,7 @@ struct CreateStoryView: View {
     @State var placeholderText: String = "공간의 이야기를 나눠주세요!"
     @State var lastText: String = ""
     @State var words: Int = 0
-    @Binding var isPopup: Bool
-    @Binding var isContinue: Bool
+    @Binding var arMainViewState: ARMainViewState
     
     
     var postTime: String {
@@ -37,6 +36,7 @@ struct CreateStoryView: View {
                 //             배경색
                 Color.black.ignoresSafeArea()
                     .opacity(0.8)
+                    .navigationBarHidden(true)
                 
                 VStack {
                     HStack {
@@ -179,7 +179,7 @@ struct CreateStoryView: View {
     
     var backButton : some View {
         Button(action: {
-            isPopup.toggle()
+            self.arMainViewState = .chooseFootprint
             content = ""
         }) {
             Image(systemName: "chevron.left.circle.fill")
@@ -194,8 +194,7 @@ struct CreateStoryView: View {
     var completeButton : some View {
         Button(action: {
 //            let newStory = Story(storyId: UUID(), userName: "guest", visitCount: 0, context: content, image: postImage, like: false, likeCount: 0, time: postTime, comments: [])
-            isPopup.toggle()
-            self.isContinue = false
+            self.arMainViewState = .chooseFootprint
             content = ""
             
         }) {

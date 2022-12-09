@@ -24,6 +24,7 @@
 		207C17AC293F3D3C005DC0DB /* leftFoot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17A6293F3D3C005DC0DB /* leftFoot.usdz */; };
 		207C17AD293F3D3C005DC0DB /* birdFoot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17A7293F3D3C005DC0DB /* birdFoot.usdz */; };
 		207C17AF293F3DC2005DC0DB /* mark.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17AE293F3DC2005DC0DB /* mark.usdz */; };
+		20C770022941D13000FB1C85 /* ARButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C770012941D13000FB1C85 /* ARButtons.swift */; };
 		20D8E945291EAAAF00EAC612 /* MoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */; };
 		20D8E947291EABE300EAC612 /* MoodImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8E946291EABE300EAC612 /* MoodImageView.swift */; };
 		3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3906DC70290311E500B26783 /* UIScreenExtension.swift */; };
@@ -71,6 +72,10 @@
 		9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9B2F1629011A1C005AC001 /* temparyData.swift */; };
 		9AACCC54293F893600232297 /* StorySmallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AACCC53293F893600232297 /* StorySmallView.swift */; };
 		9AD1DA74291CF1BA0089E88A /* Cafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1DA73291CF1BA0089E88A /* Cafe.swift */; };
+		9ADA35E72941C7DD00F02404 /* CommnetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA35E62941C7DD00F02404 /* CommnetView.swift */; };
+		9ADA35E92941C7EF00F02404 /* StoryContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA35E82941C7EF00F02404 /* StoryContentView.swift */; };
+		9ADA35EC2942489D00F02404 /* keyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA35EB2942489D00F02404 /* keyboardExtension.swift */; };
+		9ADA35EE2942F04500F02404 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA35ED2942F04500F02404 /* TextView.swift */; };
 		9AF628202920CA93004D9412 /* BODetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF6281F2920CA93004D9412 /* BODetailView.swift */; };
 		9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF628212920CCE5004D9412 /* DetailInfoView.swift */; };
 		9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF628232920CD16004D9412 /* DetailTagView.swift */; };
@@ -93,6 +98,7 @@
 		207C17A6293F3D3C005DC0DB /* leftFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = leftFoot.usdz; sourceTree = "<group>"; };
 		207C17A7293F3D3C005DC0DB /* birdFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = birdFoot.usdz; sourceTree = "<group>"; };
 		207C17AE293F3DC2005DC0DB /* mark.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = mark.usdz; sourceTree = "<group>"; };
+		20C770012941D13000FB1C85 /* ARButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARButtons.swift; sourceTree = "<group>"; };
 		20D8E944291EAAAF00EAC612 /* MoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodViewModel.swift; sourceTree = "<group>"; };
 		20D8E946291EABE300EAC612 /* MoodImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodImageView.swift; sourceTree = "<group>"; };
 		3906DC70290311E500B26783 /* UIScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
@@ -132,6 +138,10 @@
 		9A9B2F1629011A1C005AC001 /* temparyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temparyData.swift; sourceTree = "<group>"; };
 		9AACCC53293F893600232297 /* StorySmallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorySmallView.swift; sourceTree = "<group>"; };
 		9AD1DA73291CF1BA0089E88A /* Cafe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafe.swift; sourceTree = "<group>"; };
+		9ADA35E62941C7DD00F02404 /* CommnetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommnetView.swift; sourceTree = "<group>"; };
+		9ADA35E82941C7EF00F02404 /* StoryContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContentView.swift; sourceTree = "<group>"; };
+		9ADA35EB2942489D00F02404 /* keyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboardExtension.swift; sourceTree = "<group>"; };
+		9ADA35ED2942F04500F02404 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		9AF6281F2920CA93004D9412 /* BODetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BODetailView.swift; sourceTree = "<group>"; };
 		9AF628212920CCE5004D9412 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		9AF628232920CD16004D9412 /* DetailTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTagView.swift; sourceTree = "<group>"; };
@@ -206,6 +216,7 @@
 				2003DAE2292388AD00C09F5F /* ARMainView.swift */,
 				2003DAE4292388D800C09F5F /* SampleView.swift */,
 				207C179A293F3C84005DC0DB /* ARModel.swift */,
+				20C770012941D13000FB1C85 /* ARButtons.swift */,
 			);
 			path = ARView;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 				39B7C51F2905AB1A000C8B07 /* FontExtension.swift */,
 				39B7C5212905AB41000C8B07 /* TextExtension.swift */,
 				39B7C5252905B6F3000C8B07 /* ViewExtension.swift */,
+				9ADA35EB2942489D00F02404 /* keyboardExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -328,6 +340,9 @@
 			children = (
 				9A8E8FEF2939D0DB0059D82B /* StoryView.swift */,
 				9A8E8FF3293B3D5A0059D82B /* CreateStoryView.swift */,
+				9ADA35E62941C7DD00F02404 /* CommnetView.swift */,
+				9ADA35E82941C7EF00F02404 /* StoryContentView.swift */,
+				9ADA35ED2942F04500F02404 /* TextView.swift */,
 			);
 			path = VisitLogView;
 			sourceTree = "<group>";
@@ -500,6 +515,7 @@
 				9AF628202920CA93004D9412 /* BODetailView.swift in Sources */,
 				9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */,
 				9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */,
+				9ADA35EE2942F04500F02404 /* TextView.swift in Sources */,
 				20D8E945291EAAAF00EAC612 /* MoodViewModel.swift in Sources */,
 				20D8E947291EABE300EAC612 /* MoodImageView.swift in Sources */,
 				3997AEAE291D274600D57176 /* CategoryButtonView.swift in Sources */,
@@ -508,6 +524,7 @@
 				9A8E8FF22939E71D0059D82B /* Story.swift in Sources */,
 				9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */,
 				9A8E8FF02939D0DB0059D82B /* StoryView.swift in Sources */,
+				9ADA35E72941C7DD00F02404 /* CommnetView.swift in Sources */,
 				3947F1AB290A6B5A009FA15C /* IntroView.swift in Sources */,
 				9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */,
 				207C179B293F3C84005DC0DB /* ARModel.swift in Sources */,
@@ -521,12 +538,15 @@
 				393A5BC82907BE5900C4E31E /* TransparentLikedCafeCardView.swift in Sources */,
 				39D87D022928BEB0008AC253 /* LaunchScreenView.swift in Sources */,
 				2003255828FFC9A0004DE5B6 /* ChilledCafeApp.swift in Sources */,
+				9ADA35E92941C7EF00F02404 /* StoryContentView.swift in Sources */,
 				39B7C5202905AB1A000C8B07 /* FontExtension.swift in Sources */,
 				3997AED42920EE3100D57176 /* MyBookmarkView.swift in Sources */,
 				3997AEA9291D187300D57176 /* MainView.swift in Sources */,
 				39B7C5262905B6F3000C8B07 /* ViewExtension.swift in Sources */,
+				9ADA35EC2942489D00F02404 /* keyboardExtension.swift in Sources */,
 				9A637F40291E3784009BCBED /* MoodView.swift in Sources */,
 				39C8CB10293DB76800DEF6E4 /* Page.swift in Sources */,
+				20C770022941D13000FB1C85 /* ARButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,7 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
 				DEVELOPMENT_TEAM = BP6V55LTAQ;
 				ENABLE_PREVIEWS = YES;
@@ -688,7 +708,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
 				DEVELOPMENT_TEAM = BP6V55LTAQ;
 				ENABLE_PREVIEWS = YES;

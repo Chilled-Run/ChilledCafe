@@ -61,6 +61,7 @@ struct ChilledCafeApp: App {
                                     Divider()
                                     HStack {
                                         // 홈
+
                                         TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/1.8, height: geometry.size.height/28, iconName: "home")
                                         
                                         // 북마크
