@@ -26,7 +26,7 @@ struct HorizontalScrollMenuBarView: View {
                     // MARK: - 여백
                     VStack(spacing: spacing) {
                         Circle()
-                            .frame(width:UIScreen.getWidth(20), height: 1)
+                            .frame(width:UIScreen.getWidth(20), height: 0)
                             .hidden()
                         Rectangle()
                             .frame(width: UIScreen.getWidth(20) ,height: UIScreen.getHeight(2))
@@ -53,7 +53,7 @@ struct HorizontalScrollMenuBarView: View {
                     // MARK: - 여백
                     VStack(spacing: spacing) {
                         Circle()
-                            .frame(width:UIScreen.getWidth(20), height: 1)
+                            .frame(width:UIScreen.getWidth(20), height: 0)
                             .hidden()
                         Rectangle()
                             .frame(width: UIScreen.getWidth(20) ,height: UIScreen.getHeight(2))

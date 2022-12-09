@@ -19,9 +19,9 @@ struct TabBarIcon: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: width, height: height)
         }
-            .onTapGesture {
-                viewRouter.currentPage = assignedPage
-            }
-            .foregroundColor(viewRouter.currentPage == assignedPage ? Color("MainColor") : .gray)
+        .onTapGesture {
+            viewRouter.currentPage = assignedPage
+        }
+        .foregroundColor(viewRouter.currentPage == assignedPage ? Color("MainColor") : .gray)
     }
 }
