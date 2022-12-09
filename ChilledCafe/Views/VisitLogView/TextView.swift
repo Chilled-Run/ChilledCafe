@@ -40,6 +40,7 @@ struct TextView: UIViewRepresentable {
         textView.isUserInteractionEnabled = true
         textView.backgroundColor = UIColor.clear
         textView.isScrollEnabled = true
+        textView.showsHorizontalScrollIndicator = false
         textView.font = UIFont(name:"AppleSDGothicNeo-Medium" , size: 16)
         // Set the placeholder
         textView.text = placeholder
@@ -49,8 +50,6 @@ struct TextView: UIViewRepresentable {
     }
 
     func updateUIView(_ textView: UITextView, context: Context) {
-        
-
         textView.text = self.text
         recalculateHeight(view: textView)
     }
@@ -78,7 +77,7 @@ struct TextView: UIViewRepresentable {
         init(_ uiTextView: TextView) {
             self.parent = uiTextView
         }
-
+        
         func textViewDidChange(_ textView: UITextView) {
             // This is needed for multistage text input (eg. Chinese, Japanese)
             if textView.markedTextRange == nil {
@@ -86,19 +85,21 @@ struct TextView: UIViewRepresentable {
                 parent.recalculateHeight(view: textView)
             }
         }
+        
+        //플레이스홀더 이후 글자색
+//        func textViewDidBeginEditing(_ textView: UITextView) {
+//            if textView.textColor == UIColor.lightGray {
+//                textView.text = nil
+//                textView.textColor = UIColor(self.textColor)
+//            }
+//        }
 
-        func textViewDidBeginEditing(_ textView: UITextView) {
-            if textView.textColor == UIColor.lightGray {
-                textView.text = nil
-                textView.textColor = UIColor.black
-            }
-        }
-
-        func textViewDidEndEditing(_ textView: UITextView) {
-            if textView.text.isEmpty {
-                textView.text = parent.placeholder
-                textView.textColor = UIColor.lightGray
-            }
-        }
+        //플래이스 홀더
+//        func textViewDidEndEditing(_ textView: UITextView) {
+//            if textView.text.isEmpty {
+//                textView.text = parent.placeholder
+//                textView.textColor = UIColor.lightGray
+//            }
+//        }
     }
 }

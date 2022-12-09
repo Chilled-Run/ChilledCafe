@@ -157,6 +157,7 @@ struct CommnetView: View {
                     }
                     .foregroundColor(pawForegroundColor)
                     .font(.custom("AppleSDGothicNeo-Medium", size: 16))
+                    .scrollIndicators(.hidden)
                     .lineSpacing(2)
                     .lineLimit(3)
             }
@@ -165,9 +166,9 @@ struct CommnetView: View {
             ZStack {
                 TextView(placeholder: "",textColor: pawForegroundColor, text: self.$text, minHeight: self.textHeight, calculatedHeight: self.$textHeight)
                     .frame(minHeight: self.textHeight, maxHeight: self.textHeight)
-                    .foregroundColor(pawForegroundColor)
                     .padding(.top, -UIScreen.getHeight(6))
                     .padding(.bottom, -UIScreen.getHeight(6))
+                
                 if text.isEmpty {
                     HStack {
                         Text("댓글을 입력하세요.")
