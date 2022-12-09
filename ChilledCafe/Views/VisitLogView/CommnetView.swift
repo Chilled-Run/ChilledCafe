@@ -15,6 +15,7 @@ struct CommnetView: View {
     let pawForegroundColor: Color
     let pawBackgroundColor: Color
     let otherFootPrintName: String
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
@@ -32,6 +33,7 @@ struct CommnetView: View {
                     }
                 }
                 .padding(EdgeInsets(top: UIScreen.getHeight(10), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
+                .navigationBarHidden(true)
                 // 본문
                 VStack(spacing: 0) {
                     StoryContentView(post: post, pawForegroundColor: pawForegroundColor, pawBackgroundColor: pawBackgroundColor, otherFootPrintName: otherFootPrintName)
@@ -133,7 +135,9 @@ struct CommnetView: View {
         }
     }
     var backButton: some View {
-        Button(action: {}) {
+        Button(action: {
+            self.presentationMode.wrappedValue.dismiss()
+        }) {
             Image(systemName: "chevron.backward")
                 .resizable()
                 .frame(width: UIScreen.getWidth(10) ,height: UIScreen.getHeight(19))
@@ -195,7 +199,7 @@ struct CommnetView: View {
             RoundedRectangle(cornerRadius: 4)
                 .stroke( pawBackgroundColor == Color("pastelGreen") ? Color("pastelGreenOpacity0.2") : Color("pastelBlueOpacity0.2"), lineWidth: 1)
         )
-        .background(Color("pastelGreenOpacity0.2"))
+        .background( pawBackgroundColor == Color("pastelGreen") ? Color("pastelGreenOpacity0.2") : Color("pastelBlueOpacity0.2"))
     }
 }
 
