@@ -41,8 +41,8 @@ struct ChilledCafeApp: App {
                             }
                             dispatchGroup.notify(queue: DispatchQueue.main) {
                                 isLoading.toggle()
-                            }
                         }
+                    }
                 } else {
                     NavigationView {
                         if isFirst {
@@ -55,30 +55,45 @@ struct ChilledCafeApp: App {
                                 case .bookmarked:
                                     MyBookmarkView(firebaseSM: firebaseSM)
                                 }
-                                Spacer(minLength: 0)
-                                ZStack {
+                                // Tab
+                                ZStack(alignment: .top) {
+                                    Color.white
+                                    Divider()
                                     HStack {
                                         // 홈
-                                        TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "home")
+                                        TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/1.8, height: geometry.size.height/28, iconName: "home")
                                         
-                                        // AR
+                                        // 북마크
+                                        TabBarIcon(viewRouter: viewRouter, assignedPage: .bookmarked, width: geometry.size.width/1.8, height: geometry.size.height/28, iconName: "bookmarks")
+                                        
+                                    }
+                                    .frame(width: geometry.size.width, height: geometry.size.height/18)
+                                    .padding(0)
+                                    
+                                    // AR
+                                    ZStack {
+                                        Circle()
+                                            .foregroundColor(.white)
+                                            .frame(width: geometry.size.width/4.8, height: geometry.size.width/4.8)
+
+                                        Circle()
+                                            .foregroundColor(Color("MainColor"))
+                                            .frame(width: geometry.size.width/5.5, height: geometry.size.width/5.5)
+
                                         NavigationLink(destination: ARMainView()) {
                                             VStack {
                                                 Image("ar")
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fit)
-                                                    .frame(width: geometry.size.width/3, height: geometry.size.height/28)
-                                                    .foregroundColor(.gray)
+                                                    .frame(width: geometry.size.width/3, height: geometry.size.height/24)
+                                                    .foregroundColor(.white)
                                             }
                                         }
-                            
-                                        // 북마크
-                                        TabBarIcon(viewRouter: viewRouter, assignedPage: .bookmarked, width: geometry.size.width/3, height: geometry.size.height/28, iconName: "bookmarks")
                                     }
-                                    .frame(width: geometry.size.width, height: geometry.size.height/14) 
-                                    .overlay(Divider(), alignment: .top)
+                                    .offset(y: -geometry.size.height/28/2)
                                 }
-                                .padding(0)
+                                .frame(width: geometry.size.width, height: geometry.size.height/18)
+                                .offset(y: geometry.size.height/28/2)
                             }
                         }
                     }
