@@ -69,7 +69,7 @@ struct ARMainView: View {
                 }
                 
                 if arMainViewState == .uploadStory {
-                    CreateStoryView(arMainViewState: $arMainViewState)
+                  //  CreateStoryView(arMainViewState: $arMainViewState)
                 }
 
                 // 초기 좌표 세팅

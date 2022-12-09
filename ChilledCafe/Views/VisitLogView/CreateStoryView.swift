@@ -13,7 +13,8 @@ struct CreateStoryView: View {
     @State var placeholderText: String = "공간의 이야기를 나눠주세요!"
     @State var lastText: String = ""
     @State var words: Int = 0
-    @Binding var arMainViewState: ARMainViewState
+    @State var showingAlert: Bool = false
+   // @Binding var arMainViewState: ARMainViewState
     
     
     var postTime: String {
@@ -108,6 +109,7 @@ struct CreateStoryView: View {
                                             }
                                             self.lastText = self.content
                                         }
+                                        .onAppear( perform: UIApplication.shared.hideKeyboard)
                                 }
                                 // ios 16 미만의 경우
                                 else {
@@ -122,6 +124,8 @@ struct CreateStoryView: View {
                                             .disabled(true)
                                         //배경지우기
                                         //UITextView의 배경을 지워야 다른 배경을 입힐 수 있다.
+                                        //다른 영역 터치하면 키보드 내리기
+                                            .onAppear(perform: UIApplication.shared.hideKeyboard)
                                             .onAppear() {
                                                 UITextView.appearance().backgroundColor = .clear
                                             }
@@ -173,14 +177,15 @@ struct CreateStoryView: View {
                     Spacer()
                       
                 }
-                
             }
     }
     
     var backButton : some View {
         Button(action: {
-            self.arMainViewState = .chooseFootprint
-            content = ""
+            // 글을 썼을 때 경고창이 나온다
+            if !content.isEmpty {
+                showingAlert.toggle()
+            }
         }) {
             Image(systemName: "chevron.left.circle.fill")
                 .resizable()
@@ -188,13 +193,26 @@ struct CreateStoryView: View {
                 .opacity(0.8)
                 .frame(width: UIScreen.getWidth(40) ,height: UIScreen.getHeight(40))
                 .shadow(radius:8 ,x: 0, y: 0)
+            //경고창
+                .alert(isPresented: $showingAlert) {
+                          let removeButton = Alert.Button.destructive(Text("삭제")) {
+                              content = ""
+                              //self.arMainViewState = .chooseFootprint
+                          }
+                          let cancelButton = Alert.Button.default(Text("아니오")) {
+                              
+                          }
+                          return Alert(title: Text("이 스토리를 삭제하시겠어요?"),
+                                       message: Text("뒤로가면 이 글은 복구가 불가합니다"),
+                                       primaryButton: cancelButton, secondaryButton: removeButton)
+                      }
         }
     }
     
     var completeButton : some View {
         Button(action: {
 //            let newStory = Story(storyId: UUID(), userName: "guest", visitCount: 0, context: content, image: postImage, like: false, likeCount: 0, time: postTime, comments: [])
-            self.arMainViewState = .chooseFootprint
+        //    self.arMainViewState = .chooseFootprint
             content = ""
             
         }) {
