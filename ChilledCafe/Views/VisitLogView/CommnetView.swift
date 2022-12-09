@@ -10,6 +10,7 @@ import SwiftUI
 struct CommnetView: View {
     @State var isToggleLike = false
     @State var text: String = ""
+    @State var textHeight: CGFloat = 16
     let post: Story
     let pawForegroundColor: Color
     let pawBackgroundColor: Color
@@ -156,7 +157,13 @@ struct CommnetView: View {
                 .font(.custom("AppleSDGothicNeo-Medium", size: 16))
                 .lineSpacing(2)
                 .lineLimit(3)
-            
+
+            //ios15 이하 추후 업데이트 예정
+//            TextView(placeholder: "댓글을 입력하세요.", text: self.$text, minHeight: self.textHeight, calculatedHeight: self.$textHeight)
+//                .frame(minHeight: self.textHeight, maxHeight: self.textHeight)
+//                .foregroundColor(pawForegroundColor)
+//
+                    
             Button(action: {}) {
                 Image(systemName: "paperplane.fill")
                     .resizable()
@@ -167,7 +174,7 @@ struct CommnetView: View {
         .padding(EdgeInsets(top: UIScreen.getHeight(10), leading: UIScreen.getWidth(20), bottom: UIScreen.getHeight(10), trailing: UIScreen.getWidth(20)))
         .overlay(
             RoundedRectangle(cornerRadius: 4)
-                .stroke(Color("pastelGreenOpacity0.2"), lineWidth: 1)
+                .stroke( pawBackgroundColor == Color("pastelGreen") ? Color("pastelGreenOpacity0.2") : Color("pastelBlueOpacity0.2"), lineWidth: 1)
         )
         .background(Color("pastelGreenOpacity0.2"))
     }
@@ -179,3 +186,4 @@ struct CommnetView_Previews: PreviewProvider {
         CommnetView(post: constant().storySample, pawForegroundColor: Color("customGreen"), pawBackgroundColor: Color("pastelGreen"), otherFootPrintName: "catPaw")
     }
 }
+
