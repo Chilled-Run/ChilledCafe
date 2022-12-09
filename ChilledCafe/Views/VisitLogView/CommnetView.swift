@@ -146,24 +146,42 @@ struct CommnetView: View {
         
         HStack(alignment: .bottom) {
             
-            //ios 16에서만 가능
-            TextField("", text: $text, axis: .vertical)
-                .placeholder(when: text.isEmpty) {
-                    Text("댓글을 입력하세요.")
-                        .customSubhead4()
-                        .foregroundColor(Color("CustomGray2"))
+            //textfield 3줄만 보이고 스크롤 가능
+            //iOS 16에서만 가능
+            if #available(iOS 16.0, *) {
+                TextField("", text: $text, axis: .vertical)
+                    .placeholder(when: text.isEmpty) {
+                        Text("댓글을 입력하세요.")
+                            .customSubhead4()
+                            .foregroundColor(Color("CustomGray2"))
+                    }
+                    .foregroundColor(pawForegroundColor)
+                    .font(.custom("AppleSDGothicNeo-Medium", size: 16))
+                    .lineSpacing(2)
+                    .lineLimit(3)
+            }
+            //iOS15 이하 추후 업데이트 예정
+            else {
+            ZStack {
+                TextView(placeholder: "",textColor: pawForegroundColor, text: self.$text, minHeight: self.textHeight, calculatedHeight: self.$textHeight)
+                    .frame(minHeight: self.textHeight, maxHeight: self.textHeight)
+                    .foregroundColor(pawForegroundColor)
+                    .padding(.top, -UIScreen.getHeight(6))
+                    .padding(.bottom, -UIScreen.getHeight(6))
+                if text.isEmpty {
+                    HStack {
+                        Text("댓글을 입력하세요.")
+                            .customSubhead4()
+                            .foregroundColor(Color("CustomGray2"))
+                            .padding(.leading, 7)
+                        Spacer()
+                    }
                 }
-                .foregroundColor(pawForegroundColor)
-                .font(.custom("AppleSDGothicNeo-Medium", size: 16))
-                .lineSpacing(2)
-                .lineLimit(3)
-
-            //ios15 이하 추후 업데이트 예정
-//            TextView(placeholder: "댓글을 입력하세요.", text: self.$text, minHeight: self.textHeight, calculatedHeight: self.$textHeight)
-//                .frame(minHeight: self.textHeight, maxHeight: self.textHeight)
-//                .foregroundColor(pawForegroundColor)
-//
-                    
+            }
+            }
+            //textfield 끝
+            
+            //서버연결 후 완성
             Button(action: {}) {
                 Image(systemName: "paperplane.fill")
                     .resizable()

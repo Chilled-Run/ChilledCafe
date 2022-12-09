@@ -10,13 +10,15 @@ import SwiftUI
 //textfield custom
 struct TextView: UIViewRepresentable {
     var placeholder: String
+    var textColor: Color
     @Binding var text: String
 
     var minHeight: CGFloat
     @Binding var calculatedHeight: CGFloat
-
-    init(placeholder: String, text: Binding<String>, minHeight: CGFloat, calculatedHeight: Binding<CGFloat>) {
+    
+    init(placeholder: String, textColor:Color ,text: Binding<String>, minHeight: CGFloat, calculatedHeight: Binding<CGFloat>) {
         self.placeholder = placeholder
+        self.textColor = textColor
         self._text = text
         self.minHeight = minHeight
         self._calculatedHeight = calculatedHeight
@@ -41,14 +43,15 @@ struct TextView: UIViewRepresentable {
         textView.font = UIFont(name:"AppleSDGothicNeo-Medium" , size: 16)
         // Set the placeholder
         textView.text = placeholder
-//        textView.textColor = UIColor("customGreen")
-
+        textView.textColor = UIColor(textColor)
+      
         return textView
     }
 
     func updateUIView(_ textView: UITextView, context: Context) {
-        textView.text = self.text
+        
 
+        textView.text = self.text
         recalculateHeight(view: textView)
     }
 
