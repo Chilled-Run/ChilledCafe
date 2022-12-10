@@ -37,6 +37,9 @@ struct MainView: View {
         .navigationBarHidden(true)
         .navigationTitle("")
         .ignoresSafeArea(.all, edges: .bottom)
+        .onAppear() {
+            firebaseSM.fetchComment()
+        }
     }
 }
 
