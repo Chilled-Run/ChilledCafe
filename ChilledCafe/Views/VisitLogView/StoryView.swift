@@ -122,12 +122,13 @@ struct StoryView: View {
             }
             .padding(.top, UIScreen.getHeight(57))
             // CommentView로 이동
-            if isCommentView {
-                CommnetView(firebaseSM: firebaseSM, storyId: firebaseSM.storyId)
-                    .padding(.top, 0)
-            }
+//            if isCommentView {
+//                CommnetView(firebaseSM: firebaseSM, storyId: firebaseSM.storyId)
+//                    .padding(.top, 0)
+//            }
         }
         .padding(.top, 0)
+        .overlay(isCommentView ? CommnetView(isCommentView: $isCommentView.animation(), firebaseSM: firebaseSM, storyId: firebaseSM.storyId, status: "StoryView") : nil)
     }
     
     //취소 버튼

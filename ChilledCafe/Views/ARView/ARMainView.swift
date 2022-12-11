@@ -58,7 +58,6 @@ struct ARMainView: View {
     @ObservedObject var firebaseSM: FirebaseStorageManager
     @State private var arMainViewState = ARMainViewState.idle
     @StateObject var checkCurrentLocationViewModel = CheckCurrentLocationViewModel()
-    @AppStorage("upload") var isUpload: Bool = false
     
     var body: some View {
         GeometryReader { geo in
