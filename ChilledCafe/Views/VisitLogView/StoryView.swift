@@ -10,6 +10,7 @@ import SwiftUI
 struct StoryView: View {
     @Binding var arMainViewState: ARMainViewState
     @Binding var otherFootPrintName: String
+    @State var isToggleLike = false
     //임시로 만든 게시글 데이터
     var post = constant().storySample
     //게시글의 글자색
@@ -21,7 +22,6 @@ struct StoryView: View {
         getBackgroundColor(foot: otherFootPrintName)
     }
     var body: some View {
-        NavigationView {
             ZStack {
                 Color.black.ignoresSafeArea()
                     .opacity(0.8)
@@ -39,8 +39,33 @@ struct StoryView: View {
                     VStack(alignment: .leading, spacing: 0) {
                         
                         //본문
-                        StoryContetView(post: post, pawForegroundColor: pawForegroundColor, pawBackgroundColor: pawBackgroundColor, otherFootPrintName: otherFootPrintName)
-                        
+                        StoryContentView(post: post, pawForegroundColor: pawForegroundColor, pawBackgroundColor: pawBackgroundColor, otherFootPrintName: otherFootPrintName)
+                        //세번째 문단, 좋아요, 댓글의 개수가 보이는 곳
+                        //네비게이션을 사용하기 위해 StoryContentView와 분리
+                        Spacer()
+                        HStack {
+                            Button(action: {isToggleLike.toggle()}){
+                                if isToggleLike {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "heart.fill")
+                                        Text("1")
+                                    }
+                                }
+                                else {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "heart")
+                                        Text("0")
+                                    }
+                                }
+                            }
+                            HStack(spacing: 4) {
+                                Image(systemName: "message")
+                                Text("\(post.comments.count)")
+                            }
+                            Spacer()
+                        }
+                        .foregroundColor(pawForegroundColor)
+                        .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
                         // 구분선
                         Rectangle()
                             .fill(pawForegroundColor)
@@ -71,11 +96,9 @@ struct StoryView: View {
                     
                     Spacer()
                 }
-                .padding(.top, UIScreen.getHeight(117))
-                
+                .padding(.top, UIScreen.getHeight(57))
             }
             .padding(.top, 0)
-        }.padding(.top, 0)
         
     }
     

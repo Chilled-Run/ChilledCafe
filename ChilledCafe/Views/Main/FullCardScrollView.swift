@@ -12,6 +12,8 @@ struct FullCardScrollView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
+            // 카드뷰 처음 보일때 여백
+            Spacer(minLength: UIScreen.getHeight(20))
             ForEach(firebaseSM.cafeList[firebaseSM.selectedCategory] ?? [], id: \.self) { cafe in
                 NavigationLink(destination: {
                     BODetailView(cafe: cafe)
