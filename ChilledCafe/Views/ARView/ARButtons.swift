@@ -62,7 +62,29 @@ struct startFootprintButton: View {
 // *
 // ++++++=======================================================+++++
 
+struct viewAllStoryButton: View {
+    @Binding var showAllStory: Bool
+    var body: some View {
+        Button(action: {
+            // TODO: 쿠기 뷰로 연결
+            
+            withAnimation {
+                showAllStory.toggle()
+            }
+        }) {
+            HStack(alignment: .center) {
+                Image(systemName: "square.grid.2x2")
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                Text("스토리 전체보기")
+                    .customTitle2()
+                    .foregroundColor(.black)
+            }
+        }
+        .buttonStyle(GrowingButton())
 
+    }
+}
 
 // ++++++=======================================================+++++
 // *

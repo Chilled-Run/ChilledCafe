@@ -8,47 +8,53 @@
 import SwiftUI
 
 struct AllStoryView: View {
+    @Binding var showAllStory: Bool
     @ObservedObject var firebaseSM: FirebaseStorageManager
     
     let columns = [
-           GridItem(.flexible(), spacing: nil, alignment: nil),
-           GridItem(.flexible(), spacing: nil, alignment: nil)
-       ]
+        GridItem(.flexible(), spacing: nil, alignment: nil),
+        GridItem(.flexible(), spacing: nil, alignment: nil)
+    ]
     var body: some View {
-        VStack {
+        ZStack{
+            Color.white
             VStack {
-                HStack {
-                    backButton
-                    Spacer()
-                    Text("방문자 로그")
-                        .customTitle1()
-                        .foregroundColor(Color("MainColor"))
-                    Spacer()
+                VStack {
+                    HStack {
+                        backButton
+                        Spacer()
+                        Text("방문자 로그")
+                            .customTitle1()
+                            .foregroundColor(Color("MainColor"))
+                        Spacer()
+                    }
+                    .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
+                    .overlay(
+                        Rectangle()
+                            .stroke(Color.white, lineWidth: 1)
+                    )
+                    .background(Color.white)
                 }
-                .padding(EdgeInsets(top: 0, leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
-                .overlay(
-                Rectangle()
-                    .stroke(Color.white, lineWidth: 1)
-                )
-                .background(Color.white)
-            }
-            .padding(.top, UIScreen.getHeight(47))
-                     
-            ScrollView(showsIndicators: false) {
-                LazyVGrid(columns: columns) {
-                    ForEach(firebaseSM.post, id: \.self.storyId) { index in
-                        StorySmallView(firebaseSM: firebaseSM, storyId: index.storyId, story: index, storyForegroundColor: getForegroundColor(foot: index.image), storyBackgroundColor: getBackgroundColor(foot: index.image))
+                .padding(.top, UIScreen.getHeight(47))
+                
+                ScrollView(showsIndicators: false) {
+                    LazyVGrid(columns: columns) {
+                        ForEach(firebaseSM.post, id: \.self.storyId) { index in
+                            StorySmallView(firebaseSM: firebaseSM, storyId: index.storyId, story: index, storyForegroundColor: getForegroundColor(foot: index.image), storyBackgroundColor: getBackgroundColor(foot: index.image))
+                        }
                     }
                 }
+                .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
             }
-            .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
+            .padding(.top, UIScreen.getHeight(22))
         }
         .ignoresSafeArea(.all)
+        .transition(.move(edge: .leading))
     }
     
     var backButton : some View {
         Button(action: {
-          
+            showAllStory = false
         }) {
             HStack {
                 Image(systemName: "chevron.backward")
