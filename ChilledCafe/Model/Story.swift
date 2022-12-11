@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Story {
     let storyId: UUID
@@ -35,7 +36,7 @@ struct Post {
     var content: String = ""
     var image: String = ""
     var likeCount: Int = 0
-    var creatAt: Date = Date()
+    var creatAt: String = dateToString()
 
     // For easy upload to firebase
     var dictionary: [String: Any] {
@@ -52,11 +53,13 @@ struct Post {
 }
 
 struct Comment3 {
+    
+    
     var commentId: String = UUID().uuidString
     var storyId: String = ""
     var userName: String = ""
     var content: String = ""
-    var creatAt: Date = Date()
+    var creatAt: String = dateToString()
 
     // For easy upload to firebase
     var dictionary: [String: Any] {
@@ -90,4 +93,13 @@ struct Comment2: Codable, Hashable {
     let userName: String
     let context: String
     let creatAt: Date
+}
+
+
+//
+
+func dateToString()-> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy.MM.dd"
+    return dateFormatter.string(from: Date())
 }

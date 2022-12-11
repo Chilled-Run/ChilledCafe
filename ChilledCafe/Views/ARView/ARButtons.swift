@@ -74,7 +74,9 @@ struct startFootprintButton: View {
     @Binding var arMainViewState: ARMainViewState
     var body: some View {
         Button(action: {
-            self.arMainViewState = .chooseFootprint
+            //forTest
+            self.arMainViewState = .uploadStory
+//            self.arMainViewState = .chooseFootprint
         }) {
             HStack(alignment: .center) {
                 Image(systemName: "plus")

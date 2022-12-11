@@ -56,6 +56,8 @@ struct ARMainView: View {
     @State private var otherFootprintName = ""
     
     @State private var arMainViewState = ARMainViewState.beforeFloorDetected
+    //forTest
+    @ObservedObject var firebaseSM: FirebaseStorageManager
     
     var body: some View {
         GeometryReader { geo in
@@ -65,11 +67,11 @@ struct ARMainView: View {
                 
                 
                 if arMainViewState == .readStory {
-                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName)
+                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName, firebaseSM: firebaseSM)
                 }
                 
                 if arMainViewState == .uploadStory {
-                  //  CreateStoryView(arMainViewState: $arMainViewState)
+                    CreateStoryView(arMainViewState: $arMainViewState, firebaseSM: firebaseSM)
                 }
 
                 // 초기 좌표 세팅
@@ -394,9 +396,9 @@ struct EmptyButtonsView: View {
 }
 
 
-struct ARMainView_Previews: PreviewProvider {
-    static var previews: some View {
-        ARMainView()
-    }
-}
+//struct ARMainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ARMainView()
+//    }
+//}
 

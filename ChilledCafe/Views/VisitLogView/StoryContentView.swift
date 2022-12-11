@@ -8,28 +8,26 @@
 import SwiftUI
 
 struct StoryContentView: View {
-    let post: Story
-    let pawForegroundColor: Color
-    let pawBackgroundColor: Color
-    let otherFootPrintName: String
+    @ObservedObject var firebaseSM: FirebaseStorageManager
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             //첫번째 문단, 아이디, 날짜, 발자국이 보이는 곳
             HStack {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("\(post.visitCount)번 방문한")
+                    Text("\(firebaseSM.selectedPost.visitCount)번 방문한")
                         .customTitle1()
-                    Text(post.userName)
+                    Text(firebaseSM.selectedPost.userName)
                         .customLargeTitle()
                         .padding(.top, UIScreen.getHeight(10))
-                    Text("\(post.time) 다녀감")
+                    Text("\(firebaseSM.selectedPost.creatAt) 다녀감")
                         .customSubhead3()
                         .padding(.top, UIScreen.getHeight(10))
                 }
-                .foregroundColor(pawForegroundColor)
+                .foregroundColor(firebaseSM.pawForegroundColor)
+                
                 Spacer()
-                Image(otherFootPrintName)
+                Image(firebaseSM.selectedPost.image)
                     .resizable()
                     .frame(width: 90, height: 90)
             }
@@ -37,7 +35,7 @@ struct StoryContentView: View {
             
             //두번째 문단, 본문이 보이는 곳
             VStack(alignment: .leading) {
-                Text(post.context)
+                Text(firebaseSM.selectedPost.content)
                     .customSubhead4()
                 Spacer()
             }

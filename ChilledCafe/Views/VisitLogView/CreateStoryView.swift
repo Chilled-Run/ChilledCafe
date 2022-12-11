@@ -14,8 +14,8 @@ struct CreateStoryView: View {
     @State var lastText: String = ""
     @State var words: Int = 0
     @State var showingAlert: Bool = false
-   // @Binding var arMainViewState: ARMainViewState
-    
+    @Binding var arMainViewState: ARMainViewState
+    @ObservedObject var firebaseSM: FirebaseStorageManager
     
     var postTime: String {
         let format = DateFormatter()
@@ -211,8 +211,7 @@ struct CreateStoryView: View {
     
     var completeButton : some View {
         Button(action: {
-//            let newStory = Story(storyId: UUID(), userName: "guest", visitCount: 0, context: content, image: postImage, like: false, likeCount: 0, time: postTime, comments: [])
-        //    self.arMainViewState = .chooseFootprint
+            firebaseSM.uploadStory(userName: "guest", content: content, image: postImage)
             content = ""
             
         }) {
@@ -224,11 +223,11 @@ struct CreateStoryView: View {
     }
 }
 
-struct CreateVisitPostView_Previews: PreviewProvider {
-    static var previews: some View {
-        // CreateStroyView()
-        ARMainView()
-    }
-}
+//struct CreateVisitPostView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        // CreateStroyView()
+//        ARMainView()
+//    }
+//}
 
 
