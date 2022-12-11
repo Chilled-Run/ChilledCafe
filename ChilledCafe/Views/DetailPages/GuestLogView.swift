@@ -11,6 +11,8 @@ struct GuestLogView: View {
     @ObservedObject var firebaseSM: FirebaseStorageManager
     let cafe: Cafe
     @State var isADALocation: Bool = false
+    @State var isComment: Bool = false
+    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             HStack {
@@ -22,10 +24,10 @@ struct GuestLogView: View {
             // 모든 사람들에게 보여지는 공간 이야기
             if firebaseSM.post.count >= 2 {
                 HStack(spacing: 8) {
-                    NavigationLink(destination: CommnetView(firebaseSM: firebaseSM, storyId: firebaseSM.post[0].storyId)) {
+                    NavigationLink(destination: CommnetView(isCommentView: $isComment, firebaseSM: firebaseSM, storyId: firebaseSM.post[0].storyId, status: "GuestLogView")) {
                         StorySmallView(firebaseSM: firebaseSM, storyId: firebaseSM.post[0].storyId, story: firebaseSM.post[0], storyForegroundColor: getForegroundColor(foot: firebaseSM.post[0].image), storyBackgroundColor: getBackgroundColor(foot: firebaseSM.post[0].image))
                     }
-                    NavigationLink(destination: CommnetView(firebaseSM: firebaseSM, storyId: firebaseSM.post[1].storyId)){
+                    NavigationLink(destination: CommnetView(isCommentView: $isComment, firebaseSM: firebaseSM, storyId: firebaseSM.post[1].storyId, status: "GuestLogView")) {
                         StorySmallView(firebaseSM: firebaseSM, storyId: firebaseSM.post[1].storyId, story: firebaseSM.post[1], storyForegroundColor:  getForegroundColor(foot: firebaseSM.post[1].image), storyBackgroundColor: getBackgroundColor(foot: firebaseSM.post[1].image))
                     }
                 }

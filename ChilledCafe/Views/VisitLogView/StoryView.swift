@@ -13,11 +13,13 @@ struct StoryView: View {
     //
     // forTest
     @ObservedObject var firebaseSM: FirebaseStorageManager
-    // for test
+    @Binding var isStepped: Bool
     @State var storyId = ""
     @State var isCommentView = false
     @State var isToggleLike = false
-    var footNumber = ["leftFoot": 0, "rightFoot" : 1, "catFoot" : 2, "horseFoot" : 3]
+    
+    var footNumber = ["leftFoot": 0, "rightFoot" : 1, "catFoot" : 2]
+    var afterFootNumber = ["leftFoot": 1, "rightFoot" : 2, "catFoot" : 3]
     
     var body: some View {
         ZStack {
@@ -35,7 +37,17 @@ struct StoryView: View {
                 //forTest
                 .onAppear() {
                     firebaseSM.getFirstStroy()
-                    storyId = firebaseSM.getStoryId(index: footNumber[otherFootPrintName] ?? 0)
+                    if isStepped  {
+                        //자신의 스토리 업로드 후
+                        storyId = firebaseSM.getStoryId(index: afterFootNumber[otherFootPrintName] ?? 0)
+                        print(otherFootPrintName)
+                        print(afterFootNumber[otherFootPrintName] ?? 0)
+                    }
+                    else {
+                        //자신의 스토리 업로드 전
+                        storyId = firebaseSM.getStoryId(index: footNumber[otherFootPrintName] ?? 0)
+                        print(otherFootPrintName)
+                    }
                     firebaseSM.fetchRelatedComment(storyId: storyId)
                 }
                 
@@ -73,7 +85,7 @@ struct StoryView: View {
                         Spacer()
                     }
                     .foregroundColor(firebaseSM.pawForegroundColor)
-                    .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
+                    .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing:UIScreen.getWidth(30)))
                     // 구분선
                     Rectangle()
                         .fill(firebaseSM.pawForegroundColor)
@@ -110,12 +122,13 @@ struct StoryView: View {
             }
             .padding(.top, UIScreen.getHeight(57))
             // CommentView로 이동
-            if isCommentView {
-                CommnetView(firebaseSM: firebaseSM, storyId: firebaseSM.storyId)
-                    .padding(.top, 0)
-            }
+//            if isCommentView {
+//                CommnetView(firebaseSM: firebaseSM, storyId: firebaseSM.storyId)
+//                    .padding(.top, 0)
+//            }
         }
         .padding(.top, 0)
+        .overlay(isCommentView ? CommnetView(isCommentView: $isCommentView.animation(), firebaseSM: firebaseSM, storyId: firebaseSM.storyId, status: "StoryView") : nil)
     }
     
     //취소 버튼

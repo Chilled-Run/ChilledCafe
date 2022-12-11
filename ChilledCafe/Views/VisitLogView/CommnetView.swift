@@ -13,14 +13,16 @@ struct CommnetView: View {
     @State var textHeight: CGFloat = 16
     @FocusState private var isFocused: Bool
     
+    @Binding var isCommentView: Bool
     @ObservedObject var firebaseSM: FirebaseStorageManager
     let storyId: String
-    
+    let status: String
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
             ZStack {
                 Color.white
+                    .transition(.move(edge: .leading))
                 VStack(spacing: 0) {
                     //네비게이션 바
                     ZStack {
@@ -129,6 +131,7 @@ struct CommnetView: View {
                     .padding(.top, UIScreen.getHeight(20))
                 }
                 .padding(.top, UIScreen.getHeight(47))
+                .transition(.move(edge: .leading))
                 // 댓글입력
                 
                 VStack {
@@ -143,15 +146,21 @@ struct CommnetView: View {
                     .background(.white)
                     .onAppear( perform: UIApplication.shared.hideKeyboard)
                     .offset(y: isFocused ? -UIScreen.getHeight(250) : 0).animation(.easeInOut(duration: 0.2))
-                    //.padding(.bottom, isFocused ? UIScreen.getHeight(210) : 0)
+                    
                 }
                 .padding(.bottom, UIScreen.getHeight(34))
             }
             .ignoresSafeArea(.all)
+            .transition(.move(edge: .leading))
     }
     var backButton: some View {
         Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
+            if status == "StoryView" {
+                isCommentView.toggle()
+            }
+            else {
+                self.presentationMode.wrappedValue.dismiss()
+            }
         }) {
             Image(systemName: "chevron.backward")
                 .resizable()
