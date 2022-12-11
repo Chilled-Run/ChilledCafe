@@ -86,6 +86,7 @@
 		9ADA35E92941C7EF00F02404 /* StoryContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA35E82941C7EF00F02404 /* StoryContentView.swift */; };
 		9ADA35EC2942489D00F02404 /* keyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA35EB2942489D00F02404 /* keyboardExtension.swift */; };
 		9ADA35EE2942F04500F02404 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA35ED2942F04500F02404 /* TextView.swift */; };
+		9ADA35F629461CF800F02404 /* AllStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADA35F529461CF800F02404 /* AllStoryView.swift */; };
 		9AF628202920CA93004D9412 /* BODetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF6281F2920CA93004D9412 /* BODetailView.swift */; };
 		9AF628222920CCE5004D9412 /* DetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF628212920CCE5004D9412 /* DetailInfoView.swift */; };
 		9AF628242920CD16004D9412 /* DetailTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF628232920CD16004D9412 /* DetailTagView.swift */; };
@@ -161,6 +162,7 @@
 		9ADA35E82941C7EF00F02404 /* StoryContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryContentView.swift; sourceTree = "<group>"; };
 		9ADA35EB2942489D00F02404 /* keyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keyboardExtension.swift; sourceTree = "<group>"; };
 		9ADA35ED2942F04500F02404 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		9ADA35F529461CF800F02404 /* AllStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStoryView.swift; sourceTree = "<group>"; };
 		9AF6281F2920CA93004D9412 /* BODetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BODetailView.swift; sourceTree = "<group>"; };
 		9AF628212920CCE5004D9412 /* DetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoView.swift; sourceTree = "<group>"; };
 		9AF628232920CD16004D9412 /* DetailTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTagView.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				9ADA35E62941C7DD00F02404 /* CommnetView.swift */,
 				9ADA35E82941C7EF00F02404 /* StoryContentView.swift */,
 				9ADA35ED2942F04500F02404 /* TextView.swift */,
+				9ADA35F529461CF800F02404 /* AllStoryView.swift */,
 			);
 			path = VisitLogView;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				9AD1DA74291CF1BA0089E88A /* Cafe.swift in Sources */,
 				9A8E8FCB29369DA40059D82B /* MapModalView.swift in Sources */,
 				2003DAE3292388AD00C09F5F /* ARMainView.swift in Sources */,
+				9ADA35F629461CF800F02404 /* AllStoryView.swift in Sources */,
 				202B4CB329425A3100827036 /* AccessDeniedView.swift in Sources */,
 				39B7C51329058172000C8B07 /* CardView.swift in Sources */,
 				39B7C51529058AA9000C8B07 /* LikedCafeCardView.swift in Sources */,
@@ -722,7 +726,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
+				DEVELOPMENT_TEAM = BP6V55LTAQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
@@ -758,7 +762,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
+				DEVELOPMENT_TEAM = BP6V55LTAQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;

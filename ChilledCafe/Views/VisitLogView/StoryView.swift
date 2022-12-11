@@ -10,13 +10,14 @@ import SwiftUI
 struct StoryView: View {
     @Binding var arMainViewState: ARMainViewState
     @Binding var otherFootPrintName: String
+    //
     // forTest
     @ObservedObject var firebaseSM: FirebaseStorageManager
     // for test
-    
+    @State var storyId = ""
     @State var isCommentView = false
     @State var isToggleLike = false
-    
+    var footNumber = ["leftFoot": 0, "rightFoot" : 1, "catFoot" : 2, "horseFoot" : 3]
     
     var body: some View {
         ZStack {
@@ -34,13 +35,13 @@ struct StoryView: View {
                 //forTest
                 .onAppear() {
                     firebaseSM.getFirstStroy()
-                    firebaseSM.fetchRelatedComment(storyId: firebaseSM.storyId)
+                    storyId = firebaseSM.getStoryId(index: footNumber[otherFootPrintName] ?? 0)
+                    firebaseSM.fetchRelatedComment(storyId: storyId)
                 }
                 
                 
                 // 게시글
                 VStack(alignment: .leading, spacing: 0) {
-                    
                     //본문
                     StoryContentView(firebaseSM: firebaseSM)
                     

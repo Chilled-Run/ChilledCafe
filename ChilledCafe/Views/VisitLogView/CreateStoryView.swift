@@ -15,6 +15,7 @@ struct CreateStoryView: View {
     @State var words: Int = 0
     @State var showingAlert: Bool = false
     @Binding var arMainViewState: ARMainViewState
+    let otherFootPrintName: String
     @Binding var isStepped: Bool
     @ObservedObject var firebaseSM: FirebaseStorageManager
     
@@ -188,6 +189,9 @@ struct CreateStoryView: View {
             if !content.isEmpty {
                 showingAlert.toggle()
             }
+            else {
+                self.arMainViewState = .chooseFootprint
+            }
         }) {
             Image(systemName: "chevron.left.circle.fill")
                 .resizable()
@@ -213,7 +217,7 @@ struct CreateStoryView: View {
     
     var completeButton : some View {
         Button(action: {
-            firebaseSM.uploadStory(userName: "guest", content: content, image: postImage)
+            firebaseSM.uploadStory(userName: "guest", content: content, image: otherFootPrintName)
             content = ""
             self.arMainViewState = .uploadComplete
             self.isStepped = true
