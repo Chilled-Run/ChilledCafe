@@ -213,7 +213,7 @@ struct CreateStoryView: View {
         Button(action: {
             firebaseSM.uploadStory(userName: "guest", content: content, image: postImage)
             content = ""
-            
+            self.arMainViewState = .uploadComplete
         }) {
             Text("완료")
                 .customTitle1()
