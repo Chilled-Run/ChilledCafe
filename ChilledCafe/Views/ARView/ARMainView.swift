@@ -103,7 +103,7 @@ struct ARMainView: View {
                 }
                 
                 if arMainViewState == .readStory {
-                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName, firebaseSM: firebaseSM)
+                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName, firebaseSM: firebaseSM, isStepped: $isStepped )
                 }
                 
                 if arMainViewState == .uploadStory {
