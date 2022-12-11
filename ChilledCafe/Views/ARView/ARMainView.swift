@@ -59,6 +59,8 @@ struct ARMainView: View {
     @State private var arMainViewState = ARMainViewState.idle
     @StateObject var checkCurrentLocationViewModel = CheckCurrentLocationViewModel()
     
+    @Binding var isADALocation: Bool
+    
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
@@ -82,7 +84,7 @@ struct ARMainView: View {
     
                 Group {
                     if arMainViewState == .checkingLocation {
-                        CheckCurrentLocationView(arMainViewState: $arMainViewState)
+                        CheckCurrentLocationView(arMainViewState: $arMainViewState, isADALocation: $isADALocation)
                             .environmentObject(checkCurrentLocationViewModel)
                     }
                     
