@@ -58,7 +58,7 @@ struct GuestLogView: View {
                         .foregroundColor(Color("MainColor"))
                     
                     VStack {
-                        Button(action: {}) {
+                        NavigationLink(destination: ARMainView(firebaseSM: firebaseSM)) {
                             HStack(spacing: 6) {
                                 Image("foot")
                                     .resizable()

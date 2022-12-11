@@ -64,6 +64,14 @@ class FirebaseStorageManager: ObservableObject {
         getColor()
     }
     
+    // index의 post를 선택하고 storyId 값을 리턴
+    func getStoryId(index: Int) -> String {
+        self.selectedPost = self.post[index]
+        self.storyId = self.post[index].storyId
+        getColor()
+        return self.post[index].storyId
+    }
+    
     //스토리아이디로 스토리 찾기
     func getStory(storyId: String) {
         for story in self.post {

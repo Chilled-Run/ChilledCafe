@@ -197,7 +197,7 @@ struct CreateStoryView: View {
                 .alert(isPresented: $showingAlert) {
                           let removeButton = Alert.Button.destructive(Text("삭제")) {
                               content = ""
-                              //self.arMainViewState = .chooseFootprint
+                              self.arMainViewState = .chooseFootprint
                           }
                           let cancelButton = Alert.Button.default(Text("아니오")) {
                               
