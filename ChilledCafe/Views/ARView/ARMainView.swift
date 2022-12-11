@@ -52,6 +52,7 @@ struct ARMainView: View {
     @State private var stepFootprint: FootprintModel?
     @State private var otherFootprintModel = models
     @State private var otherFootprintName = ""
+    @State private var isStepped: Bool = false
     
     @ObservedObject var firebaseSM: FirebaseStorageManager
     @State private var arMainViewState = ARMainViewState.idle
@@ -70,7 +71,7 @@ struct ARMainView: View {
                 }
                 
                 if checkCurrentLocationViewModel.authorizationStatus == .authorizedWhenInUse || checkCurrentLocationViewModel.authorizationStatus == .authorizedAlways {
-                    ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, arMainViewState: $arMainViewState, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
+                    ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, arMainViewState: $arMainViewState, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName, isStepped: $isStepped)
                         .onAppear {
                             arMainViewState = .checkingLocation
                         }
@@ -106,6 +107,7 @@ struct ARMainView: View {
                 
                 if arMainViewState == .uploadStory {
                     CreateStoryView(arMainViewState: $arMainViewState, otherFootPrintName:otherFootprintName, firebaseSM: firebaseSM)
+                    CreateStoryView(arMainViewState: $arMainViewState, isStepped: $isStepped, firebaseSM: firebaseSM)
                 }
 
                 // 초기 바닥 좌표 세팅
@@ -204,7 +206,7 @@ struct ARMainView: View {
                     // MARK: 발자국 선택 후 스테핑할 위치 선정
                     // ARMainViewState :: .beforeStepFootprint
                     if arMainViewState == .beforeStepFootprint {
-                        PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint)
+                        PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isStepped: $isStepped)
                             .padding(.bottom, 60)
                     }
                     
@@ -247,6 +249,7 @@ struct ARViewContainer: UIViewRepresentable {
     @Binding var arMainViewState: ARMainViewState
     @Binding var otherFootprintModel: [FootprintModel]
     @Binding var otherFootprintName: String
+    @Binding var isStepped: Bool
     
     func makeUIView(context: Context) -> ARView {
         weak var arView = CustomARView(frame: .zero)
@@ -272,7 +275,7 @@ struct ARViewContainer: UIViewRepresentable {
                 let clicky = ClickyEntity(model: modelEntity.model!) {
                     (clickedObj, atPosition) in
                     // 객체를 클릭했을때 나오는 무언가 ㅇㅅㅇ
-
+                    
                     
                 }
                 anchorEntity.addChild(clicky)
@@ -283,7 +286,7 @@ struct ARViewContainer: UIViewRepresentable {
             var zZ: Float = -0.1
             
             var count = 0
-            _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ t in
+            _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true){ t in
                 
                 let anchorEntity2 = AnchorEntity(plane: .any)
                 let model2 = otherFootprintModel[count]
@@ -304,7 +307,7 @@ struct ARViewContainer: UIViewRepresentable {
                 zZ -= 0.2
                 count += 1
                 
-                if count >= 4 {
+                if count >= 3 {
                         t.invalidate()
                 }
             }
@@ -324,7 +327,12 @@ struct ARViewContainer: UIViewRepresentable {
                     print("hello hello")
                     print(anchorEntity.position)
                     
-                    self.arMainViewState = .uploadStory
+                    if isStepped {
+                        self.arMainViewState = .readStory
+                    }
+                    else {
+                        self.arMainViewState = .uploadStory
+                    }
                     
                 }
                 anchorEntity.addChild(clicky)
@@ -357,7 +365,7 @@ struct ModelPickerView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
-                ForEach(0 ..< self.models.count - 1) {
+                ForEach(3 ..< self.models.count - 1) {
                     index in
                     Button(action: {
                         print("DEBUG - selected model with name: \(self.models[index].modelName)")
