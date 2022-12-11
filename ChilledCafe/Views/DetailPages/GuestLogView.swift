@@ -9,7 +9,8 @@ import SwiftUI
 
 struct GuestLogView: View {
     @ObservedObject var firebaseSM: FirebaseStorageManager
-    
+    let cafe: Cafe
+    @State var isADALocation: Bool = false
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             HStack {
@@ -58,7 +59,7 @@ struct GuestLogView: View {
                         .foregroundColor(Color("MainColor"))
                     
                     VStack {
-                        NavigationLink(destination: ARMainView(firebaseSM: firebaseSM)) {
+                        NavigationLink(destination: ARMainView(firebaseSM: firebaseSM, isADALocation: $isADALocation)) {
                             HStack(spacing: 6) {
                                 Image("foot")
                                     .resizable()
@@ -88,6 +89,14 @@ struct GuestLogView: View {
             // ZStack 끝
         }
         .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
+        .onAppear {
+            if cafe.name == "애플 디벨로퍼 아카데미" {
+                isADALocation = true
+            }
+            else {
+                isADALocation = false
+            }
+        }
     }
 }
 

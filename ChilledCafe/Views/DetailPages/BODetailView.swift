@@ -82,7 +82,7 @@ struct BODetailView: View {
                     .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(20), bottom: 0, trailing: UIScreen.getWidth(20)))
                     
                     //방문자 로그 뷰
-                    GuestLogView(firebaseSM: firebaseSM)
+                    GuestLogView(firebaseSM: firebaseSM, cafe: cafe)
                         .padding(.bottom, UIScreen.getHeight(40))
                     Spacer()
                 }
