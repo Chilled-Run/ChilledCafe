@@ -41,6 +41,7 @@ enum ARMainViewState {
     case chooseFootprint
     case beforeStepFootprint
     case afterStepFootprint
+    case uploadComplete
     case uploadStory
     case readStory
 }
@@ -198,31 +199,39 @@ struct ARMainView: View {
                     }
                     .padding(.top, geo.safeAreaInsets.top + 17)
                 }
-                
-                // MARK: 발자국 선택 후 스테핑할 위치 선정
-                // ARMainViewState :: .beforeStepFootprint
-                if arMainViewState == .beforeStepFootprint {
-                    PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint)
-                        .padding(.bottom, 60)
-                }
-                
-                // MARK: 발자국 스테핑 후 스토리 작성 선택 창
-                // ARMainViewState :: .afterStepFootprint
-                if arMainViewState == .afterStepFootprint{
-                    VStack {
-                        HStack {
-                            ARCloseButton(arMainViewState: $arMainViewState)
-                                .padding(.leading, 20)
-                            Spacer()
-                        }
-                        
-                        Spacer()
-                        
-                        startStoryButton(arMainViewState: $arMainViewState)
+                Group{
+                    
+                    // MARK: 발자국 선택 후 스테핑할 위치 선정
+                    // ARMainViewState :: .beforeStepFootprint
+                    if arMainViewState == .beforeStepFootprint {
+                        PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint)
                             .padding(.bottom, 60)
                     }
-                    .padding(.top, geo.safeAreaInsets.top + 17)
-                    .padding(.bottom, 60)
+                    
+                    // MARK: 발자국 스테핑 후 스토리 작성 선택 창
+                    // ARMainViewState :: .afterStepFootprint
+                    if arMainViewState == .afterStepFootprint{
+                        VStack {
+                            HStack {
+                                ARCloseButton(arMainViewState: $arMainViewState)
+                                    .padding(.leading, 20)
+                                Spacer()
+                            }
+                            
+                            Spacer()
+                            
+                            startStoryButton(arMainViewState: $arMainViewState)
+                                .padding(.bottom, 60)
+                        }
+                        .padding(.top, geo.safeAreaInsets.top + 17)
+                        .padding(.bottom, 60)
+                    }
+                }
+                
+                Group {
+                    if arMainViewState == .uploadComplete {
+                        UploadCompleteView(arMainViewState: $arMainViewState)
+                    }
                 }
             }
             .ignoresSafeArea()

@@ -197,7 +197,7 @@ struct CreateStoryView: View {
                 .alert(isPresented: $showingAlert) {
                           let removeButton = Alert.Button.destructive(Text("삭제")) {
                               content = ""
-                              //self.arMainViewState = .chooseFootprint
+                              self.arMainViewState = .chooseFootprint
                           }
                           let cancelButton = Alert.Button.default(Text("아니오")) {
                               
@@ -213,7 +213,7 @@ struct CreateStoryView: View {
         Button(action: {
             firebaseSM.uploadStory(userName: "guest", content: content, image: postImage)
             content = ""
-            
+            self.arMainViewState = .uploadComplete
         }) {
             Text("완료")
                 .customTitle1()
