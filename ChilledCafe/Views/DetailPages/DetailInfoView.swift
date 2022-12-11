@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailInfoView: View {
     let sample: Cafe
     @State var halfModal_shown: Bool = false
-
+    @State var isBookMarkToggle: Bool = true
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -25,8 +25,10 @@ struct DetailInfoView: View {
                         Text(sample.name)
                             .customTitle3()
                         Spacer()
-                        Button(action: {}) {
-                            if sample.bookmark {
+                        Button(action: {
+                            isBookMarkToggle.toggle()
+                        }) {
+                            if isBookMarkToggle {
                                 Image("bookmarkToggled")
                                     .resizable()
                                     .frame(width:UIScreen.getWidth(30), height:UIScreen.getHeight(30))
