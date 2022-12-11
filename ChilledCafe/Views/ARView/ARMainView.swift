@@ -53,6 +53,7 @@ struct ARMainView: View {
     @State private var otherFootprintModel = models
     @State private var otherFootprintName = ""
     @State private var isStepped: Bool = false
+    @State private var showAllStory: Bool = false
     
     @ObservedObject var firebaseSM: FirebaseStorageManager
     @State private var arMainViewState = ARMainViewState.idle
@@ -147,6 +148,9 @@ struct ARMainView: View {
                             ARCloseButton(arMainViewState: $arMainViewState)
                                 .padding(.leading, 20)
                             Spacer()
+                            
+                            viewAllStoryButton(showAllStory: $showAllStory)
+                                .padding(.trailing, 20)
                         }
                         
                         ZStack {
@@ -238,6 +242,7 @@ struct ARMainView: View {
             }
             .ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
+            .overlay(showAllStory ? AllStoryView(showAllStory: $showAllStory.animation(), firebaseSM: firebaseSM) : nil)
         }
     }
 }

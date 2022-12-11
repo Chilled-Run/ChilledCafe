@@ -42,7 +42,7 @@ struct CheckCurrentLocationView: View {
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                             print(distance)
-                            if distance <= 200 {
+                            if distance <= 80 {
                                 self.arMainViewState = .accessGranted
                             }
                             else {
