@@ -107,7 +107,7 @@ struct ARMainView: View {
                 }
                 
                 if arMainViewState == .uploadStory {
-                    CreateStoryView(arMainViewState: $arMainViewState, isStepped: $isStepped, firebaseSM: firebaseSM)
+                    CreateStoryView(arMainViewState: $arMainViewState, otherFootPrintName:otherFootprintName, isStepped: $isStepped, firebaseSM: firebaseSM)
                 }
 
                 // 초기 바닥 좌표 세팅

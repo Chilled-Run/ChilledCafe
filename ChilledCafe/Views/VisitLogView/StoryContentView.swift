@@ -30,7 +30,7 @@ struct StoryContentView: View {
                 .foregroundColor(firebaseSM.pawForegroundColor)
                 
                 Spacer()
-                Image(firebaseSM.selectedPost.image)
+                Image(firebaseSM.selectedPost.image + "Print")
                     .resizable()
                     .frame(width: 90, height: 90)
             }
