@@ -13,7 +13,7 @@ import UIKit
 import RealityUI
 
 private var models: [FootprintModel] = {
-    // Dynamically get file names
+    // 동적으로 파일명을 가져옵니다.
     let filemanager =  FileManager.default
     
     guard let path = Bundle.main.resourcePath, let files = try? filemanager.contentsOfDirectory(atPath: path) else {
@@ -30,8 +30,12 @@ private var models: [FootprintModel] = {
     return availableModels
 }()
 
+// ARMainView 내 각각의 상태값들
 enum ARMainViewState {
     case idle
+    case checkingLocation
+    case accessGranted
+    case accessDenied
     case beforeFloorDetected
     case afterFloorDetected
     case chooseFootprint
@@ -41,30 +45,59 @@ enum ARMainViewState {
     case readStory
 }
 
-let backupModel = models
-
 struct ARMainView: View {
-    @State private var isPlacementEnabled = false
     @State private var selectedModel: FootprintModel?
-    @State private var isSetPosition = false
-    @State private var isContinue = false
     @State private var modelConfirmedForPlacement: FootprintModel?
     @State private var stepFootprint: FootprintModel?
-    @State private var isShowSheet = false
-    @State private var isShowStoryButton = false
     @State private var otherFootprintModel = models
     @State private var otherFootprintName = ""
     
-    @State private var arMainViewState = ARMainViewState.beforeFloorDetected
-    //forTest
     @ObservedObject var firebaseSM: FirebaseStorageManager
+    @State private var arMainViewState = ARMainViewState.idle
+    @StateObject var checkCurrentLocationViewModel = CheckCurrentLocationViewModel()
     
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
+                if arMainViewState == .idle {
+                    Color.black.ignoresSafeArea()
+                        .opacity(0.8)
+                        .navigationBarHidden(true)
+                        .onAppear {
+                        checkCurrentLocationViewModel.requestPermission()
+                    }
+                }
                 
-                ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, arMainViewState: $arMainViewState, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
-                
+                if checkCurrentLocationViewModel.authorizationStatus == .authorizedWhenInUse || checkCurrentLocationViewModel.authorizationStatus == .authorizedAlways {
+                    ARViewContainer(modelConfirmedForPlacement: self.$modelConfirmedForPlacement, stepFootprint: $stepFootprint, arMainViewState: $arMainViewState, otherFootprintModel: $otherFootprintModel, otherFootprintName: $otherFootprintName)
+                        .onAppear {
+                            arMainViewState = .checkingLocation
+                        }
+                }
+            
+                    
+    
+                Group {
+                    if arMainViewState == .checkingLocation {
+                        CheckCurrentLocationView(arMainViewState: $arMainViewState)
+                            .environmentObject(checkCurrentLocationViewModel)
+                    }
+                    
+                    Group {
+                        if arMainViewState == .accessGranted {
+                            AccessGrantedView(arMainViewState: $arMainViewState)
+                                .onAppear {
+                                    HapticManager.instance.notification(type: .success)
+                                }
+                        }
+                    }
+                    if arMainViewState == .accessDenied {
+                        AccessDeniedView(arMainViewState: $arMainViewState)
+                            .onAppear {
+                                HapticManager.instance.notification(type: .error)
+                            }
+                    }
+                }
                 
                 if arMainViewState == .readStory {
                     StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName, firebaseSM: firebaseSM)
@@ -74,9 +107,15 @@ struct ARMainView: View {
                     CreateStoryView(arMainViewState: $arMainViewState, firebaseSM: firebaseSM)
                 }
 
-                // 초기 좌표 세팅
+                // 초기 바닥 좌표 세팅
+                // ARMainViewState :: .beforeFloorDetected
                 if arMainViewState == .beforeFloorDetected {
                     VStack{
+                        HStack {
+                            ARCloseButton(arMainViewState: $arMainViewState)
+                                .padding(.leading, 20)
+                            Spacer()
+                        }
                         ZStack {
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(Color.black)
@@ -87,18 +126,26 @@ struct ARMainView: View {
                                 .foregroundColor(.white)
                                 .customTitle1()
                         }
-                        .padding(.top, geo.safeAreaInsets.top)
+                        .padding(.top, 30)
                         
                         Spacer()
                         
                         EmptyButtonsView(arMainViewState: $arMainViewState, selectedModel: $selectedModel, modelConfirmedForPlacement: $modelConfirmedForPlacement)
                     }
+                    .padding(.top, geo.safeAreaInsets.top + 17)
                     .padding(.bottom, 60)
                 }
                 
+                // 바닥 좌표 세팅 완료 후 순차적으로 다른 사람들 발바닥 조회
+                // ARMainViewState :: .afterFloorDetected
                 if arMainViewState == .afterFloorDetected {
-                    // 발자국 찍기 시작하기 버튼
                     VStack {
+                        HStack {
+                            ARCloseButton(arMainViewState: $arMainViewState)
+                                .padding(.leading, 20)
+                            Spacer()
+                        }
+                        
                         ZStack {
                             VStack(alignment: .center){
                                 Text("이 공간에 방문객들의 스토리가 담겨져 있네요!")
@@ -114,17 +161,25 @@ struct ARMainView: View {
                             .opacity(0.8)
                             .cornerRadius(4)
                         }
-                        .padding(.top, geo.safeAreaInsets.top)
+                        .padding(.top, 30)
                         
                         Spacer()
                         
                         startFootprintButton(arMainViewState: $arMainViewState)
-                            .padding(.bottom, 60)
                     }
+                    .padding(.top, geo.safeAreaInsets.top + 17)
+                    .padding(.bottom, 60)
                 }
                 
+                // MARK: 발자국 선택창
+                // ARMainViewState :: .chooseFootrint
                 if arMainViewState == .chooseFootprint {
-                    VStack{
+                    VStack {
+                        HStack {
+                            ARBackButton(arMainViewState: $arMainViewState)
+                                .padding(.leading, 20)
+                            Spacer()
+                        }
                         ZStack {
                             RoundedRectangle(cornerRadius: 4)
                                 .fill(Color.black)
@@ -135,60 +190,43 @@ struct ARMainView: View {
                                 .foregroundColor(.white)
                                 .customTitle1()
                         }
-                        .padding(.top, geo.safeAreaInsets.top)
+                        .padding(.top, 30)
                         
                         Spacer()
+                        
                         ModelPickerView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, models: models)
                     }
+                    .padding(.top, geo.safeAreaInsets.top + 17)
                 }
-                    
+                
+                // MARK: 발자국 선택 후 스테핑할 위치 선정
+                // ARMainViewState :: .beforeStepFootprint
                 if arMainViewState == .beforeStepFootprint {
-                    PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
+                    PlacementButtonsView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint)
                         .padding(.bottom, 60)
                 }
                 
+                // MARK: 발자국 스테핑 후 스토리 작성 선택 창
+                // ARMainViewState :: .afterStepFootprint
                 if arMainViewState == .afterStepFootprint{
-                    startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
+                    VStack {
+                        HStack {
+                            ARCloseButton(arMainViewState: $arMainViewState)
+                                .padding(.leading, 20)
+                            Spacer()
+                        }
+                        
+                        Spacer()
+                        
+                        startStoryButton(arMainViewState: $arMainViewState)
+                            .padding(.bottom, 60)
+                    }
+                    .padding(.top, geo.safeAreaInsets.top + 17)
                     .padding(.bottom, 60)
                 }
-
-//                        if self.isPlacementEnabled && self.isSetPosition {
-//                            PlacementButtonsView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, modelConfirmedForPlacement: self.$stepFootprint, isShowStoryButton: $isShowStoryButton)
-//                                .padding(.bottom, 60)
-//
-//                        }
-//                        else {
-//
-//                            if self.isShowStoryButton {
-//                                startStoryButton(isShowSheet: $isShowSheet, isShowStoryButton: $isShowStoryButton)
-//                                .padding(.bottom, 60)
-//
-//                            }
-//                            else {
-//                                if !self.isShowSheet {
-//                                    VStack{
-//                                        ZStack {
-//                                            RoundedRectangle(cornerRadius: 4)
-//                                                .fill(Color.black)
-//                                                .opacity(0.8)
-//                                                .frame(width: 283, height: 40)
-//
-//                                            Text("원하는 모양의 발바닥을 남겨주세요")
-//                                                .foregroundColor(.white)
-//                                                .customTitle1()
-//                                        }
-//                                        .padding(.top, geo.safeAreaInsets.top)
-//
-//                                        Spacer()
-//                                        ModelPickerView(isPlacementEnabled: self.$isPlacementEnabled, selectedModel: self.$selectedModel, models: models)
-//                                    }
-//                                }
-//                            }
-//                        }
-                    
-                
             }
             .ignoresSafeArea()
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
@@ -201,14 +239,19 @@ struct ARViewContainer: UIViewRepresentable {
     @Binding var otherFootprintModel: [FootprintModel]
     @Binding var otherFootprintName: String
     
-    
     func makeUIView(context: Context) -> ARView {
+        weak var arView = CustomARView(frame: .zero)
         
-        let arView = CustomARView(frame: .zero)
+        arView!.renderOptions = [.disableMotionBlur,
+                                        .disableDepthOfField,
+                                        .disablePersonOcclusion,
+                                        .disableGroundingShadows,
+                                        .disableFaceMesh,
+                                        .disableHDR]
         
-        RealityUI.enableGestures(.all, on: arView)
+        RealityUI.enableGestures(.all, on: arView!)
         
-        return arView
+        return arView!
     }
     
     
@@ -264,7 +307,7 @@ struct ARViewContainer: UIViewRepresentable {
         
         if let secondModel = self.stepFootprint {
             if let secondEntity = secondModel.modelEntity {
-                print("DEBUG22222222 - adding model to scene: \(secondModel.modelName)")
+                print("DEBUG333333 - adding model to scene: \(secondModel.modelName)")
                 let clicky = ClickyEntity(model: secondEntity.model!) {
                     (clickedObj, atPosition) in
                     
@@ -286,51 +329,14 @@ struct ARViewContainer: UIViewRepresentable {
 
     }
     
-}
-
-
-
-// Custom ARView with FocusEntity
-class CustomARView: ARView {
-    let focusSquare = FESquare()
-    
-    required init(frame frameRect: CGRect) {
-        super.init(frame: frameRect)
-        
-        focusSquare.viewDelegate = self
-        focusSquare.delegate = self
-        focusSquare.setAutoUpdate(to: true) // Auto-update position in scene
-        
-        self.setupARView()
-    }
-    
-    
-    @objc required dynamic init?(coder decoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupARView() {
-        let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.horizontal, .vertical]
-        config.environmentTexturing = .automatic
-        
-        if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
-            config.sceneReconstruction = .mesh
-        }
-        
-        self.session.run(config)
+    func dismantleUIView(_ uiView: ARView, coordinator: ()) {
+        uiView.session.pause()
+        uiView.session.delegate = nil
+        uiView.scene.anchors.removeAll()
+        uiView.removeFromSuperview()
+        uiView.window?.resignKey()
     }
 }
-
-extension CustomARView: FEDelegate {
-    func toTrackingState() {
-        print("Tracking FE")
-    }
-    func toInitializingState() {
-        print("Tnitializing FE")
-    }
-}
-
 
 // Picker UI
 struct ModelPickerView: View {
@@ -391,7 +397,6 @@ struct EmptyButtonsView: View {
     
     func resetParameters() {
         self.arMainViewState = .afterFloorDetected
-        // self.selectedModel = nil
     }
 }
 
