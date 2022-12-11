@@ -21,9 +21,9 @@ struct StoryContentView: View {
                     Text(firebaseSM.selectedPost.userName)
                         .customLargeTitle()
                         .padding(.top, UIScreen.getHeight(10))
-                    Text("2022.12.12") 다녀감"
+                    Text("2022.12.12 다녀감")
                         //"2022.12.12 다녀감"
-                    )
+                    
                         .customSubhead3()
                         .padding(.top, UIScreen.getHeight(10))
                 }
