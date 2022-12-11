@@ -21,16 +21,16 @@ struct StoryContentView: View {
                     Text(firebaseSM.selectedPost.userName)
                         .customLargeTitle()
                         .padding(.top, UIScreen.getHeight(10))
-                  //  Text("2022.12.12 다녀감")
+                    Text("2022.12.12 다녀감")
                         //"2022.12.12 다녀감"
                     
-                    //    .customSubhead3()
-                      //  .padding(.top, UIScreen.getHeight(10))
+                        .customSubhead3()
+                        .padding(.top, UIScreen.getHeight(10))
                 }
                 .foregroundColor(firebaseSM.pawForegroundColor)
                 
                 Spacer()
-                Image(firebaseSM.selectedPost.image)
+                Image(firebaseSM.selectedPost.image + "Print")
                     .resizable()
                     .frame(width: 90, height: 90)
             }
