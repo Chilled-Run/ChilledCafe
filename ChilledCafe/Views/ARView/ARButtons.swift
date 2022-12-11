@@ -72,6 +72,7 @@ struct PlacementButtonsView: View {
     @Binding var arMainViewState: ARMainViewState
     @Binding var selectedModel: FootprintModel?
     @Binding var modelConfirmedForPlacement: FootprintModel?
+    @Binding var isStepped: Bool
     
     var body: some View {
         HStack(spacing: 30) {
@@ -92,6 +93,7 @@ struct PlacementButtonsView: View {
                 print("DEBUG - confirm model placement")
                 self.modelConfirmedForPlacement = self.selectedModel
                 self.arMainViewState = .afterStepFootprint
+                self.isStepped = false
             }) {
                 Image(systemName: "checkmark.circle.fill")
                     .resizable()

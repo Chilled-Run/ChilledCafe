@@ -15,6 +15,7 @@ struct CreateStoryView: View {
     @State var words: Int = 0
     @State var showingAlert: Bool = false
     @Binding var arMainViewState: ARMainViewState
+    @Binding var isStepped: Bool
     @ObservedObject var firebaseSM: FirebaseStorageManager
     
     var postTime: String {
@@ -183,6 +184,7 @@ struct CreateStoryView: View {
     var backButton : some View {
         Button(action: {
             // 글을 썼을 때 경고창이 나온다
+            self.arMainViewState = .afterStepFootprint
             if !content.isEmpty {
                 showingAlert.toggle()
             }
@@ -214,6 +216,7 @@ struct CreateStoryView: View {
             firebaseSM.uploadStory(userName: "guest", content: content, image: postImage)
             content = ""
             self.arMainViewState = .uploadComplete
+            self.isStepped = true
         }) {
             Text("완료")
                 .customTitle1()
