@@ -18,10 +18,10 @@ struct CheckCurrentLocationView: View {
 
     
     // 우리집 좌표
-    // var targetCoordinate = CLLocationCoordinate2D(latitude: 36.0078958, longitude: 129.3345548)
+    var targetCoordinate = CLLocationCoordinate2D(latitude: 36.0078958, longitude: 129.3345548)
     
     // 애플 아카데미 좌표
-    var targetCoordinate = CLLocationCoordinate2D(latitude: 36.014152, longitude: 129.325798)
+    // var targetCoordinate = CLLocationCoordinate2D(latitude: 36.014152, longitude: 129.325798)
     
     var body: some View {
         
@@ -42,7 +42,7 @@ struct CheckCurrentLocationView: View {
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                             print(distance)
-                            if distance <= 30 {
+                            if distance <= 200 {
                                 self.arMainViewState = .accessGranted
                             }
                             else {

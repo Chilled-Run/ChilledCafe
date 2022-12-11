@@ -82,6 +82,7 @@ struct ChilledCafeApp: App {
                             }
                         }
                     }
+                    .navigationViewStyle(StackNavigationViewStyle())
                     .accentColor(Color("MainColor"))
                 }
             }

@@ -239,14 +239,19 @@ struct ARViewContainer: UIViewRepresentable {
     @Binding var otherFootprintModel: [FootprintModel]
     @Binding var otherFootprintName: String
     
-    
     func makeUIView(context: Context) -> ARView {
+        weak var arView = CustomARView(frame: .zero)
         
-        let arView = CustomARView(frame: .zero)
+        arView!.renderOptions = [.disableMotionBlur,
+                                        .disableDepthOfField,
+                                        .disablePersonOcclusion,
+                                        .disableGroundingShadows,
+                                        .disableFaceMesh,
+                                        .disableHDR]
         
-        RealityUI.enableGestures(.all, on: arView)
+        RealityUI.enableGestures(.all, on: arView!)
         
-        return arView
+        return arView!
     }
     
     
@@ -302,7 +307,7 @@ struct ARViewContainer: UIViewRepresentable {
         
         if let secondModel = self.stepFootprint {
             if let secondEntity = secondModel.modelEntity {
-                print("DEBUG22222222 - adding model to scene: \(secondModel.modelName)")
+                print("DEBUG333333 - adding model to scene: \(secondModel.modelName)")
                 let clicky = ClickyEntity(model: secondEntity.model!) {
                     (clickedObj, atPosition) in
                     
@@ -324,6 +329,13 @@ struct ARViewContainer: UIViewRepresentable {
 
     }
     
+    func dismantleUIView(_ uiView: ARView, coordinator: ()) {
+        uiView.session.pause()
+        uiView.session.delegate = nil
+        uiView.scene.anchors.removeAll()
+        uiView.removeFromSuperview()
+        uiView.window?.resignKey()
+    }
 }
 
 // Picker UI
