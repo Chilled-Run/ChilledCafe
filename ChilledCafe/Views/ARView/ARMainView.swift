@@ -57,6 +57,7 @@ struct ARMainView: View {
     @ObservedObject var firebaseSM: FirebaseStorageManager
     @State private var arMainViewState = ARMainViewState.idle
     @StateObject var checkCurrentLocationViewModel = CheckCurrentLocationViewModel()
+    @AppStorage("upload") var isUpload: Bool = false
     
     var body: some View {
         GeometryReader { geo in
@@ -102,7 +103,7 @@ struct ARMainView: View {
                 }
                 
                 if arMainViewState == .readStory {
-                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName, firebaseSM: firebaseSM)
+                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName, firebaseSM: firebaseSM, isStepped: $isStepped )
                 }
                 
                 if arMainViewState == .uploadStory {

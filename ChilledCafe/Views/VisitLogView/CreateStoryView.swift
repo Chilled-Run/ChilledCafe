@@ -179,6 +179,12 @@ struct CreateStoryView: View {
                     Spacer()
                       
                 }
+                .onDisappear() {
+                    if isStepped {
+                        firebaseSM.post = []
+                        firebaseSM.fetchPost()
+                    }
+                }
             }
     }
     
@@ -221,6 +227,7 @@ struct CreateStoryView: View {
             content = ""
             self.arMainViewState = .uploadComplete
             self.isStepped = true
+            @AppStorage("upload") var isUpload: Bool = true
         }) {
             Text("완료")
                 .customTitle1()
