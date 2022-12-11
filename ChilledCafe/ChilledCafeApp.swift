@@ -66,7 +66,6 @@ struct ChilledCafeApp: App {
                                         // 홈
 
                                         TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/1.8, height: geometry.size.height/28, iconName: "home")
-
                                         // 북마크
                                         TabBarIcon(viewRouter: viewRouter, assignedPage: .bookmarked, width: geometry.size.width/1.8, height: geometry.size.height/28, iconName: "bookmarks")
 

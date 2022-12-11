@@ -9,7 +9,9 @@ import SwiftUI
 
 struct StorySmallView: View {
     //
-    let story: Story
+    @ObservedObject var firebaseSM: FirebaseStorageManager
+    let storyId: String
+    let story: Post
     let storyForegroundColor: Color
     let storyBackgroundColor: Color
     
@@ -20,7 +22,7 @@ struct StorySmallView: View {
                 .foregroundColor(storyForegroundColor)
                 .customSubhead3()
             // 작성한 본문
-            Text(story.context)
+            Text(story.content)
                 .foregroundColor(Color.white)
                 .CustomDesignedBody()
                 .lineLimit(4)
@@ -34,7 +36,7 @@ struct StorySmallView: View {
                     .resizable()
                     .foregroundColor(storyForegroundColor)
                     .frame(width: UIScreen.getWidth(18), height: UIScreen.getHeight(18))
-                Text("\(story.comments.count)")
+                Text("\(firebaseSM.getCommentNumber(storyId: storyId))")
                     .customSubhead3()
                     .foregroundColor(storyForegroundColor)
             }
@@ -50,8 +52,8 @@ struct StorySmallView: View {
         .background(storyBackgroundColor)
     }
 }
-struct StorySmallVIew_Previews: PreviewProvider {
-    static var previews: some View {
-        StorySmallView(story: constant().storySample, storyForegroundColor: Color("customGreen"), storyBackgroundColor: Color("pastelGreen"))
-    }
-}
+//struct StorySmallVIew_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StorySmallView(story: constant().storySample, storyForegroundColor: Color("customGreen"), storyBackgroundColor: Color("pastelGreen"))
+//    }
+//}

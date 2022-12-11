@@ -20,7 +20,7 @@ struct StoryView: View {
     
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            Color.black
                 .opacity(0.8)
                 .navigationBarHidden(true)
             VStack {
@@ -108,10 +108,10 @@ struct StoryView: View {
                 Spacer()
             }
             .padding(.top, UIScreen.getHeight(57))
-            
             // CommentView로 이동
             if isCommentView {
                 CommnetView(firebaseSM: firebaseSM, storyId: firebaseSM.storyId)
+                    .padding(.top, 0)
             }
         }
         .padding(.top, 0)

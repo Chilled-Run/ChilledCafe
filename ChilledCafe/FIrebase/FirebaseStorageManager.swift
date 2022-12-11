@@ -46,10 +46,18 @@ class FirebaseStorageManager: ObservableObject {
         self.pawBackgroundColor = getBackgroundColor(foot: selectedPost.image)
     }
     
-    //
+    // 관련 댓글 수
+    func getCommentNumber(storyId: String) -> Int {
+        var relatedComment = self.comment.filter {
+            $0.storyId == storyId
+        }
+        return relatedComment.count
+    }
+    
+    // 최근순으로 post 정렬
     func getFirstStroy() {
         self.post.sort {
-            $0.creatAt > $1.creatAt
+            $0.createAt > $1.createAt
         }
         self.selectedPost = self.post[0]
         self.storyId = selectedPost.storyId
@@ -72,7 +80,7 @@ class FirebaseStorageManager: ObservableObject {
             $0.storyId == storyId
         }
         self.relatedComments = relatedComment.sorted {
-            $0.creatAt > $1.creatAt
+            $0.createAt > $1.createAt
         }
         print ("Debug: relatedComment",self.relatedComments)
     }
@@ -120,7 +128,6 @@ class FirebaseStorageManager: ObservableObject {
         
         db.collection("Story").addSnapshotListener { [self] (querySnapshot, error) in
             
-            
             if let error = error {
                 print(error)
                 return
@@ -140,30 +147,12 @@ class FirebaseStorageManager: ObservableObject {
                     let creatAt = data["creatAt"] as? Date ?? Date()
                     
                     self.post.append(.init(storyId: storyId, userName: userName, visitCount: visitCount, content: content, image: image, likeCount: likeCount))
+                    //최근 작성순으로 sort
+                    getFirstStroy()
+                    //첫 번째 post에 관련된 댓글 모음
                     fetchRelatedComment(storyId: self.storyId)
                 }
             })
-            
-            
-            //            guard let documents = querySnapshot?.documents else {
-            //                print("No Documents")
-            //                return
-            //            }
-            //
-            //            self.post = documents.map({ (queryDocumentSnapshot) -> Post in
-            //                let data = queryDocumentSnapshot.data()
-            //
-            //                let storyId = data["storyId"] as? String ?? "blank id"
-            //                let userName = data["userName"] as? String ?? "blank name"
-            //                let visitCount = data["visitCount"] as? Int ?? 1
-            //                let content = data["content"] as? String ?? "blank content"
-            //                let image = data["image"] as? String ?? "blank image"
-            //                let likeCount = data["likeCount"] as? Int ?? 0
-            //                let creatAt = data["creatAt"] as? Date ?? Date()
-            //
-            //                return Post(storyId: storyId, userName: userName, visitCount: visitCount, content: content, image: image, likeCount: likeCount, creatAt: creatAt)
-            //            })
-            
             print("Debug: \n",post)
         }
     }

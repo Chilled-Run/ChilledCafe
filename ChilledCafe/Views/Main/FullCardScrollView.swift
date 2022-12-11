@@ -16,7 +16,8 @@ struct FullCardScrollView: View {
             Spacer(minLength: UIScreen.getHeight(20))
             ForEach(firebaseSM.cafeList[firebaseSM.selectedCategory] ?? [], id: \.self) { cafe in
                 NavigationLink(destination: {
-                    BODetailView(cafe: cafe)
+                    BODetailView(cafe: cafe, firebaseSM: firebaseSM)
+                        .navigationBarHidden(true)
                 }, label: {
                     FullCardView(firebaseSM: firebaseSM, cafe: cafe)
                 })

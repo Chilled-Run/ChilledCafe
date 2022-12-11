@@ -36,7 +36,7 @@ struct Post {
     var content: String = ""
     var image: String = ""
     var likeCount: Int = 0
-    var creatAt: String = dateToString()
+    var createAt: Date = Date()
 
     // For easy upload to firebase
     var dictionary: [String: Any] {
@@ -47,7 +47,7 @@ struct Post {
             "content": content,
             "image": image,
             "likeCount": likeCount,
-            "creatAt": creatAt
+            "createAt": createAt
         ]
     }
 }
@@ -59,7 +59,7 @@ struct Comment3 {
     var storyId: String = ""
     var userName: String = ""
     var content: String = ""
-    var creatAt: String = dateToString()
+    var createAt: Date = Date()
 
     // For easy upload to firebase
     var dictionary: [String: Any] {
@@ -68,33 +68,10 @@ struct Comment3 {
             "storyId": storyId,
             "userName": userName,
             "content": content,
-            "creatAt": creatAt
+            "createAt": createAt
         ]
     }
 }
-
-
-struct Story2: Codable, Hashable {
-    let storyId: UUID
-    let userName: String
-    let visitCount: Int
-    let content: String
-    let image: String
-   //var like: Bool
-    //
-    let likeCount: Int
-  //  let time: String
-    let creatAt: String
-}
-
-struct Comment2: Codable, Hashable {
-    let commentId: UUID
-    let storyId: UUID
-    let userName: String
-    let context: String
-    let creatAt: Date
-}
-
 
 //
 
