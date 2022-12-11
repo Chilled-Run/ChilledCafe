@@ -36,7 +36,7 @@ struct Post {
     var content: String = ""
     var image: String = ""
     var likeCount: Int = 0
-    var createAt: Date = Date()
+    var createAt: String = "\(Date())"
 
     // For easy upload to firebase
     var dictionary: [String: Any] {
@@ -59,7 +59,7 @@ struct Comment3 {
     var storyId: String = ""
     var userName: String = ""
     var content: String = ""
-    var createAt: Date = Date()
+    var createAt: String = "\(Date())"
 
     // For easy upload to firebase
     var dictionary: [String: Any] {

@@ -82,7 +82,6 @@ class FirebaseStorageManager: ObservableObject {
         self.relatedComments = relatedComment.sorted {
             $0.createAt > $1.createAt
         }
-        print ("Debug: relatedComment",self.relatedComments)
     }
     
     
@@ -93,7 +92,7 @@ class FirebaseStorageManager: ObservableObject {
         let storyId = UUID().uuidString
         
         // create story object
-        let story = Post(userName: userName,visitCount: 1, content: content, image: image, likeCount: 0)
+        let story = Post(userName: userName,visitCount: 1, content: content, image: image, likeCount: 0, createAt: "\(Date())")
         
         // Storing to DB
         let _ = db.collection("Story").document(storyId).setData(story.dictionary)
@@ -111,7 +110,7 @@ class FirebaseStorageManager: ObservableObject {
         let commentId = storyId
         
         // create Comment object
-        let comment = Comment3(storyId: storyId, userName: userName, content: content)
+        let comment = Comment3(storyId: storyId, userName: userName, content: content, createAt: "\(Date())")
         
         // Storing to DB
         document.setData(comment.dictionary) { error in
@@ -144,9 +143,10 @@ class FirebaseStorageManager: ObservableObject {
                     let content = data["content"] as? String ?? "blank content"
                     let image = data["image"] as? String ?? "blank image"
                     let likeCount = data["likeCount"] as? Int ?? 0
-                    let creatAt = data["creatAt"] as? Date ?? Date()
+                    let createAt = data["createAt"] as? String ?? "\(Date())"
                     
-                    self.post.append(.init(storyId: storyId, userName: userName, visitCount: visitCount, content: content, image: image, likeCount: likeCount))
+                    print("Debug: time check \n", createAt)
+                    self.post.append(.init(storyId: storyId, userName: userName, visitCount: visitCount, content: content, image: image, likeCount: likeCount, createAt: createAt))
                     //최근 작성순으로 sort
                     getFirstStroy()
                     //첫 번째 post에 관련된 댓글 모음
@@ -179,15 +179,15 @@ class FirebaseStorageManager: ObservableObject {
                         let storyId = data["storyId"] as? String ?? "blank storyId"
                         let userName = data["userName"] as? String ?? "blank name"
                         let content = data["content"] as? String ?? "blank content"
+                        let createAt = data["createAt"] as? String ?? "\(Date())"
                         
-                        self.comment.append(.init(commentId: commentId, storyId: storyId, userName: userName, content: content))
-                        fetchRelatedComment(storyId: self.storyId)
+                        self.comment.append(.init(commentId: commentId, storyId: storyId, userName: userName, content: content, createAt: createAt))
+                        if storyId == self.storyId {
+                            fetchRelatedComment(storyId: self.storyId)
+                        }
                     }
                 })
             }
-        
-        
-        print("Debug: \n",self.comment)
     }
     
     

@@ -130,6 +130,7 @@ struct CommnetView: View {
                 }
                 .padding(.top, UIScreen.getHeight(47))
                 // 댓글입력
+                
                 VStack {
                     Spacer()
                     VStack(spacing: 0) {
@@ -141,7 +142,8 @@ struct CommnetView: View {
                     }
                     .background(.white)
                     .onAppear( perform: UIApplication.shared.hideKeyboard)
-                   // .padding(.bottom, isFocused ? UIScreen.getHeight(210) : 0)
+                    .offset(y: isFocused ? -UIScreen.getHeight(250) : 0).animation(.easeInOut(duration: 0.2))
+                    //.padding(.bottom, isFocused ? UIScreen.getHeight(210) : 0)
                 }
                 .padding(.bottom, UIScreen.getHeight(34))
             }
