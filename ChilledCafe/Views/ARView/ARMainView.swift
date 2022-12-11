@@ -149,6 +149,7 @@ struct ARMainView: View {
                             Spacer()
                             
                             viewAllStoryButton(showAllStory: $showAllStory)
+                                .padding(.trailing, 20)
                         }
                         
                         ZStack {
@@ -240,6 +241,7 @@ struct ARMainView: View {
             }
             .ignoresSafeArea()
             .navigationBarBackButtonHidden(true)
+            .overlay(showAllStory ? AllStoryView(showAllStory: $showAllStory.animation(), firebaseSM: firebaseSM) : nil)
         }
     }
 }

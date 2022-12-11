@@ -69,7 +69,7 @@ struct viewAllStoryButton: View {
             // TODO: 쿠기 뷰로 연결
             
             withAnimation {
-                
+                showAllStory.toggle()
             }
         }) {
             HStack(alignment: .center) {
