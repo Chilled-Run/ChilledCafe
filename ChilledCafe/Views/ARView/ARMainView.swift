@@ -52,7 +52,7 @@ struct ARMainView: View {
     @State private var otherFootprintModel = models
     @State private var otherFootprintName = ""
     
-    // @State private var arMainViewState = ARMainViewState.beforeFloorDetected
+    @ObservedObject var firebaseSM: FirebaseStorageManager
     @State private var arMainViewState = ARMainViewState.idle
     @StateObject var checkCurrentLocationViewModel = CheckCurrentLocationViewModel()
     
@@ -100,11 +100,11 @@ struct ARMainView: View {
                 }
                 
                 if arMainViewState == .readStory {
-                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName)
+                    StoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName, firebaseSM: firebaseSM)
                 }
                 
                 if arMainViewState == .uploadStory {
-                  //  CreateStoryView(arMainViewState: $arMainViewState)
+                    CreateStoryView(arMainViewState: $arMainViewState, firebaseSM: firebaseSM)
                 }
 
                 // 초기 바닥 좌표 세팅
@@ -401,9 +401,9 @@ struct EmptyButtonsView: View {
 }
 
 
-struct ARMainView_Previews: PreviewProvider {
-    static var previews: some View {
-        ARMainView()
-    }
-}
+//struct ARMainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ARMainView()
+//    }
+//}
 

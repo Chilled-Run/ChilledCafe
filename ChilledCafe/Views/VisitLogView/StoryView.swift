@@ -10,96 +10,111 @@ import SwiftUI
 struct StoryView: View {
     @Binding var arMainViewState: ARMainViewState
     @Binding var otherFootPrintName: String
+    // forTest
+    @ObservedObject var firebaseSM: FirebaseStorageManager
+    // for test
+    
+    @State var isCommentView = false
     @State var isToggleLike = false
-    //임시로 만든 게시글 데이터
-    var post = constant().storySample
-    //게시글의 글자색
-    var pawForegroundColor: Color {
-        getForegroundColor(foot: otherFootPrintName)
-    }
-    //게시글의 배경색
-    var pawBackgroundColor: Color {
-        getBackgroundColor(foot: otherFootPrintName)
-    }
+    
+    
     var body: some View {
-            ZStack {
-                Color.black.ignoresSafeArea()
-                    .opacity(0.8)
-                    .navigationBarHidden(true)
-                VStack {
-                    // 취소 버튼
-                    HStack {
-                        Spacer()
-                        backButton
-                    }
-                    .padding(.bottom, UIScreen.getHeight(20))
-                    .padding(.trailing, UIScreen.getHeight(30))
-                    
-                    // 게시글
-                    VStack(alignment: .leading, spacing: 0) {
-                        
-                        //본문
-                        StoryContentView(post: post, pawForegroundColor: pawForegroundColor, pawBackgroundColor: pawBackgroundColor, otherFootPrintName: otherFootPrintName)
-                        //세번째 문단, 좋아요, 댓글의 개수가 보이는 곳
-                        //네비게이션을 사용하기 위해 StoryContentView와 분리
-                        Spacer()
-                        HStack {
-                            Button(action: {isToggleLike.toggle()}){
-                                if isToggleLike {
-                                    HStack(spacing: 4) {
-                                        Image(systemName: "heart.fill")
-                                        Text("1")
-                                    }
-                                }
-                                else {
-                                    HStack(spacing: 4) {
-                                        Image(systemName: "heart")
-                                        Text("0")
-                                    }
-                                }
-                            }
-                            HStack(spacing: 4) {
-                                Image(systemName: "message")
-                                Text("\(post.comments.count)")
-                            }
-                            Spacer()
-                        }
-                        .foregroundColor(pawForegroundColor)
-                        .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
-                        // 구분선
-                        Rectangle()
-                            .fill(pawForegroundColor)
-                            .frame(height: 1)
-                            .padding(.top, UIScreen.getHeight(10))
-                        
-                        //전체 댓글 페이지로 이동
-                        NavigationLink(destination: CommnetView(post: post, pawForegroundColor: pawForegroundColor, pawBackgroundColor: pawBackgroundColor, otherFootPrintName: otherFootPrintName)) {
-                            //댓글 문단, 댓글의 아이디, 내용이 보이는 곳
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text(post.comments[0].userName)
-                                    .foregroundColor(pawForegroundColor)
-                                    .customSubhead2()
-                                
-                                Text(post.comments[0].context)
-                                    .foregroundColor(Color.white)
-                                    .customSubhead4()
-                            }
-                            .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing:UIScreen.getWidth(30)))
-                        }
-                    }
-                    .frame(width: UIScreen.getWidth(340), height: UIScreen.getHeight(420))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(pawBackgroundColor, lineWidth: 2)
-                    )
-                    .background(pawBackgroundColor)
-                    
+        ZStack {
+            Color.black
+                .opacity(0.8)
+                .navigationBarHidden(true)
+            VStack {
+                // 취소 버튼
+                HStack {
                     Spacer()
+                    backButton
                 }
-                .padding(.top, UIScreen.getHeight(57))
+                .padding(.bottom, UIScreen.getHeight(20))
+                .padding(.trailing, UIScreen.getHeight(30))
+                //forTest
+                .onAppear() {
+                    firebaseSM.getFirstStroy()
+                    firebaseSM.fetchRelatedComment(storyId: firebaseSM.storyId)
+                }
+                
+                
+                // 게시글
+                VStack(alignment: .leading, spacing: 0) {
+                    
+                    //본문
+                    StoryContentView(firebaseSM: firebaseSM)
+                    
+                    //세번째 문단, 좋아요, 댓글의 개수가 보이는 곳
+                    //네비게이션을 사용하기 위해 StoryContentView와 분리
+                    Spacer()
+                    HStack {
+                        Button(action: {isToggleLike.toggle()}){
+                            if isToggleLike {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "heart.fill")
+                                    Text("1")
+                                }
+                            }
+                            else {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "heart")
+                                    Text("0")
+                                }
+                            }
+                        }
+                        HStack(spacing: 4) {
+                            Image(systemName: "message")
+                            Text("\(firebaseSM.relatedComments.count)")
+                        }
+                        .onTapGesture {
+                            isCommentView.toggle()
+                        }
+                        Spacer()
+                    }
+                    .foregroundColor(firebaseSM.pawForegroundColor)
+                    .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
+                    // 구분선
+                    Rectangle()
+                        .fill(firebaseSM.pawForegroundColor)
+                        .frame(height: 1)
+                        .padding(.top, UIScreen.getHeight(10))
+                    
+                    
+                    //댓글 문단, 댓글의 아이디, 내용이 보이는 곳
+                    //댓글이 있어야 보여줌
+                    if !firebaseSM.relatedComments.isEmpty {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(firebaseSM.relatedComments[0].userName)
+                                .foregroundColor(firebaseSM.pawForegroundColor)
+                                .customSubhead2()
+                            
+                            Text(firebaseSM.relatedComments[0].content)
+                                .foregroundColor(Color.white)
+                                .customSubhead4()
+                        }
+                        .padding(EdgeInsets(top: UIScreen.getHeight(20), leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing:UIScreen.getWidth(30)))
+                        .onTapGesture(){
+                            isCommentView.toggle()
+                        }
+                    }
+                }
+                .frame(width: UIScreen.getWidth(340), height: UIScreen.getHeight(420))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 4)
+                        .stroke(firebaseSM.pawBackgroundColor, lineWidth: 2)
+                )
+                .background(firebaseSM.pawBackgroundColor)
+                
+                Spacer()
             }
-            .padding(.top, 0)
-        
+            .padding(.top, UIScreen.getHeight(57))
+            // CommentView로 이동
+            if isCommentView {
+                CommnetView(firebaseSM: firebaseSM, storyId: firebaseSM.storyId)
+                    .padding(.top, 0)
+            }
+        }
+        .padding(.top, 0)
     }
     
     //취소 버튼
@@ -123,7 +138,7 @@ struct StoryView: View {
 //    }
 //}
 
-// TODO: 추후 extension으로 리팩필요
+// TODO: 추후 리팩필요
 //발자국 종류에 따른 색 변경
 func getForegroundColor(foot: String) -> Color {
     switch foot {

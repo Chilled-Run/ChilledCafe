@@ -34,10 +34,13 @@ struct ChilledCafeApp: App {
                     LaunchScreenView()
                         .edgesIgnoringSafeArea(.all)
                         .onAppear {
+                            // forTest
                             let dispatchGroup = DispatchGroup()
                             DispatchQueue.global().async(group: dispatchGroup) {
                                 dispatchGroup.enter()
                                 firebaseSM.getCafes(dispatchGroup: dispatchGroup)
+                                firebaseSM.fetchPost()
+                                firebaseSM.fetchComment()
                             }
                             dispatchGroup.notify(queue: DispatchQueue.main) {
                                 isLoading.toggle()
@@ -63,14 +66,13 @@ struct ChilledCafeApp: App {
                                         // 홈
 
                                         TabBarIcon(viewRouter: viewRouter, assignedPage: .home, width: geometry.size.width/1.8, height: geometry.size.height/28, iconName: "home")
-                                        
                                         // 북마크
                                         TabBarIcon(viewRouter: viewRouter, assignedPage: .bookmarked, width: geometry.size.width/1.8, height: geometry.size.height/28, iconName: "bookmarks")
-                                        
+
                                     }
                                     .frame(width: geometry.size.width, height: geometry.size.height/18)
                                     .padding(0)
-                                    
+
                                     // AR
                                     ZStack {
                                         Circle()
@@ -81,7 +83,7 @@ struct ChilledCafeApp: App {
                                             .foregroundColor(Color("MainColor"))
                                             .frame(width: geometry.size.width/5.5, height: geometry.size.width/5.5)
 
-                                        NavigationLink(destination: ARMainView()) {
+                                        NavigationLink(destination: ARMainView(firebaseSM: firebaseSM)) {
                                             VStack {
                                                 Image("ar")
                                                     .resizable()

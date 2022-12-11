@@ -8,36 +8,40 @@
 import SwiftUI
 
 struct StoryContentView: View {
-    let post: Story
-    let pawForegroundColor: Color
-    let pawBackgroundColor: Color
-    let otherFootPrintName: String
-    
+    @ObservedObject var firebaseSM: FirebaseStorageManager
+    let dateFormatter = DateFormatter()
+   
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             //첫번째 문단, 아이디, 날짜, 발자국이 보이는 곳
             HStack {
                 VStack(alignment: .leading, spacing: 0) {
-                    Text("\(post.visitCount)번 방문한")
+                    Text("\(firebaseSM.selectedPost.visitCount) 번 방문한")
                         .customTitle1()
-                    Text(post.userName)
+                    Text(firebaseSM.selectedPost.userName)
                         .customLargeTitle()
                         .padding(.top, UIScreen.getHeight(10))
-                    Text("\(post.time) 다녀감")
+                    Text("2022.12.12 다녀감")
+                        //"2022.12.12 다녀감"
+                    
                         .customSubhead3()
                         .padding(.top, UIScreen.getHeight(10))
                 }
-                .foregroundColor(pawForegroundColor)
+                .foregroundColor(firebaseSM.pawForegroundColor)
+                
                 Spacer()
-                Image(otherFootPrintName)
+                Image(firebaseSM.selectedPost.image)
                     .resizable()
                     .frame(width: 90, height: 90)
             }
             .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
-            
+            .onAppear() {
+                dateFormatter.dateFormat = "yyyy.MM.dd"
+                
+            }
             //두번째 문단, 본문이 보이는 곳
             VStack(alignment: .leading) {
-                Text(post.context)
+                Text(firebaseSM.selectedPost.content)
                     .customSubhead4()
                 Spacer()
             }
