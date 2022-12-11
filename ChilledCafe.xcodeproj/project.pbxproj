@@ -30,6 +30,7 @@
 		207C17AC293F3D3C005DC0DB /* leftFoot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17A6293F3D3C005DC0DB /* leftFoot.usdz */; };
 		207C17AD293F3D3C005DC0DB /* birdFoot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17A7293F3D3C005DC0DB /* birdFoot.usdz */; };
 		207C17AF293F3DC2005DC0DB /* mark.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 207C17AE293F3DC2005DC0DB /* mark.usdz */; };
+		20974FE42945FACF00FC9640 /* UploadCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20974FE32945FACF00FC9640 /* UploadCompleteView.swift */; };
 		20C0287429426090005983D3 /* welcoming.json in Resources */ = {isa = PBXBuildFile; fileRef = 20C0287329426090005983D3 /* welcoming.json */; };
 		20C770022941D13000FB1C85 /* ARButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C770012941D13000FB1C85 /* ARButtons.swift */; };
 		20CCDF9A29426F3A0072297B /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CCDF9929426F3A0072297B /* HapticManager.swift */; };
@@ -112,6 +113,7 @@
 		207C17A6293F3D3C005DC0DB /* leftFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = leftFoot.usdz; sourceTree = "<group>"; };
 		207C17A7293F3D3C005DC0DB /* birdFoot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = birdFoot.usdz; sourceTree = "<group>"; };
 		207C17AE293F3DC2005DC0DB /* mark.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = mark.usdz; sourceTree = "<group>"; };
+		20974FE32945FACF00FC9640 /* UploadCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCompleteView.swift; sourceTree = "<group>"; };
 		20C0287329426090005983D3 /* welcoming.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcoming.json; sourceTree = "<group>"; };
 		20C770012941D13000FB1C85 /* ARButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARButtons.swift; sourceTree = "<group>"; };
 		20CCDF9929426F3A0072297B /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				202B4CB429425AEC00827036 /* AccessGrantedView.swift */,
 				20CCDF9929426F3A0072297B /* HapticManager.swift */,
 				20CCDF9B294270EB0072297B /* CustomARView.swift */,
+				20974FE32945FACF00FC9640 /* UploadCompleteView.swift */,
 			);
 			path = ARView;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				9A2930EA290271DB0005D339 /* FirebaseStorageManager.swift in Sources */,
 				3906DC71290311E500B26783 /* UIScreenExtension.swift in Sources */,
 				3997AECE291E0EAC00D57176 /* FullCardScrollView.swift in Sources */,
+				20974FE42945FACF00FC9640 /* UploadCompleteView.swift in Sources */,
 				9AF628202920CA93004D9412 /* BODetailView.swift in Sources */,
 				9A9B2F13290119B7005AC001 /* HotPlace.swift in Sources */,
 				9A9B2F1729011A1C005AC001 /* temparyData.swift in Sources */,
@@ -718,7 +722,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = BP6V55LTAQ;
+				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
@@ -754,7 +758,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"ChilledCafe/Preview Content\"";
-				DEVELOPMENT_TEAM = BP6V55LTAQ;
+				DEVELOPMENT_TEAM = Y6P5ZFWBM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChilledCafe/Info.plist;
