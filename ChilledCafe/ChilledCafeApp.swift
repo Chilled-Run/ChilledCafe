@@ -25,7 +25,7 @@ struct ChilledCafeApp: App {
     @State var isLoading: Bool = true
     @State var selectedTab: Int = 0
     @StateObject var viewRouter: ViewRouter = ViewRouter()
-    
+    @State var isADALocation: Bool = true
     
     var body: some Scene {
         WindowGroup {
@@ -83,7 +83,7 @@ struct ChilledCafeApp: App {
                                             .foregroundColor(Color("MainColor"))
                                             .frame(width: geometry.size.width/5.5, height: geometry.size.width/5.5)
 
-                                        NavigationLink(destination: ARMainView(firebaseSM: firebaseSM)) {
+                                        NavigationLink(destination: ARMainView(firebaseSM: firebaseSM, isADALocation: $isADALocation)) {
                                             VStack {
                                                 Image("ar")
                                                     .resizable()
