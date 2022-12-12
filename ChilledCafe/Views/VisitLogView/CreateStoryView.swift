@@ -15,7 +15,7 @@ struct CreateStoryView: View {
     @State var words: Int = 0
     @State var showingAlert: Bool = false
     @Binding var arMainViewState: ARMainViewState
-    let otherFootPrintName: String
+    @Binding var otherFootPrintName: String
     @Binding var isStepped: Bool
     @ObservedObject var firebaseSM: FirebaseStorageManager
     
@@ -24,14 +24,13 @@ struct CreateStoryView: View {
         format.dateFormat = "yyyy.MM.dd"
         return format.string(from: Date())
     }
-    let postImage = "bearPaw"
     //게시글 글자색
     var pawForegroundColor: Color {
-        getForegroundColor(foot: postImage)
+        getForegroundColor(foot: otherFootPrintName)
     }
     //게시글의 배경색
     var pawBackgroundColor: Color {
-        getBackgroundColor(foot: postImage)
+        getBackgroundColor(foot: otherFootPrintName)
     }
     
     var body: some View {
@@ -51,6 +50,9 @@ struct CreateStoryView: View {
                     }
                     .padding(EdgeInsets(top: UIScreen.getHeight(57), leading: UIScreen.getWidth(30), bottom: UIScreen.getHeight(20), trailing: UIScreen.getWidth(30)))
                     .navigationBarHidden(true)
+                    .onAppear() {
+                        print("Debugging : ",otherFootPrintName)
+                    }
                     
                     VStack(alignment: .leading, spacing: 0) {
                         
@@ -68,7 +70,7 @@ struct CreateStoryView: View {
                             }
                             .foregroundColor(pawForegroundColor)
                             Spacer()
-                            Image(postImage)
+                            Image("\(otherFootPrintName)Print")
                                 .resizable()
                                 .frame(width: 90, height: 90)
                         }

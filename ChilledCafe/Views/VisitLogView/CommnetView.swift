@@ -22,7 +22,6 @@ struct CommnetView: View {
     var body: some View {
             ZStack {
                 Color.white
-                    .transition(.move(edge: .leading))
                 VStack(spacing: 0) {
                     //네비게이션 바
                     ZStack {
@@ -131,7 +130,6 @@ struct CommnetView: View {
                     .padding(.top, UIScreen.getHeight(20))
                 }
                 .padding(.top, UIScreen.getHeight(47))
-                .transition(.move(edge: .leading))
                 // 댓글입력
                 
                 VStack {
@@ -151,7 +149,7 @@ struct CommnetView: View {
                 .padding(.bottom, UIScreen.getHeight(34))
             }
             .ignoresSafeArea(.all)
-            .transition(.move(edge: .leading))
+//            .transition(.move(edge: .leading))
     }
     var backButton: some View {
         Button(action: {
