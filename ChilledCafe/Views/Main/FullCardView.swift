@@ -11,7 +11,8 @@ import Kingfisher
 struct FullCardView: View {
     @ObservedObject var firebaseSM: FirebaseStorageManager
     let cafe: Cafe
-
+    @State var isBookmarkToggle: Bool = true
+    
     var body: some View {
         Image(uiImage: firebaseSM.cafeThumbnail[cafe.name]!)
             .resizable()
@@ -38,9 +39,10 @@ struct FullCardView: View {
                                 })
                             }
                             // MARK: - 북마크 토글 여부
-                            if cafe.bookmark {
+                            if isBookmarkToggle {
                                 Button(action: {
                                     // TODO: 북마크 토글 동작
+                                    isBookmarkToggle.toggle()
                                 }, label: {
                                     Image("bookmarkToggled")
                                         .resizable()
@@ -50,6 +52,7 @@ struct FullCardView: View {
                             } else {
                                 Button(action: {
                                     // TODO: 북마크 토글 동작
+                                    isBookmarkToggle.toggle()
                                 }, label: {
                                     Image("bookmarkBlack")
                                         .resizable()
