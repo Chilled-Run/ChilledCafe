@@ -30,13 +30,14 @@ struct StoryContentView: View {
                 .foregroundColor(firebaseSM.pawForegroundColor)
                 
                 Spacer()
-                Image(firebaseSM.selectedPost.image + "Print")
+                Image("\(firebaseSM.selectedPost.image)Print")
                     .resizable()
                     .frame(width: 90, height: 90)
             }
             .padding(EdgeInsets(top: UIScreen.getHeight(30), leading: UIScreen.getWidth(30), bottom: 0, trailing:UIScreen.getWidth(30)))
             .onAppear() {
                 dateFormatter.dateFormat = "yyyy.MM.dd"
+                print("Debug selectedImage: ", firebaseSM.selectedPost.image)
                 
             }
             //두번째 문단, 본문이 보이는 곳

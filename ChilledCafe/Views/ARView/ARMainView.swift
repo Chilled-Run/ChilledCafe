@@ -109,7 +109,7 @@ struct ARMainView: View {
                 }
                 
                 if arMainViewState == .uploadStory {
-                    CreateStoryView(arMainViewState: $arMainViewState, otherFootPrintName:otherFootprintName, isStepped: $isStepped, firebaseSM: firebaseSM)
+                    CreateStoryView(arMainViewState: $arMainViewState, otherFootPrintName: $otherFootprintName, isStepped: $isStepped, firebaseSM: firebaseSM)
                 }
 
                 // 초기 바닥 좌표 세팅
@@ -202,7 +202,7 @@ struct ARMainView: View {
                         
                         Spacer()
                         
-                        ModelPickerView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, models: models)
+                        ModelPickerView(arMainViewState: $arMainViewState, selectedModel: self.$selectedModel, otherFootprintName: $otherFootprintName, models: models)
                     }
                     .padding(.top, geo.safeAreaInsets.top + 17)
                 }
@@ -333,6 +333,9 @@ struct ARViewContainer: UIViewRepresentable {
                     print("hello hello")
                     print(anchorEntity.position)
                     
+                    self.otherFootprintName = secondModel.modelName
+                    
+                    
                     if isStepped {
                         self.arMainViewState = .readStory
                     }
@@ -365,6 +368,7 @@ struct ARViewContainer: UIViewRepresentable {
 struct ModelPickerView: View {
     @Binding var arMainViewState: ARMainViewState
     @Binding var selectedModel: FootprintModel?
+    @Binding var otherFootprintName: String
     
     var models: [FootprintModel]
     
@@ -377,6 +381,7 @@ struct ModelPickerView: View {
                         print("DEBUG - selected model with name: \(self.models[index].modelName)")
                         self.selectedModel = self.models[index]
                         self.arMainViewState = .beforeStepFootprint
+                        self.otherFootprintName = self.models[index].modelName
                     }) {
                         Image(uiImage: self.models[index].image)
                             .resizable()
